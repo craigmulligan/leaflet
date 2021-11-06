@@ -5,7 +5,7 @@ init_cli:
 	curl -L https://github.com/cooklang/CookCLI/releases/download/v0.0.10/CookCLI_0.0.10_linux_amd64.zip > /tmp/cooklang.zip && unzip -d ./bin /tmp/cooklang.zip
 
 test_watch:
-	poetry run ptw -- --testmon
+	poetry run ptw -- --testmon -vv
 
 test:
 	poetry run pytest
