@@ -3,7 +3,7 @@ import subprocess
 from os import path
 import tempfile
 import shutil
-from typing import List, Dict
+from typing import List, Dict, Callable
 from dataclasses import dataclass
 import json
 
@@ -80,7 +80,9 @@ def cook_command(*args):
 
 
 class RecipeLoader:
-    def __init__(self, recipes_path: str, sample):
+    def __init__(
+        self, recipes_path: str, sample: Callable[[List[str], int], List[str]]
+    ):
         self.recipes_path = recipes_path
         # random sampling function.
         self.sample = sample

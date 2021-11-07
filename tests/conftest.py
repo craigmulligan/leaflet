@@ -11,7 +11,7 @@ def mock_sampler(items, n):
 
 @pytest.fixture()
 def user_config_loader():
-    return UserConfigLoader("tests/data/db/users")
+    return UserConfigLoader("tests/data/db/user_config")
 
 
 @pytest.fixture()

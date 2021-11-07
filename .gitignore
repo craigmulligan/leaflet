@@ -1,6 +1,6 @@
 *.pyc
 .cache
 .testmondata
-/data
+/data/db
 logs.csv
 bin/cook

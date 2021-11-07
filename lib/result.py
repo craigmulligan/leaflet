@@ -7,5 +7,5 @@ class Result:
 
     email: str
     # currently 0 for success 1 for failure.
-    int: bool
+    status: int
     message: str = ""
