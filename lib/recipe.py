@@ -5,8 +5,6 @@ import tempfile
 import shutil
 from typing import List, Dict
 from dataclasses import dataclass
-import random
-from datetime import datetime
 import json
 
 
@@ -92,7 +90,7 @@ class RecipeLoader:
         returns a list of recipes by filename.
         """
         # TODO cache.
-        return glob.glob(f"{self.recipes_path}/*.cook")
+        return sorted(glob.glob(f"{self.recipes_path}/*.cook"))
 
     def recipes_by_user_config(self, user_config) -> List[Recipe]:
         all_recipes_filesnames = self.list_recipes()
