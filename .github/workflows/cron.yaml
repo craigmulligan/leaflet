@@ -9,7 +9,7 @@ jobs:
   digest-runner:
     runs-on: ubuntu-latest
     env: # Or as an environment variable
-      POSTMARK_SERVER_TOKEN: ${{ secrets.POSTMARK_SERVER_TOKEN }}
+      SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
       GSHEET_URL: ${{ secrets.GSHEET_URL }}
       SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
     steps:

@@ -1,5 +1,7 @@
 from datetime import datetime
 import pytest
+from unittest.mock import Mock
+
 from lib.user_config import UserConfigLoader, UserConfig
 from lib.recipe import RecipeLoader
 from lib.email import Email
@@ -21,8 +23,13 @@ def recipe_loader():
 
 
 @pytest.fixture()
-def email(postmark_client):
-    return Email("sender@x.com", postmark_client)
+def email_client():
+    return Mock()
+
+
+@pytest.fixture()
+def email(email_client):
+    return Email("sender@x.com", email_client)
 
 
 @pytest.fixture()

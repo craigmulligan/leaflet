@@ -1,11 +1,12 @@
 from typing import List
 from lib.recipe import Recipe, Ingredient
 from lib.user_config import UserConfig
-from postmarker.core import PostmarkClient
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 
 class Email:
-    def __init__(self, sender: str, client: PostmarkClient) -> None:
+    def __init__(self, sender: str, client: SendGridAPIClient) -> None:
         self.client = client
         self.sender = sender
 
@@ -38,12 +39,13 @@ class Email:
       """
 
     def _send(self, to, html):
-        self.client.emails.send(
-            From=self.sender,
-            To=to,
-            Subject="Your weekly meals & ingredients",
-            HtmlBody=html,
+        mail = Mail(
+            from_email=self.sender,
+            to_emails=to,
+            subject="Your weekly veggie plan",
+            html_content=html,
         )
+        self.client.send(mail)
 
     def format_and_send(
         self,

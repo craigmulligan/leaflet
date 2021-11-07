@@ -7,12 +7,12 @@ from lib.runner import Runner
 from lib.email import Email
 from lib.user_config import UserConfigLoader
 from lib.recipe import RecipeLoader
-from postmarker.core import PostmarkClient
+from sendgrid import SendGridAPIClient
 
 logging.basicConfig(level=logging.INFO)
 
 if __name__ == "__main__":
-    postmark_server_token = os.environ["POSTMARK_SERVER_TOKEN"]
+    sendgrid_api_key = os.environ["SENDGRID_API_KEY"]
     sender_email = os.environ["SENDER_EMAIL"]
 
     seed = int(
@@ -25,7 +25,8 @@ if __name__ == "__main__":
     logging.info("Running digest")
     user_config_loader = UserConfigLoader("data/db/users")
     recipe_loader = RecipeLoader("data/recipe", random.sample)
-    email_client = PostmarkClient(postmark_server_token)
+
+    email_client = SendGridAPIClient(sendgrid_api_key)
     email = Email(sender_email, email_client)
 
     oks, noks = Runner(user_config_loader, recipe_loader, email).run()
@@ -34,4 +35,4 @@ if __name__ == "__main__":
         logging.info(f"Successfully sent {ok.email} digest")
 
     for nok in noks:
-        logging.exception(f"Failed to send {nok.email} - {nok.message}")
+        logging.error(f"Failed to send {nok.email} - {nok.message}")
