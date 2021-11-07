@@ -5,6 +5,10 @@ from lib.recipe import RecipeLoader
 from lib.email import Email
 
 
+def mock_sampler(items, n):
+    return items[0:n]
+
+
 @pytest.fixture()
 def user_config_loader():
     return UserConfigLoader("tests/data/db/users")
@@ -12,7 +16,7 @@ def user_config_loader():
 
 @pytest.fixture()
 def recipe_loader():
-    return RecipeLoader("tests/data/recipe")
+    return RecipeLoader("tests/data/recipe", mock_sampler)
 
 
 @pytest.fixture()

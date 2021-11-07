@@ -16,5 +16,10 @@ shell:
 install: 
 	poetry install
 
-ci: init_cli shell install test 
-	echo "Done!"
+run:
+	python run_job.py
+
+ci: init_cli install test 
+
+cron: init_cli install run
+	

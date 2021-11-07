@@ -44,10 +44,11 @@ def test_random_recipes(recipe_loader):
     all_recipes_filesnames = recipe_loader.list_recipes()
     random_recipes_filenames = recipe_loader.random_recipes(all_recipes_filesnames, 3)
     base = recipe_loader.recipes_path
+
     assert random_recipes_filenames == [
         f"{base}/French Toast.cook",
-        f"{base}/Baked Potato Soup.cook",
         f"{base}/Ice Cream Cake.cook",
+        f"{base}/Baked Potato Soup.cook",
     ]
 
 
@@ -63,4 +64,4 @@ def test_get_ingredients_and_recipe(user_config_loader, recipe_loader):
     recipes = recipe_loader.recipes_by_user_config(user_config)
 
     assert len(recipes) == 2
-    assert len(ingredients) == 20
+    assert len(ingredients) == 19

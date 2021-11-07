@@ -1,12 +1,12 @@
 import glob
-from datetime import datetime
-import random
 import subprocess
 from os import path
 import tempfile
 import shutil
 from typing import List, Dict
 from dataclasses import dataclass
+import random
+from datetime import datetime
 import json
 
 
@@ -77,13 +77,15 @@ class Recipe:
 
 
 def cook_command(*args):
-    output = subprocess.check_output(["cook", *args])
+    output = subprocess.check_output(["bin/cook", *args])
     return json.loads(output)
 
 
 class RecipeLoader:
-    def __init__(self, recipes_path: str):
+    def __init__(self, recipes_path: str, sample):
         self.recipes_path = recipes_path
+        # random sampling function.
+        self.sample = sample
 
     def list_recipes(self) -> List[str]:
         """
@@ -132,10 +134,7 @@ class RecipeLoader:
         Randomly selects k recipes.
         Seeded by datetime.
         """
-        now = datetime.now()
-        date = now.strftime("%d/%m/%Y")
-        random.seed(date)
-        return random.sample(recipe_filenames, k)
+        return self.sample(recipe_filenames, k)
 
     def load_ingredients(self, recipe_filenames: List[str]) -> List[Ingredient]:
         """
