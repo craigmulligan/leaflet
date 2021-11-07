@@ -15,3 +15,6 @@ shell:
 
 install: 
 	poetry install
+
+ci: init_cli shell install test 
+	echo "Done!"
