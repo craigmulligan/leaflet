@@ -17,15 +17,63 @@ class Ingredient:
     name: str
     amount: str
 
+    def to_html(self):
+        return f"<li>{self.name} - {self.amount}</li>"
+
 
 @dataclass
+class Step:
+    """Single Recipe Step spec"""
+
+    description: str
+
+    def to_html(self):
+        return f"<li>{self.description}</li>"
+
+
+@dataclass
+class Cookware:
+    """Single Cookware spec"""
+
+    name: str
+
+    def to_html(self) -> str:
+        return f"<li>{self.name}</li>"
+
+
 class Recipe:
     """Single Ingredient spec"""
 
     name: str
     ingredients: List[Ingredient]
-    steps: List[Dict]
-    cookware: List[Dict]
+    steps: List[Step]
+    cookware: List[Cookware]
+
+    def __init__(
+        self,
+        name: str,
+        ingredients: List[Dict],
+        steps: List[Dict],
+        cookware: List[Dict],
+    ) -> None:
+        self.name = name
+        self.ingredients = [Ingredient(**ingredient) for ingredient in ingredients]
+        self.steps = [Step(**step) for step in steps]
+        self.cookware = [Cookware(**item) for item in cookware]
+
+    def to_html(self) -> str:
+        ingredients_list = [ingredient.to_html() for ingredient in self.ingredients]
+        steps_list = [step.to_html() for step in self.steps]
+
+        return f"""
+            <div>
+                <h3>{self.name}</h3>
+                <h4>Ingredients</h4>
+                <ul>{ingredients_list}</ul>
+                <h4>Steps</h4>
+                <ul>{steps_list}</ul>
+            </div>
+        """
 
 
 def cook_command(*args):
@@ -34,7 +82,7 @@ def cook_command(*args):
 
 
 class RecipeLoader:
-    def __init__(self, recipes_path):
+    def __init__(self, recipes_path: str):
         self.recipes_path = recipes_path
 
     def list_recipes(self) -> List[str]:

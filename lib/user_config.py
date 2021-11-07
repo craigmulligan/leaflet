@@ -17,7 +17,7 @@ class UserConfig:
 
 
 class UserConfigLoader:
-    def __init__(self, user_configs_path):
+    def __init__(self, user_configs_path: str):
         self.user_configs_path = user_configs_path
 
     def load_todays_user_configs(self) -> Dict[str, UserConfig]:
