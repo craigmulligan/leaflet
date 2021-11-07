@@ -26,12 +26,16 @@ class Runner:
         """
         oks = []
         noks = []
-        user_configs = self.user_config_loader.load_todays_user_configs()
+        user_configs = self.user_config_loader.todays_user_configs()
 
         for user_email, user_config in user_configs.items():
             try:
-                recipes = self.recipe_loader.recipes_by_user_config(user_config)
-                ingredients = self.recipe_loader.ingredients_by_user_config(user_config)
+                (
+                    ingredients,
+                    recipes,
+                ) = self.recipe_loader.ingredients_and_recipes_by_user_config(
+                    user_config
+                )
                 self.email.format_and_send(user_config, recipes, ingredients)
                 oks.append(Result(user_email, 0))
             except Exception as e:

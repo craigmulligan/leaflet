@@ -1,0 +1,19 @@
+name: CI Cron
+
+on:
+  schedule:
+    # 6pm every day.
+    - cron:  '0 18 * * *'
+
+jobs:
+  digest-runner:
+    runs-on: ubuntu-latest
+    env: # Or as an environment variable
+      POSTMARK_SERVER_TOKEN: ${{ secrets.POSTMARK_SERVER_TOKEN }}
+      GSHEET_URL: ${{ secrets.GSHEET_URL }}
+      SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: abatilo/actions-poetry@v2.0.0
+      - run: make ci_cron

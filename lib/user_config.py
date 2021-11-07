@@ -20,20 +20,20 @@ class UserConfigLoader:
     def __init__(self, user_configs_path: str):
         self.user_configs_path = user_configs_path
 
-    def load_todays_user_configs(self) -> Dict[str, UserConfig]:
+    def todays_user_configs(self) -> Dict[str, UserConfig]:
         """
         Returns a list of user_configs that should be contacted
         today.
         """
         weekday = datetime.today().weekday()
-        return self.load_user_configs_by_weekday(weekday)
+        return self._user_configs_by_weekday(weekday)
 
-    def load_user_configs_by_weekday(self, weekday: int) -> Dict[str, UserConfig]:
+    def _user_configs_by_weekday(self, weekday: int) -> Dict[str, UserConfig]:
         """
         Returns a list of user_configs that should be contacted
         on weekday.
         """
-        user_configs = self.load_user_configs()
+        user_configs = self._all_user_configs()
         selected_configs = {}
 
         for email, config in user_configs.items():
@@ -42,7 +42,7 @@ class UserConfigLoader:
 
         return selected_configs
 
-    def load_user_configs(self) -> Dict[str, UserConfig]:
+    def _all_user_configs(self) -> Dict[str, UserConfig]:
         with open(f"{self.user_configs_path}.csv", mode="r") as csv_file:
             user_configs = {}
             csv_reader = csv.DictReader(csv_file)

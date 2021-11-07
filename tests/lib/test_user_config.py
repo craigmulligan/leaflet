@@ -10,7 +10,7 @@ def test_load_users(user_config_loader):
     2. We load the values correctly into a UserConfig.
     """
     dupe_email = "hey@x.com"
-    user_configs = user_config_loader.load_user_configs()
+    user_configs = user_config_loader._all_user_configs()
     assert len(user_configs.keys()) == 3
 
     config = [config for email, config in user_configs.items() if email == "hey@x.com"][
@@ -29,9 +29,9 @@ def test_filter_weekdays_user_configs(user_config_loader):
     """
     Checks that we can load users by weekday.
     """
-    assert len(user_config_loader.load_user_configs_by_weekday(1)) == 0
-    assert len(user_config_loader.load_user_configs_by_weekday(6)) == 1
-    assert len(user_config_loader.load_user_configs_by_weekday(0)) == 2
+    assert len(user_config_loader._user_configs_by_weekday(1)) == 0
+    assert len(user_config_loader._user_configs_by_weekday(6)) == 1
+    assert len(user_config_loader._user_configs_by_weekday(0)) == 2
 
 
 @freeze_time("2013-04-08")
@@ -42,4 +42,4 @@ def test_filter_todays_user_configs(user_config_loader):
     """
     weekday = datetime.today().weekday()
     assert weekday == 0
-    assert len(user_config_loader.load_todays_user_configs()) == 2
+    assert len(user_config_loader.todays_user_configs()) == 2

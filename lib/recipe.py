@@ -3,7 +3,7 @@ import subprocess
 from os import path
 import tempfile
 import shutil
-from typing import List, Dict, Callable
+from typing import List, Dict, Callable, Tuple
 from dataclasses import dataclass
 import json
 
@@ -89,32 +89,28 @@ class RecipeLoader:
         # random sampling function.
         self.sample = sample
 
-    def list_recipes(self) -> List[str]:
-        """
-        returns a list of recipes by filename.
-        """
-        # TODO cache.
-        return sorted(glob.glob(f"{self.recipes_path}/*.cook"))
-
-    def recipes_by_user_config(self, user_config) -> List[Recipe]:
-        all_recipes_filesnames = self.list_recipes()
-        selected_recipes_filenames = self.random_recipes(
-            all_recipes_filesnames, user_config.meal_count
-        )
-        return self.load_recipes(selected_recipes_filenames)
-
-    def ingredients_by_user_config(self, user_config) -> List[Ingredient]:
+    def ingredients_and_recipes_by_user_config(
+        self, user_config
+    ) -> Tuple[List[Ingredient], List[Recipe]]:
         """
         Give a user_config we'll return generate a list of all ingredients
         + recipes.
         """
-        all_recipes_filesnames = self.list_recipes()
-        selected_recipes_filenames = self.random_recipes(
+        all_recipes_filesnames = self._list_recipes()
+        selected_recipes_filenames = self._random_recipes(
             all_recipes_filesnames, user_config.meal_count
         )
-        return self.load_ingredients(selected_recipes_filenames)
+        ingredients = self._load_ingredients(selected_recipes_filenames)
+        recipes = self._load_recipes(selected_recipes_filenames)
+        return ingredients, recipes
 
-    def load_recipes(self, recipe_filenames: List[str]) -> List[Recipe]:
+    def _list_recipes(self) -> List[str]:
+        """
+        returns a list of recipes by filename.
+        """
+        return sorted(glob.glob(f"{self.recipes_path}/*.cook"))
+
+    def _load_recipes(self, recipe_filenames: List[str]) -> List[Recipe]:
         """
         Give a list of recipe filenames it'll load them into
         a Recipe object.
@@ -131,14 +127,14 @@ class RecipeLoader:
 
         return recipes
 
-    def random_recipes(self, recipe_filenames: List[str], k: int) -> List[str]:
+    def _random_recipes(self, recipe_filenames: List[str], k: int) -> List[str]:
         """
         Randomly selects k recipes.
         Seeded by datetime.
         """
         return self.sample(recipe_filenames, k)
 
-    def load_ingredients(self, recipe_filenames: List[str]) -> List[Ingredient]:
+    def _load_ingredients(self, recipe_filenames: List[str]) -> List[Ingredient]:
         """
         Gets cumulative shopping list for selected recipes.
         """
