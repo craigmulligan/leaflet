@@ -3,7 +3,7 @@ name: CI Cron
 on:
   schedule:
     # 6pm every day.
-    - cron:  '0 18 * * *'
+    - cron:  '30 16 * * *'
 
 jobs:
   digest-runner:
