@@ -5,6 +5,8 @@ import tempfile
 import shutil
 from typing import List, Dict
 from dataclasses import dataclass
+import random
+from datetime import datetime
 import json
 
 
@@ -84,6 +86,12 @@ class RecipeLoader:
         self.recipes_path = recipes_path
         # random sampling function.
         self.sample = sample
+        seed = (
+            datetime.now()
+            .replace(hour=0, minute=0, second=0, microsecond=0)
+            .timestamp()
+        )
+        self.seeded_random = random.Random(seed)
 
     def list_recipes(self) -> List[str]:
         """
@@ -130,9 +138,8 @@ class RecipeLoader:
     def random_recipes(self, recipe_filenames: List[str], k: int) -> List[str]:
         """
         Randomly selects k recipes.
-        Seeded by datetime.
         """
-        return self.sample(recipe_filenames, k)
+        return self.seeded_random.sample(recipe_filenames, k)
 
     def load_ingredients(self, recipe_filenames: List[str]) -> List[Ingredient]:
         """

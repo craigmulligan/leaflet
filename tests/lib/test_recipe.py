@@ -64,4 +64,4 @@ def test_get_ingredients_and_recipe(user_config_loader, recipe_loader):
     recipes = recipe_loader.recipes_by_user_config(user_config)
 
     assert len(recipes) == 2
-    assert len(ingredients) == 16
+    assert len(ingredients) == 18
