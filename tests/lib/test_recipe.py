@@ -43,13 +43,8 @@ def test_random_recipes(recipe_loader):
     recipe_loader
     all_recipes_filesnames = recipe_loader.list_recipes()
     random_recipes_filenames = recipe_loader.random_recipes(all_recipes_filesnames, 3)
-    base = recipe_loader.recipes_path
-
-    # assert random_recipes_filenames == [
-    #     f"{base}/French Toast.cook",
-    #     f"{base}/Ice Cream Cake.cook",
-    #     f"{base}/Baked Potato Soup.cook",
-    # ]
+    # Our test random sampler just takes the first x in order
+    assert random_recipes_filenames == all_recipes_filesnames[0:3]
 
 
 @freeze_time("2013-04-14")
