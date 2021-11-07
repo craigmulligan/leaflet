@@ -60,8 +60,10 @@ class Recipe:
         self.cookware = [Cookware(**item) for item in cookware]
 
     def to_html(self) -> str:
-        ingredients_list = [ingredient.to_html() for ingredient in self.ingredients]
-        steps_list = [step.to_html() for step in self.steps]
+        ingredients_list = "\n".join(
+            [ingredient.to_html() for ingredient in self.ingredients]
+        )
+        steps_list = "\n".join([step.to_html() for step in self.steps])
 
         return f"""
             <div>

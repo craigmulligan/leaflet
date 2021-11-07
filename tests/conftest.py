@@ -3,6 +3,7 @@ import pytest
 from lib.user_config import UserConfigLoader, UserConfig
 from lib.recipe import RecipeLoader
 from lib.email import Email
+from lib.runner import Runner
 
 
 def mock_sampler(items, n):
@@ -11,7 +12,7 @@ def mock_sampler(items, n):
 
 @pytest.fixture()
 def user_config_loader():
-    return UserConfigLoader("tests/data/db/user_config")
+    return UserConfigLoader("tests/data/db/users")
 
 
 @pytest.fixture()
@@ -27,3 +28,8 @@ def email(postmark_client):
 @pytest.fixture()
 def dummy_user_config():
     return UserConfig("dummy@x.com", datetime.now(), 2, 1, 0)
+
+
+@pytest.fixture()
+def runner(user_config_loader, recipe_loader, email):
+    return Runner(user_config_loader, recipe_loader, email)

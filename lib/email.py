@@ -13,11 +13,14 @@ class Email:
         """
         Given recipes and ingredeients it will return formatted html.
         """
-        ingredients_list = [ingredient.to_html() for ingredient in ingredients]
-        recipes_list = [recipe.to_html() for recipe in recipes]
+        ingredients_list = "\n".join(
+            [ingredient.to_html() for ingredient in ingredients]
+        )
+        recipes_list = "<hr/>\n".join([recipe.to_html() for recipe in recipes])
 
         return f"""<html>
-          <head></head>
+          <head>
+          </head>
           <body>
             <h1>Your weekly vegetarian shopping list & recipes.<h1>
             <h2>

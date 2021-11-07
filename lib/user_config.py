@@ -43,7 +43,6 @@ class UserConfigLoader:
         return selected_configs
 
     def load_user_configs(self) -> Dict[str, UserConfig]:
-        # TODO add some caching.
         with open(f"{self.user_configs_path}.csv", mode="r") as csv_file:
             user_configs = {}
             csv_reader = csv.DictReader(csv_file)

@@ -18,7 +18,9 @@ def test_email_format(email, dummy_user_config, recipe_loader):
 
 
 @freeze_time("2013-04-08")
-def test_email_format(email, dummy_user_config, recipe_loader, postmark_client):
+def test_email_format_and_send(
+    email, dummy_user_config, recipe_loader, postmark_client
+):
     recipes = recipe_loader.recipes_by_user_config(dummy_user_config)
     ingredients = recipe_loader.ingredients_by_user_config(dummy_user_config)
     html = email._format(recipes, ingredients)
