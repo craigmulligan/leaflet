@@ -22,6 +22,9 @@ install:
 run:
 	poetry run python run.py
 
-ci_test: init_cli install test 
+mypy:
+	poetry run mypy . 
+
+ci_test: init_cli install mypy test
 
 ci_cron: init_cli init_db install run
