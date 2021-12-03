@@ -6,14 +6,15 @@ authors = ["Craig Mulligan <hey@hobochild.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-freezegun = "^1.1.0"
-pytest-watch = "^4.2.0"
-pytest-testmon = "^1.2.2"
 sendgrid = "^6.9.0"
-mypy = "^0.910"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
+mypy = "^0.910"
+types-freezegun = "^1.1.3"
+pytest-watch = "^4.2.0"
+pytest-testmon = "^1.2.2"
+freezegun = "^1.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
