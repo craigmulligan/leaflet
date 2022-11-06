@@ -7,6 +7,7 @@ authors = ["Craig Mulligan <hey@hobochild.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 sendgrid = "^6.9.0"
+recipe-scrapers = "^14.23.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
