@@ -1,7 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
 <header><h3>hi {{user.email}}</h3></header>
-<form action="{{ url_for('user.new_digest', user_id=user.id) }}" method="post">
+<br />
+<form method="post">
+  <label for="recipes_per_week">Recipes per week:</label><br>
+  <input type="number" id="recipes_per_week" name="recipes_per_week" value={{user.recipes_per_week}}><br>
+  <label for="serving">Servings:</label><br>
+  <input type="number" id="serving" name="serving"  value={{user.serving}}>
+  <button>Save settings</button>
+</form>
+<br />
+<hr />
+<br />
+<br />
+<form action="{{ url_for('user.digest_new', user_id=user.id) }}" method="post">
 <button>Request a new leaflet</button>
 </form>
+
+
+
+Previous leaflets:
+
+<ul>
+{% for digest in digests %}
+<li>{{digest}}</li>
+{% endfor %}
+</ul>
 {% endblock %}

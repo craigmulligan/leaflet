@@ -10,13 +10,25 @@ class User:
     email: str
     created_at: str
 
-    def __init__(self, *, id: int, email: str, created_at: str) -> None:
+    def __init__(
+        self,
+        *,
+        id: int,
+        email: str,
+        created_at: str,
+        recipes_per_week: int,
+        serving: int,
+        send_at: str
+    ) -> None:
         if None in (id, email):
             raise Exception("Invalid user")
 
         self.id = id
         self.email = email
         self.created_at = created_at
+        self.recipes_per_week = recipes_per_week
+        self.serving = serving
+        self.send_at = send_at
 
     @staticmethod
     def _get_serializer(salt: str) -> URLSafeTimedSerializer:
