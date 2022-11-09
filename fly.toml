@@ -1,0 +1,52 @@
+# fly.toml file generated for leaflet on 2021-07-18T13:58:37+02:00
+app = "leaflet"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[env]
+DB_URL = "/data/app.db"
+
+[experimental]
+auto_rollback = true
+enable_consul = true
+
+[processes]
+web = "litefs -config /etc/litefs-web.yml"
+worker = "litefs -config /etc/litefs-worker.yml"
+
+[statics]
+processes = ["web"]                      # this service only applies to the web block
+guest_path = "/home/user/app/app/static"
+url_prefix = "/static"
+
+[[services]]
+processes = ["web"]  # this service only applies to the web block
+http_checks = []
+internal_port = 8080
+protocol = "tcp"
+script_checks = []
+
+[services.concurrency]
+hard_limit = 25
+soft_limit = 20
+type = "connections"
+
+[[services.ports]]
+handlers = ["http"]
+port = 80
+
+[[services.ports]]
+handlers = ["tls", "http"]
+port = 443
+
+[[services.tcp_checks]]
+grace_period = "10s"
+interval = "15s"
+restart_limit = 6
+timeout = "2s"
+
+[[mounts]]
+processes = ["web"]
+source = "data"
+destination = "/mnt/data"
