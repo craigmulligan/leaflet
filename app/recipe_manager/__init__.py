@@ -12,6 +12,11 @@ class Digest:
     recipes: List[Recipe]
     user_id: int
 
+    def shopping_list(self):
+        """
+        For each recipe we and the similar recipes.
+        """
+
     def to_html(self):
         pass
 
@@ -37,7 +42,9 @@ class RecipeManager:
 
         db = database.get()
         random_recipe_id = db.recipe_random(user.id)
-        similar_recipe_ids = db.recipe_similar(random_recipe_id, 2)
+        similar_recipe_ids = db.recipe_similar(random_recipe_id, user.recipes_per_week)
+        # TODO:
+        # Convert recipe to user.serving size.
 
         recipes = []
         for recipe_id in [random_recipe_id, *similar_recipe_ids]:
