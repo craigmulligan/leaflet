@@ -1,0 +1,65 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/moroccan-freekeh-traybake",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "olive oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "chickpeas",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "ground coriander",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "ground cumin",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "chilli flakes",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "cherry tomatoes",
+            "quantity": 270.0,
+            "unit": "g"
+        },
+        {
+            "name": "apricot halves",
+            "quantity": "0.5 x",
+            "unit": "400 g cans"
+        },
+        {
+            "name": "green olives",
+            "quantity": 70.0,
+            "unit": "g"
+        },
+        {
+            "name": "pouch cooked freekeh",
+            "quantity": 250.0,
+            "unit": "g"
+        },
+        {
+            "name": "fat-free Greek yogurt",
+            "quantity": 70.0,
+            "unit": "g"
+        },
+        {
+            "name": "dill",
+            "quantity": "",
+            "unit": "small bunches"
+        }
+    ],
+    "instructions": "Heat oven to 200C/180C fan/ gas 6. Toss the oil with the chickpeas, spices and chilli flakes in a medium roasting tin. Roast for 15 mins or until the chickpeas are beginning to crisp and turn golden brown. Add the tomatoes, apricots, olives and freekeh to the pan and toss everything together. Return to the oven for a final 10-15 mins until the tomatoes start to burst and everything is piping hot. Season to taste.\nCombine the yogurt and most of the dill and season with salt. Serve the freekeh with any extra dill fronds scattered over and a dollop of the herby yogurt.",
+    "title": "Moroccan freekeh traybake",
+    "total_time": 35,
+    "yields": "2 servings"
+}

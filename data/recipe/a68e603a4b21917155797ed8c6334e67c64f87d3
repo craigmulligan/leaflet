@@ -1,0 +1,65 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/veggie-yaki-udon",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "sesame oil",
+            "quantity": 22.18,
+            "unit": "ml"
+        },
+        {
+            "name": "red onion",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "mangetout",
+            "quantity": 160.0,
+            "unit": "g"
+        },
+        {
+            "name": "baby corn",
+            "quantity": 70.0,
+            "unit": "g"
+        },
+        {
+            "name": "baby pak choi",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "spring onions",
+            "quantity": 3.0,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "1",
+            "unit": "large clove"
+        },
+        {
+            "name": "mild curry powder garam masala",
+            "quantity": 7.39,
+            "unit": "ml"
+        },
+        {
+            "name": "low-salt soy sauce",
+            "quantity": 19.72,
+            "unit": "ml"
+        },
+        {
+            "name": "ready-to-cook udon noodles",
+            "quantity": 300.0,
+            "unit": "g"
+        },
+        {
+            "name": "pickled sushi ginger",
+            "quantity": 14.79,
+            "unit": "ml"
+        }
+    ],
+    "instructions": "Heat the oil in a non-stick frying pan or wok over a high heat. Add the onion and fry for 5 mins. Stir in the mangetout, corn, pak choi and spring onions and cook for 5 mins more. Add the garlic, curry powder and soy sauce, and cook for another minute.\nAdd the udon noodles along with the ginger (if using) and reserved brine, and stir in 2-3 tbsp hot water until the noodles are heated through. Divide between bowls and serve.",
+    "title": "Veggie yaki udon",
+    "total_time": 25,
+    "yields": "2 servings"
+}

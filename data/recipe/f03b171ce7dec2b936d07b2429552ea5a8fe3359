@@ -1,0 +1,90 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/salsa-verde-baked-eggs",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "olive oil",
+            "quantity": 73.93,
+            "unit": "ml"
+        },
+        {
+            "name": "smoked paprika",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "cumin seeds",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "cherry tomatoes",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "fresh cherry tomatoes",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "cloves"
+        },
+        {
+            "name": "parsley",
+            "quantity": "1",
+            "unit": "small bunch"
+        },
+        {
+            "name": "basil",
+            "quantity": "1",
+            "unit": "small bunch"
+        },
+        {
+            "name": "mint",
+            "quantity": "0.5",
+            "unit": "small bunches"
+        },
+        {
+            "name": "capers",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "Dijon mustard",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "white wine vinegar",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "baby spinach",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "name": "eggs",
+            "quantity": 4.0,
+            "unit": null
+        },
+        {
+            "name": "chilli flakes (optional)",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "flatbreads",
+            "quantity": "",
+            "unit": ""
+        }
+    ],
+    "instructions": "Drizzle 1 tbsp of the olive oil in a frying pan or skillet, and fry the paprika and cumin for 30 seconds over a medium heat. Add the canned tomatoes and fresh tomatoes, bring to the boil, then simmer with a lid on over a medium heat for 5-6 mins until the tomatoes have softened.\nMeanwhile, put the garlic, most of the parsley, the basil, mint, capers, mustard, white wine vinegar, 4 tbsp oil and 3 tbsp cold water in a mini food processor and blitz to a smooth paste. Season.\nStir the spinach into the pan with the tomatoes until wilted (put the lid back on for a few minutes, then stir again to help it wilt). Make four dips in the mixture and gently crack an egg into each one. Cover with a lid and cook over a medium heat for 6-8 mins, or until the eggs are just set. Uncover the pan, then drizzle over the herby sauce. Scatter over the reserved parsley and chilli flakes, if using. Serve with flatbreads, if you like.",
+    "title": "Salsa verde baked eggs",
+    "total_time": 20,
+    "yields": "4 servings"
+}

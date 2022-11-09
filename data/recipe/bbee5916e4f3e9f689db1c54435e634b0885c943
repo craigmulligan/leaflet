@@ -1,0 +1,45 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/mushroom-baked-eggs-squished-tomatoes",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "mushrooms (about 85 g each)",
+            "quantity": "2",
+            "unit": "large"
+        },
+        {
+            "name": "rapeseed oil",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "garlic",
+            "quantity": "0.5",
+            "unit": "cloves"
+        },
+        {
+            "name": "thyme leaf",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "tomatoes",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "eggs",
+            "quantity": "2",
+            "unit": "large"
+        },
+        {
+            "name": "rocket",
+            "quantity": "2",
+            "unit": "handfuls"
+        }
+    ],
+    "instructions": "Heat oven to 200C/180C fan/gas 6. Brush the mushrooms with a little oil and the garlic (if using). Place the mushrooms in two very lightly greased gratin dishes, bottom-side up, and season lightly with pepper. Top with the chopped stalks and thyme, cover with foil and bake for 20 mins.\nRemove the foil, add the tomatoes to the dishes and break an egg carefully onto each of the mushrooms. Season and add a little more thyme, if you like. Return to the oven for 10-12 mins or until the eggs are set but the yolks are still runny. Top with the rocket and eat straight from the dishes.",
+    "title": "Mushroom baked eggs with squished tomatoes",
+    "total_time": 35,
+    "yields": "2 servings"
+}

@@ -1,0 +1,65 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/gujarati-cabbage-coconut-potato",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "Charlotte or other new potato",
+            "quantity": 500.0,
+            "unit": "g"
+        },
+        {
+            "name": "sunflower oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "asafoetida",
+            "quantity": 0.0,
+            "unit": "cm"
+        },
+        {
+            "name": "black mustard seeds",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "cumin seeds",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "dried red chillies",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "red or green chilli",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "cabbage",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "juice 0.5 lemon",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "desiccated coconut",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "coriander",
+            "quantity": "",
+            "unit": "bunches"
+        }
+    ],
+    "instructions": "Cook potatoes in a pan of salted boiling water for 10 mins until tender. Drain well and return to pan. Lightly crush with the back of a fork, just to break, not to mash.\nHeat the oil in a large frying pan and then add the asafoetida, spices and dried chillies. Cook for a few mins until the spices pop and the chillies darken.\nAdd the fresh chilli, cabbage and some salt and stir-fry for 3-4 mins. Add the warm potatoes to the pan and cook for 2-3 mins more until the cabbage is tender, but still has some bite. Stir in the lemon juice, coconut and coriander, and serve.",
+    "title": "Gujarati cabbage with coconut & potato",
+    "total_time": 30,
+    "yields": "4 servings"
+}

@@ -1,0 +1,60 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/veggie-olive-wraps-mustard-vinaigrette",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "carrot",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "red cabbage",
+            "quantity": "80",
+            "unit": "g wedges"
+        },
+        {
+            "name": "spring onions",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "courgette",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "basil leaf",
+            "quantity": "",
+            "unit": "handfuls"
+        },
+        {
+            "name": "green olives",
+            "quantity": 5.0,
+            "unit": null
+        },
+        {
+            "name": "English mustard powder",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "extra virgin rapeseed oil",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "cider vinegar",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "seeded tortilla",
+            "quantity": "1",
+            "unit": "large"
+        }
+    ],
+    "instructions": "Mix all the ingredients except for the tortilla and toss well.\nPut the tortilla on a sheet of foil and pile the filling along one side of the wrap \u2013 it will almost look like too much mixture, but once you start to roll it firmly it will compact. Roll the tortilla from the filling side, folding in the sides as you go. Fold the foil in at the ends to keep stuff inside the wrap. Cut in half and eat straight away. If taking to work, leave whole and wrap up like a cracker in baking parchment.",
+    "title": "Veggie olive wraps with mustard vinaigrette",
+    "total_time": 10,
+    "yields": "1 serving"
+}

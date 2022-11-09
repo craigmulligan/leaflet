@@ -1,0 +1,70 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/spicy-chilli-bean-soup",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "olive oil",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "onion",
+            "quantity": "1",
+            "unit": "large"
+        },
+        {
+            "name": "garlic",
+            "quantity": "1",
+            "unit": "clove"
+        },
+        {
+            "name": "tomato pur\u00e9e",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "mild chilli powder",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "ground cumin",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "chopped tomatoes",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "vegetable stock",
+            "quantity": 500.0,
+            "unit": "ml"
+        },
+        {
+            "name": "mixed beans",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "red pepper",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "tortilla chips",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "limes",
+            "quantity": 4.0,
+            "unit": null
+        }
+    ],
+    "instructions": "Heat the oil in a deep saucepan and fry the chopped onion over a medium heat until tender. Add the garlic and tomato pur\u00e9e, stirring for 1-2 mins until combined. Sprinkle in the spices and cook for another 1 min.\nTip in the chopped tomatoes, half fill the can with water, and add to the pan. Pour in the stock and simmer on a medium heat for 10-15 mins, uncovered. Season, then whizz using a hand blender until smooth. Add the beans and red pepper, and cook for another 15 mins until the pepper is tender.\nServe in bowls topped with a small pile of tortilla chips and a lime wedge.",
+    "title": "Spicy chilli bean soup",
+    "total_time": 50,
+    "yields": "4 servings"
+}

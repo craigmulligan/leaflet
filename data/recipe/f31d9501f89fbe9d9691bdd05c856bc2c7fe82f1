@@ -1,0 +1,55 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/spicy-roast-veg-lentils-0",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "small-medium butternut squash (about 950 g 2 lb 2 oz)",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "red onion",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "peppers",
+            "quantity": 3.0,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "cloves"
+        },
+        {
+            "name": "olive oil",
+            "quantity": 44.36,
+            "unit": "ml"
+        },
+        {
+            "name": "curry paste",
+            "quantity": 44.36,
+            "unit": "ml"
+        },
+        {
+            "name": "puy lentils",
+            "quantity": "2 x",
+            "unit": "400 g cans"
+        },
+        {
+            "name": "hot vegetable stock",
+            "quantity": 150.0,
+            "unit": "ml"
+        },
+        {
+            "name": "coriander",
+            "quantity": "",
+            "unit": "large handfuls"
+        }
+    ],
+    "instructions": "Heat oven to 200C/180C fan/gas 6. Using a sharp knife, peel the butternut squash. Cut it in half lengthways, scoop out the seeds, then cut into 1cm-thick slices widthways across the squash.\nPut the squash slices in a large roasting tin with the onion, peppers and garlic. Mix the oil with the curry paste and drizzle over the vegetables. Toss well to coat in the curry mix and season.\nRoast for 30 mins until the vegetables are beginning to soften. Add the lentils and stock to the roasting tin and mix. Return to the oven for a further 5-10 mins until the vegetables are tender. Stir in the coriander and serve straight away.",
+    "title": "Spicy roast veg & lentils",
+    "total_time": 55,
+    "yields": "4 servings"
+}

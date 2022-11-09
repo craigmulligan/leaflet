@@ -1,0 +1,85 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/three-bean-salad-with-mozzarella",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "fine beans",
+            "quantity": 320.0,
+            "unit": "g"
+        },
+        {
+            "name": "carrots (320 g)",
+            "quantity": 4.0,
+            "unit": null
+        },
+        {
+            "name": "red onions",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "cannellini beans",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "red kidney beans",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "mixed colour baby tomatoes",
+            "quantity": 320.0,
+            "unit": "g"
+        },
+        {
+            "name": "basil leaf",
+            "quantity": 15.0,
+            "unit": "g"
+        },
+        {
+            "name": "vegetarian mozzarella",
+            "quantity": 120.0,
+            "unit": "g"
+        },
+        {
+            "name": "extra virgin olive oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "balsamic vinegar",
+            "quantity": "1-2",
+            "unit": "tbsps"
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "cloves"
+        },
+        {
+            "name": "dried oregano",
+            "quantity": "0.5-1",
+            "unit": "tsps"
+        },
+        {
+            "name": "dried English mustard powder",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "Kalamata olives (about 45 g)",
+            "quantity": 15.0,
+            "unit": null
+        },
+        {
+            "name": "lemon zest and 2 tbsp juice",
+            "quantity": 2.46,
+            "unit": "ml"
+        }
+    ],
+    "instructions": "Boil or steam the green beans and carrots for 8-10 mins until just tender. Put the sliced onions in a bowl and pour over boiling water until just covered.\nMeanwhile, make the dressing. Mix all the ingredients together in a large bowl.\nTip the cooked beans and carrots into the dressing along with the drained onions, canned beans and tomatoes, toss well, then add the basil and toss again. Serve scattered with the mozzarella and a grinding of black pepper, if you like. Will keep chilled for up to three days.",
+    "title": "Three bean salad with mozzarella",
+    "total_time": 30,
+    "yields": "4 servings"
+}

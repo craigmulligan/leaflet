@@ -1,0 +1,45 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/minestrone-minutes",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "hot vegetable stock",
+            "quantity": 1000.0,
+            "unit": "ml"
+        },
+        {
+            "name": "chopped tomato",
+            "quantity": "400",
+            "unit": "g tin"
+        },
+        {
+            "name": "thin spaghetti",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "name": "frozen mixed vegetable",
+            "quantity": 350.0,
+            "unit": "g"
+        },
+        {
+            "name": "pesto",
+            "quantity": 59.15,
+            "unit": "ml"
+        },
+        {
+            "name": "olive oil",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "vegetarian parmesan-style cheese",
+            "quantity": "",
+            "unit": ""
+        }
+    ],
+    "instructions": "Bring the stock to the boil with the tomatoes, then add the spaghetti and cook for 6 mins or until done. A few minutes before the pasta is ready, add the vegetables and bring back to the boil. Simmer for 2 mins until everything is cooked.\nServe in bowls drizzled with pesto and oil, sprinkled with parmesan.",
+    "title": "Minestrone in minutes",
+    "total_time": 10,
+    "yields": "4 servings"
+}

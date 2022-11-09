@@ -1,0 +1,75 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/summer-veg-tostadas",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "mini tortillas",
+            "quantity": 4.0,
+            "unit": null
+        },
+        {
+            "name": "vegetable oil",
+            "quantity": 19.72,
+            "unit": "ml"
+        },
+        {
+            "name": "courgette",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "sweetcorn",
+            "quantity": "198",
+            "unit": "g cans"
+        },
+        {
+            "name": "smoked paprika",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "cherry tomatoes",
+            "quantity": 80.0,
+            "unit": "g"
+        },
+        {
+            "name": "spring onions",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "frozen peas",
+            "quantity": 250.0,
+            "unit": "g"
+        },
+        {
+            "name": "garlic",
+            "quantity": "1",
+            "unit": "clove"
+        },
+        {
+            "name": "mint",
+            "quantity": "2",
+            "unit": "sprigs"
+        },
+        {
+            "name": "of coriander",
+            "quantity": "",
+            "unit": "small handfuls"
+        },
+        {
+            "name": "limes",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "natural yogurt",
+            "quantity": 80.0,
+            "unit": "g"
+        }
+    ],
+    "instructions": "Heat the oven to 200C/180C fan/ gas 6. Brush the tortillas with 2 tsp of the oil and arrange on two baking trays. Lightly season. Bake for 5 mins, then turn over, rotate the trays and cook for a further 3 mins until crisp and golden. Remove from the oven and set aside to cool.\nMeanwhile, heat 1 tsp of the oil in a large frying pan over a medium- high heat. Add the courgette and sweetcorn and cook, stirring a couple of times until they start to colour at the edges, about 6-8 mins. Add the smoked paprika and cook for a further minute. Set aside to cool slightly before tossing in the tomatoes and spring onions, then some seasoning to taste.\nPut the peas, garlic, mint, most of the coriander, the lime juice and remaining oil in a mini food processor with some seasoning and pulse until you have a guacamole-like consistency. Add a splash of water if it\u2019s too thick.\nTo serve, spread each tortilla with the pea dip and top with the veg. Garnish with the remaining coriander and a dollop of yogurt. Serve with lime wedges on the side for squeezing over.",
+    "title": "Summer veg tostadas",
+    "total_time": 30,
+    "yields": "4 servings"
+}

@@ -1,0 +1,55 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/refried-beans",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "black",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "sunflower oil",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "onion",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "cloves"
+        },
+        {
+            "name": "green chilli",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "cumin seeds",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "dried oregano",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "smoked paprika",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "coriander",
+            "quantity": "",
+            "unit": ""
+        }
+    ],
+    "instructions": "Lightly drain the beans, reserving the juice from the tin, but do not rinse (you want the beans in about half the liquid from the can). Depending on the texture you prefer, either mash them roughly in a bowl or blitz them using a blender until smooth. Set aside.\nHeat the oil in a large frying pan or casserole and cook the onions for 8-10 mins until soft and golden. Scatter in the garlic, chilli and cumin seeds, and sizzle everything for 2 mins more. Tip in the beans, oregano, paprika and a pinch of salt. Cook everything together for 5 mins until the beans have heated through adding more reserved bean juice if it\u2019s too thick. Serve straightaway with a sprinkling of coriander, if you like, or leave to cool and keep chilled. Will keep chilled for up to three days or frozen for a month. Reheat with a splash of water mixed in.",
+    "title": "Refried beans",
+    "total_time": 40,
+    "yields": "4 servings"
+}

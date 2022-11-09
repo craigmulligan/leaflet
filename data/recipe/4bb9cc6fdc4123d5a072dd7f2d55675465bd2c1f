@@ -1,0 +1,50 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/charred-cauliflower-lemon-caper-orzo",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "cauliflower",
+            "quantity": 0.5,
+            "unit": null
+        },
+        {
+            "name": "olive oil",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "orzo",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "name": "capers",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "garlic",
+            "quantity": "1",
+            "unit": "small clove"
+        },
+        {
+            "name": "lemon",
+            "quantity": 0.5,
+            "unit": null
+        },
+        {
+            "name": "low-salt vegetable stock",
+            "quantity": 100.0,
+            "unit": "ml"
+        },
+        {
+            "name": "of rocket leaf",
+            "quantity": "",
+            "unit": "handfuls"
+        }
+    ],
+    "instructions": "Heat the grill to high. Toss the cauliflower with half the oil and some seasoning. Tip onto a baking tray and grill for 15-20 mins until golden, charred, and tender all the way through.\nMeanwhile, cook the orzo in a pan of boiling salted water for 8 mins, or until al dente. Drain.\nHeat the remaining oil in a frying pan and sizzle the capers and garlic until golden. Stir in the orzo, cauliflower, lemon zest and juice and the stock. Bubble for 1 min, then spoon half into a bowl and top with the rocket. Leave the leftovers to cool for the lunchbox, see tip below.",
+    "title": "Charred cauliflower, lemon & caper orzo",
+    "total_time": 25,
+    "yields": "1 serving"
+}

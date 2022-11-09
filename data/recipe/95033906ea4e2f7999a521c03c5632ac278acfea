@@ -1,0 +1,85 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/vegan-roast-spiced-squash-salad-with-tahini-dressing",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "diced butternut squash",
+            "quantity": 320.0,
+            "unit": "g"
+        },
+        {
+            "name": "red onions (320 g)",
+            "quantity": 3.0,
+            "unit": null
+        },
+        {
+            "name": "rapeseed oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "smoked paprika",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "cumin seeds",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "chopped thyme",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "quinoa",
+            "quantity": 125.0,
+            "unit": "g"
+        },
+        {
+            "name": "kale",
+            "quantity": "0.5 x",
+            "unit": "85 g bags"
+        },
+        {
+            "name": "pumpkin seeds",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "tahini",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "apple cider vinegar",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "garlic",
+            "quantity": "1",
+            "unit": "clove"
+        },
+        {
+            "name": "lentils or borlotti beans",
+            "quantity": "2 x",
+            "unit": "400 g cans"
+        },
+        {
+            "name": "pomegranate seeds",
+            "quantity": 50.0,
+            "unit": "g"
+        },
+        {
+            "name": "of rocket",
+            "quantity": "4",
+            "unit": "generous handfuls"
+        }
+    ],
+    "instructions": "Heat the oven to 200C/180C fan/gas 6. Tip the squash and onions onto a large baking sheet and toss with 1 tsp of the oil. Spread out and sprinkle with the paprika, cumin and thyme, then roast for 30 mins.\nMeanwhile, cook the quinoa following pack instructions, then drain well (or the base of the salad will be too wet).\nAdd the kale to the tray of veg, sprinkle over the seeds and return to the oven for 10 mins.\nFor the dressing, mix the tahini and remaining oil with the vinegar, garlic and 2 tbsp water.\nPut the quinoa in a bowl and toss with the lentils or beans. Pile half into a salad bowl and the rest into two lunchboxes or bowls, if you're following the Healthy Diet Plan. Divide the veg on top, then drizzle with the dressing, scatter over the pomegranate seeds and top with the rocket. Chill the other two portions for the next day. Will keep chilled for up to three days.",
+    "title": "Vegan roast spiced squash salad with tahini dressing",
+    "total_time": 50,
+    "yields": "4 servings"
+}
