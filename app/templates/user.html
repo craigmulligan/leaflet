@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <header><h3>hi {{user.email}}</h3></header>
+<form action="{{ url_for('user.new_digest', user_id=user.id) }}" method="post">
+<button>Request a new leaflet</button>
+</form>
 {% endblock %}

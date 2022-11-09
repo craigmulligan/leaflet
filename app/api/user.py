@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, flash
 from app import database
 from app import recipe_manager
 from app.api.utils import authenticated_resource
@@ -27,8 +27,6 @@ def new_digest(user_id):
     db = database.get()
     rm = recipe_manager.get()
     user = db.user_get_by_id(user_id)
-    digest = rm.get_digest(user_id)
-    rm.save_digest(digest)
 
     if not user:
         abort(404)
@@ -36,4 +34,8 @@ def new_digest(user_id):
     if not user.can_view():
         abort(403)
 
+    digest = rm.get_digest(user)
+    rm.save_digest(digest)
+
+    flash("Sent you a new digest")
     return render_template("user.html", user=user)
