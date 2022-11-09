@@ -1,0 +1,95 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/chickpea-fritters",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "red pepper",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "shallots",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "carrots",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "cloves"
+        },
+        {
+            "name": "lemon",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "ginger",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "of chickpeas",
+            "quantity": "1 x",
+            "unit": "400 g cans"
+        },
+        {
+            "name": "garam masala",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "cumin",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "ground coriander",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "plain flour",
+            "quantity": 44.36,
+            "unit": "ml"
+        },
+        {
+            "name": "egg",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "fresh coriander",
+            "quantity": 30.0,
+            "unit": "g"
+        },
+        {
+            "name": "vegetable oil",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "cucumber",
+            "quantity": 0.5,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "1",
+            "unit": "clove"
+        },
+        {
+            "name": "Greek yoghurt (or a dairy-free alternative)",
+            "quantity": 150.0,
+            "unit": "g"
+        }
+    ],
+    "instructions": "Combine the red pepper, shallots, garlic, lemon peel and ginger in a large bowl. Squeeze the carrots to remove the excess juice then add to the bowl.\nPlace the chickpeas in a food processor and whizz for a few seconds until broken down and crumbly. You don\u2019t want a puree so don\u2019t blend too far. If you don\u2019t have a food processor just crush with chickpeas with the back of a fork.\nAdd the chickpeas to the bowl along with the garam masala, cumin and ground coriander.\nAdd the egg and mix well then sieve over the flour and mix again.\nShape into small discs and fry for around 3 minutes a side in a little olive oil.\nWhen cooked remove and place on kitchen paper to cool.\nTo make the tzatziki combine the cucumber, garlic and yoghurt in a bowl. Top the fritters with the chopped coriander.",
+    "title": "Chickpea fritters",
+    "total_time": 20,
+    "yields": "12 items"
+}

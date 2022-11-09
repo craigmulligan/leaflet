@@ -1,0 +1,80 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/khatti-dhal",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "toor dhal or red split lentils",
+            "quantity": 430.0,
+            "unit": "g"
+        },
+        {
+            "name": "turmeric",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "tomatoes",
+            "quantity": "2",
+            "unit": "large"
+        },
+        {
+            "name": "ginger",
+            "quantity": "5",
+            "unit": "cm pieces"
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "cloves"
+        },
+        {
+            "name": "green chillies",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "tamarind paste",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "hot chilli powder",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "ground coriander",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "oil or ghee",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "cumin seeds",
+            "quantity": 2.46,
+            "unit": "ml"
+        },
+        {
+            "name": "garlic",
+            "quantity": "8",
+            "unit": "cloves"
+        },
+        {
+            "name": "dried chillies (I use Kashmiri)",
+            "quantity": 3.0,
+            "unit": null
+        },
+        {
+            "name": "curry leaf",
+            "quantity": 12.0,
+            "unit": null
+        }
+    ],
+    "instructions": "Soak the toor dhal for about 40 mins, then rinse well. Put it in a large heavy-bottomed saucepan with the turmeric, tomatoes, ginger, garlic and chillies. Add 1.7 litres of water and bring to the boil. Turn the heat down low and cook until you have a thick pur\u00e9e, adding water if it gets too dry. Dhal can be quite soupy or quite thick, depending on how you like it. Simply reduce it to thicken it, or add water to thin it. Season to taste.\nWhen the dhal is at a thickness you like, add the tamarind, chilli powder (unless it\u2019s already hot enough), and the ground coriander and check the seasoning.\nTempering is the last phase for a dhal. Heat the oil or ghee in a frying pan and add the cumin seeds. Cook over a medium heat for about 30 secs, then add the garlic and cook for about 10 secs (the garlic should eventually become golden but not brown so don\u2019t overdo it at this point), then add the dried chillies and the curry leaves, if using. Fry until the dried chillies have changed colour slightly and the curry leaves are crisp. Pour this over the dhal and stir. Cover and leave to sit for a few mins before serving.",
+    "title": "Khatti dhal",
+    "total_time": 105,
+    "yields": "6 servings"
+}

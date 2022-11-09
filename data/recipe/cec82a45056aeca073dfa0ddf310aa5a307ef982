@@ -1,0 +1,80 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/mexican-bean-soup-guacamole",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "rapeseed oil",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "onion",
+            "quantity": "1",
+            "unit": "large"
+        },
+        {
+            "name": "red pepper",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "cloves"
+        },
+        {
+            "name": "mild chilli powder",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "ground coriander",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "ground cumin",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "chopped tomatoes",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "black beans",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "vegetable bouillon powder",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "avocado",
+            "quantity": "1",
+            "unit": "small"
+        },
+        {
+            "name": "chopped coriander",
+            "quantity": "",
+            "unit": "handfuls"
+        },
+        {
+            "name": "lime",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "red chilli",
+            "quantity": 0.5,
+            "unit": null
+        }
+    ],
+    "instructions": "Heat the oil in a medium pan, add the onion (reserving 1 tbsp to make the guacamole later) and pepper and fry, stirring frequently, for 10 mins. Stir in the garlic and spices, then tip in the tomatoes and beans with their liquid, half a can of water and the bouillon powder. Simmer, covered, for 15 mins.\nMeanwhile, peel and de-stone the avocado and tip into a bowl, add the remaining onion, coriander and lime juice with a little chilli (if using) and mash well. Ladle the soup into two bowls, top with the guacamole and serve.",
+    "title": "Mexican bean soup with guacamole",
+    "total_time": 30,
+    "yields": "2 servings"
+}

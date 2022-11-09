@@ -1,0 +1,70 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/slow-cooker-vegetable-lasagne",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "rapeseed oil",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "onions",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "2",
+            "unit": "large cloves"
+        },
+        {
+            "name": "courgettes",
+            "quantity": "2",
+            "unit": "large"
+        },
+        {
+            "name": "red and 1 yellow pepper",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "chopped tomatoes",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "tomato pur\u00e9e",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "vegetable bouillon",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "fresh basil",
+            "quantity": 15.0,
+            "unit": "g"
+        },
+        {
+            "name": "aubergine",
+            "quantity": "1",
+            "unit": "large"
+        },
+        {
+            "name": "wholewheat lasagne sheet (105 g)",
+            "quantity": 6.0,
+            "unit": null
+        },
+        {
+            "name": "vegetarian buffalo mozzarella",
+            "quantity": 125.0,
+            "unit": "g"
+        }
+    ],
+    "instructions": "Heat 1 tbsp rapeseed oil in a large non-stick pan and fry 2 sliced onions and 2 chopped large garlic cloves for 5 mins, stirring frequently until softened.\nTip in 2 diced large courgettes, 1 red and 1 yellow pepper, both roughly sliced, and 400g chopped tomatoes with 2 tbsp tomato pur\u00e9e, 2 tsp vegetable bouillon and 15g chopped basil.\nStir well, cover and cook for 5 mins. Don't be tempted to add more liquid as plenty of moisture will come from the vegetables once they start cooking.\nSlice 1 large aubergine. Lay half the slices of aubergine in the base of the slow cooker and top with 3 sheets of lasagne.\nAdd a third of the ratatouille mixture, then the remaining aubergine slices, 3 more lasagne sheets, then the remaining ratatouille mixture.\nCover and cook on High for 2\u00bd - 3 hours until the pasta and vegetables are tender. Turn off the machine.\nScatter 125g vegetarian buffalo mozzarella over the vegetables then cover and leave for 10 mins to settle and melt the cheese.\nScatter with extra basil and serve with a handful of rocket.",
+    "title": "Slow cooker vegetable lasagne",
+    "total_time": 210,
+    "yields": "4 servings"
+}

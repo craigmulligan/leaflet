@@ -1,0 +1,80 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/lighter-aubergine-parmigiana",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "rapeseed oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "lemon juice",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "aubergines (750 g 1 lb 10 oz total weight)",
+            "quantity": 3.0,
+            "unit": null
+        },
+        {
+            "name": "onion",
+            "quantity": "1",
+            "unit": "small"
+        },
+        {
+            "name": "garlic",
+            "quantity": "3",
+            "unit": "cloves"
+        },
+        {
+            "name": "plum tomatoes",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "plum tomatoes",
+            "quantity": "225",
+            "unit": "g cans"
+        },
+        {
+            "name": "tomato pur\u00e9e",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "chopped fresh oregano",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "ricotta",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "name": "mozzarella",
+            "quantity": 50.0,
+            "unit": "g"
+        },
+        {
+            "name": "basil leaf",
+            "quantity": "",
+            "unit": "handfuls"
+        },
+        {
+            "name": "tomatoes",
+            "quantity": "2",
+            "unit": "medium"
+        },
+        {
+            "name": "vegetarian-style parmesan",
+            "quantity": 25.0,
+            "unit": "g"
+        }
+    ],
+    "instructions": "Heat oven to 200C/180C fan/gas 6. Measure the 2 tbsp of oil into a small bowl. Brush just a little of it onto 2 large, non- stick baking sheets (if you only have 1 tray, bake the aubergines in batches). Mix the lemon juice into the measured oil. Lay the aubergine slices snugly in a single layer on the baking sheets, brush the tops with half the oil and lemon, season with pepper and bake for 20 mins. Turn the slices over, give the remaining oil and lemon mixture a good stir as it will have separated, and brush it over again. Season with pepper and bake for 10-15 mins more or until softened.\nMeanwhile, heat the remaining 1 tsp oil in a medium saucepan. Add the onion and garlic and fry for 3-4 mins, stirring often, until the onion is softened and starting to brown. Tip in the cans of tomatoes, stir to break them up, then mix in the pur\u00e9e, pepper and a pinch of salt. Simmer uncovered for about 10-12 mins until thickened and saucy, then stir in the oregano.\nSpread a little of the tomato sauce in the bottom of a shallow ovenproof dish (about 25 x 20 x 5cm). Start by laying a third of the aubergine slices widthways across the dish, spread over a third of the remaining sauce and put half the ricotta on top in small spoonfuls, then half the mozzarella. Scatter over half the torn basil and season well with pepper. Repeat the layering of aubergine slices, tomato sauce, ricotta, mozzarella and basil, and finish with the final aubergine slices, the sliced tomatoes and the last of the sauce. Season with pepper and scatter over the Parmesan. Bake for about 20 mins, or until the cheese is golden and the juices are bubbling.",
+    "title": "Lighter aubergine Parmigiana",
+    "total_time": 90,
+    "yields": "4 servings"
+}

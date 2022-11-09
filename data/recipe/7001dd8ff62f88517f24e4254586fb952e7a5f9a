@@ -1,0 +1,60 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/indian-butternut-squash-curry",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "brown basmati rice",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "name": "olive oil",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "butternut squash",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "red onion",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "mild curry paste",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "vegetable stock",
+            "quantity": 300.0,
+            "unit": "ml"
+        },
+        {
+            "name": "tomatoes",
+            "quantity": "4",
+            "unit": "large"
+        },
+        {
+            "name": "chickpeas",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "fat-free Greek yogurt",
+            "quantity": 44.36,
+            "unit": "ml"
+        },
+        {
+            "name": "coriander",
+            "quantity": "",
+            "unit": "small handfuls"
+        }
+    ],
+    "instructions": "Cook the rice in boiling salted water, as per pack instructions. Meanwhile, heat the oil in a large frying pan and cook the butternut squash for 2-3 mins until lightly browned. Add the onion and the curry paste and fry for 3-4 mins more.\nPour over the stock, then cover and simmer for 15-20 mins, or until the squash is tender. Add the tomatoes and chickpeas, then gently cook for 3-4 mins, until the tomatoes slightly soften.\nTake off the heat and stir through the yogurt and coriander. Serve with the rice and some wholemeal chapattis if you like.",
+    "title": "Indian butternut squash curry",
+    "total_time": 50,
+    "yields": "4 servings"
+}

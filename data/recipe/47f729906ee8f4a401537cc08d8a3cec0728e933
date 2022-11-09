@@ -1,0 +1,70 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/spice-crusted-aubergines-peppers-pilaf",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "aubergines",
+            "quantity": "2",
+            "unit": "large"
+        },
+        {
+            "name": "extra virgin olive oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "red peppers",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "ground cinnamon",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "chilli flakes",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "za'atar",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "pomegranate molasses",
+            "quantity": 59.15,
+            "unit": "ml"
+        },
+        {
+            "name": "puy lentils",
+            "quantity": 140.0,
+            "unit": "g"
+        },
+        {
+            "name": "basmati rice",
+            "quantity": 140.0,
+            "unit": "g"
+        },
+        {
+            "name": "seeds from 1 pomegranate",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "flat-leaf parsley",
+            "quantity": "",
+            "unit": "small packs"
+        },
+        {
+            "name": "Greek",
+            "quantity": "",
+            "unit": ""
+        }
+    ],
+    "instructions": "Heat oven to 220C/200C fan/gas 7. Using a sharp knife, score a diamond pattern into the aubergines. Brush with 1 tbsp of the oil, season well and place on a baking tray, cut-side down. Cook in the oven for 15 mins. Add the peppers to the tray, turn the aubergines over and drizzle everything with the remaining oil. Sprinkle over the spices, 1 tbsp of the pomegranate molasses and a little salt. Roast in the oven for 15 mins more.\nBoil the lentils in plenty of water until al dente. After they\u2019ve been boiling for 5 mins, add the rice. Cook for 10 mins or until cooked through but with a bit of bite. Drain and return to the pan, covered with a lid to keep warm.\nStir the pomegranate seeds and parsley through the lentil rice. Divide between four plates or tip onto a large platter. Top with the roasted veg, a dollop of yogurt and the remaining pomegranate molasses drizzled over.",
+    "title": "Spice-crusted aubergines & peppers with pilaf",
+    "total_time": 40,
+    "yields": "4 servings"
+}

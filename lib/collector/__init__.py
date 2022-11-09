@@ -1,7 +1,11 @@
+import logging
+import os
 import json
 import requests
+import hashlib
+
 from time import sleep
-from typing import Protocol, List
+from typing import List
 from recipe_scrapers._abstract import AbstractScraper
 from .ingredient import Ingredient, parse
 from recipe_scrapers import scrape_me
@@ -9,8 +13,8 @@ from recipe_scrapers import scrape_me
 
 class Recipe:
     def __init__(self, url: str, schema: AbstractScraper) -> None:
-        self.schema = schema
         self.url = url
+        self.schema = schema
 
     @staticmethod
     def from_url(url):
@@ -35,35 +39,45 @@ class Recipe:
                 "instructions": self.schema.instructions(),
                 "host": self.schema.host(),
                 "total_time": self.schema.total_time(),
-                "prep_time": self.schema.prep_time(),
-                "cook_time": self.schema.cook_time(),
                 "canonical_url": self.schema.canonical_url(),
-            }
+            },
+            indent=4,
+            sort_keys=True,
         )
 
 
 class Persister:
+    def __init__(self, dirname="data/recipe") -> None:
+        self.dirname = dirname
+
+    def hash(self, url: str) -> str:
+        "hash a url this is so it's encoded and fixed length"
+        sha_1 = hashlib.sha1()
+        sha_1.update(url.encode("utf-8"))
+        return sha_1.hexdigest()
+
     def save(self, url: str, body: str) -> bool:
-        print(url, body)
+        id = self.hash(url)
+        with open(f"{self.dirname}/{id}", "w+") as f:
+            f.write(body)
         return True
 
     def exists(self, url: str) -> bool:
-        print(url)
-        return True
+        id = self.hash(url)
+        return os.path.isfile(f"{self.dirname}/{id}")
 
 
-class RecipeCollector:
-    def __init__(self, persister: Persister) -> None:
-        self.persister = persister
-
-    def run(self, urls: List[str]):
-        for url in urls:
-            if not self.persister.exists(url):
+def collect_recipes(persister, url_file):
+    with open(url_file) as f:
+        for line in f.readlines():
+            url = line.strip()
+            if not persister.exists(url):
+                recipe = Recipe.from_url(url)
                 try:
-                    recipe = Recipe.from_url(url)
-                    self.persister.save(url, recipe.to_json())
-                except Exception as e:
-                    print(e)
+                    persister.save(url, recipe.to_json())
+                    logging.info(f"saved!")
+                except Exception:
+                    logging.exception("Couldn't save recipe")
 
 
 def collect_urls(url_filename):

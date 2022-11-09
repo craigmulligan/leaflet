@@ -1,0 +1,45 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/green-goddess-salad",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "fennel",
+            "quantity": "2",
+            "unit": "heads"
+        },
+        {
+            "name": "Baby Gem lettuces",
+            "quantity": 4.0,
+            "unit": null
+        },
+        {
+            "name": "cucumber",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "spring onion",
+            "quantity": "1",
+            "unit": "bunch"
+        },
+        {
+            "name": "Dijon mustard",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "red wine vinegar",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "olive oil",
+            "quantity": 88.72,
+            "unit": "ml"
+        }
+    ],
+    "instructions": "Tip the dressing ingredients into a jar with a splash of water and shake well.\nTip the salad into a bowl and keep in the fridge for up to a day. Before serving, dress the salad.",
+    "title": "Green goddess salad",
+    "total_time": 20,
+    "yields": "10 servings"
+}

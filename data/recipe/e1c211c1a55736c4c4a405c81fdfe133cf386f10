@@ -1,0 +1,95 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/veggie-nuggets-with-summer-slaw",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "quinoa",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "name": "onions (320 g)",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "olive oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "black beans",
+            "quantity": "2 x",
+            "unit": "400 g cans"
+        },
+        {
+            "name": "dried oregano",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "crunchy peanut butter",
+            "quantity": 51.75,
+            "unit": "ml"
+        },
+        {
+            "name": "parsley",
+            "quantity": 44.36,
+            "unit": "ml"
+        },
+        {
+            "name": "vegetable bouillon powder",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "eggs",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "pot bio yogurt",
+            "quantity": 90.0,
+            "unit": "g"
+        },
+        {
+            "name": "English mustard powder",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "apple cider vinegar",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "carrot (150 g)",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "red pepper",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "onion",
+            "quantity": "1",
+            "unit": "very small"
+        },
+        {
+            "name": "white cabbage",
+            "quantity": 320.0,
+            "unit": "g"
+        },
+        {
+            "name": "chopped coriander",
+            "quantity": 59.15,
+            "unit": "ml"
+        }
+    ],
+    "instructions": "Boil the quinoa for 20 mins following pack instructions, leave to stand for 5 mins, then drain well. Meanwhile, fry the onions in 1 tbsp oil over a medium-low heat for 5 mins with the lid on the pan, then uncover and fry for 5 mins more until soft and starting to colour. Take off the heat, stir in the black beans, oregano, peanut butter, parsley and bouillon, then mash everything together with a potato masher to crush the beans. Add the quinoa and eggs and mix well.\nHeat the remaining 1 tbsp oil in a large non-stick frying pan then, using a measuring tablespoon, scoop rounded spoonfuls of the mixture and add to the pan, spaced apart. Cook for about 2-3 mins each side until the nuggets are browned. Cook half the mixture and save the remainder for another day. Will keep chilled for up to three days.\nTo make the coleslaw, put the yogurt, mustard powder and vinegar in a bowl, stir together to make a dressing, then add the vegetables and coriander and toss well. Serve half the coleslaw with two portions of the nuggets. The remainder will keep chilled for up to three days.",
+    "title": "Veggie nuggets with summer slaw",
+    "total_time": 75,
+    "yields": "4 servings"
+}

@@ -1,0 +1,80 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/vegan-paella",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "of saffron",
+            "quantity": "2",
+            "unit": "generous pinches"
+        },
+        {
+            "name": "tomato pur\u00e9e",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "vegetable bouillon powder",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "rapeseed oil",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "onions (320 g)",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "red peppers",
+            "quantity": 2.0,
+            "unit": null
+        },
+        {
+            "name": "garlic",
+            "quantity": "3",
+            "unit": "cloves"
+        },
+        {
+            "name": "soft thyme leaf",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "brown basmati rice",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "name": "smoked paprika",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "frozen broad beans",
+            "quantity": 320.0,
+            "unit": "g"
+        },
+        {
+            "name": "courgettes",
+            "quantity": 320.0,
+            "unit": "g"
+        },
+        {
+            "name": "flat-leaf parsley",
+            "quantity": 15.0,
+            "unit": "g"
+        },
+        {
+            "name": "lemon",
+            "quantity": 1.0,
+            "unit": null
+        }
+    ],
+    "instructions": "Put the kettle on to boil. Tip the saffron, tomato pur\u00e9e and bouillon powder into a large heatproof bowl, then pour over 1 litre boiling water and set aside.\nHeat the oil in a large paella pan or frying pan over a medium heat and fry the onion for 5 mins, stirring often until starting to soften. Add the peppers, garlic and thyme, and cook for a few minutes more. Tip in the rice and paprika, and continue to cook, stirring for about a minute. Pour in the saffron stock, then cover and simmer for 10 mins.\nUncover and gently stir, then add the frozen beans and courgettes. Return to a simmer, then cover and cook for another 10 mins until the rice is tender and has absorbed the stock. Leave to stand for 5 mins, then stir in the parsley. Serve half the paella straightaway with lemon wedges for squeezing over. The other half will keep chilled for up to three days. To enjoy on another day, reheat in the microwave until piping hot throughout.",
+    "title": "Vegan paella",
+    "total_time": 50,
+    "yields": "4 servings"
+}

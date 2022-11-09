@@ -1,0 +1,85 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/giant-butter-bean-stew",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "butter beans or 500 g dried butter beans",
+            "quantity": "4 x",
+            "unit": "235 g cans"
+        },
+        {
+            "name": "Greek extra virgin olive oil",
+            "quantity": 100.0,
+            "unit": "ml"
+        },
+        {
+            "name": "red onions",
+            "quantity": "3",
+            "unit": "small"
+        },
+        {
+            "name": "carrots",
+            "quantity": "2",
+            "unit": "large"
+        },
+        {
+            "name": "celery",
+            "quantity": "3",
+            "unit": "stalks"
+        },
+        {
+            "name": "sundried tomatoes",
+            "quantity": 4.0,
+            "unit": null
+        },
+        {
+            "name": "ripe tomatoes",
+            "quantity": 1000.0,
+            "unit": "g"
+        },
+        {
+            "name": "garlic",
+            "quantity": "4",
+            "unit": "cloves"
+        },
+        {
+            "name": "paprika",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "ground cinnamon",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "tomato pur\u00e9e",
+            "quantity": 29.57,
+            "unit": "ml"
+        },
+        {
+            "name": "sugar",
+            "quantity": 4.93,
+            "unit": "ml"
+        },
+        {
+            "name": "flat-leaf parsley",
+            "quantity": "",
+            "unit": "small packs"
+        },
+        {
+            "name": "dill",
+            "quantity": "",
+            "unit": "small packs"
+        },
+        {
+            "name": "feta (optional)",
+            "quantity": 100.0,
+            "unit": "g"
+        }
+    ],
+    "instructions": "Drain the canned beans, reserving 200ml of the liquid. Heat the oil in a large flameproof lidded casserole dish, and cook the onions, carrots and celery until tender and the onions are soft and transparent, but not coloured. Stir in the remaining ingredients, reserving half of the chopped herbs and feta (if using).\nHeat oven to 180C/160C fan/gas 4. Cook over a gentle heat for a further 5 mins, then pour over the reserved liquid. Cover the dish and bake in the oven for 40 mins. Check occasionally that the beans are not drying out \u2013 add a little more water if needed.\nRemove the lid and bake for 10 mins more. Can be made 2 days ahead and reheated. Stir through the reserved chopped herbs, season to taste, then crumble over the remaining feta just before serving.",
+    "title": "Giant butter bean stew",
+    "total_time": 105,
+    "yields": "6 servings"
+}

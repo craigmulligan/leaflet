@@ -1,0 +1,60 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/moroccan-chickpea-soup-0",
+    "host": "bbcgoodfood.com",
+    "ingredients": [
+        {
+            "name": "olive oil",
+            "quantity": 14.79,
+            "unit": "ml"
+        },
+        {
+            "name": "onion",
+            "quantity": 1.0,
+            "unit": null
+        },
+        {
+            "name": "celery",
+            "quantity": "2",
+            "unit": "sticks"
+        },
+        {
+            "name": "ground cumin",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "name": "hot vegetable stock",
+            "quantity": 600.0,
+            "unit": "ml"
+        },
+        {
+            "name": "chopped plum tomatoes with garlic",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "chickpeas",
+            "quantity": "400",
+            "unit": "g cans"
+        },
+        {
+            "name": "frozen broad beans",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "name": "zest and juice 0.5 lemon",
+            "quantity": "",
+            "unit": ""
+        },
+        {
+            "name": "coriander",
+            "quantity": "",
+            "unit": "large handfuls"
+        }
+    ],
+    "instructions": "Heat the oil in a large saucepan, then fry the onion and celery gently for 10 mins until softened, stirring frequently. Tip in the cumin and fry for another min.\nTurn up the heat, then add the stock, tomatoes and chickpeas, plus a good grind of black pepper. Simmer for 8 mins. Throw in broad beans and lemon juice, cook for a further 2 mins. Season to taste, then top with a sprinkling of lemon zest and chopped herbs. Serve with flatbread.",
+    "title": "Moroccan-style chickpea soup",
+    "total_time": 25,
+    "yields": "4 servings"
+}
