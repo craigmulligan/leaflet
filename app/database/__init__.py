@@ -42,9 +42,12 @@ class Db:
         self.conn.execute(
             """
             CREATE TABLE IF NOT EXISTS user (
-                id INTEGER PRIMARY KEY, 
+                id INTEGER PRIMARY KEY,
                 email TEXT UNIQUE NOT NULL, 
-                created_at TEXT DEFAULT (datetime('now')) NOT NULL
+                created_at TEXT DEFAULT (datetime('now')) NOT NULL,
+                recipes_per_week INTEGER DEFAULT 1,
+                serving INTEGER DEFAULT 1,
+                send_at TEXT DEFAULT (datetime('now')) 
             );
         """
         )
@@ -83,8 +86,8 @@ class Db:
                 id INTEGER PRIMARY key,
                 created_at TEXT NOT NULL,
                 recipe_id TEXT,
-                user_id INTEGER, 
-                FOREIGN KEY(recipe_id) REFERENCES recipe(id)
+                user_id INTEGER,
+                FOREIGN KEY(recipe_id) REFERENCES recipe(id),
                 FOREIGN KEY(user_id) REFERENCES user(id)
             );
         """
@@ -109,6 +112,19 @@ class Db:
             INSERT INTO user (email) VALUES (?) RETURNING *
             """,
             [email],
+            one=True,
+        )
+
+        self.conn.commit()
+        assert user
+        return User(**user)
+
+    def user_update(self, user_id: int, recipes_per_week: int, serving: int):
+        user = self.query(
+            """
+            UPDATE user set recipes_per_week = ?, serving = ? where id = ? RETURNING *;
+            """,
+            [recipes_per_week, serving, user_id],
             one=True,
         )
 
@@ -154,12 +170,17 @@ class Db:
         self.conn.commit()
 
     def digest_get_all_by_user(self, user_id: int, limit=5):
-        return self.query(
+        res = self.query(
             """
-            select * from digest where user_id = ? group by created_at order by created_at desc limit ? 
+            select created_at from digest where user_id = ? group by created_at order by created_at desc limit ? 
             """,
             [user_id, limit],
         )
+
+        if not res:
+            return res
+
+        return [r["created_at"] for r in res]
 
     def recipe_get(self, recipe_id) -> Optional[Recipe]:
         recipe = self.query(
@@ -185,7 +206,9 @@ class Db:
         if not ingredients:
             raise Exception(f"Could not find ingredients for {recipe_id}")
 
-        return Recipe(**recipe, ingredients=[Ingredient(**i) for i in ingredients])
+        return Recipe(
+            **recipe, ingredients=[Ingredient(**i) for i in ingredients]  # type: ignore
+        )  # type:ignore
 
     def recipe_random(self, user_id: int) -> Optional[str]:
         """
