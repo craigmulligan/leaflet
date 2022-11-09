@@ -1,15 +1,62 @@
-# A weekly digest of dynamically generated vegetarian meals 
+> A boring but dreamy setup.
 
-Fill in [this form](https://docs.google.com/forms/d/e/1FAIpQLSd3v-t5DoricYKOTpFs169iDwxEDgwIkbn-QZ0oL0u_9F_BLA/viewform) and we'll send you a email once a week with your specified number of meals along with a shopping list of all the required ingredients.
+This setup is optimized for simplicity & development speed. This means minimal dependencies & infrastructure.
 
-> Leaflet is a plant based recipe digest.
+# Tools
 
-Every week you'll get an email with a number of recipes and shopping list. The recipe selection is random but guided by your preferences. We try select recipes that are seasonal and have common ingredients to reduce waste and cost of the meal.
+* flask
+* celery
+* sqlite
+* poetry
+* black
+* mypy
 
-# Why did I make this
+Getting started
 
-I grew up in South Africa & like many of you I grew up eating a lot of meat. 
-When I decided to switch to a vegetarian diet, I realized how few plant based meals I had in my repertoire.
-I don't consider myself a foodie and had little desire comb through recipe sites to plan my meals for the week.
+# Init virtual-env.
 
-[signup]()
+```
+poetry shell
+```
+
+# Install dependencies 
+
+```
+poetry install
+```
+
+# Run test suite. 
+```
+flask dev test 
+```
+
+# Run test suite in watch mode.
+```
+flask dev test --watch
+```
+
+# Run dev server and worker
+
+```
+flask dev run
+```
+
+# Run dev server 
+```
+flask dev server
+```
+
+# Run dev worker 
+```
+flask dev worker 
+```
+
+# Format code
+```
+flask dev fmt 
+```
+
+# Type-check code
+```
+flask dev mypy
+```

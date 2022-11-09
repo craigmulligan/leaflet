@@ -1,6 +1,5 @@
-*.pyc
-.cache
+__pycache__
 .testmondata
-/data/db
-logs.csv
-bin/cook
+*.env
+*.db
+.mypy_cache

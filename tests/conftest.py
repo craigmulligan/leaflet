@@ -1,42 +1,127 @@
-from datetime import datetime
 import pytest
 from unittest.mock import Mock
 
-from lib.user_config import UserConfigLoader, UserConfig
-from lib.recipe import RecipeLoader
-from lib.email import Email
-from lib.runner import Runner
+from app import create_app
+from app.models import User
+from app.mail import MailManager
+from app.recipe_manager import RecipeManager, get as get_recipe_manager
+from app.session import session
+from app import database
+from flask import g
+from celery import Task
 
 
-def mock_sampler(items, n):
-    return items[0:n]
+@pytest.fixture(scope="function", autouse=True)
+def app():
+    """Session-wide test `Flask` application."""
+    # Establish an application context before running the tests.
+    app = create_app({"DB_URL": ":memory:", "TESTING": True})
+    ctx = app.app_context()
+    ctx.push()
 
+    yield app
 
-@pytest.fixture()
-def user_config_loader():
-    return UserConfigLoader("tests/data/db/users")
-
-
-@pytest.fixture()
-def recipe_loader():
-    return RecipeLoader("tests/data/recipe", mock_sampler)
-
-
-@pytest.fixture()
-def email_client():
-    return Mock()
-
-
-@pytest.fixture()
-def email(email_client):
-    return Email("sender@x.com", email_client)
+    ctx.pop()
 
 
 @pytest.fixture()
-def dummy_user_config():
-    return UserConfig("dummy@x.com", datetime.now(), 2, 1, 0)
+def recipe_manager_mock():
+    mock = Mock()
+
+    setattr(g, RecipeManager.context_key, mock)
+    return mock
 
 
 @pytest.fixture()
-def runner(user_config_loader, recipe_loader, email):
-    return Runner(user_config_loader, recipe_loader, email)
+def recipe_manager():
+    return get_recipe_manager()
+
+
+@pytest.fixture(autouse=True)
+def mail_manager_mock():
+    mock = Mock()
+
+    setattr(g, MailManager.context_key, mock)
+    return mock
+
+
+@pytest.fixture(scope="function", autouse=True)
+def db():
+    _db = database.get()
+    _db.setup()
+    return _db
+
+
+@pytest.fixture(scope="function")
+def seeded_recipe_ids(db):
+    return [
+        "6b67ac5e278df57361d232baeea4fcd93a7050ec",
+        "56cd7fb0e5bd654e4eaa0955042163f7ca55f085",
+        "72335e9f76c017f81c0c8c36c4ec1e0aad6be6fb",
+        "f83a1421367928da867fbe449d5110aa0621ded5",
+        "0607603cf8f1702cee1dbad2ff91e08ffdebae9c",
+        "92994cd172837bbbaf5eac5bae5d4107eefecd86",
+        "2639b056b11beac1f8293127540f5a2d85578331",
+    ]
+
+
+@pytest.fixture(scope="function", autouse=True)
+def seed(db, seeded_recipe_ids):
+    return db.recipe_load(
+        "data/recipe",
+        recipe_ids=seeded_recipe_ids,
+    )
+
+
+@pytest.fixture(scope="function")
+def dummy_user(db):
+    """
+    util function to create a test case user.
+    """
+
+    def create_dummy_user(email="x@x.com") -> User:
+        user = db.user_create(email=email)
+        return user
+
+    return create_dummy_user
+
+
+@pytest.fixture(scope="function")
+def signin(client):
+    """
+    util function to create a test case user.
+    """
+
+    def inner(user: User) -> None:
+        with client.session_transaction() as sesh:
+            session.flask_session = sesh
+            session.signin(user)
+            session.flask_session = None
+
+    return inner
+
+
+@pytest.fixture(scope="function", autouse=True)
+def monkey_patch_celery_async(monkeypatch):
+    """
+    This ensures that celery tasks are called locally
+    so you can assert their results within the test
+    without running the worker.
+    """
+    monkeypatch.setattr("celery.Task.apply_async", Task.apply)
+
+
+@pytest.fixture(scope="function")
+def dummy_recipe_id():
+    return "56cd7fb0e5bd654e4eaa0955042163f7ca55f085"
+
+
+@pytest.fixture(scope="function")
+def mock_recipe_random(monkeypatch, dummy_recipe_id):
+    """
+    This ensures that celery tasks are called locally
+    so you can assert their results within the test
+    without running the worker.
+    """
+    mock = Mock(return_value=dummy_recipe_id)
+    monkeypatch.setattr("app.database.Db.recipe_random", mock)
