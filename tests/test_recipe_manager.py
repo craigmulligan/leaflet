@@ -7,7 +7,7 @@ def test_get_digest(
 ):
     user = dummy_user()
     digest = recipe_manager.get_digest(user)
-    assert len(digest.recipes) == 3
+    assert len(digest.recipes) == 2
     ids = [recipe.id for recipe in digest.recipes]
 
     # Ids should be static because mock the randomizer and
@@ -15,7 +15,6 @@ def test_get_digest(
     assert ids == [
         "56cd7fb0e5bd654e4eaa0955042163f7ca55f085",
         "6b67ac5e278df57361d232baeea4fcd93a7050ec",
-        "72335e9f76c017f81c0c8c36c4ec1e0aad6be6fb",
     ]
 
 
