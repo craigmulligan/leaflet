@@ -103,7 +103,7 @@ class RecipeManager:
 
     def save_digest(self, digest):
         for recipe in digest.recipes:
-            self.db.digest_insert(digest.created_at, recipe.id, digest.user_id)
+            self.db.digest_insert(digest.created_at, recipe.id, digest.user.id)
 
 
 def get() -> RecipeManager:
