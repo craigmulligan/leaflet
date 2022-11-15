@@ -14,6 +14,45 @@ def test_user_get_authenticated(client, dummy_user, signin):
     assert render_template("user.html", user=user) == response.data.decode("utf-8")
 
 
+def test_user_update_user_authenticated_no_data(client, dummy_user, signin):
+    """
+    Asserts you can't update user info without all data.
+    """
+    user = dummy_user()
+    signin(user)
+
+    response = client.post(f"/user/{user.id}")
+    assert response.status_code == 422
+
+
+def test_user_update_user_authenticated(client, dummy_user, signin, db):
+    """
+    Asserts you can't update user info without all data.
+    """
+    user = dummy_user()
+    signin(user)
+    recipes_per_week = 2
+    serving = 3
+
+    assert user.recipes_per_week != recipes_per_week
+    assert user.serving != serving
+
+    response = client.post(
+        f"/user/{user.id}",
+        data={"serving": serving, "recipes_per_week": recipes_per_week},
+        follow_redirects=True,
+    )
+    assert response.status_code == 200
+
+    updated_user = db.user_get_by_id(user.id)
+
+    assert updated_user.serving == serving
+    assert updated_user.recipes_per_week == recipes_per_week
+    assert render_template("user.html", user=updated_user) == response.data.decode(
+        "utf-8"
+    )
+
+
 def test_user_get_forbidden(client, dummy_user, signin):
     """
     Asserts a user can not view another user page.
