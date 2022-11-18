@@ -1,0 +1,7 @@
+{% macro field_validation(key, errors) %}
+{% if errors and errors.get(key) %}
+<div class="field-validation field-validation-error">
+  <p>{{errors[key]}}
+</div>
+{% endif %}
+{% endmacro %}
