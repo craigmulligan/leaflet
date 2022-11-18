@@ -6,7 +6,6 @@ from flask import (
     redirect,
     url_for,
     request,
-    Response,
 )
 from app import database
 from app import recipe_manager
@@ -50,16 +49,19 @@ def user_post(user_id):
 
     recipes_per_week = request.form.get("recipes_per_week")
     serving = request.form.get("serving")
+    errors = {}
 
     if not recipes_per_week:
-        abort(Response("'recipes_per_week' is required.", status=422))
+        errors.update({"recipes_per_week": "Recipes per week is required."})
 
     if not serving:
-        abort(Response("'serving' is required.", status=422))
+        errors.update({"serving": "Servings is required."})
 
-    db.user_update(user_id, int(recipes_per_week), int(serving))
+    if errors:
+        flash("Error updating settings", "error")
+        return render_template("user.html", user=user, errors=errors)
 
-    flash("Settings updated")
+    flash("Settings updated", "info")
 
     return redirect(url_for("user.user_get", user_id=user_id))
 
@@ -80,6 +82,6 @@ def digest_new(user_id):
     digest = rm.get_digest(user)
     rm.save_digest(digest)
 
-    flash("We sent you a new digest")
+    flash("We sent you a new digest", "info")
 
     return redirect(url_for("user.user_get", user_id=user_id))
