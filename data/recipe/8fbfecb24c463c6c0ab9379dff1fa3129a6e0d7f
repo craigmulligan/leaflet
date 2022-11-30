@@ -5,7 +5,7 @@
         {
             "name": "chopped tomato",
             "quantity": "400",
-            "unit": "g cans"
+            "unit": "g"
         },
         {
             "name": "vegetable stock",
@@ -13,9 +13,9 @@
             "unit": "ml"
         },
         {
-            "name": "of butter",
-            "quantity": "",
-            "unit": "knobs"
+            "name": "butter",
+            "quantity": "25",
+            "unit": "g"
         },
         {
             "name": "olive oil",
@@ -49,8 +49,8 @@
         },
         {
             "name": "basil",
-            "quantity": "",
-            "unit": "small packs"
+            "quantity": "1",
+            "unit": "bunches"
         },
         {
             "name": "grated parmesan",

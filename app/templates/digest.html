@@ -11,7 +11,11 @@ Leaflet {{digest.id}}:
 <h3>Recipes:</h3>
 <ul>
   {% for recipe in digest.recipes %}
-  <li>{{recipe.title}}</li>
+  <li>
+    <a href="{{ recipe.canonical_url }}"><h4>{{recipe.title}}</h4></a>
+    <p>cooking time: {{ recipe.total_time }}</p>
+    <p>{{recipe.instructions}}</p>
+  </li>
   {% endfor %}
 </ul>
 {% endblock %}
