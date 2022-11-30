@@ -84,4 +84,4 @@ def digest_new(user_id):
 
     flash("We sent you a new digest", "info")
 
-    return redirect(url_for("user.user_get", user_id=user_id))
+    return render_template("digest.html", digest=digest)
