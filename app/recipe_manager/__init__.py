@@ -9,6 +9,8 @@ from datetime import datetime
 from pint import UnitRegistry, UndefinedUnitError, DimensionalityError
 
 pint = UnitRegistry()
+pint.define("cloves = 1")
+pint.define("bunches = 1")
 
 
 @dataclass
@@ -19,57 +21,56 @@ class Digest:
 
     def shopping_list(self) -> List[str]:
         """
-        For each recipe we and the similar recipes.
+        For each recipe we add all ingredients
+        and calculate totals.
         """
         ingredients = {}
 
         for recipe in self.recipes:
+            factor = self.user.serving / recipe.yields
+
             for ingredient in recipe.ingredients:
-                if ingredients.get(ingredient.name):
-                    ingredients[ingredient.name].append(ingredient)
-                else:
-                    ingredients[ingredient.name] = [ingredient]
+                ingredient.quantity = ingredient.quantity * factor
+                ingredients.setdefault(ingredient.name, []).append(ingredient)
 
         failures = []
-        shopping_list = {}
+        quantities = {}
 
         for key, value in ingredients.items():
-            total = 0
-
             for v in value:
                 try:
-                    total += pint.Quantity(v.quantity, v.unit)
-                except UndefinedUnitError:
-                    logging.warning(f"couldn't get normalize unit:{v.unit}")
-                    failures.append(v)
-                except ValueError:
+                    quantities.setdefault(key, []).append(
+                        pint.Quantity(v.quantity, v.unit)
+                    )
+                except UndefinedUnitError as e:
+                    logging.warning(
+                        f"couldn't get normalize unit:{v.unit} - adding without unit."
+                    )
+                    quantities.setdefault(key, []).append(pint.Quantity(v.quantity))
+                except ValueError as e:
                     logging.warning(f"couldn't get normalize quantity:{v.quantity}")
-                    failures.append(v)
-                except DimensionalityError:
-                    breakpoint()
-
-            if total > 0:
-                shopping_list[key] = total
+                    failures.append([e, v])
+                except DimensionalityError as e:
+                    failures.append([e, v])
 
         output = []
-        for key, value in shopping_list.items():
-            magnitude = round(value.magnitude * self.user.serving, 2)
-            units = "" if value.dimensionless else pint.get_symbol(str(value.units))
-            output.append(f"{key}: {magnitude} {units}".strip())
 
-        for f in failures:
-            output.append(
-                f"{f.name}: {f.quantity * self.user.serving} {f.unit}".strip()
-            )
+        for ingredient_name, values in quantities.items():
+            total = 0
+            units = ""
+
+            for value in values:
+                total += round(value.magnitude, 2)
+                units = (
+                    ""
+                    if str(value.units) == "dimensionless"
+                    else pint.get_symbol(str(value.units))
+                )
+
+            output.append(f"{ingredient_name}: {total} {units}".strip())
 
         output.sort()
         return output
-
-    def to_html(self):
-        pass
-
-    def to_plain_text(self):
-        pass
 
 
 class RecipeManager:

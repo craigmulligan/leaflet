@@ -16,13 +16,13 @@ class Ingredient(TypedDict):
 
 def parse(description) -> Ingredient:
     d = parse_ingredient(description)
-    quantity, unit = normalize_units(d["quantity"], d["unit"])
+    quantity, unit = normalize_units(float(d["quantity"]), d["unit"])
     return {"name": d["name"], "quantity": quantity, "unit": unit}  # type: ignore
 
 
 def normalize_units(quantity: float, unit: str):
     try:
-        value = pint.Quantity(float(quantity), unit)
+        value = pint.Quantity(quantity, unit)
     except UndefinedUnitError:
         logging.warning(f"couldn't get normalize unit:{unit}")
         return quantity, unit

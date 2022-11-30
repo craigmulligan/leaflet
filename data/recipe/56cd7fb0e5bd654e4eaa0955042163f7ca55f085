@@ -18,8 +18,8 @@
             "unit": null
         },
         {
-            "name": "- 1 red chilli",
-            "quantity": 0.5,
+            "name": "red chilli",
+            "quantity": 1.0,
             "unit": null
         },
         {
@@ -53,9 +53,9 @@
             "unit": "packs"
         },
         {
-            "name": "chickpeas in water",
+            "name": "chickpeas",
             "quantity": "400",
-            "unit": "g cans"
+            "unit": "g"
         },
         {
             "name": "reduced-salt bouillon powder (we used Marigold)",
