@@ -1,0 +1,17 @@
+{% block content %}
+
+Leaflet {{digest.id}}:
+<h3>Leaflet {{digest.id}}</h3>
+<ul>
+  {% for ingredient in digest.shopping_list() %}
+  <li>{{ingredient}}</li>
+  {% endfor %}
+</ul>
+
+<h3>Recipes:</h3>
+<ul>
+  {% for recipe in digest.recipes %}
+  <li>{{recipe.title}}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
