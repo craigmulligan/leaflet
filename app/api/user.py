@@ -61,6 +61,7 @@ def user_post(user_id):
         flash("Error updating settings", "error")
         return render_template("user.html", user=user, errors=errors)
 
+    db.user_update(user.id, int(recipes_per_week), int(serving))
     flash("Settings updated", "info")
 
     return redirect(url_for("user.user_get", user_id=user_id))

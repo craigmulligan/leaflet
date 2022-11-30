@@ -30,7 +30,10 @@ class Digest:
             factor = self.user.serving / recipe.yields
 
             for ingredient in recipe.ingredients:
-                ingredient.quantity = ingredient.quantity * factor
+                try:
+                    ingredient.quantity = ingredient.quantity * factor
+                except:
+                    breakpoint()
                 ingredients.setdefault(ingredient.name, []).append(ingredient)
 
         failures = []
@@ -90,8 +93,10 @@ class RecipeManager:
         """
 
         db = database.get()
-        random_recipe_id = db.recipe_random(user.id)
-        similar_recipe_ids = db.recipe_similar(random_recipe_id, user.recipes_per_week)
+        # random_recipe_id = db.recipe_random(user.id)
+        random_recipe_id = "c797c762797ce269e9dd6a6d815d1000fe4e1078"
+        similar_recipe_ids = [""]
+        # similar_recipe_ids = db.recipe_similar(random_recipe_id, user.recipes_per_week)
         # TODO:
         # Convert recipe to user.serving size.
 

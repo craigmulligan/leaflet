@@ -8,9 +8,9 @@
             "unit": "g"
         },
         {
-            "name": "baking potatoes (950 g)",
-            "quantity": 4.0,
-            "unit": null
+            "name": "potatoes",
+            "quantity": 950.0,
+            "unit": "g" 
         },
         {
             "name": "wholemeal spelt flour",
@@ -29,13 +29,13 @@
         },
         {
             "name": "chillies",
-            "quantity": "1-2",
-            "unit": ""
+            "quantity": "1",
+            "unit": null 
         },
         {
-            "name": "vine-ripened tomatoes",
+            "name": "tomatoes",
             "quantity": "600",
-            "unit": "g large"
+            "unit": "g"
         },
         {
             "name": "basil",
@@ -53,3 +53,4 @@
     "total_time": 110,
     "yields": 4
 }
+
