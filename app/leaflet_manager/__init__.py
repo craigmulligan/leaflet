@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict, TypedDict, Union, Optional
 from flask import g
 import uuid
 from app.models import User, Recipe
@@ -6,8 +6,13 @@ from app import database
 from dataclasses import dataclass
 from datetime import datetime
 
-from pint import DimensionalityError
+from pint import DimensionalityError, Quantity
 from app.collector.ingredient import pint, unit_to_str
+
+
+class IngredientTotal(TypedDict):
+    total: Union[int, Quantity]
+    unit: Optional[str]
 
 
 @dataclass
@@ -21,7 +26,7 @@ class Leaflet:
         For each recipe we add all ingredients
         and calculate totals.
         """
-        totals = {}
+        totals: Dict[str, List[IngredientTotal]] = {}
 
         for recipe in self.recipes:
             for ingredient in recipe.ingredients:
@@ -48,7 +53,7 @@ class Leaflet:
             for data in quantities:
                 unit = unit_to_str(data["unit"])
                 quantity = (
-                    data["total"].magnitude
+                    data["total"].magnitude  # type: ignore
                     if isinstance(data["total"], pint.Quantity)
                     else data["total"]
                 ) * self.user.serving
@@ -92,11 +97,11 @@ class LeafletManager:
         for recipe_id in self.db.recipe_get_all_by_leaflet_id(leaflet_id):
             recipes.append(self.db.recipe_get(recipe_id))
 
-        return Leaflet(recipes[0].created_at, recipes, user)
+        dt = datetime.strptime(recipes[0].created_at, database.DATETIME_FORMAT)
+        return Leaflet(dt, recipes, user)
 
     def save(self, leaflet):
         leaflet_id = str(uuid.uuid4())
-        print(leaflet_id)
         for recipe in leaflet.recipes:
             self.db.leaflet_entry_insert(leaflet_id, recipe.id, leaflet.user.id)
 

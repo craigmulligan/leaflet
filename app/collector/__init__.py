@@ -95,7 +95,6 @@ def collect_recipes(persister: Persister, url_file: str):
         for line in f.readlines():
             url = line.strip()
 
-            recipe = Recipe.from_url(url)
             if not persister.exists(url):
                 recipe = Recipe.from_url(url)
                 try:

@@ -246,6 +246,8 @@ class Db:
         if res:
             return res["id"]
 
+        return None
+
     def recipe_similar(self, recipe_id, limit) -> List[str]:
         """
         Gets recipe that have common ingredients
