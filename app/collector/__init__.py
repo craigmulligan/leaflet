@@ -10,7 +10,7 @@ import hashlib
 from time import sleep
 from typing import List
 from recipe_scrapers._abstract import AbstractScraper
-from .ingredient import Ingredient, parse, ask, normalize
+from .ingredient import Ingredient, parse, ask, normalize, yield_factor
 from recipe_scrapers import scrape_me
 
 
@@ -42,15 +42,18 @@ class Recipe:
             except Exception as e:
                 ingredient = ask(i)
             finally:
-                data.append(normalize(ingredient))
+                assert ingredient
+                normalized = normalize(ingredient)
+                result = yield_factor(normalized, self.yields())
+                data.append(result)
 
         return data
 
-    def yields(self) -> Optional[int]:
+    def yields(self) -> int:
         txt = self.schema.yields()
         matches = re.findall("[0-9]+", txt)
         if not matches:
-            return None
+            raise Exception("no yields!")
 
         return int(matches[0])
 
@@ -78,16 +81,16 @@ class Persister:
 
     def save(self, url: str, body: str) -> bool:
         id = hash(url)
-        with open(f"{self.dirname}/{id}", "w+") as f:
+        with open(f"{self.dirname}/{id}.json", "w+") as f:
             f.write(body)
         return True
 
     def exists(self, url: str) -> bool:
         id = hash(url)
-        return os.path.isfile(f"{self.dirname}/{id}")
+        return os.path.isfile(f"{self.dirname}/{id}.json")
 
 
-def collect_recipes(persister, url_file):
+def collect_recipes(persister: Persister, url_file: str):
     with open(url_file) as f:
         for line in f.readlines():
             url = line.strip()
