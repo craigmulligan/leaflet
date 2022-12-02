@@ -22,6 +22,19 @@ def parse(description) -> Ingredient:
     return {"name": d["name"], "quantity": float(d["quantity"]), "unit": d["unit"], "input": description}  # type: ignore
 
 
+def yield_factor(ingredient: Ingredient, yields: int):
+    """
+    Based on the recipe yield. Calculate the value of quantity of 1 serving.
+
+    For instance:
+
+        input: {"name": "butter", quantity: 200.0, unit: "g"}, yield: 4
+        output: {"name": "butter", quantity: 50.0, unit: "g"}
+    """
+    ingredient["quantity"] = ingredient["quantity"] / yields
+    return ingredient
+
+
 def normalize(ingredient: Ingredient) -> Ingredient:
     try:
         quantity, unit = normalize_units(
