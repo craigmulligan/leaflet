@@ -1,0 +1,137 @@
+{
+  "canonical_url": "https://www.bbcgoodfood.com/recipes/smoky-aubergine-tagine-lemon-apricots",
+  "host": "bbcgoodfood.com",
+  "id": "f83a1421367928da867fbe449d5110aa0621ded5",
+  "ingredients": [
+    {
+      "comment": "cut into large chunk",
+      "input": "2 aubergines , cut into large chunks",
+      "name": "aubergines",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "3 tbsp olive oil",
+      "name": "olive oil",
+      "quantity": 11.09,
+      "unit": "ml"
+    },
+    {
+      "comment": "chopped",
+      "input": "2 onions , chopped",
+      "name": "onions",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "2 tbsp freshly grated ginger",
+      "name": "freshly grated ginger",
+      "quantity": 7.3925,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "1 \u00bd tsp ras el hanout",
+      "name": "ras el hanout",
+      "quantity": 1.8475,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "1 \u00bd tsp sweet smoked paprika",
+      "name": "sweet smoked paprika",
+      "quantity": 1.8475,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "good pinch of saffron",
+      "name": "saffron",
+      "quantity": 0.0,
+      "unit": "cm"
+    },
+    {
+      "comment": "or chicken",
+      "input": "300ml hot vegetable or chicken stock",
+      "name": "hot vegetable stock",
+      "quantity": 75.0,
+      "unit": "ml"
+    },
+    {
+      "comment": "rind of both sliced, pulp from the centre of 1 roughly chopped",
+      "input": "2 preserved lemons , rind of both sliced, pulp from the centre of 1 roughly chopped",
+      "name": "preserved lemons",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "halved",
+      "input": "120g dried apricots , halved",
+      "name": "dried apricots",
+      "quantity": 30.0,
+      "unit": "g"
+    },
+    {
+      "comment": "roughly chopped",
+      "input": "200g tomatoes , roughly chopped",
+      "name": "tomatoes",
+      "quantity": 50.0,
+      "unit": "g"
+    },
+    {
+      "comment": "",
+      "input": "1 tbsp clear honey",
+      "name": "clear honey",
+      "quantity": 3.6975,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "zest 1 lemon , juice 0.5",
+      "name": "lemon",
+      "quantity": 0.25,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "2 tsp toasted sesame seeds",
+      "name": "toasted sesame seeds",
+      "quantity": 2.465,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "2 tbsp finely chopped flat-leaf parsley",
+      "name": "finely chopped flat-leaf parsley",
+      "quantity": 7.3925,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "2 tbsp finely chopped mint",
+      "name": "finely chopped mint",
+      "quantity": 7.3925,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "Greek yogurt , to serve (optional)",
+      "name": "Greek yogurt",
+      "quantity": 37.5625,
+      "unit": "g"
+    },
+    {
+      "comment": "",
+      "input": "wholemeal bulghar wheat , to serve (optional)",
+      "name": "wholemeal bulghar wheat",
+      "quantity": 0.25,
+      "unit": ""
+    }
+  ],
+  "instructions": "Brown the aubergines in 2 tbsp of the oil so they\u2019re golden on all sides, but not soft in the middle yet \u2013 this is best done in batches in a large, non-stick frying pan.\nHeat a heavy-based shallow lidded pan or flameproof tagine with the remaining oil, then add the onions, ginger and spices, and fry gently until softened and golden.\nMeanwhile, add the saffron to the stock to soak. Stir the preserved lemon rind and pulp, apricots, tomatoes, honey and lemon juice into the onions with the saffron stock. Snugly fit the aubergines in, cover with a lid and simmer for 30 mins until the aubergines are tender. Season to taste.\nMix together the lemon zest, sesame seeds and chopped herbs, and sprinkle over the tagine. Serve with Greek yogurt and wholemeal bulghar wheat, if you like.",
+  "title": "Smoky aubergine tagine with lemon & apricots",
+  "total_time": 80,
+  "yields": 4
+}

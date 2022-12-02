@@ -1,5 +1,4 @@
 import re
-from typing import Optional
 import logging
 from pathlib import Path
 import os
@@ -40,6 +39,7 @@ class Recipe:
             try:
                 ingredient = parse(i)
             except Exception as e:
+                print(e)
                 ingredient = ask(i)
             finally:
                 assert ingredient

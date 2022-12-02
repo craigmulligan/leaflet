@@ -1,0 +1,95 @@
+{
+  "canonical_url": "https://www.bbcgoodfood.com/recipes/egyptian-egg-salad",
+  "host": "bbcgoodfood.com",
+  "id": "92994cd172837bbbaf5eac5bae5d4107eefecd86",
+  "ingredients": [
+    {
+      "comment": "",
+      "input": "2 large eggs",
+      "name": "eggs",
+      "quantity": 1.0,
+      "unit": ""
+    },
+    {
+      "comment": "juiced",
+      "input": "1 lemon , juiced",
+      "name": "lemon",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "1 tbsp tahini",
+      "name": "tahini",
+      "quantity": 7.395,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "1 tbsp rapeseed oil",
+      "name": "rapeseed oil",
+      "quantity": 7.395,
+      "unit": "ml"
+    },
+    {
+      "comment": "chopped",
+      "input": "1 red onion , chopped",
+      "name": "red onion",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "3 large garlic cloves , finely chopped",
+      "name": "garlic",
+      "quantity": 1.5,
+      "unit": "cloves"
+    },
+    {
+      "comment": "",
+      "input": "1 tsp ground cumin",
+      "name": "ground cumin",
+      "quantity": 2.465,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "\u00bd tsp cumin seeds",
+      "name": "cumin seeds",
+      "quantity": 1.23,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "400g can borlotti or fava beans , juice reserved",
+      "name": "borlotti",
+      "quantity": 200.0,
+      "unit": "g"
+    },
+    {
+      "comment": "cut into wedge",
+      "input": "2 Little Gem lettuces cut into wedges",
+      "name": "Little Gem lettuces",
+      "quantity": 1.0,
+      "unit": ""
+    },
+    {
+      "comment": "cut into wedge",
+      "input": "2 tomatoes , cut into wedges",
+      "name": "tomatoes",
+      "quantity": 1.0,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "sprinkling of dried chilli flakes and roughly chopped flat-leaf parsley, optional",
+      "name": "chilli flakes",
+      "quantity": 7.395,
+      "unit": "ml"
+    }
+  ],
+  "instructions": "Bring a pan of water to the boil, lower in the eggs and boil for 8 mins. Drain and run under the cold tap to cool them a little, then peel and halve. Meanwhile, mix 1 tbsp lemon juice and 3 tbsp water with the tahini to make a dressing.\nHeat the oil and fry the onion and garlic for 5 mins to soften them. Add the ground cumin and seeds, stir briefly then add the beans and lightly crush some of them as you heat them, adding some of the juice from the can to get a nice creamy consistency but keeping whole beans, too. Taste and add lemon juice and just a little seasoning if you need to.\nSpoon the beans on to plates with the lettuce, then add the eggs and tomatoes, with the tahini dressing, chilli and parsley, if using.",
+  "title": "Egyptian egg salad",
+  "total_time": 15,
+  "yields": 2
+}

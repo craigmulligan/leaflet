@@ -1,0 +1,102 @@
+{
+  "canonical_url": "https://www.bbcgoodfood.com/recipes/summer-veg-tostadas",
+  "host": "bbcgoodfood.com",
+  "id": "2639b056b11beac1f8293127540f5a2d85578331",
+  "ingredients": [
+    {
+      "comment": "",
+      "input": "4 mini tortillas",
+      "name": "mini tortillas",
+      "quantity": 1.0,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "4 tsp vegetable oil",
+      "name": "vegetable oil",
+      "quantity": 4.93,
+      "unit": "ml"
+    },
+    {
+      "comment": "sliced lengthways, quartered then cut into 3 cm chunk",
+      "input": "1 courgette, sliced lengthways, quartered then cut into 3cm chunks",
+      "name": "courgette",
+      "quantity": 0.25,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "198g can sweetcorn, drained",
+      "name": "sweetcorn",
+      "quantity": 49.5,
+      "unit": "g"
+    },
+    {
+      "comment": "",
+      "input": "\u00bd tsp smoked paprika",
+      "name": "smoked paprika",
+      "quantity": 0.615,
+      "unit": "ml"
+    },
+    {
+      "comment": "halved",
+      "input": "80g cherry tomatoes, halved",
+      "name": "cherry tomatoes",
+      "quantity": 20.0,
+      "unit": "g"
+    },
+    {
+      "comment": "trimmed and finely sliced",
+      "input": "2 spring onions, trimmed and finely sliced",
+      "name": "spring onions",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "defrosted",
+      "input": "250g frozen peas, defrosted",
+      "name": "frozen peas",
+      "quantity": 62.5,
+      "unit": "g"
+    },
+    {
+      "comment": "",
+      "input": "1 garlic clove, peeled",
+      "name": "garlic",
+      "quantity": 0.25,
+      "unit": "cloves"
+    },
+    {
+      "comment": "",
+      "input": "2 mint sprigs, leaves picked and roughly chopped, plus extra to serve",
+      "name": "mint",
+      "quantity": 0.5,
+      "unit": "sprigs"
+    },
+    {
+      "comment": "",
+      "input": "small handful of coriander, roughly chopped",
+      "name": "coriander",
+      "quantity": 0.25,
+      "unit": "bunches"
+    },
+    {
+      "comment": "1 juiced, 1 cut into wedge to serve",
+      "input": "2 limes, 1 juiced, 1 cut into wedges to serve",
+      "name": "limes",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "80g natural yogurt",
+      "name": "natural yogurt",
+      "quantity": 20.0,
+      "unit": "g"
+    }
+  ],
+  "instructions": "Heat the oven to 200C/180C fan/ gas 6. Brush the tortillas with 2 tsp of the oil and arrange on two baking trays. Lightly season. Bake for 5 mins, then turn over, rotate the trays and cook for a further 3 mins until crisp and golden. Remove from the oven and set aside to cool.\nMeanwhile, heat 1 tsp of the oil in a large frying pan over a medium- high heat. Add the courgette and sweetcorn and cook, stirring a couple of times until they start to colour at the edges, about 6-8 mins. Add the smoked paprika and cook for a further minute. Set aside to cool slightly before tossing in the tomatoes and spring onions, then some seasoning to taste.\nPut the peas, garlic, mint, most of the coriander, the lime juice and remaining oil in a mini food processor with some seasoning and pulse until you have a guacamole-like consistency. Add a splash of water if it\u2019s too thick.\nTo serve, spread each tortilla with the pea dip and top with the veg. Garnish with the remaining coriander and a dollop of yogurt. Serve with lime wedges on the side for squeezing over.",
+  "title": "Summer veg tostadas",
+  "total_time": 30,
+  "yields": 4
+}
