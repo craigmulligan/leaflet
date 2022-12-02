@@ -83,7 +83,7 @@ class Db:
 
         self.conn.execute(
             """
-            CREATE TABLE IF NOT EXISTS leaflet (
+            CREATE TABLE IF NOT EXISTS leaflet_entry (
                 id INTEGER PRIMARY KEY, 
                 leaflet_id TEXT,
                 created_at TEXT DEFAULT (datetime('now')) NOT NULL,
@@ -159,10 +159,10 @@ class Db:
 
         self.conn.commit()
 
-    def leaflet_insert(self, leaflet_id, recipe_id, user_id):
+    def leaflet_entry_insert(self, leaflet_id, recipe_id, user_id):
         self.query(
             """
-            INSERT INTO leaflet (leaflet_id, recipe_id, user_id) VALUES (?, ?, ?)
+            INSERT INTO leaflet_entry (leaflet_id, recipe_id, user_id) VALUES (?, ?, ?)
             """,
             [leaflet_id, recipe_id, user_id],
         )
@@ -172,7 +172,7 @@ class Db:
     def leaflet_get_all_by_user(self, user_id: int, limit=5):
         res = self.query(
             """
-            select leaflet_id from leaflet where user_id = ? group by leaflet_id order by created_at desc limit ?
+            select leaflet_id from leaflet_entry where user_id = ? group by leaflet_id order by created_at desc limit ?
             """,
             [user_id, limit],
         )
@@ -186,7 +186,7 @@ class Db:
         rows = self.query(
             """
             SELECT recipe_id
-            FROM leaflet
+            FROM leaflet_entry
             where leaflet_id = ?
             """,
             [leaflet_id],
@@ -231,7 +231,7 @@ class Db:
         res = self.query(
             """
             with recipe_count as (
-                select recipe_id, count(recipe_id) as c from leaflet 
+                select recipe_id, count(recipe_id) as c from leaflet_entry
                 where user_id = ?
                 group by recipe_id
             )
