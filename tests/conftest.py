@@ -1,5 +1,6 @@
 import pytest
 from unittest.mock import Mock
+import uuid
 
 from app import create_app
 from app.models import User
@@ -79,8 +80,11 @@ def dummy_user(db):
     util function to create a test case user.
     """
 
-    def create_dummy_user(email="x@x.com") -> User:
+    def create_dummy_user(email=None, recipes_per_week=1, serving=1) -> User:
+        if email is None:
+            email = str(uuid.uuid4()) + "@x.com"
         user = db.user_create(email=email)
+        user = db.user_update(user.id, recipes_per_week, serving)
         return user
 
     return create_dummy_user

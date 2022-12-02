@@ -44,7 +44,7 @@ def test_post_magic_success_in_dev_mode(
         response = client.post(
             f"/auth/magic",
             content_type="multipart/form-data",
-            data=dict(email="x@x.com"),
+            data=dict(email=user.email),
         )
         mail_manager_mock.send.assert_not_called()
 
