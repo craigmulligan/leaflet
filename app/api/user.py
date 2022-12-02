@@ -61,6 +61,9 @@ def user_post(user_id):
         flash("Error updating settings", "error")
         return render_template("user.html", user=user, errors=errors)
 
+    assert recipes_per_week
+    assert serving
+
     db.user_update(user.id, int(recipes_per_week), int(serving))
     flash("Settings updated", "info")
 

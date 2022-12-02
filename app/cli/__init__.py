@@ -111,7 +111,7 @@ def run_fmt(black_options):
 
 @dev.command("mypy")
 def run_mypy():
-    run_sh("mypy .")
+    run_sh("pyright .")
 
 
 def register(app):

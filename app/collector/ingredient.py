@@ -1,10 +1,12 @@
 from typing import TypedDict, Optional, cast
 import logging
+import json
+
 from pint import UnitRegistry, UndefinedUnitError
 from ingredient_parser import parse_ingredient
 import nltk
 
-nltk.download("averaged_perceptron_tagger")
+
 pint = UnitRegistry()
 
 # arbitrary units
@@ -28,6 +30,7 @@ class Ingredient(TypedDict):
 
 
 def parse(description) -> Ingredient:
+    nltk.download("averaged_perceptron_tagger")
     d = parse_ingredient(description)
 
     return {
@@ -36,7 +39,32 @@ def parse(description) -> Ingredient:
         "unit": d["unit"],
         "input": description,
         "comment": d["comment"],
+        "category": get_category(d["name"]),
     }  # type: ignore
+
+
+def get_category(name: str) -> str:
+    with open("data/categories.json", "r+") as f:
+        categories = json.loads(f.read())
+
+        for key, values in categories.items():
+            if name in values:
+                return key
+
+        output = input(f"What is the category of: {name}\n")
+
+        # Now let's auto update the categories list.
+        if output in categories:
+            categories[output].append(name)
+        else:
+            categories[output] = [name]
+
+        data = json.dumps(categories, indent=4, sort_keys=True)
+        f.truncate()
+        f.seek(0)
+        f.write(data)
+
+    return output
 
 
 def yield_factor(ingredient: Ingredient, yields: int):
