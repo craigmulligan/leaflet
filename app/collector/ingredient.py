@@ -129,7 +129,7 @@ def ask(description, result=None) -> Ingredient:
     result["input"] = description
 
     cast(Ingredient, result)
-    return result
+    return result  # type: ignore
 
 
 def normalize_units(quantity: float, unit: Optional[str]):
