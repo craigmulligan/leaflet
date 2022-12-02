@@ -16,7 +16,7 @@
 <hr />
 <br />
 <br />
-<form action="{{ url_for('user.leaflet_new', user_id=user.id) }}" method="post">
+<form action="{{ url_for('user.leaflet_post', user_id=user.id) }}" method="post">
 <button>Request a new leaflet</button>
 </form>
 
@@ -25,8 +25,9 @@
 Previous leaflets:
 
 <ul>
-{% for leaflet in leaflets %}
-<li>{{leaflet}}</li>
+{{leaflet_ids|length}}
+{% for leaflet_id in leaflet_ids %}
+<li><a href="{{ url_for('user.leaflet_get', user_id=user.id, leaflet_id=leaflet_id) }}">{{leaflet_id}}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

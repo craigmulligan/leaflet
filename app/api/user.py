@@ -26,9 +26,9 @@ def user_get(user_id):
     if not user.can_view():
         abort(403)
 
-    leaflet_times = db.leaflet_get_all_by_user(user_id)
+    leaflet_ids = db.leaflet_get_all_by_user(user_id)
 
-    return render_template("user.html", user=user, leaflets=leaflet_times)
+    return render_template("user.html", user=user, leaflet_ids=leaflet_ids)
 
 
 @blueprint.route("/<int:user_id>", methods=["POST"])
@@ -69,7 +69,7 @@ def user_post(user_id):
 
 @blueprint.route("/<int:user_id>/leaflet", methods=["POST"])
 @authenticated_resource
-def leaflet_new(user_id):
+def leaflet_post(user_id):
     db = database.get()
     lm = leaflet_manager.get()
     user = db.user_get_by_id(user_id)
@@ -102,8 +102,5 @@ def leaflet_get(user_id, leaflet_id):
         abort(403)
 
     leaflet = lm.get(user, leaflet_id)
-    lm.save(leaflet)
-
-    flash("We sent you a new leaflet", "info")
 
     return render_template("leaflet.html", leaflet=leaflet)
