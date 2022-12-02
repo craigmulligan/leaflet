@@ -1,7 +1,8 @@
 import os
 import json
 from typing import Optional, Union, Any, List
-from datetime import datetime
+
+# from datetime import datetime
 import sqlite3
 from flask import g, current_app
 from app.models import User, Recipe, Ingredient
@@ -83,12 +84,12 @@ class Db:
         self.conn.execute(
             """
             CREATE TABLE IF NOT EXISTS leaflet (
-                id INTEGER PRIMARY key,
-                created_at TEXT NOT NULL,
+                created_at INTEGER NOT NULL,
                 recipe_id TEXT,
                 user_id INTEGER,
                 FOREIGN KEY(recipe_id) REFERENCES recipe(id),
                 FOREIGN KEY(user_id) REFERENCES user(id)
+                PRIMARY KEY (created_at, user_id, recipe_id)
             );
         """
         )
@@ -157,22 +158,24 @@ class Db:
 
         self.conn.commit()
 
-    def leaflet_insert(self, dt: datetime, recipe_id, user_id):
-        created_at = dt.strftime(DATETIME_FORMAT)
-        self.query(
+    def leaflet_insert(self, leaflet_id, recipe_id, user_id):
+        result = self.query(
             """
-            INSERT INTO leaflet (created_at, recipe_id, user_id) VALUES (?, ?, ?)
+            INSERT INTO leaflet (created_at, recipe_id, user_id) VALUES (?, ?, ?) returning created_at
             """,
-            [created_at, recipe_id, user_id],
+            [leaflet_id, recipe_id, user_id],
             one=True,
         )
 
         self.conn.commit()
 
+        assert result
+        return result["created_at"]
+
     def leaflet_get_all_by_user(self, user_id: int, limit=5):
         res = self.query(
             """
-            select created_at from leaflet where user_id = ? group by created_at order by created_at desc limit ? 
+            select created_at from leaflet where user_id = ? group by created_at order by created_at desc limit ?
             """,
             [user_id, limit],
         )
@@ -181,6 +184,19 @@ class Db:
             return res
 
         return [r["created_at"] for r in res]
+
+    def recipe_get_all_by_leaflet_id(self, leaflet_id: int):
+        rows = self.query(
+            """
+            SELECT recipe_id
+            FROM leaflet
+            where created_at = ?
+            """,
+            [leaflet_id],
+        )
+
+        assert rows
+        return [row["recipe_id"] for row in rows]
 
     def recipe_get(self, recipe_id) -> Optional[Recipe]:
         recipe = self.query(
