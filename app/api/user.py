@@ -26,9 +26,9 @@ def user_get(user_id):
     if not user.can_view():
         abort(403)
 
-    digest_times = db.digest_get_all_by_user(user_id)
+    leaflet_times = db.leaflet_get_all_by_user(user_id)
 
-    return render_template("user.html", user=user, digests=digest_times)
+    return render_template("user.html", user=user, leaflets=leaflet_times)
 
 
 @blueprint.route("/<int:user_id>", methods=["POST"])
@@ -67,9 +67,9 @@ def user_post(user_id):
     return redirect(url_for("user.user_get", user_id=user_id))
 
 
-@blueprint.route("/<int:user_id>/digest", methods=["POST"])
+@blueprint.route("/<int:user_id>/leaflet", methods=["POST"])
 @authenticated_resource
-def digest_new(user_id):
+def leaflet_new(user_id):
     db = database.get()
     rm = recipe_manager.get()
     user = db.user_get_by_id(user_id)
@@ -80,9 +80,9 @@ def digest_new(user_id):
     if not user.can_view():
         abort(403)
 
-    digest = rm.get_digest(user)
-    rm.save_digest(digest)
+    leaflet = rm.generate(user)
+    rm.save(leaflet)
 
-    flash("We sent you a new digest", "info")
+    flash("We sent you a new leaflet", "info")
 
-    return render_template("digest.html", digest=digest)
+    return render_template("leaflet.html", leaflet=leaflet)

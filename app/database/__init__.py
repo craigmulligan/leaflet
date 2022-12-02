@@ -82,7 +82,7 @@ class Db:
 
         self.conn.execute(
             """
-            CREATE TABLE IF NOT EXISTS digest (
+            CREATE TABLE IF NOT EXISTS leaflet (
                 id INTEGER PRIMARY key,
                 created_at TEXT NOT NULL,
                 recipe_id TEXT,
@@ -157,11 +157,11 @@ class Db:
 
         self.conn.commit()
 
-    def digest_insert(self, dt: datetime, recipe_id, user_id):
+    def leaflet_insert(self, dt: datetime, recipe_id, user_id):
         created_at = dt.strftime(DATETIME_FORMAT)
         self.query(
             """
-            INSERT INTO digest (created_at, recipe_id, user_id) VALUES (?, ?, ?)
+            INSERT INTO leaflet (created_at, recipe_id, user_id) VALUES (?, ?, ?)
             """,
             [created_at, recipe_id, user_id],
             one=True,
@@ -169,10 +169,10 @@ class Db:
 
         self.conn.commit()
 
-    def digest_get_all_by_user(self, user_id: int, limit=5):
+    def leaflet_get_all_by_user(self, user_id: int, limit=5):
         res = self.query(
             """
-            select created_at from digest where user_id = ? group by created_at order by created_at desc limit ? 
+            select created_at from leaflet where user_id = ? group by created_at order by created_at desc limit ? 
             """,
             [user_id, limit],
         )
@@ -218,7 +218,7 @@ class Db:
         res = self.query(
             """
             with recipe_count as (
-                select recipe_id, count(recipe_id) as c from digest
+                select recipe_id, count(recipe_id) as c from leaflet 
                 where user_id = ?
                 group by recipe_id
             )

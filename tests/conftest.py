@@ -4,7 +4,7 @@ from unittest.mock import Mock
 from app import create_app
 from app.models import User
 from app.mail import MailManager
-from app.recipe_manager import RecipeManager, get as get_recipe_manager
+from app.recipe_manager import LeafletManager, get as get_recipe_manager
 from app.session import session
 from app import database
 from flask import g
@@ -28,7 +28,7 @@ def app():
 def recipe_manager_mock():
     mock = Mock()
 
-    setattr(g, RecipeManager.context_key, mock)
+    setattr(g, LeafletManager.context_key, mock)
     return mock
 
 
