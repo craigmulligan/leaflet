@@ -13,6 +13,7 @@ from app.collector.ingredient import pint, unit_to_str
 class IngredientTotal(TypedDict):
     total: Union[int, Quantity]
     unit: Optional[str]
+    category: Optional[str]
 
 
 @dataclass
@@ -30,7 +31,9 @@ class Leaflet:
 
         for recipe in self.recipes:
             for ingredient in recipe.ingredients:
-                totals.setdefault(ingredient.name, [{"total": 0, "unit": None}])
+                totals.setdefault(
+                    ingredient.name, [{"total": 0, "unit": None, "category": None}]
+                )
                 q = pint.Quantity(ingredient.quantity, ingredient.unit)
 
                 attempts = 0
@@ -44,6 +47,7 @@ class Leaflet:
                     try:
                         quantity_type["total"] += q
                         quantity_type["unit"] = q.units
+                        quantity_type["category"] = ingredient.category
                         break
                     except DimensionalityError:
                         attempts += 1
@@ -58,7 +62,9 @@ class Leaflet:
                     else data["total"]
                 ) * self.user.serving
 
-                output.append(f"{ingredient_name}: {round(quantity, 2)} {unit}".strip())
+                output.append(
+                    f"{ingredient_name}: {round(quantity, 2)} {unit} {data['category']}".strip()
+                )
 
         output.sort()
         return output

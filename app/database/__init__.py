@@ -75,6 +75,7 @@ class Db:
                 unit TEXT,
                 quantity INTEGER NOT NULL,
                 name TEXT NOT NULL,
+                category TEXT,
                 PRIMARY KEY (recipe_id, name),
                 FOREIGN KEY(recipe_id) REFERENCES recipe(id)
             );
@@ -148,12 +149,12 @@ class Db:
         if user:
             return User(**user)
 
-    def ingredient_insert(self, recipe_id, name, quantity, unit):
+    def ingredient_insert(self, recipe_id, name, quantity, unit, category):
         self.query(
             """
-            INSERT OR IGNORE INTO ingredient (recipe_id, name, quantity, unit) VALUES (?, ?, ?, ?)
+            INSERT OR IGNORE INTO ingredient (recipe_id, name, quantity, unit, category) VALUES (?, ?, ?, ?, ?)
             """,
-            [recipe_id, name, quantity, unit],
+            [recipe_id, name, quantity, unit, category],
             one=True,
         )
 
@@ -321,6 +322,7 @@ class Db:
                             ingredient["name"],
                             ingredient["quantity"],
                             ingredient["unit"],
+                            ingredient["category"],
                         )
 
     def query(self, query, query_args=(), one=False) -> Union[Optional[Any], Any]:

@@ -9,6 +9,7 @@ class Ingredient:
     quantity: float
     recipe_id: str
     created_at: str
+    category: Optional[str]
 
 
 @dataclass
