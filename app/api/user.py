@@ -81,8 +81,10 @@ def leaflet_new(user_id):
         abort(403)
 
     leaflet = lm.generate(user)
+
     leaflet_id = lm.save(leaflet)
 
+    breakpoint()
     flash("We sent you a new leaflet", "info")
 
     return redirect(url_for("user.leaflet_get", user_id=user_id, leaflet_id=leaflet_id))
