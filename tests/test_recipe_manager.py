@@ -14,7 +14,7 @@ def test_get_digest(
     # only load a subset of recipes for tests.
     assert ids == [
         "56cd7fb0e5bd654e4eaa0955042163f7ca55f085",
-        "6b67ac5e278df57361d232baeea4fcd93a7050ec",
+        "72335e9f76c017f81c0c8c36c4ec1e0aad6be6fb",
     ]
 
 
@@ -45,13 +45,11 @@ def test_get_shopping_list(
     user = dummy_user()
     digest = recipe_manager.get_digest(user)
     shopping_list = digest.shopping_list()
-    print([r.id for r in digest.recipes])
-    print("\n".join(shopping_list))
 
     assert len(shopping_list) == 25
     last_item = shopping_list[-1]
     assert last_item == "yellow pepper: 0.5"
-    assert "garlic: 2.0 cloves" in shopping_list
+    assert "garlic: 2 cloves" in shopping_list
 
     # now lets scale the servings and check the shopping_list adjusts accordingly.
     serving_size = 2
@@ -63,6 +61,4 @@ def test_get_shopping_list(
     assert len(shopping_list) == 25
     last_item = shopping_list[-1]
 
-    print("-----")
-    print("\n".join(shopping_list))
     assert last_item == "yellow pepper: 1.0"

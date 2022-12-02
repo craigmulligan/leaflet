@@ -14,6 +14,10 @@ pint.define("sprigs = 1")
 pint.define("packs = 1")
 
 
+def unit_to_str(units):
+    return "" if str(units) == "dimensionless" else pint.get_symbol(str(units))
+
+
 class Ingredient(TypedDict):
     name: str
     quantity: float
@@ -85,9 +89,7 @@ def normalize_units(quantity: float, unit: Optional[str]):
     base_units = get_base_units(value) or value.units
     value = value.to(base_units)
     magnitude = round(value.magnitude, 2)
-    units = (
-        "" if str(value.units) == "dimensionless" else pint.get_symbol(str(value.units))
-    )
+    units = unit_to_str(value.units)
     return magnitude, units
 
 
