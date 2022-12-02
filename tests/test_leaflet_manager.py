@@ -64,4 +64,4 @@ def test_get_shopping_list(
     user = dummy_user(recipes_per_week=2)
     leaflet = leaflet_manager.generate(user)
     shopping_list = leaflet.shopping_list()
-    assert len(shopping_list) == 25
+    assert len(shopping_list) == 24
