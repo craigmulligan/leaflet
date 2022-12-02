@@ -14,7 +14,9 @@ Leaflet {{digest.id}}:
   <li>
     <a href="{{ recipe.canonical_url }}"><h4>{{recipe.title}}</h4></a>
     <p>cooking time: {{ recipe.total_time }}</p>
-    <p>{{recipe.instructions}}</p>
+    {% for instruction in recipe.instructions.split("\n") %}
+    <p>{{instruction}}</p>
+    {% endfor %}
   </li>
   {% endfor %}
 </ul>
