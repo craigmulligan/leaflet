@@ -77,7 +77,7 @@ class LeafletManager:
 
         random_recipe_id = self.db.recipe_random(user.id)
         similar_recipe_ids = self.db.recipe_similar(
-            random_recipe_id, user.recipes_per_week
+            random_recipe_id, user.recipes_per_week - 1
         )
 
         recipes = []
