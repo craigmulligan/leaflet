@@ -1,113 +1,115 @@
 {
-  "canonical_url": "https://www.bbcgoodfood.com/recipes/spinach-sweet-potato-lentil-dhal",
-  "host": "bbcgoodfood.com",
-  "id": "afcafa1ffddbf7883446919eb1b13610febb41e3",
-  "ingredients": [
-    {
-      "category": "dressing",
-      "comment": "",
-      "input": "1 tbsp sesame oil",
-      "name": "sesame oil",
-      "quantity": 3.6975,
-      "unit": "ml"
-    },
-    {
-      "category": "vegetables",
-      "comment": "finely chopped",
-      "input": "1 red onion, finely chopped",
-      "name": "red onion",
-      "quantity": 0.25,
-      "unit": ""
-    },
-    {
-      "comment": "",
-      "input": "1 garlic clove, crushed",
-      "name": "garlic",
-      "quantity": 0.25,
-      "unit": "cloves"
-    },
-    {
-      "comment": "",
-      "input": "thumb-sized piece ginger, peeled and finely chopped",
-      "name": "ginger",
-      "quantity": 0.25,
-      "unit": ""
-    },
-    {
-      "category": "vegetables",
-      "comment": "finely chopped",
-      "input": "1 red chilli, finely chopped",
-      "name": "red chilli",
-      "quantity": 0.25,
-      "unit": ""
-    },
-    {
-      "category": "spices",
-      "comment": "",
-      "input": "1\u00bd tsp ground turmeric",
-      "name": "ground turmeric",
-      "quantity": 1.8475,
-      "unit": "ml"
-    },
-    {
-      "category": "spices",
-      "comment": "",
-      "input": "1\u00bd tsp ground cumin",
-      "name": "ground cumin",
-      "quantity": 1.8475,
-      "unit": "ml"
-    },
-    {
-      "category": "vegetables",
-      "comment": "cut into even chunk",
-      "input": "2 sweet potatoes (about 400g/14oz), cut into even chunks",
-      "name": "sweet potatoes (about 400 g 14 oz)",
-      "quantity": 0.5,
-      "unit": ""
-    },
-    {
-      "category": "vegetables",
-      "comment": "",
-      "input": "250g red split lentils",
-      "name": "red split lentils",
-      "quantity": 62.5,
-      "unit": "g"
-    },
-    {
-      "category": "spices",
-      "comment": "",
-      "input": "600ml vegetable stock",
-      "name": "vegetable stock",
-      "quantity": 150.0,
-      "unit": "ml"
-    },
-    {
-      "category": "vegetables",
-      "comment": "bag of spinach",
-      "input": "80g bag of spinach",
-      "name": "spinach",
-      "quantity": 20.0,
-      "unit": "g"
-    },
-    {
-      "category": "vegetables",
-      "comment": "sliced on the diagonal, to serve",
-      "input": "4 spring onions, sliced on the diagonal, to serve",
-      "name": "spring onions",
-      "quantity": 1.0,
-      "unit": ""
-    },
-    {
-      "category": "vegetables",
-      "comment": "",
-      "input": "\u00bd small pack of Thai basil, leaves torn, to serve",
-      "name": "Thai basil",
-      "quantity": 0.125,
-      "unit": "packs"
-    }
-  ],
-  "instructions": "Heat 1 tbsp sesame oil in a wide-based pan with a tight-fitting lid.\nAdd 1 finely chopped red onion and cook over a low heat for 10 mins, stirring occasionally, until softened.\nAdd 1 crushed garlic clove, a finely chopped thumb-sized piece of ginger and 1 finely chopped red chilli, cook for 1 min, then add 1\u00bd tsp ground turmeric and 1\u00bd tsp ground cumin and cook for 1 min more.\nTurn up the heat to medium, add 2 sweet potatoes, cut into even chunks, and stir everything together so the potato is coated in the spice mixture.\nTip in 250g red split lentils, 600ml vegetable stock and some seasoning.\nBring the liquid to the boil, then reduce the heat, cover and cook for 20 mins until the lentils are tender and the potato is just holding its shape.\nTaste and adjust the seasoning, then gently stir in the 80g spinach. Once wilted, top with the 4 diagonally sliced spring onions and \u00bd small pack torn basil leaves to serve.\nAlternatively, allow to cool completely, then divide between airtight containers and store in the fridge for a healthy lunchbox.",
-  "title": "Spinach, sweet potato & lentil dhal",
-  "total_time": 45,
-  "yields": 4
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/spinach-sweet-potato-lentil-dhal",
+    "host": "bbcgoodfood.com",
+    "id": "afcafa1ffddbf7883446919eb1b13610febb41e3",
+    "ingredients": [
+        {
+            "category": "dressing",
+            "comment": "",
+            "input": "1 tbsp sesame oil",
+            "name": "sesame oil",
+            "quantity": 3.6975,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetables",
+            "comment": "finely chopped",
+            "input": "1 red onion, finely chopped",
+            "name": "red onion",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "vegetables",
+            "comment": "",
+            "input": "1 garlic clove, crushed",
+            "name": "garlic",
+            "quantity": 0.25,
+            "unit": "cloves"
+        },
+        {
+            "category": "vegetables",
+            "comment": "",
+            "input": "thumb-sized piece ginger, peeled and finely chopped",
+            "name": "ginger",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "vegetables",
+            "comment": "finely chopped",
+            "input": "1 red chilli, finely chopped",
+            "name": "red chilli",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "spices",
+            "comment": "",
+            "input": "1\u00bd tsp ground turmeric",
+            "name": "ground turmeric",
+            "quantity": 1.8475,
+            "unit": "ml"
+        },
+        {
+            "category": "spices",
+            "comment": "",
+            "input": "1\u00bd tsp ground cumin",
+            "name": "ground cumin",
+            "quantity": 1.8475,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetables",
+            "comment": "cut into even chunk",
+            "input": "2 sweet potatoes (about 400g/14oz), cut into even chunks",
+            "name": "sweet potatoes (about 400 g 14 oz)",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "vegetables",
+            "comment": "",
+            "input": "250g red split lentils",
+            "name": "red split lentils",
+            "quantity": 62.5,
+            "unit": "g"
+        },
+        {
+            "category": "spices",
+            "comment": "",
+            "input": "600ml vegetable stock",
+            "name": "vegetable stock",
+            "quantity": 150.0,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetables",
+            "comment": "bag of spinach",
+            "input": "80g bag of spinach",
+            "name": "spinach",
+            "quantity": 20.0,
+            "unit": "g"
+        },
+        {
+            "category": "vegetables",
+            "comment": "sliced on the diagonal, to serve",
+            "input": "4 spring onions, sliced on the diagonal, to serve",
+            "name": "spring onions",
+            "quantity": 1.0,
+            "unit": ""
+        },
+        {
+            "category": "vegetables",
+            "comment": "",
+            "input": "\u00bd small pack of Thai basil, leaves torn, to serve",
+            "name": "Thai basil",
+            "quantity": 0.125,
+            "unit": "packs"
+        }
+    ],
+    "instructions": "Heat 1 tbsp sesame oil in a wide-based pan with a tight-fitting lid.\nAdd 1 finely chopped red onion and cook over a low heat for 10 mins, stirring occasionally, until softened.\nAdd 1 crushed garlic clove, a finely chopped thumb-sized piece of ginger and 1 finely chopped red chilli, cook for 1 min, then add 1\u00bd tsp ground turmeric and 1\u00bd tsp ground cumin and cook for 1 min more.\nTurn up the heat to medium, add 2 sweet potatoes, cut into even chunks, and stir everything together so the potato is coated in the spice mixture.\nTip in 250g red split lentils, 600ml vegetable stock and some seasoning.\nBring the liquid to the boil, then reduce the heat, cover and cook for 20 mins until the lentils are tender and the potato is just holding its shape.\nTaste and adjust the seasoning, then gently stir in the 80g spinach. Once wilted, top with the 4 diagonally sliced spring onions and \u00bd small pack torn basil leaves to serve.\nAlternatively, allow to cool completely, then divide between airtight containers and store in the fridge for a healthy lunchbox.",
+    "title": "Spinach, sweet potato & lentil dhal",
+    "total_time": 45,
+    "yields": 4
 }

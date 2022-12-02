@@ -1,60 +1,67 @@
 {
-  "canonical_url": "https://www.bbcgoodfood.com/recipes/linguine-avocado-tomato-lime",
-  "host": "bbcgoodfood.com",
-  "id": "0607603cf8f1702cee1dbad2ff91e08ffdebae9c",
-  "ingredients": [
-    {
-      "comment": "",
-      "input": "115g wholemeal linguine",
-      "name": "wholemeal linguine",
-      "quantity": 57.5,
-      "unit": "g"
-    },
-    {
-      "comment": "zested and juiced",
-      "input": "1 lime, zested and juiced",
-      "name": "lime",
-      "quantity": 0.5,
-      "unit": ""
-    },
-    {
-      "comment": "stoned, peeled, and chopped",
-      "input": "1 avocado, stoned, peeled, and chopped",
-      "name": "avocado",
-      "quantity": 0.5,
-      "unit": ""
-    },
-    {
-      "comment": "",
-      "input": "2 large ripe tomatoes, chopped",
-      "name": "tomatoes",
-      "quantity": 1.0,
-      "unit": ""
-    },
-    {
-      "comment": "",
-      "input": "\u00bd pack fresh coriander, chopped",
-      "name": "fresh coriander",
-      "quantity": 0.25,
-      "unit": "packs"
-    },
-    {
-      "comment": "finely chopped",
-      "input": "1 red onion, finely chopped",
-      "name": "red onion",
-      "quantity": 0.5,
-      "unit": ""
-    },
-    {
-      "comment": "deseeded and finely chopped (optional)",
-      "input": "1 red chilli, deseeded and finely chopped (optional)",
-      "name": "red chilli",
-      "quantity": 0.5,
-      "unit": ""
-    }
-  ],
-  "instructions": "Cook the pasta according to pack instructions \u2013 about 10 mins. Meanwhile, put the lime juice and zest in a medium bowl with the avocado, tomatoes, coriander, onion and chilli, if using, and mix well.\nDrain the pasta, toss into the bowl and mix well. Serve straight away while still warm, or cold.",
-  "title": "Linguine with avocado, tomato & lime",
-  "total_time": 30,
-  "yields": 2
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/linguine-avocado-tomato-lime",
+    "host": "bbcgoodfood.com",
+    "id": "0607603cf8f1702cee1dbad2ff91e08ffdebae9c",
+    "ingredients": [
+        {
+            "category": "dry-goods",
+            "comment": "",
+            "input": "115g wholemeal linguine",
+            "name": "wholemeal linguine",
+            "quantity": 57.5,
+            "unit": "g"
+        },
+        {
+            "category": "fruits",
+            "comment": "zested and juiced",
+            "input": "1 lime, zested and juiced",
+            "name": "lime",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "fruits",
+            "comment": "stoned, peeled, and chopped",
+            "input": "1 avocado, stoned, peeled, and chopped",
+            "name": "avocado",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "fruits",
+            "comment": "",
+            "input": "2 large ripe tomatoes, chopped",
+            "name": "tomatoes",
+            "quantity": 1.0,
+            "unit": ""
+        },
+        {
+            "category": "vegetables",
+            "comment": "",
+            "input": "\u00bd pack fresh coriander, chopped",
+            "name": "fresh coriander",
+            "quantity": 0.25,
+            "unit": "packs"
+        },
+        {
+            "category": "vegetables",
+            "comment": "finely chopped",
+            "input": "1 red onion, finely chopped",
+            "name": "red onion",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "vegetables",
+            "comment": "deseeded and finely chopped (optional)",
+            "input": "1 red chilli, deseeded and finely chopped (optional)",
+            "name": "red chilli",
+            "quantity": 0.5,
+            "unit": ""
+        }
+    ],
+    "instructions": "Cook the pasta according to pack instructions \u2013 about 10 mins. Meanwhile, put the lime juice and zest in a medium bowl with the avocado, tomatoes, coriander, onion and chilli, if using, and mix well.\nDrain the pasta, toss into the bowl and mix well. Serve straight away while still warm, or cold.",
+    "title": "Linguine with avocado, tomato & lime",
+    "total_time": 30,
+    "yields": 2
 }
