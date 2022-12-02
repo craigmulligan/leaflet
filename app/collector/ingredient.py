@@ -16,6 +16,16 @@ pint.define("sprigs = 1")
 pint.define("packs = 1")
 
 
+def renamer(name):
+    if name == "tomatoes":
+        return "tomato"
+
+    if "chillies" in name:
+        return name.replace("chillies", "chilli")
+
+    return name
+
+
 def unit_to_str(units):
     return "" if str(units) == "dimensionless" else pint.get_symbol(str(units))
 
@@ -32,42 +42,48 @@ class Ingredient(TypedDict):
 def parse(description) -> Ingredient:
     nltk.download("averaged_perceptron_tagger")
     d = parse_ingredient(description)
+    name = renamer(d["name"])
 
     return {
-        "name": d["name"],
+        "name": name,
         "quantity": float(d["quantity"]),
         "unit": d["unit"],
         "input": description,
         "comment": d["comment"],
-        "category": get_category(d["name"]),
+        "category": get_category(name),
     }  # type: ignore
 
 
 def get_category(name: str) -> str:
-    with open("data/categories.json", "r+") as f:
-        categories = json.loads(f.read())
+    try:
+        with open("data/categories.json", "r+") as f:
+            categories = json.loads(f.read())
+            for key, values in categories.items():
+                if name in values:
+                    return key
 
-        for key, values in categories.items():
-            if name in values:
-                return key
+            choices = "\n".join(
+                [f"({i}) {key}" for i, key in enumerate(categories.keys())]
+            )
+            choice = input(f"What is the category of: {name}\n{choices}\n")
 
-        choices = "\n".join([f"({i}) {key}" for i, key in enumerate(categories.keys())])
-        choice = input(f"What is the category of: {name}\n{choices}\n")
+            output = list(categories.keys())[int(choice)]
 
-        output = categories.keys()[int(choice)]
+            # Now let's auto update the categories list.
+            if output in categories:
+                categories[output].append(name)
+            else:
+                categories[output] = [name]
 
-        # Now let's auto update the categories list.
-        if output in categories:
-            categories[output].append(name)
-        else:
-            categories[output] = [name]
+            data = json.dumps(categories, indent=4, sort_keys=True)
+            f.truncate()
+            f.seek(0)
+            f.write(data)
 
-        data = json.dumps(categories, indent=4, sort_keys=True)
-        f.truncate()
-        f.seek(0)
-        f.write(data)
-
-    return output
+        return output
+    except Exception as exc_info:
+        print(exc_info)
+        return ""
 
 
 def yield_factor(ingredient: Ingredient, yields: int):
@@ -138,3 +154,19 @@ def get_base_units(quantity):
         for k, v in dimensionalities.items()
     }
     return dimensionalities.get(quantity.dimensionality)
+
+
+def fixup(ingredient):
+    keys = list(ingredient.keys())
+    choices = "\n".join([f"({i}) {choice}" for i, choice in enumerate(keys)])
+    result = "\n".join([f"{key}: {value}" for key, value in ingredient.items()])
+
+    answer = input(f"Happy?\n{result}\n{choices}\n")
+
+    if answer:
+        key = keys[int(answer)]
+        ingredient.pop(key)
+        ingredient = ask(ingredient["input"], ingredient)
+        return fixup(ingredient)
+
+    return ingredient
