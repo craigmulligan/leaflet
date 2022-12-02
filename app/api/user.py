@@ -8,7 +8,7 @@ from flask import (
     request,
 )
 from app import database
-from app import recipe_manager
+from app import leaflet_manager
 from app.api.utils import authenticated_resource
 
 blueprint = Blueprint("user", __name__)
@@ -71,7 +71,7 @@ def user_post(user_id):
 @authenticated_resource
 def leaflet_new(user_id):
     db = database.get()
-    rm = recipe_manager.get()
+    lm = leaflet_manager.get()
     user = db.user_get_by_id(user_id)
 
     if not user:
@@ -80,8 +80,8 @@ def leaflet_new(user_id):
     if not user.can_view():
         abort(403)
 
-    leaflet = rm.generate(user)
-    rm.save(leaflet)
+    leaflet = lm.generate(user)
+    lm.save(leaflet)
 
     flash("We sent you a new leaflet", "info")
 
