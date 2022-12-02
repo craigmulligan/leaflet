@@ -51,7 +51,10 @@ def get_category(name: str) -> str:
             if name in values:
                 return key
 
-        output = input(f"What is the category of: {name}\n")
+        choices = "\n".join([f"({i}) {key}" for i, key in enumerate(categories.keys())])
+        choice = input(f"What is the category of: {name}\n{choices}\n")
+
+        output = categories.keys()[int(choice)]
 
         # Now let's auto update the categories list.
         if output in categories:

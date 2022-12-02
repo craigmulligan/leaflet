@@ -10,10 +10,16 @@ from pint import DimensionalityError, Quantity
 from app.collector.ingredient import pint, unit_to_str
 
 
-class ShoppingListItem(TypedDict):
+class ShoppingTotal(TypedDict):
     total: Union[int, Quantity]
     unit: Optional[str]
     category: Optional[str]
+
+
+class ShoppingIngredient(TypedDict):
+    name: Union[int, Quantity]
+    unit: Optional[str]
+    quantity: Optional[str]
 
 
 @dataclass
@@ -22,12 +28,12 @@ class Leaflet:
     recipes: List[Recipe]
     user: User
 
-    def shopping_list(self) -> Dict[str, List[ShoppingListItem]]:
+    def shopping_list(self) -> Dict[str, List[ShoppingIngredient]]:
         """
         For each recipe we add all ingredients
         and calculate totals.
         """
-        totals: Dict[str, List[ShoppingListItem]] = {}
+        totals: Dict[str, List[ShoppingTotal]] = {}
 
         for recipe in self.recipes:
             for ingredient in recipe.ingredients:
@@ -53,6 +59,7 @@ class Leaflet:
                         attempts += 1
 
         output = {}
+
         for ingredient_name, quantities in totals.items():
             for data in quantities:
                 unit = unit_to_str(data["unit"])
