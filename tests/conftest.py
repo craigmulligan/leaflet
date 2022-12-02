@@ -4,7 +4,7 @@ from unittest.mock import Mock
 from app import create_app
 from app.models import User
 from app.mail import MailManager
-from app.recipe_manager import LeafletManager, get as get_recipe_manager
+from app.leaflet_manager import LeafletManager, get as get_leaflet_manager
 from app.session import session
 from app import database
 from flask import g
@@ -25,7 +25,7 @@ def app():
 
 
 @pytest.fixture()
-def recipe_manager_mock():
+def leaflet_manager_mock():
     mock = Mock()
 
     setattr(g, LeafletManager.context_key, mock)
@@ -33,8 +33,8 @@ def recipe_manager_mock():
 
 
 @pytest.fixture()
-def recipe_manager():
-    return get_recipe_manager()
+def leaflet_manager():
+    return get_leaflet_manager()
 
 
 @pytest.fixture(autouse=True)
