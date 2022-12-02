@@ -12,7 +12,7 @@ if __name__ == "__main__":
     This is so we can maintain manual fixes. If you want a file
     to be regenerated you must delete it from /data
     """
-    url_file = "data/url.txt"
+    url_file = "data/test.txt"
     persister = Persister()
     collect_urls(url_file)
     collect_recipes(persister, url_file)
