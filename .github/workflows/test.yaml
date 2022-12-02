@@ -11,7 +11,7 @@ jobs:
     - uses: abatilo/actions-poetry@v2.0.0
     - uses: actions/setup-python@v4
       with:
-        python-version: '3.10.6'
+        python-version: '3.10.5'
     - run: poetry install
     # - run: poetry run flask dev fmt -- --check
     - run: poetry run flask dev mypy
