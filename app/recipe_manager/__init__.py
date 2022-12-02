@@ -1,4 +1,3 @@
-import logging
 from typing import List
 from flask import g
 from app.models import User, Recipe
@@ -11,7 +10,7 @@ from app.collector.ingredient import pint, unit_to_str
 
 
 @dataclass
-class Digest:
+class Leaflet:
     created_at: datetime
     recipes: List[Recipe]
     user: User
@@ -59,20 +58,20 @@ class Digest:
         return output
 
 
-class RecipeManager:
+class LeafletManager:
     context_key = "_recipe_manager"
 
     def __init__(self) -> None:
         self.db = database.get()
 
-    def get_digest(self, user: User) -> Digest:
+    def generate(self, user: User) -> Leaflet:
 
         """
         This is where the magic happens, but rn
         it's pretty simple.
 
         1. First pick a random recipe.
-        2. Find another <user.recipe_per_digest:int> recipes with similar ingredients.
+        2. Find another <user.recipe_per_leaflet:int> recipes with similar ingredients.
         """
 
         db = database.get()
@@ -84,17 +83,17 @@ class RecipeManager:
             recipes.append(db.recipe_get(recipe_id))
 
         now = datetime.utcnow()
-        return Digest(now, recipes, user)
+        return Leaflet(now, recipes, user)
 
-    def save_digest(self, digest):
-        for recipe in digest.recipes:
-            self.db.digest_insert(digest.created_at, recipe.id, digest.user.id)
+    def save(self, leaflet):
+        for recipe in leaflet.recipes:
+            self.db.leaflet_insert(leaflet.created_at, recipe.id, leaflet.user.id)
 
 
-def get() -> RecipeManager:
-    manager = getattr(g, RecipeManager.context_key, None)
+def get() -> LeafletManager:
+    manager = getattr(g, LeafletManager.context_key, None)
     if manager is None:
-        manager = RecipeManager()
-        setattr(g, RecipeManager.context_key, manager)
+        manager = LeafletManager()
+        setattr(g, LeafletManager.context_key, manager)
 
     return manager

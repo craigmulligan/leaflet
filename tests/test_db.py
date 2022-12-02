@@ -7,7 +7,7 @@ def test_recipe_random(db, seeded_recipe_ids, dummy_user, dummy_recipe_id):
 
     for recipe_id in seeded_recipe_ids:
         if recipe_id != dummy_recipe_id:
-            db.digest_insert(now, recipe_id, user.id)
+            db.leaflet_insert(now, recipe_id, user.id)
 
     recipe_id = db.recipe_random(user.id)
     assert recipe_id == dummy_recipe_id

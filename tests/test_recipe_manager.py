@@ -1,4 +1,4 @@
-def test_get_digest(
+def test_generate(
     dummy_user,
     recipe_manager,
     db,
@@ -6,9 +6,9 @@ def test_get_digest(
     dummy_recipe_id,
 ):
     user = dummy_user()
-    digest = recipe_manager.get_digest(user)
-    assert len(digest.recipes) == 2
-    ids = [recipe.id for recipe in digest.recipes]
+    leaflet = recipe_manager.generate(user)
+    assert len(leaflet.recipes) == 2
+    ids = [recipe.id for recipe in leaflet.recipes]
 
     # Ids should be static because mock the randomizer and
     # only load a subset of recipes for tests.
@@ -18,7 +18,7 @@ def test_get_digest(
     ]
 
 
-def test_save_digest(
+def test_save_leaflet(
     dummy_user,
     recipe_manager,
     db,
@@ -26,13 +26,13 @@ def test_save_digest(
     dummy_recipe_id,
 ):
     user = dummy_user()
-    digest = recipe_manager.get_digest(user)
+    leaflet = recipe_manager.generate(user)
 
-    assert len(db.digest_get_all_by_user(user.id)) == 0
+    assert len(db.leaflet_get_all_by_user(user.id)) == 0
 
-    recipe_manager.save_digest(digest)
+    recipe_manager.save(leaflet)
 
-    assert len(db.digest_get_all_by_user(user.id)) == 1
+    assert len(db.leaflet_get_all_by_user(user.id)) == 1
 
 
 def test_get_shopping_list(
@@ -43,8 +43,8 @@ def test_get_shopping_list(
     dummy_recipe_id,
 ):
     user = dummy_user()
-    digest = recipe_manager.get_digest(user)
-    shopping_list = digest.shopping_list()
+    leaflet = recipe_manager.generate(user)
+    shopping_list = leaflet.shopping_list()
 
     assert len(shopping_list) == 25
     last_item = shopping_list[-1]
@@ -55,8 +55,8 @@ def test_get_shopping_list(
     serving_size = 2
     db.user_update(user.id, user.recipes_per_week, serving_size)
     user = db.user_get_by_id(user.id)
-    digest = recipe_manager.get_digest(user)
-    shopping_list = digest.shopping_list()
+    leaflet = recipe_manager.generate(user)
+    shopping_list = leaflet.shopping_list()
 
     assert len(shopping_list) == 25
     last_item = shopping_list[-1]
