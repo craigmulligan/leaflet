@@ -289,10 +289,10 @@ class Db:
         for recipe_id in os.listdir(directory):
             # checking if it is a file
             with open(os.path.join(directory, recipe_id), "r") as f:
-                if recipe_ids is None or recipe_id in recipe_ids:
-                    data = json.load(f)
+                data = json.load(f)
+                if recipe_ids is None or data["id"] in recipe_ids:
                     self.recipe_insert(
-                        recipe_id,
+                        data["id"],
                         data["title"],
                         data["canonical_url"],
                         data["yields"],
@@ -302,7 +302,7 @@ class Db:
 
                     for ingredient in data["ingredients"]:
                         self.ingredient_insert(
-                            recipe_id,
+                            data["id"],
                             ingredient["name"],
                             ingredient["quantity"],
                             ingredient["unit"],

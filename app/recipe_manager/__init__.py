@@ -6,11 +6,8 @@ from app import database
 from dataclasses import dataclass
 from datetime import datetime
 
-from pint import UnitRegistry, UndefinedUnitError, DimensionalityError
-
-pint = UnitRegistry()
-pint.define("cloves = 1")
-pint.define("bunches = 1")
+from pint import DimensionalityError
+from app.collector.ingredient import pint, unit_to_str
 
 
 @dataclass
@@ -24,53 +21,39 @@ class Digest:
         For each recipe we add all ingredients
         and calculate totals.
         """
-        ingredients = {}
+        totals = {}
 
         for recipe in self.recipes:
-            factor = self.user.serving / recipe.yields
-
             for ingredient in recipe.ingredients:
-                try:
-                    ingredient.quantity = ingredient.quantity * factor
-                except:
-                    breakpoint()
-                ingredients.setdefault(ingredient.name, []).append(ingredient)
+                totals.setdefault(ingredient.name, [{"total": 0, "unit": None}])
+                q = pint.Quantity(ingredient.quantity, ingredient.unit)
 
-        failures = []
-        quantities = {}
+                attempts = 0
 
-        for key, value in ingredients.items():
-            for v in value:
-                try:
-                    quantities.setdefault(key, []).append(
-                        pint.Quantity(v.quantity, v.unit)
-                    )
-                except UndefinedUnitError as e:
-                    logging.warning(
-                        f"couldn't get normalize unit:{v.unit} - adding without unit."
-                    )
-                    quantities.setdefault(key, []).append(pint.Quantity(v.quantity))
-                except ValueError as e:
-                    logging.warning(f"couldn't get normalize quantity:{v.quantity}")
-                    failures.append([e, v])
-                except DimensionalityError as e:
-                    failures.append([e, v])
+                while True:
+                    try:
+                        quantity_type = totals[ingredient.name][attempts]
+                    except:
+                        break
+
+                    try:
+                        quantity_type["total"] += q
+                        quantity_type["unit"] = q.units
+                        break
+                    except DimensionalityError:
+                        attempts += 1
 
         output = []
+        for ingredient_name, quantities in totals.items():
+            for data in quantities:
+                unit = unit_to_str(data["unit"])
+                quantity = (
+                    data["total"].magnitude
+                    if isinstance(data["total"], pint.Quantity)
+                    else data["total"]
+                ) * self.user.serving
 
-        for ingredient_name, values in quantities.items():
-            total = 0
-            units = ""
-
-            for value in values:
-                total += round(value.magnitude, 2)
-                units = (
-                    ""
-                    if str(value.units) == "dimensionless"
-                    else pint.get_symbol(str(value.units))
-                )
-
-            output.append(f"{ingredient_name}: {total} {units}".strip())
+                output.append(f"{ingredient_name}: {round(quantity, 2)} {unit}".strip())
 
         output.sort()
         return output
@@ -93,12 +76,8 @@ class RecipeManager:
         """
 
         db = database.get()
-        # random_recipe_id = db.recipe_random(user.id)
-        random_recipe_id = "c797c762797ce269e9dd6a6d815d1000fe4e1078"
-        similar_recipe_ids = [""]
-        # similar_recipe_ids = db.recipe_similar(random_recipe_id, user.recipes_per_week)
-        # TODO:
-        # Convert recipe to user.serving size.
+        random_recipe_id = db.recipe_random(user.id)
+        similar_recipe_ids = db.recipe_similar(random_recipe_id, user.recipes_per_week)
 
         recipes = []
         for recipe_id in [random_recipe_id, *similar_recipe_ids]:
