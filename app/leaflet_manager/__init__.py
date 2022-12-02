@@ -4,6 +4,7 @@ from app.models import User, Recipe
 from app import database
 from dataclasses import dataclass
 from datetime import datetime
+import time
 
 from pint import DimensionalityError
 from app.collector.ingredient import pint, unit_to_str
@@ -74,20 +75,31 @@ class LeafletManager:
         2. Find another <user.recipe_per_leaflet:int> recipes with similar ingredients.
         """
 
-        db = database.get()
-        random_recipe_id = db.recipe_random(user.id)
-        similar_recipe_ids = db.recipe_similar(random_recipe_id, user.recipes_per_week)
+        random_recipe_id = self.db.recipe_random(user.id)
+        similar_recipe_ids = self.db.recipe_similar(
+            random_recipe_id, user.recipes_per_week
+        )
 
         recipes = []
         for recipe_id in [random_recipe_id, *similar_recipe_ids]:
-            recipes.append(db.recipe_get(recipe_id))
+            recipes.append(self.db.recipe_get(recipe_id))
 
         now = datetime.utcnow()
         return Leaflet(now, recipes, user)
 
+    def get(self, user: User, leaflet_id: int):
+        recipes = []
+        for recipe_id in self.db.recipe_get_all_by_leaflet_id(leaflet_id):
+            recipes.append(self.db.recipe_get(recipe_id))
+
+        return Leaflet(recipes[0].created_at, recipes, user)
+
     def save(self, leaflet):
+        leaflet_id = int(time.time())
         for recipe in leaflet.recipes:
-            self.db.leaflet_insert(leaflet.created_at, recipe.id, leaflet.user.id)
+            self.db.leaflet_insert(leaflet_id, recipe.id, leaflet.user.id)
+
+        return leaflet_id
 
 
 def get() -> LeafletManager:

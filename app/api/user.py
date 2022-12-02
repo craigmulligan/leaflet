@@ -81,6 +81,27 @@ def leaflet_new(user_id):
         abort(403)
 
     leaflet = lm.generate(user)
+    leaflet_id = lm.save(leaflet)
+
+    flash("We sent you a new leaflet", "info")
+
+    return redirect(url_for("user.leaflet_get", user_id=user_id, leaflet_id=leaflet_id))
+
+
+@blueprint.route("/<int:user_id>/leaflet/<int:leaflet_id>", methods=["get"])
+@authenticated_resource
+def leaflet_get(user_id, leaflet_id):
+    db = database.get()
+    lm = leaflet_manager.get()
+    user = db.user_get_by_id(user_id)
+
+    if not user:
+        abort(404)
+
+    if not user.can_view():
+        abort(403)
+
+    leaflet = lm.get(user, leaflet_id)
     lm.save(leaflet)
 
     flash("We sent you a new leaflet", "info")

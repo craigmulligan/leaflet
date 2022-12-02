@@ -84,3 +84,21 @@ def test_user_get_unauthenticated(client, dummy_user):
     user = dummy_user()
     response = client.get(f"/user/{user.id}")
     assert response.status_code == 302
+
+
+def test_user_leaflet_post(client, dummy_user, signin, db, leaflet_manager):
+    """
+    Asserts user can request a new leaflet
+    """
+    user = dummy_user()
+    signin(user)
+
+    response = client.post(f"/user/{user.id}/leaflet", follow_redirects=True)
+
+    leaflet_ids = db.leaflet_get_all_by_user(user.id)
+    leaflet = leaflet_manager.get(user, leaflet_ids[0])
+
+    assert response.status_code == 200
+    assert render_template(
+        "leaflet.html", user=user, leaflet=leaflet
+    ) == response.data.decode("utf-8")
