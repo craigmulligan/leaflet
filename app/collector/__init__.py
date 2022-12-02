@@ -9,7 +9,15 @@ import hashlib
 from time import sleep
 from typing import List
 from recipe_scrapers._abstract import AbstractScraper
-from .ingredient import Ingredient, parse, ask, normalize, yield_factor, get_category
+from .ingredient import (
+    Ingredient,
+    parse,
+    ask,
+    normalize,
+    yield_factor,
+    get_category,
+    fixup,
+)
 from recipe_scrapers import scrape_me
 
 
@@ -39,11 +47,12 @@ class Recipe:
             try:
                 ingredient = parse(i)
             except Exception as e:
-                print(e)
+                print(f"Exception: {e}")
                 ingredient = ask(i)
             finally:
                 assert ingredient
-                normalized = normalize(ingredient)
+                corrected = fixup(ingredient)
+                normalized = normalize(corrected)
                 result = yield_factor(normalized, self.yields())
                 data.append(result)
 
