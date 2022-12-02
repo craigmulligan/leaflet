@@ -1,10 +1,10 @@
 from typing import List
 from flask import g
+import uuid
 from app.models import User, Recipe
 from app import database
 from dataclasses import dataclass
 from datetime import datetime
-import time
 
 from pint import DimensionalityError
 from app.collector.ingredient import pint, unit_to_str
@@ -95,7 +95,7 @@ class LeafletManager:
         return Leaflet(recipes[0].created_at, recipes, user)
 
     def save(self, leaflet):
-        leaflet_id = int(time.time())
+        leaflet_id = str(uuid.uuid4())
         for recipe in leaflet.recipes:
             self.db.leaflet_insert(leaflet_id, recipe.id, leaflet.user.id)
 
