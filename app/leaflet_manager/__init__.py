@@ -97,7 +97,7 @@ class LeafletManager:
     def save(self, leaflet):
         leaflet_id = str(uuid.uuid4())
         for recipe in leaflet.recipes:
-            self.db.leaflet_insert(leaflet_id, recipe.id, leaflet.user.id)
+            self.db.leaflet_entry_insert(leaflet_id, recipe.id, leaflet.user.id)
 
         return leaflet_id
 
