@@ -213,6 +213,7 @@ class Db:
             SELECT *
             FROM ingredient
             where recipe_id = ?
+            order by name
             """,
             [recipe_id],
         )

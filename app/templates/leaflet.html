@@ -5,8 +5,13 @@
   <h2>Shopping List:</h2>
   </br>
   <ul>
-    {% for ingredient in leaflet.shopping_list() %}
-    <li>{{ingredient}}</li>
+    {% for category, ingredients in leaflet.shopping_list().items() %}
+    <li>{{category}}</li>
+    <ul>
+    {% for ingredient in ingredients %}
+    <li>{{ingredient["name"]}}: {{ingredient["quantity"]}} {{ingredient["unit"]}}</li>
+    {% endfor %}
+    </ul>
     {% endfor %}
   </ul>
   </br>

@@ -4,7 +4,7 @@
   "id": "afcafa1ffddbf7883446919eb1b13610febb41e3",
   "ingredients": [
     {
-      "category": "dressings",
+      "category": "dressing",
       "comment": "",
       "input": "1 tbsp sesame oil",
       "name": "sesame oil",
@@ -12,7 +12,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "finely chopped",
       "input": "1 red onion, finely chopped",
       "name": "red onion",
@@ -20,7 +20,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "1 garlic clove, crushed",
       "name": "garlic",
@@ -28,7 +28,7 @@
       "unit": "cloves"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "thumb-sized piece ginger, peeled and finely chopped",
       "name": "ginger",
@@ -36,7 +36,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "finely chopped",
       "input": "1 red chilli, finely chopped",
       "name": "red chilli",
@@ -44,7 +44,7 @@
       "unit": ""
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1\u00bd tsp ground turmeric",
       "name": "ground turmeric",
@@ -52,7 +52,7 @@
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1\u00bd tsp ground cumin",
       "name": "ground cumin",
@@ -60,15 +60,15 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "cut into even chunk",
       "input": "2 sweet potatoes (about 400g/14oz), cut into even chunks",
-      "name": "sweet potatoes (about 400 g 14 oz)",
+      "name": "sweet potato",
       "quantity": 0.5,
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "250g red split lentils",
       "name": "red split lentils",
@@ -76,7 +76,7 @@
       "unit": "g"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "600ml vegetable stock",
       "name": "vegetable stock",
@@ -84,7 +84,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "bag of spinach",
       "input": "80g bag of spinach",
       "name": "spinach",
@@ -92,15 +92,15 @@
       "unit": "g"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "sliced on the diagonal, to serve",
       "input": "4 spring onions, sliced on the diagonal, to serve",
-      "name": "spring onions",
+      "name": "spring onion",
       "quantity": 1.0,
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "\u00bd small pack of Thai basil, leaves torn, to serve",
       "name": "Thai basil",
