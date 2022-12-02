@@ -1,0 +1,151 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/miso-burgers-mint-pomegranate-slaw",
+    "host": "bbcgoodfood.com",
+    "id": "72335e9f76c017f81c0c8c36c4ec1e0aad6be6fb",
+    "ingredients": [
+        {
+            "comment": "",
+            "input": "75g bulghar wheat",
+            "name": "bulghar wheat",
+            "quantity": 18.75,
+            "unit": "g"
+        },
+        {
+            "comment": "",
+            "input": "1 tbsp rapeseed oil",
+            "name": "rapeseed oil",
+            "quantity": 3.6975,
+            "unit": "ml"
+        },
+        {
+            "comment": "chopped",
+            "input": "2 onions , chopped",
+            "name": "onions",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "comment": "chopped",
+            "input": "4 garlic cloves , chopped",
+            "name": "garlic",
+            "quantity": 1.0,
+            "unit": "cloves"
+        },
+        {
+            "comment": "coarsely grated",
+            "input": "2 carrots , coarsely grated",
+            "name": "carrots",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "1 large red chilli , deseeded and finely chopped",
+            "name": "red chilli",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "1 tsp cumin seeds",
+            "name": "cumin seeds",
+            "quantity": 1.2325,
+            "unit": "ml"
+        },
+        {
+            "comment": "",
+            "input": "1 tbsp ground coriander",
+            "name": "ground coriander",
+            "quantity": 3.6975,
+            "unit": "ml"
+        },
+        {
+            "comment": "",
+            "input": "30g pack coriander , stalks and leaves chopped but kept separate",
+            "name": "coriander",
+            "quantity": 7.5,
+            "unit": "g"
+        },
+        {
+            "comment": "zested, 0.5 juiced, 0.5 cut into 4 wedge",
+            "input": "1 lime , zested, 1/2 juiced, 1/2 cut into 4 wedges",
+            "name": "lime",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "2 x cans chickpeas , drained",
+            "name": "chickpeas",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "comment": "",
+            "input": "2 large eggs",
+            "name": "eggs",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "2 tbsp white miso paste",
+            "name": "white miso paste",
+            "quantity": 7.3925,
+            "unit": "ml"
+        },
+        {
+            "comment": "",
+            "input": "\u00bd small white cabbage , shredded",
+            "name": "white cabbage",
+            "quantity": 0.125,
+            "unit": ""
+        },
+        {
+            "comment": "halved and thinly sliced",
+            "input": "1 red onion , halved and thinly sliced",
+            "name": "red onion",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "comment": "shredded (ideally with a julienne peeler)",
+            "input": "2 carrots , shredded (ideally with a julienne peeler)",
+            "name": "carrots",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "1 pomegranate seeds only",
+            "name": "pomegranate seeds only",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "2 tbsp chopped mint",
+            "name": "chopped mint",
+            "quantity": 7.3925,
+            "unit": "ml"
+        },
+        {
+            "comment": "",
+            "input": "1 tbsp cider vinegar",
+            "name": "cider vinegar",
+            "quantity": 3.6975,
+            "unit": "ml"
+        },
+        {
+            "comment": "",
+            "input": "1 tbsp extra virgin rapeseed oil",
+            "name": "extra virgin rapeseed oil",
+            "quantity": 3.6975,
+            "unit": "ml"
+        }
+    ],
+    "instructions": "Heat oven to 220C/200C fan/gas 7. Cook the bulghar in a small pan of water for 5 mins. Meanwhile, heat the oil in a large non-stick frying pan and fry the onions and garlic, stirring, for 5 mins or until starting to turn golden. Add the carrots and chilli, and cook, stirring frequently, for 5 mins until the carrots soften. Add the cumin, ground coriander, coriander stalks and lime zest, and stir well.\nTip the chickpeas into a bowl and crush with a masher or fork, then add the eggs and miso to form a chunky paste.\nDrain the bulghar well and stir into the spicy vegetables. Take off the heat, shape into eight burgers and place on a baking sheet lined with baking parchment. Bake in the oven for 15-20 mins or until firm and starting to turn golden.\nFor the slaw, combine all the ingredients in a big bowl with the lime juice and coriander leaves. Serve with the burgers and lime wedges for squeezing over.",
+    "title": "Miso burgers with mint & pomegranate slaw",
+    "total_time": 40,
+    "yields": 4
+}

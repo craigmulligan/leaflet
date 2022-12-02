@@ -6,8 +6,12 @@ import nltk
 
 nltk.download("averaged_perceptron_tagger")
 pint = UnitRegistry()
+
+# arbitrary units
 pint.define("cloves = 1")
 pint.define("bunches = 1")
+pint.define("sprigs = 1")
+pint.define("packs = 1")
 
 
 class Ingredient(TypedDict):
@@ -15,11 +19,19 @@ class Ingredient(TypedDict):
     quantity: float
     unit: Optional[str]
     input: str
+    comment: Optional[str]
 
 
 def parse(description) -> Ingredient:
     d = parse_ingredient(description)
-    return {"name": d["name"], "quantity": float(d["quantity"]), "unit": d["unit"], "input": description}  # type: ignore
+
+    return {
+        "name": d["name"],
+        "quantity": float(d["quantity"]),
+        "unit": d["unit"],
+        "input": description,
+        "comment": d["comment"],
+    }  # type: ignore
 
 
 def yield_factor(ingredient: Ingredient, yields: int):
@@ -53,7 +65,7 @@ def normalize(ingredient: Ingredient) -> Ingredient:
 
 
 def ask(description, result=None) -> Ingredient:
-    keys = ["name", "quantity", "unit"]
+    keys = ["name", "quantity", "unit", "comment"]
     if result is None:
         result = {}
 
