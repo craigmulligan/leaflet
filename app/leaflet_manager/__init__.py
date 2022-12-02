@@ -10,7 +10,7 @@ from pint import DimensionalityError, Quantity
 from app.collector.ingredient import pint, unit_to_str
 
 
-class IngredientTotal(TypedDict):
+class ShoppingListItem(TypedDict):
     total: Union[int, Quantity]
     unit: Optional[str]
     category: Optional[str]
@@ -22,12 +22,12 @@ class Leaflet:
     recipes: List[Recipe]
     user: User
 
-    def shopping_list(self) -> List[str]:
+    def shopping_list(self) -> Dict[str, List[ShoppingListItem]]:
         """
         For each recipe we add all ingredients
         and calculate totals.
         """
-        totals: Dict[str, List[IngredientTotal]] = {}
+        totals: Dict[str, List[ShoppingListItem]] = {}
 
         for recipe in self.recipes:
             for ingredient in recipe.ingredients:
@@ -52,7 +52,7 @@ class Leaflet:
                     except DimensionalityError:
                         attempts += 1
 
-        output = []
+        output = {}
         for ingredient_name, quantities in totals.items():
             for data in quantities:
                 unit = unit_to_str(data["unit"])
@@ -62,11 +62,17 @@ class Leaflet:
                     else data["total"]
                 ) * self.user.serving
 
-                output.append(
-                    f"{ingredient_name}: {round(quantity, 2)} {unit} {data['category']}".strip()
+                category = data["category"] or "other"
+                output.setdefault(category, [])
+
+                output[category].append(
+                    {
+                        "name": ingredient_name,
+                        "quantity": round(quantity, 2),
+                        "unit": unit,
+                    }
                 )
 
-        output.sort()
         return output
 
 

@@ -4,7 +4,7 @@
   "id": "72335e9f76c017f81c0c8c36c4ec1e0aad6be6fb",
   "ingredients": [
     {
-      "category": "dry-goods",
+      "category": "dry-good",
       "comment": "",
       "input": "75g bulghar wheat",
       "name": "bulghar wheat",
@@ -12,7 +12,7 @@
       "unit": "g"
     },
     {
-      "category": "dressings",
+      "category": "dressing",
       "comment": "",
       "input": "1 tbsp rapeseed oil",
       "name": "rapeseed oil",
@@ -20,15 +20,15 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "chopped",
       "input": "2 onions , chopped",
-      "name": "onions",
+      "name": "onion",
       "quantity": 0.5,
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "chopped",
       "input": "4 garlic cloves , chopped",
       "name": "garlic",
@@ -36,7 +36,7 @@
       "unit": "cloves"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "coarsely grated",
       "input": "2 carrots , coarsely grated",
       "name": "carrots",
@@ -44,7 +44,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "1 large red chilli , deseeded and finely chopped",
       "name": "red chilli",
@@ -52,15 +52,15 @@
       "unit": ""
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1 tsp cumin seeds",
-      "name": "cumin seeds",
+      "name": "cumin seed",
       "quantity": 1.2325,
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1 tbsp ground coriander",
       "name": "ground coriander",
@@ -68,7 +68,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "30g pack coriander , stalks and leaves chopped but kept separate",
       "name": "coriander",
@@ -76,7 +76,7 @@
       "unit": "g"
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "zested, 0.5 juiced, 0.5 cut into 4 wedge",
       "input": "1 lime , zested, 1/2 juiced, 1/2 cut into 4 wedges",
       "name": "lime",
@@ -95,7 +95,7 @@
       "category": "diary",
       "comment": "",
       "input": "2 large eggs",
-      "name": "eggs",
+      "name": "egg",
       "quantity": 0.5,
       "unit": ""
     },
@@ -108,7 +108,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "\u00bd small white cabbage , shredded",
       "name": "white cabbage",
@@ -116,7 +116,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "halved and thinly sliced",
       "input": "1 red onion , halved and thinly sliced",
       "name": "red onion",
@@ -124,15 +124,15 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "shredded (ideally with a julienne peeler)",
       "input": "2 carrots , shredded (ideally with a julienne peeler)",
-      "name": "carrots",
+      "name": "carrot",
       "quantity": 0.5,
       "unit": ""
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "",
       "input": "1 pomegranate seeds only",
       "name": "pomegranate seeds",
@@ -140,7 +140,7 @@
       "unit": "packs"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "2 tbsp chopped mint",
       "name": "chopped mint",
@@ -148,7 +148,7 @@
       "unit": "ml"
     },
     {
-      "category": "dressings",
+      "category": "dressing",
       "comment": "",
       "input": "1 tbsp cider vinegar",
       "name": "cider vinegar",
@@ -156,7 +156,7 @@
       "unit": "ml"
     },
     {
-      "category": "dressings",
+      "category": "dressing",
       "comment": "extra virgin",
       "input": "1 tbsp extra virgin rapeseed oil",
       "name": "rapeseed oil",

@@ -4,7 +4,7 @@
   "id": "f83a1421367928da867fbe449d5110aa0621ded5",
   "ingredients": [
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "cut into large chunk",
       "input": "2 aubergines , cut into large chunks",
       "name": "aubergines",
@@ -12,7 +12,7 @@
       "unit": ""
     },
     {
-      "category": "essentials",
+      "category": "essential",
       "comment": "",
       "input": "3 tbsp olive oil",
       "name": "olive oil",
@@ -20,15 +20,15 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "chopped",
       "input": "2 onions , chopped",
-      "name": "onions",
+      "name": "onion",
       "quantity": 0.5,
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "freshly grated",
       "input": "2 tbsp freshly grated ginger",
       "name": "ginger",
@@ -44,7 +44,7 @@
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1 \u00bd tsp sweet smoked paprika",
       "name": "sweet smoked paprika",
@@ -52,7 +52,7 @@
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "good pinch of saffron",
       "name": "saffron",
@@ -60,7 +60,7 @@
       "unit": "cm"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "or chicken",
       "input": "300ml hot vegetable or chicken stock",
       "name": "hot vegetable stock",
@@ -68,26 +68,26 @@
       "unit": "ml"
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "rind of both sliced, pulp from the centre of 1 roughly chopped",
       "input": "2 preserved lemons , rind of both sliced, pulp from the centre of 1 roughly chopped",
-      "name": "preserved lemons",
+      "name": "preserved lemon",
       "quantity": 0.5,
       "unit": ""
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "halved",
       "input": "120g dried apricots , halved",
-      "name": "dried apricots",
+      "name": "dried apricot",
       "quantity": 30.0,
       "unit": "g"
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "roughly chopped",
       "input": "200g tomatoes , roughly chopped",
-      "name": "tomatoes",
+      "name": "tomato",
       "quantity": 50.0,
       "unit": "g"
     },
@@ -100,7 +100,7 @@
       "unit": "ml"
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "",
       "input": "zest 1 lemon , juice 0.5",
       "name": "lemon",
@@ -108,10 +108,10 @@
       "unit": ""
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "2 tsp toasted sesame seeds",
-      "name": "toasted sesame seeds",
+      "name": "sesame seeds",
       "quantity": 2.465,
       "unit": "ml"
     },
@@ -124,10 +124,10 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "2 tbsp finely chopped mint",
-      "name": "finely chopped mint",
+      "name": "mint",
       "quantity": 7.3925,
       "unit": "ml"
     },
@@ -140,7 +140,7 @@
       "unit": "g"
     },
     {
-      "category": "dry-goods",
+      "category": "dry-good",
       "comment": "",
       "input": "wholemeal bulghar wheat , to serve (optional)",
       "name": "wholemeal bulghar wheat",

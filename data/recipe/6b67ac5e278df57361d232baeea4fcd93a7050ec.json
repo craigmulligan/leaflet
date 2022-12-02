@@ -4,7 +4,7 @@
   "id": "6b67ac5e278df57361d232baeea4fcd93a7050ec",
   "ingredients": [
     {
-      "category": "dressings",
+      "category": "dressing",
       "comment": "cold pressed",
       "input": "1 tbsp cold pressed rapeseed oil",
       "name": "rapeseed oil",
@@ -12,7 +12,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "cut into thin wedge",
       "input": "1 red onion , cut into thin wedges",
       "name": "red onion",
@@ -20,7 +20,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "finely sliced",
       "input": "1 red pepper , finely sliced",
       "name": "red pepper",
@@ -28,7 +28,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "finely sliced",
       "input": "1 yellow pepper , finely sliced",
       "name": "yellow pepper",
@@ -36,7 +36,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "3 large garlic cloves , crushed",
       "name": "garlic",
@@ -44,7 +44,7 @@
       "unit": "cloves"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1 tsp cumin seeds",
       "name": "cumin seeds",
@@ -52,7 +52,7 @@
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "crushed",
       "input": "1 tsp coriander seeds , crushed",
       "name": "coriander seeds",
@@ -60,7 +60,7 @@
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1 heaped tsp sweet smoked paprika",
       "name": "sweet smoked paprika",
@@ -68,15 +68,15 @@
       "unit": "ml"
     },
     {
-      "category": "fruits",
+      "category": "canned",
       "comment": "Can of cherry tomatoes",
       "input": "400g can cherry tomatoes",
-      "name": "cherry tomatoes",
+      "name": "cherry tomato",
       "quantity": 200.0,
       "unit": "g"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "115g baby spinach",
       "name": "baby spinach",
@@ -87,12 +87,12 @@
       "category": "diary",
       "comment": "",
       "input": "4 medium eggs",
-      "name": "eggs",
+      "name": "egg",
       "quantity": 2.0,
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "roughly chopped",
       "input": "\u00bd small bunch coriander , roughly chopped",
       "name": "coriander",
@@ -100,7 +100,7 @@
       "unit": "bunches"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "\u00bd small bunch dill , roughly chopped",
       "name": "dill",

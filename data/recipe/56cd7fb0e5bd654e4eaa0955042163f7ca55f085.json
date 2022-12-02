@@ -4,7 +4,7 @@
   "id": "56cd7fb0e5bd654e4eaa0955042163f7ca55f085",
   "ingredients": [
     {
-      "category": "dressings",
+      "category": "dressing",
       "comment": "",
       "input": "1 tbsp rapeseed oil",
       "name": "rapeseed oil",
@@ -12,7 +12,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "chopped",
       "input": "2 garlic cloves, chopped",
       "name": "garlic",
@@ -20,7 +20,7 @@
       "unit": "cloves"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "deseeded and diced",
       "input": "1 yellow pepper, deseeded and diced",
       "name": "yellow pepper",
@@ -28,7 +28,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "deseeded and chopped",
       "input": "\u00bd - 1 red chilli, deseeded and chopped",
       "name": "red chilli",
@@ -36,15 +36,15 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "tops and whites sliced but kept separate",
       "input": "\u00bd bunch spring onions (about 5), tops and whites sliced but kept separate",
-      "name": "spring onions",
+      "name": "spring onion",
       "quantity": 2.5,
       "unit": ""
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "plus a little extra to serve (optional)",
       "input": "1 tsp cumin, plus a little extra to serve (optional)",
       "name": "cumin",
@@ -52,7 +52,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "1 tsp coriander",
       "name": "coriander",
@@ -60,7 +60,7 @@
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "\u00bd tsp turmeric",
       "name": "turmeric",
@@ -68,15 +68,15 @@
       "unit": "ml"
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "cut into wedge",
       "input": "3 tomatoes, cut into wedges",
-      "name": "tomatoes",
+      "name": "tomato",
       "quantity": 1.5,
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "\u2153 pack coriander, chopped",
       "name": "coriander",
@@ -92,7 +92,7 @@
       "unit": "g"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "\u00bd tsp reduced-salt bouillon powder (we used Marigold)",
       "name": "reduced-salt bouillon powder (we used Marigold)",
@@ -103,7 +103,7 @@
       "category": "diary",
       "comment": "",
       "input": "4 large eggs",
-      "name": "eggs",
+      "name": "egg",
       "quantity": 2.0,
       "unit": ""
     }

@@ -13,36 +13,33 @@
   "dairy": [
     "Greek yogurt",
     "yogurt",
-    "yoghurt"
-  ],
-  "diary": [
+    "yoghurt",
     "milk",
     "cheese",
-    "yoghurt",
-    "eggs"
+    "egg"
   ],
-  "dressings": [
+  "dressing": [
     "sesame oil",
     "rapeseed oil",
     "cider vinegar"
   ],
-  "dry-goods": [
+  "dry-good": [
     "pasta",
     "bulghar wheat",
     "wholemeal bulghar wheat",
     "wholemeal linguine",
   ],
   "bakery": [
-    "mini tortillas"
+    "mini tortilla"
   ],
-  "essentials": [
+  "essential": [
     "olive oil",
     "salt",
     "pepper",
     "black pepper",
     "vegetable oil"
   ],
-  "fruits": [
+  "fruit": [
     "apple",
     "apricot",
     "avocado",
@@ -81,13 +78,13 @@
     "strawberry",
     "tamarind",
     "yuzu",
-    "cherry tomatoes",
-    "tomatoes",
+    "cherry tomato",
+    "tomato",
     "pomegranate seeds",
-    "preserved lemons",
-    "dried apricots"
+    "preserved lemon",
+    "dried apricot"
   ],
-  "spices": [
+  "spice": [
     "ground turmeric",
     "ground cumin",
     "vegetable stock",
@@ -104,7 +101,7 @@
     "toasted sesame seeds",
     "smoked paprika"
   ],
-  "vegetables": [
+  "vegetable": [
     "red onion",
     "artichoke",
     "wax gourd",
@@ -132,7 +129,7 @@
     "garlic",
     "ginger",
     "green bean",
-    "green chilies",
+    "green chilli",
     "green pepper",
     "green plantain",
     "horseradish",
@@ -163,7 +160,7 @@
     "raw mango",
     "red cabbage",
     "red pepper",
-    "redchillies",
+    "red chilli",
     "spinach",
     "spring onion",
     "startfruit",
@@ -177,19 +174,16 @@
     "yellow pepper",
     "white cabbage",
     "zucchini",
-    "red chilli",
     "sweet potatoes (about 400 g 14 oz)",
-    "red split lentils",
+    "red split lentil",
     "baby spinach",
-    "spring onions",
     "Thai basil",
-    "spring onions",
+    "spring onion",
     "onions",
     "carrots",
     "chopped mint",
     "aubergines",
-    "freshly grated ginger",
-    "finely chopped mint",
+    "mint",
     "fresh coriander"
   ]
 }

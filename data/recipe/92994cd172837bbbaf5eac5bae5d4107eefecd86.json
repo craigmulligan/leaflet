@@ -7,12 +7,12 @@
       "category": "diary",
       "comment": "",
       "input": "2 large eggs",
-      "name": "eggs",
+      "name": "egg",
       "quantity": 1.0,
       "unit": ""
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "juiced",
       "input": "1 lemon , juiced",
       "name": "lemon",
@@ -28,7 +28,7 @@
       "unit": "ml"
     },
     {
-      "category": "dressings",
+      "category": "dressing",
       "comment": "",
       "input": "1 tbsp rapeseed oil",
       "name": "rapeseed oil",
@@ -36,7 +36,7 @@
       "unit": "ml"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "chopped",
       "input": "1 red onion , chopped",
       "name": "red onion",
@@ -44,7 +44,7 @@
       "unit": ""
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "",
       "input": "3 large garlic cloves , finely chopped",
       "name": "garlic",
@@ -52,7 +52,7 @@
       "unit": "cloves"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "1 tsp ground cumin",
       "name": "ground cumin",
@@ -60,7 +60,7 @@
       "unit": "ml"
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "\u00bd tsp cumin seeds",
       "name": "cumin seeds",
@@ -76,7 +76,7 @@
       "unit": "g"
     },
     {
-      "category": "vegetables",
+      "category": "vegetable",
       "comment": "cut into wedge",
       "input": "2 Little Gem lettuces cut into wedges",
       "name": "Little Gem lettuces",
@@ -84,15 +84,15 @@
       "unit": ""
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "cut into wedge",
       "input": "2 tomatoes , cut into wedges",
-      "name": "tomatoes",
+      "name": "tomato",
       "quantity": 1.0,
       "unit": ""
     },
     {
-      "category": "spices",
+      "category": "spice",
       "comment": "",
       "input": "sprinkling of dried chilli flakes and roughly chopped flat-leaf parsley, optional",
       "name": "chilli flakes",

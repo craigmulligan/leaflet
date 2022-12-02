@@ -45,23 +45,28 @@ def test_get_shopping_list(
     leaflet = leaflet_manager.generate(user)
     shopping_list = leaflet.shopping_list()
 
-    assert len(shopping_list) == 12
-    last_item = shopping_list[-1]
-    assert last_item == "yellow pepper: 0.5"
-    assert "garlic: 1 cloves" in shopping_list
+    assert len(shopping_list) == 6
+
+    veg = shopping_list["vegetable"]
+    assert len(veg) == 5
+    last_item = veg[-1]
+    assert last_item["name"] == "yellow pepper"
+    assert last_item["quantity"] == 0.5
 
     # now lets scale the servings and check the shopping_list adjusts accordingly.
     serving_size = 2
     user = dummy_user(serving=serving_size)
     leaflet = leaflet_manager.generate(user)
     shopping_list = leaflet.shopping_list()
-
-    assert len(shopping_list) == 12
-    last_item = shopping_list[-1]
-
-    assert last_item == "yellow pepper: 1.0"
+    veg = shopping_list["vegetable"]
+    assert len(veg) == 5
+    last_item = veg[-1]
+    assert last_item["name"] == "yellow pepper"
+    assert last_item["quantity"] == 1
 
     user = dummy_user(recipes_per_week=2)
     leaflet = leaflet_manager.generate(user)
     shopping_list = leaflet.shopping_list()
-    assert len(shopping_list) == 24
+    assert len(shopping_list) == 8
+    veg = shopping_list["vegetable"]
+    assert len(veg) == 11
