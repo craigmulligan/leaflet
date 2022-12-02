@@ -84,12 +84,13 @@ class Db:
         self.conn.execute(
             """
             CREATE TABLE IF NOT EXISTS leaflet (
-                created_at INTEGER NOT NULL,
+                id INTEGER PRIMARY KEY, 
+                leaflet_id TEXT,
+                created_at TEXT DEFAULT (datetime('now')) NOT NULL,
                 recipe_id TEXT,
                 user_id INTEGER,
                 FOREIGN KEY(recipe_id) REFERENCES recipe(id),
                 FOREIGN KEY(user_id) REFERENCES user(id)
-                PRIMARY KEY (created_at, user_id, recipe_id)
             );
         """
         )
@@ -159,23 +160,19 @@ class Db:
         self.conn.commit()
 
     def leaflet_insert(self, leaflet_id, recipe_id, user_id):
-        result = self.query(
+        self.query(
             """
-            INSERT INTO leaflet (created_at, recipe_id, user_id) VALUES (?, ?, ?) returning created_at
+            INSERT INTO leaflet (leaflet_id, recipe_id, user_id) VALUES (?, ?, ?)
             """,
             [leaflet_id, recipe_id, user_id],
-            one=True,
         )
 
         self.conn.commit()
 
-        assert result
-        return result["created_at"]
-
     def leaflet_get_all_by_user(self, user_id: int, limit=5):
         res = self.query(
             """
-            select created_at from leaflet where user_id = ? group by created_at order by created_at desc limit ?
+            select leaflet_id from leaflet where user_id = ? group by leaflet_id order by created_at desc limit ?
             """,
             [user_id, limit],
         )
@@ -183,14 +180,14 @@ class Db:
         if not res:
             return res
 
-        return [r["created_at"] for r in res]
+        return [r["leaflet_id"] for r in res]
 
     def recipe_get_all_by_leaflet_id(self, leaflet_id: int):
         rows = self.query(
             """
             SELECT recipe_id
             FROM leaflet
-            where created_at = ?
+            where leaflet_id = ?
             """,
             [leaflet_id],
         )
