@@ -1,5 +1,5 @@
 from flask import render_template
-from app.models import User
+from html import escape
 
 
 def test_user_get_authenticated(client, dummy_user, signin):
@@ -22,7 +22,8 @@ def test_user_update_user_authenticated_no_data(client, dummy_user, signin):
     signin(user)
 
     response = client.post(f"/user/{user.id}")
-    assert response.status_code == 422
+    assert response.status_code == 200
+    assert "Error updating settings" in response.text
 
 
 def test_user_update_user_authenticated(client, dummy_user, signin, db):
@@ -93,12 +94,33 @@ def test_user_leaflet_post(client, dummy_user, signin, db, leaflet_manager):
     user = dummy_user()
     signin(user)
 
+    assert len(db.leaflet_get_all_by_user(user.id)) == 0
+
     response = client.post(f"/user/{user.id}/leaflet", follow_redirects=True)
+
+    assert len(db.leaflet_get_all_by_user(user.id)) == 1
 
     leaflet_ids = db.leaflet_get_all_by_user(user.id)
     leaflet = leaflet_manager.get(user, leaflet_ids[0])
 
     assert response.status_code == 200
-    assert render_template(
-        "leaflet.html", user=user, leaflet=leaflet
-    ) == response.data.decode("utf-8")
+
+    for recipe in leaflet.recipes:
+        assert escape(recipe.title) in response.text
+
+
+def test_user_leaflet_get(client, dummy_user, signin, leaflet_manager):
+    """
+    Asserts user can get an existing leaflet
+    """
+    user = dummy_user()
+    signin(user)
+    leaflet = leaflet_manager.generate(user)
+    leaflet_id = leaflet_manager.save(leaflet)
+
+    response = client.get(f"/user/{user.id}/leaflet/{leaflet_id}")
+
+    assert response.status_code == 200
+
+    for recipe in leaflet.recipes:
+        assert escape(recipe.title) in response.text

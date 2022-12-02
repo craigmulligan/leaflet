@@ -169,7 +169,7 @@ class Db:
 
         self.conn.commit()
 
-    def leaflet_get_all_by_user(self, user_id: int, limit=5):
+    def leaflet_get_all_by_user(self, user_id: int, limit=100):
         res = self.query(
             """
             select leaflet_id from leaflet_entry where user_id = ? group by leaflet_id order by created_at desc limit ?
