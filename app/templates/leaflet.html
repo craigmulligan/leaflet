@@ -1,0 +1,23 @@
+{% block content %}
+
+Leaflet {{leaflet.id}}:
+<h3>Leaflet {{leaflet.id}}</h3>
+<ul>
+  {% for ingredient in leaflet.shopping_list() %}
+  <li>{{ingredient}}</li>
+  {% endfor %}
+</ul>
+
+<h3>Recipes:</h3>
+<ul>
+  {% for recipe in leaflet.recipes %}
+  <li>
+    <a href="{{ recipe.canonical_url }}"><h4>{{recipe.title}}</h4></a>
+    <p>cooking time: {{ recipe.total_time }}</p>
+    {% for instruction in recipe.instructions.split("\n") %}
+    <p>{{instruction}}</p>
+    {% endfor %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
