@@ -1,9 +1,19 @@
 {
-  "canned": [
-    "chickpeas",
+  "": [
+    "white miso paste",
+    "ras el hanout",
+    "clear honey",
+    "finely chopped flat-leaf parsley",
+    "tahini",
+    "borlotti"
   ],
-  "dry-goods": [
-    "pasta"
+  "canned": [
+    "chickpeas"
+  ],
+  "dairy": [
+    "Greek yogurt",
+    "yogurt",
+    "yoghurt"
   ],
   "diary": [
     "milk",
@@ -15,11 +25,24 @@
     "sesame oil",
     "rapeseed oil"
   ],
+  "dressings": [
+    "cider vinegar"
+  ],
+  "dry-goods": [
+    "pasta",
+    "bulghar wheat",
+    "wholemeal bulghar wheat",
+    "wholemeal linguine",
+  ],
+  "bakery": [
+    "mini tortillas"
+  ],
   "essentials": [
     "olive oil",
     "salt",
     "pepper",
-    "black pepper"
+    "black pepper",
+    "vegetable oil"
   ],
   "fruits": [
     "apple",
@@ -59,14 +82,29 @@
     "soursop",
     "strawberry",
     "tamarind",
-    "yuzu"
+    "yuzu",
+    "cherry tomatoes",
+    "tomatoes",
+    "pomegranate seeds",
+    "preserved lemons",
+    "dried apricots"
   ],
   "spices": [
     "ground turmeric",
     "ground cumin",
     "vegetable stock",
     "chilli flakes",
-    "sweet smoked paprika"
+    "sweet smoked paprika",
+    "cumin seeds",
+    "coriander seeds",
+    "cumin",
+    "turmeric",
+    "reduced-salt bouillon powder (we used Marigold)",
+    "ground coriander",
+    "saffron",
+    "hot vegetable stock",
+    "toasted sesame seeds",
+    "smoked paprika"
   ],
   "vegetables": [
     "red onion",
@@ -146,6 +184,14 @@
     "red split lentils",
     "baby spinach",
     "spring onions",
-    "Thai basil"
+    "Thai basil",
+    "spring onions",
+    "onions",
+    "carrots",
+    "chopped mint",
+    "aubergines",
+    "freshly grated ginger",
+    "finely chopped mint",
+    "fresh coriander"
   ]
 }

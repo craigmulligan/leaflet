@@ -86,15 +86,17 @@ class Persister:
         return True
 
     def update(self, url: str):
+        """
+        handy for updating categories
+        """
         id = hash(url)
         with open(f"{self.dirname}/{id}.json", "r+") as f:
-            data = json.loads(f.read())
+            x = f.read()
+            data = json.loads(x)
 
-            arr = []
             for ingredient in data["ingredients"]:
-                arr.append(get_category(ingredient))
+                ingredient["category"] = get_category(ingredient["name"])
 
-            data["ingredients"] = arr
             out = json.dumps(data, indent=4, sort_keys=True)
 
             f.truncate()

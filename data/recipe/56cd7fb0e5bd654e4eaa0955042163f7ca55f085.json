@@ -4,6 +4,7 @@
   "id": "56cd7fb0e5bd654e4eaa0955042163f7ca55f085",
   "ingredients": [
     {
+      "category": "dressing",
       "comment": "",
       "input": "1 tbsp rapeseed oil",
       "name": "rapeseed oil",
@@ -11,6 +12,7 @@
       "unit": "ml"
     },
     {
+      "category": "vegetables",
       "comment": "chopped",
       "input": "2 garlic cloves, chopped",
       "name": "garlic",
@@ -18,6 +20,7 @@
       "unit": "cloves"
     },
     {
+      "category": "vegetables",
       "comment": "deseeded and diced",
       "input": "1 yellow pepper, deseeded and diced",
       "name": "yellow pepper",
@@ -25,6 +28,7 @@
       "unit": ""
     },
     {
+      "category": "vegetables",
       "comment": "deseeded and chopped",
       "input": "\u00bd - 1 red chilli, deseeded and chopped",
       "name": "red chilli",
@@ -32,13 +36,15 @@
       "unit": ""
     },
     {
+      "category": "vegetables",
       "comment": "tops and whites sliced but kept separate",
       "input": "\u00bd bunch spring onions (about 5), tops and whites sliced but kept separate",
-      "name": "spring onions (about 5)",
-      "quantity": 2.50,
+      "name": "spring onions",
+      "quantity": 2.5,
       "unit": ""
     },
     {
+      "category": "spices",
       "comment": "plus a little extra to serve (optional)",
       "input": "1 tsp cumin, plus a little extra to serve (optional)",
       "name": "cumin",
@@ -46,6 +52,7 @@
       "unit": "ml"
     },
     {
+      "category": "vegetables",
       "comment": "",
       "input": "1 tsp coriander",
       "name": "coriander",
@@ -53,6 +60,7 @@
       "unit": "ml"
     },
     {
+      "category": "spices",
       "comment": "",
       "input": "\u00bd tsp turmeric",
       "name": "turmeric",
@@ -60,6 +68,7 @@
       "unit": "ml"
     },
     {
+      "category": "fruits",
       "comment": "cut into wedge",
       "input": "3 tomatoes, cut into wedges",
       "name": "tomatoes",
@@ -67,6 +76,7 @@
       "unit": ""
     },
     {
+      "category": "vegetables",
       "comment": "",
       "input": "\u2153 pack coriander, chopped",
       "name": "coriander",
@@ -74,6 +84,7 @@
       "unit": ""
     },
     {
+      "category": "canned",
       "comment": "cans",
       "input": "400g can chickpeas in water, drained but liquid reserved",
       "name": "chickpeas",
@@ -81,6 +92,7 @@
       "unit": "g"
     },
     {
+      "category": "spices",
       "comment": "",
       "input": "\u00bd tsp reduced-salt bouillon powder (we used Marigold)",
       "name": "reduced-salt bouillon powder (we used Marigold)",
@@ -88,6 +100,7 @@
       "unit": "ml"
     },
     {
+      "category": "diary",
       "comment": "",
       "input": "4 large eggs",
       "name": "eggs",
