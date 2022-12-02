@@ -10,8 +10,15 @@ import hashlib
 from time import sleep
 from typing import List
 from recipe_scrapers._abstract import AbstractScraper
-from .ingredient import Ingredient, parse
+from .ingredient import Ingredient, parse, ask, normalize
 from recipe_scrapers import scrape_me
+
+
+def hash(url: str) -> str:
+    "hash a url this is so it's encoded and fixed length"
+    sha_1 = hashlib.sha1()
+    sha_1.update(url.encode("utf-8"))
+    return sha_1.hexdigest()
 
 
 class Recipe:
@@ -29,7 +36,13 @@ class Recipe:
     def ingredients(self) -> List[Ingredient]:
         data = []
         for i in self.schema.ingredients():
-            data.append(parse(i))
+            ingredient = None
+            try:
+                ingredient = parse(i)
+            except Exception as e:
+                ingredient = ask(i)
+            finally:
+                data.append(normalize(ingredient))
 
         return data
 
@@ -44,6 +57,7 @@ class Recipe:
     def to_json(self) -> str:
         return json.dumps(
             {
+                "id": hash(self.url),
                 "title": self.schema.title(),
                 "ingredients": self.ingredients(),
                 "yields": self.yields(),
@@ -62,20 +76,14 @@ class Persister:
         self.dirname = dirname
         Path(dirname).mkdir(parents=True, exist_ok=True)
 
-    def hash(self, url: str) -> str:
-        "hash a url this is so it's encoded and fixed length"
-        sha_1 = hashlib.sha1()
-        sha_1.update(url.encode("utf-8"))
-        return sha_1.hexdigest()
-
     def save(self, url: str, body: str) -> bool:
-        id = self.hash(url)
+        id = hash(url)
         with open(f"{self.dirname}/{id}", "w+") as f:
             f.write(body)
         return True
 
     def exists(self, url: str) -> bool:
-        id = self.hash(url)
+        id = hash(url)
         return os.path.isfile(f"{self.dirname}/{id}")
 
 
@@ -95,6 +103,9 @@ def collect_recipes(persister, url_file):
 def collect_urls(url_filename):
     """
     Handy function to collect all veggie urls on bbcgoodfood
+
+    It then converts ingredient quantities to base units &
+    a single yield
     """
     host = "https://www.bbcgoodfood.com"
     next_url = f"{host}/api/lists/posts/list/healthy-vegetarian-recipes/items?page=1"
