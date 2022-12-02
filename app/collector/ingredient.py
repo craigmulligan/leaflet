@@ -24,6 +24,7 @@ class Ingredient(TypedDict):
     unit: Optional[str]
     input: str
     comment: Optional[str]
+    category: Optional[str]
 
 
 def parse(description) -> Ingredient:
