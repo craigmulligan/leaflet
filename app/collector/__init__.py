@@ -9,7 +9,7 @@ import hashlib
 from time import sleep
 from typing import List
 from recipe_scrapers._abstract import AbstractScraper
-from .ingredient import Ingredient, parse, ask, normalize, yield_factor
+from .ingredient import Ingredient, parse, ask, normalize, yield_factor, get_category
 from recipe_scrapers import scrape_me
 
 
@@ -84,6 +84,22 @@ class Persister:
         with open(f"{self.dirname}/{id}.json", "w+") as f:
             f.write(body)
         return True
+
+    def update(self, url: str):
+        id = hash(url)
+        with open(f"{self.dirname}/{id}.json", "r+") as f:
+            data = json.loads(f.read())
+
+            arr = []
+            for ingredient in data["ingredients"]:
+                arr.append(get_category(ingredient))
+
+            data["ingredients"] = arr
+            out = json.dumps(data, indent=4, sort_keys=True)
+
+            f.truncate()
+            f.seek(0)
+            f.write(out)
 
     def exists(self, url: str) -> bool:
         id = hash(url)

@@ -25,7 +25,7 @@
       "unit": ""
     },
     {
-      "comment": "",
+      "comment": "canned drained",
       "input": "198g can sweetcorn, drained",
       "name": "sweetcorn",
       "quantity": 49.5,
@@ -88,9 +88,9 @@
       "unit": ""
     },
     {
-      "comment": "",
+      "comment": "natural",
       "input": "80g natural yogurt",
-      "name": "natural yogurt",
+      "name": "yogurt",
       "quantity": 20.0,
       "unit": "g"
     }

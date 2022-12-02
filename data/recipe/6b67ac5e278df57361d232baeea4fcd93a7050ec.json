@@ -1,102 +1,102 @@
 {
-    "canonical_url": "https://www.bbcgoodfood.com/recipes/healthy-shakshuka",
-    "host": "bbcgoodfood.com",
-    "id": "6b67ac5e278df57361d232baeea4fcd93a7050ec",
-    "ingredients": [
-        {
-            "comment": "",
-            "input": "1 tbsp cold pressed rapeseed oil",
-            "name": "cold pressed rapeseed oil",
-            "quantity": 7.395,
-            "unit": "ml"
-        },
-        {
-            "comment": "cut into thin wedge",
-            "input": "1 red onion , cut into thin wedges",
-            "name": "red onion",
-            "quantity": 0.5,
-            "unit": ""
-        },
-        {
-            "comment": "finely sliced",
-            "input": "1 red pepper , finely sliced",
-            "name": "red pepper",
-            "quantity": 0.5,
-            "unit": ""
-        },
-        {
-            "comment": "finely sliced",
-            "input": "1 yellow pepper , finely sliced",
-            "name": "yellow pepper",
-            "quantity": 0.5,
-            "unit": ""
-        },
-        {
-            "comment": "",
-            "input": "3 large garlic cloves , crushed",
-            "name": "garlic",
-            "quantity": 1.5,
-            "unit": "cloves"
-        },
-        {
-            "comment": "",
-            "input": "1 tsp cumin seeds",
-            "name": "cumin seeds",
-            "quantity": 2.465,
-            "unit": "ml"
-        },
-        {
-            "comment": "crushed",
-            "input": "1 tsp coriander seeds , crushed",
-            "name": "coriander seeds",
-            "quantity": 2.465,
-            "unit": "ml"
-        },
-        {
-            "comment": "",
-            "input": "1 heaped tsp sweet smoked paprika",
-            "name": "sweet smoked paprika",
-            "quantity": 7.395,
-            "unit": "ml"
-        },
-        {
-            "comment": "",
-            "input": "400g can cherry tomatoes",
-            "name": "cherry tomatoes",
-            "quantity": 200.0,
-            "unit": "g"
-        },
-        {
-            "comment": "",
-            "input": "115g baby spinach",
-            "name": "baby spinach",
-            "quantity": 57.5,
-            "unit": "g"
-        },
-        {
-            "comment": "",
-            "input": "4 medium eggs",
-            "name": "eggs",
-            "quantity": 2.0,
-            "unit": ""
-        },
-        {
-            "comment": "roughly chopped",
-            "input": "\u00bd small bunch coriander , roughly chopped",
-            "name": "coriander",
-            "quantity": 0.25,
-            "unit": "bunches"
-        },
-        {
-            "comment": "",
-            "input": "\u00bd small bunch dill , roughly chopped",
-            "name": "dill",
-            "quantity": 0.25,
-            "unit": "bunches"
-        }
-    ],
-    "instructions": "Heat the oil in a large, non-stick frying pan. Add the onion and peppers and fry over a medium heat for 8-10 mins until the veg is beginning to soften. Add the garlic, cumin, coriander and paprika and fry for 1 min more. Tip in the tomatoes, spinach and 100ml water and bubble until the spinach has wilted, then lower to a simmer and cook, uncovered, for 10 mins. Season to taste.\nMake four indentations in the tomato mixture and gently crack an egg into each one. Cover with a lid or foil and cook over a gentle heat for 8-10 mins, or until the eggs are just set. Uncover, scatter with the fresh herbs and serve.",
-    "title": "Healthy shakshuka",
-    "total_time": 40,
-    "yields": 2
+  "canonical_url": "https://www.bbcgoodfood.com/recipes/healthy-shakshuka",
+  "host": "bbcgoodfood.com",
+  "id": "6b67ac5e278df57361d232baeea4fcd93a7050ec",
+  "ingredients": [
+    {
+      "comment": "cold pressed",
+      "input": "1 tbsp cold pressed rapeseed oil",
+      "name": "rapeseed oil",
+      "quantity": 7.395,
+      "unit": "ml"
+    },
+    {
+      "comment": "cut into thin wedge",
+      "input": "1 red onion , cut into thin wedges",
+      "name": "red onion",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "finely sliced",
+      "input": "1 red pepper , finely sliced",
+      "name": "red pepper",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "finely sliced",
+      "input": "1 yellow pepper , finely sliced",
+      "name": "yellow pepper",
+      "quantity": 0.5,
+      "unit": ""
+    },
+    {
+      "comment": "",
+      "input": "3 large garlic cloves , crushed",
+      "name": "garlic",
+      "quantity": 1.5,
+      "unit": "cloves"
+    },
+    {
+      "comment": "",
+      "input": "1 tsp cumin seeds",
+      "name": "cumin seeds",
+      "quantity": 2.465,
+      "unit": "ml"
+    },
+    {
+      "comment": "crushed",
+      "input": "1 tsp coriander seeds , crushed",
+      "name": "coriander seeds",
+      "quantity": 2.465,
+      "unit": "ml"
+    },
+    {
+      "comment": "",
+      "input": "1 heaped tsp sweet smoked paprika",
+      "name": "sweet smoked paprika",
+      "quantity": 7.395,
+      "unit": "ml"
+    },
+    {
+      "comment": "Can of cherry tomatoes",
+      "input": "400g can cherry tomatoes",
+      "name": "cherry tomatoes",
+      "quantity": 200.0,
+      "unit": "g"
+    },
+    {
+      "comment": "",
+      "input": "115g baby spinach",
+      "name": "baby spinach",
+      "quantity": 57.5,
+      "unit": "g"
+    },
+    {
+      "comment": "",
+      "input": "4 medium eggs",
+      "name": "eggs",
+      "quantity": 2.0,
+      "unit": ""
+    },
+    {
+      "comment": "roughly chopped",
+      "input": "\u00bd small bunch coriander , roughly chopped",
+      "name": "coriander",
+      "quantity": 0.25,
+      "unit": "bunches"
+    },
+    {
+      "comment": "",
+      "input": "\u00bd small bunch dill , roughly chopped",
+      "name": "dill",
+      "quantity": 0.25,
+      "unit": "bunches"
+    }
+  ],
+  "instructions": "Heat the oil in a large, non-stick frying pan. Add the onion and peppers and fry over a medium heat for 8-10 mins until the veg is beginning to soften. Add the garlic, cumin, coriander and paprika and fry for 1 min more. Tip in the tomatoes, spinach and 100ml water and bubble until the spinach has wilted, then lower to a simmer and cook, uncovered, for 10 mins. Season to taste.\nMake four indentations in the tomato mixture and gently crack an egg into each one. Cover with a lid or foil and cook over a gentle heat for 8-10 mins, or until the eggs are just set. Uncover, scatter with the fresh herbs and serve.",
+  "title": "Healthy shakshuka",
+  "total_time": 40,
+  "yields": 2
 }

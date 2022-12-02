@@ -1,11 +1,19 @@
 {
+  "canned": [
+    "chickpeas",
+  ],
+  "dry-goods": [
+    "pasta"
+  ],
   "diary": [
     "milk",
     "cheese",
-    "yoghurt"
+    "yoghurt",
+    "eggs"
   ],
   "dressing": [
-    "sesame oil"
+    "sesame oil",
+    "rapeseed oil"
   ],
   "essentials": [
     "olive oil",
@@ -56,7 +64,9 @@
   "spices": [
     "ground turmeric",
     "ground cumin",
-    "vegetable stock"
+    "vegetable stock",
+    "chilli flakes",
+    "sweet smoked paprika"
   ],
   "vegetables": [
     "red onion",
@@ -78,6 +88,7 @@
     "collard greens",
     "coriander",
     "corn",
+    "courgette",
     "dill",
     "eggplant",
     "endive",
@@ -105,8 +116,11 @@
     "onion",
     "parsnip",
     "pea",
+    "peas",
+    "frozen peas",
     "pepper",
     "plantain flower",
+    "Little Gem lettuces",
     "potato",
     "pumpkin",
     "radish",
@@ -118,6 +132,7 @@
     "spring onion",
     "startfruit",
     "sweet potato",
+    "sweetcorn",
     "swiss chard",
     "tinda",
     "tomato",
@@ -129,7 +144,7 @@
     "red chilli",
     "sweet potatoes (about 400 g 14 oz)",
     "red split lentils",
-    "of spinach",
+    "baby spinach",
     "spring onions",
     "Thai basil"
   ]
