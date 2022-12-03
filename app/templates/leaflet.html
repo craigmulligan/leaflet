@@ -1,38 +1,4 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<section>
-  <h2>Shopping List:</h2>
-  </br>
-  <ul>
-    {% for category, ingredients in leaflet.shopping_list().items() %}
-    <li>{{category}}</li>
-    <ul>
-    {% for ingredient in ingredients %}
-    <li>{{ingredient["name"]}}: {{ingredient["quantity"]}} {{ingredient["unit"]}}</li>
-    {% endfor %}
-    </ul>
-    {% endfor %}
-  </ul>
-  </br>
-</section>
-<section>
-  <h2>Recipes:</h2>
-  <ul>
-    {% for recipe in leaflet.recipes %}
-    </br>
-    <li>
-      <a href="{{ recipe.canonical_url }}"><h3>{{recipe.title}}</h3></a>
-      </br>
-      <p>cooking time: {{ recipe.total_time }}</p>
-      </br>
-      {% for instruction in recipe.instructions.split("\n") %}
-      <p>{{instruction}}</p>
-      </br>
-      {% endfor %}
-    </li>
-    </br>
-    {% endfor %}
-  </ul>
-</section>
+{% include 'leaflet-content.html' %}
 {% endblock %}

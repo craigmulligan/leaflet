@@ -15,6 +15,7 @@ recipe-scrapers = "^14.23.0"
 pint = "^0.20.1"
 ingredient-parser-nlp = "^0.1.0a3"
 freezegun = "^1.2.2"
+python-dotenv = "^0.21.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.10.0"
