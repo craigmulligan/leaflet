@@ -44,7 +44,7 @@
       "unit": "ml"
     },
     {
-      "category": "fruits",
+      "category": "fruit",
       "comment": "halved",
       "input": "80g cherry tomatoes, halved",
       "name": "cherry tomato",
