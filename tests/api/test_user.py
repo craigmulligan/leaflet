@@ -1,5 +1,6 @@
 from flask import render_template
 from html import escape
+from tests.conftest import Contains
 
 
 def test_user_get_authenticated(client, dummy_user, signin):
@@ -87,7 +88,7 @@ def test_user_get_unauthenticated(client, dummy_user):
     assert response.status_code == 302
 
 
-def test_user_leaflet_post(client, dummy_user, signin, db, leaflet_manager):
+def test_user_leaflet_post(client, dummy_user, signin, db, leaflet_manager, mail_manager_mock):
     """
     Asserts user can request a new leaflet
     """
@@ -104,6 +105,12 @@ def test_user_leaflet_post(client, dummy_user, signin, db, leaflet_manager):
     leaflet = leaflet_manager.get(user, leaflet_ids[0])
 
     assert response.status_code == 200
+
+    mail_manager_mock.send.assert_called_once_with(
+        user.email,
+        f"Leaflet #1",
+        Contains("Shopping List"),
+    )
 
     for recipe in leaflet.recipes:
         assert escape(recipe.title) in response.text

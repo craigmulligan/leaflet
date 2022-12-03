@@ -85,7 +85,7 @@ def leaflet_post(user_id):
 
     leaflet = lm.generate(user)
     leaflet_id = lm.save(leaflet)
-
+    lm.send(leaflet)
     flash("We sent you a new leaflet", "info")
 
     return redirect(url_for("user.leaflet_get", user_id=user_id, leaflet_id=leaflet_id))
