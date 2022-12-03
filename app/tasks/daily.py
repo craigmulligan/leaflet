@@ -5,6 +5,7 @@ from app import database
 from app import leaflet_manager
 from datetime import datetime
 from .email import email_send
+from celery.schedules import crontab
 
 @celery.task
 def daily(*args, **kwargs):
@@ -18,10 +19,8 @@ def daily(*args, **kwargs):
         leaflet_id = lm.save(leaflet)
         count = db.leaflet_count_by_user(user.id) 
         logging.info(f"Sending user leaflet: {leaflet_id}")
-        
         body = render_template("leaflet.html", leaflet=leaflet)
         email_send(user.email, f"Leaflet #{count}",  body)
-        logging.info(f"Sent user leaflet: {leaflet_id}")
 
 
 @celery.on_after_configure.connect
@@ -30,5 +29,7 @@ def setup_periodic_tasks(sender, **kwargs):
     """
     Called every day
     """
+
+    # Executes every Day at 8 a.m.
     logging.info("setting up periodic task.")
-    sender.add_periodic_task(10.0, daily.s(), name='daily')
+    sender.add_periodic_task(crontab(hour="8"), daily.s(), name='daily')
