@@ -9,6 +9,7 @@ class User:
     id: int
     email: str
     created_at: str
+    send_at: str
 
     def __init__(
         self,

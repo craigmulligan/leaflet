@@ -135,6 +135,14 @@ class Db:
         assert user
         return User(**user)
 
+    def user_get_by_weekday(self, weekday: int):
+        """
+        return a cursor which allows one. 
+        NB: use fetchone so we don't read everything  
+        into memory.
+        """
+
+
     def user_get_by_email(self, email: str):
         user = self.query(
             "select * from user where email = ? limit 1", [email], one=True

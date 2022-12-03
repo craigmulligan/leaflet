@@ -11,7 +11,6 @@ from app import database
 from flask import g
 from celery import Task
 
-
 @pytest.fixture(scope="function", autouse=True)
 def app():
     """Session-wide test `Flask` application."""
@@ -19,11 +18,11 @@ def app():
     app = create_app({"DB_URL": ":memory:", "TESTING": True})
     ctx = app.app_context()
     ctx.push()
+    
 
     yield app
 
     ctx.pop()
-
 
 @pytest.fixture()
 def leaflet_manager_mock():
