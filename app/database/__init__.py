@@ -1,14 +1,12 @@
 import os
 import json
-from typing import Optional, Union, Any, List
+from typing import Iterable, Optional, Union, Any, List
 
 # from datetime import datetime
 import sqlite3
 from flask import g, current_app
-from app.models import User, Recipe, Ingredient
-
-DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-
+from datetime import datetime
+from app.models import User, Recipe, Ingredient, DATETIME_FORMAT
 
 class Db:
     context_key = "_db_connection"
@@ -135,12 +133,31 @@ class Db:
         assert user
         return User(**user)
 
-    def user_get_by_weekday(self, weekday: int):
+    def user_update_send_at(self, user_id: int, send_at: datetime):
+        user = self.query(
+            """
+            UPDATE user set send_at = ? where id = ? RETURNING *;
+            """,
+            [send_at.strftime(DATETIME_FORMAT), user_id],
+            one=True,
+        )
+
+        self.conn.commit()
+        assert user
+        return User(**user)
+
+
+    def user_get_all_by_weekday(self, weekday: int) -> Iterable[User]:
         """
         return a cursor which allows one. 
         NB: use fetchone so we don't read everything  
         into memory.
         """
+        cur = self.conn.execute("select * from user where strftime('%w', send_at) = ?", str(weekday))
+        for row in cur:
+            yield User(**row)
+
+        cur.close()
 
 
     def user_get_by_email(self, email: str):
@@ -190,6 +207,20 @@ class Db:
             return res
 
         return [r["leaflet_id"] for r in res]
+
+    def leaflet_count_by_user(self, user_id: int) -> int:
+        res = self.query(
+            """
+            select count(leaflet_id) as count from leaflet_entry where user_id = ? group by leaflet_id
+            """,
+            [user_id],
+            one=True
+        )
+
+        if not res:
+            return 0 
+
+        return res["count"] 
 
     def recipe_get_all_by_leaflet_id(self, leaflet_id: int):
         rows = self.query(
