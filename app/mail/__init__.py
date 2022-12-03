@@ -37,7 +37,7 @@ class MailManager:
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(self.host, self.port, context=context) as server:
             server.login(self.username, self.password)
-            server.sendmail(self._from, to, message.as_string())
+            server.sendmail(self._from, to, message.as_string().encode('utf-8'))
 
 
 def get() -> MailManager:

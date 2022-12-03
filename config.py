@@ -1,4 +1,7 @@
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 # Database config
 DB_URL = os.environ.get("DB_URL", "app.db")
