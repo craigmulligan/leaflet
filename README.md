@@ -1,15 +1,6 @@
-> A boring but dreamy setup.
+# Leaflet
 
-This setup is optimized for simplicity & development speed. This means minimal dependencies & infrastructure.
-
-# Tools
-
-* flask
-* celery
-* sqlite
-* poetry
-* black
-* mypy
+> Random weekly personalized plant based recipes
 
 Getting started
 
