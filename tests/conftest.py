@@ -11,6 +11,10 @@ from app import database
 from flask import g
 from celery import Task
 
+class Contains(str):
+        def __eq__(self, other):
+            return self in other
+
 @pytest.fixture(scope="function", autouse=True)
 def app():
     """Session-wide test `Flask` application."""
