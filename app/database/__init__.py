@@ -211,7 +211,7 @@ class Db:
     def leaflet_count_by_user(self, user_id: int) -> int:
         res = self.query(
             """
-            select count(leaflet_id) as count from leaflet_entry where user_id = ? group by leaflet_id
+            select count(DISTINCT leaflet_id) as count from leaflet_entry where user_id = ?
             """,
             [user_id],
             one=True

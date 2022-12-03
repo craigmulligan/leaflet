@@ -24,3 +24,14 @@ def test_daily(dummy_user, mail_manager_mock, db):
         f"Leaflet #{sent}",
         Contains("Shopping List"),
     )
+
+    mail_manager_mock.send.reset_mock()
+
+    sent += 1
+    daily.delay()
+
+    mail_manager_mock.send.assert_called_once_with(
+        "4@x.com",
+        f"Leaflet #{sent}",
+        Contains("Shopping List"),
+    )
