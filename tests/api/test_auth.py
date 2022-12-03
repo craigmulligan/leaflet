@@ -2,7 +2,6 @@ from flask import render_template
 from freezegun import freeze_time
 from datetime import datetime, timedelta
 from app.session import session
-from app.models import User
 from unittest.mock import patch
 
 
