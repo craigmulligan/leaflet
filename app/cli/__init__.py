@@ -51,7 +51,7 @@ def prod_server():
 @prod.command("worker")
 def prod_worker():
     run_init_db()
-    return run_sh("celery --app 'run_app:celery' worker")
+    return run_sh("celery --app 'run_app:celery' worker -B")
 
 
 @dev.command("test")
@@ -78,7 +78,7 @@ def run_server(popen=False):
 def run_worker(popen=False):
     run_init_db()
     return run_sh(
-        "watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery --app run_app:celery worker --without-gossip",
+        "watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery --app run_app:celery worker --without-gossip -B",
         env={"FLASK_DEBUG": "development"},
         popen=popen,
     )

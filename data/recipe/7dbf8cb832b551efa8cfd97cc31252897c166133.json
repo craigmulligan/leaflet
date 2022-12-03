@@ -20,6 +20,7 @@
             "unit": "ml"
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "2 large tomatoes, chopped (better if you remove the skin but not essential)",
             "name": "tomato",
@@ -27,6 +28,7 @@
             "unit": ""
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "5cm piece ginger, peeled and grated",
             "name": "ginger",
