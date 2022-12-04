@@ -14,15 +14,15 @@ Flask = "^2.2.2"
 recipe-scrapers = "^14.23.0"
 pint = "^0.20.1"
 ingredient-parser-nlp = "^0.1.0a3"
-freezegun = "^1.2.2"
 python-dotenv = "^0.21.0"
+certifi = "^2022.9.24"
 
 [tool.poetry.dev-dependencies]
+freezegun = "^1.2.2"
 black = "^22.10.0"
 pytest-flask = "^1.2.0"
 watchdog = { extras = ["watchmedo"], version = "^2.1.6" }
 pytest-cov = "^3.0.0"
-freezegun = "^1.1.0"
 pyright = "^1.1.247"
 types-freezegun = "^1.1.4"
 pytest = "^6.2.5"
