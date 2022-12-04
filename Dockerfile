@@ -1,5 +1,5 @@
 # Fetch the LiteFS binary using a multi-stage build.
-FROM flyio/litefs:0.3.0-beta7 AS litefs
+FROM flyio/litefs:0.3.0-beta3 AS litefs
 
 # Final python app
 FROM python:3.10-alpine

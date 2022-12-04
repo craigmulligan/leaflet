@@ -1,3 +1,4 @@
+import logging
 from flask import (
     Blueprint,
     render_template,
@@ -52,6 +53,7 @@ def magic_post():
     if is_dev():
         flash(magic_link)
     else:
+        logging.info("triggering magic link email")
         email_send.delay(user.email, "Signin link", str(magic_link))
 
     return render_template("magic.html")
