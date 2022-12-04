@@ -1,6 +1,6 @@
-# fly.toml file generated for quiet-sea-3893 on 2022-12-04T11:47:53+13:00
+# fly.toml file generated for empty-wind-516 on 2022-12-04T13:45:56+13:00
 
-app = "quiet-sea-3893"
+app = "empty-wind-516"
 kill_signal = "SIGINT"
 kill_timeout = 5
 
@@ -11,14 +11,9 @@ kill_timeout = 5
   auto_rollback = true
   enable_consul = true
 
-# [[mounts]]
-#   destination = "/mnt/data"
-#   processes = ["web"]
-#   source = "data"
-
 [processes]
-web = "litefs -config /etc/litefs-web.yml"
-worker = "litefs -config /etc/litefs-worker.yml"
+  web = "litefs -config /etc/litefs-web.yml"
+  worker = "litefs -config /etc/litefs-worker.yml"
 
 [[services]]
   http_checks = []
