@@ -51,7 +51,7 @@ def prod_server():
 @prod.command("worker")
 def prod_worker():
     run_init_db()
-    return run_sh("celery --app 'run_app:celery' worker -B")
+    return run_sh("celery --app 'run_app:celery' worker --without-gossip -B -c 1")
 
 
 @dev.command("test")
