@@ -3,7 +3,8 @@
         "mini tortilla"
     ],
     "canned": [
-        "chickpeas"
+        "chickpeas",
+        "chopped tomatoes"
     ],
     "dairy": [
         "Greek yogurt",
@@ -11,26 +12,31 @@
         "yoghurt",
         "milk",
         "cheese",
-        "egg"
+        "egg",
+        "low-fat feta cheese",
+        "low-fat fromage frais"
     ],
     "dressing": [
         "sesame oil",
         "rapeseed oil",
-        "cider vinegar"
+        "cider vinegar",
+        "apple cider vinegar"
     ],
     "dry-good": [
         "pasta",
         "bulghar wheat",
         "wholemeal bulghar wheat",
         "wholemeal linguine",
-        "toor dhal or red split lentils"
+        "toor dhal or red split lentils",
+        "pumpkin seeds"
     ],
     "essential": [
         "olive oil",
         "salt",
         "pepper",
         "black pepper",
-        "vegetable oil"
+        "vegetable oil",
+        "sunflower oil"
     ],
     "fruit": [
         "apple",
@@ -77,7 +83,10 @@
         "preserved lemon",
         "dried apricot"
     ],
-    "other": [],
+    "other": [
+        "paneer",
+        "carton passata"
+    ],
     "spice": [
         "ground turmeric",
         "ground cumin",
@@ -97,7 +106,8 @@
         "tamarind paste",
         "hot chilli powder",
         "dried chilli (I use Kashmiri)",
-        "curry leaf"
+        "curry leaf",
+        "tikka masala paste"
     ],
     "vegetable": [
         "red onion",
@@ -182,6 +192,10 @@
         "chopped mint",
         "aubergines",
         "mint",
-        "fresh coriander"
+        "fresh coriander",
+        "of cauliflower broken into small florets",
+        "rocket",
+        "diced butternut squash",
+        "of rocket"
     ]
 }
