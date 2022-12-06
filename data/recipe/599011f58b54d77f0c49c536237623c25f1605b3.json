@@ -1,0 +1,122 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/chilli-stuffed-peppers-feta-topping",
+    "host": "bbcgoodfood.com",
+    "id": "599011f58b54d77f0c49c536237623c25f1605b3",
+    "ingredients": [
+        {
+            "comment": "",
+            "input": "2 large peppers , halved, deseeded but stalks left on",
+            "name": "pepper",
+            "quantity": 1.0,
+            "unit": ""
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "1 tsp ground cumin",
+            "name": "ground cumin",
+            "quantity": 2.465,
+            "unit": "ml"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "1 tsp ground coriander",
+            "name": "ground coriander",
+            "quantity": 2.465,
+            "unit": "ml"
+        },
+        {
+            "comment": "canned",
+            "input": "400g can chopped tomatoes",
+            "name": "chopped tomatoes",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "category": "vegetable",
+            "comment": "halved and sliced",
+            "input": "1 red onion , halved and sliced",
+            "name": "red onion",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "1 garlic clove , finely grated",
+            "name": "garlic",
+            "quantity": 0.5,
+            "unit": "cloves"
+        },
+        {
+            "category": "vegetable",
+            "comment": "deseeded and finely chopped",
+            "input": "1 red chilli , deseeded and finely chopped",
+            "name": "red chilli",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "comment": "",
+            "input": "1 small aubergine , cut into small cubes",
+            "name": "aubergine",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "comment": "canned",
+            "input": "220g can kidney beans (not drained)",
+            "name": "kidney beans",
+            "quantity": 110.0,
+            "unit": "g"
+        },
+        {
+            "comment": "",
+            "input": "small bunch of coriander , chopped",
+            "name": "coriander",
+            "quantity": 0.5,
+            "unit": "bunches"
+        },
+        {
+            "comment": "",
+            "input": "1 large egg",
+            "name": "egg",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "dairy",
+            "comment": "finely grated",
+            "input": "25g low-fat feta cheese , finely grated",
+            "name": "low-fat feta cheese",
+            "quantity": 12.5,
+            "unit": "g"
+        },
+        {
+            "category": "dairy",
+            "comment": "",
+            "input": "50g low-fat fromage frais",
+            "name": "low-fat fromage frais",
+            "quantity": 25.0,
+            "unit": "g"
+        },
+        {
+            "comment": "",
+            "input": "2 handfuls rocket",
+            "name": "rocket",
+            "quantity": 1.0,
+            "unit": "bunches"
+        },
+        {
+            "comment": "",
+            "input": "lime wedges, for squeezing over",
+            "name": "lime",
+            "quantity": 0.5,
+            "unit": ""
+        }
+    ],
+    "instructions": "Heat oven to 190C/170C fan/gas 5. Place the pepper halves in a shallow baking dish, skin-side up, and roast for 15-20 mins.\nMeanwhile, tip the spices into a pan and warm briefly to release their flavour. Tip in the tomatoes and stir in the onion, garlic, chilli, aubergine and kidney beans with their juice. Cover the pan and cook for 20 mins, stirring occasionally. Try not to add any extra liquid; the mixture should be quite dry. Stir in the coriander.\nMeanwhile, beat the egg with the feta and fromage frais. Turn the peppers over and pile the aubergine mixture into each one, packing it down as much as you can. Top with the feta mixture and return to the oven for 10 mins more until the topping has lightly set. Don\u2019t worry if some of it flows off, as it will just set in the dish. Serve the peppers on the rocket with lime wedges for squeezing over.",
+    "title": "Vegetarian chilli-stuffed peppers with feta topping",
+    "total_time": 35,
+    "yields": 2
+}

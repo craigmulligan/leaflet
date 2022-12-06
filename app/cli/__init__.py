@@ -5,12 +5,14 @@ import shlex
 import click
 from flask.cli import AppGroup
 from app import database
+from app.collector import collect_recipes, collect_urls, Persister
 
 logging.basicConfig(level=logging.INFO)
 
 dev = AppGroup("dev", short_help="All development commands")
 db = AppGroup("db", short_help="All database commands")
 prod = AppGroup("prod", short_help="All production commands")
+recipes = AppGroup("recipes", short_help="All recipe commands")
 
 
 def run_sh(cmd: str, env=None, popen=False):
@@ -38,6 +40,25 @@ def run_init_db():
 @db.command("init")
 def db_init():
     run_init_db()
+
+@recipes.command("collect")
+def recipes_collect():
+    """
+    This fetchs recipes and saves them
+    to data/*
+
+    From there we can manually correct them if needed
+    and then load into the db.
+
+    NOTE: If any of the files exist, we don't overwrite them.
+    This is so we can maintain manual fixes. If you want a file
+    to be regenerated you must delete it from /data
+    """
+
+    url_file = "data/test.txt"
+    persister = Persister()
+    collect_urls(url_file)
+    collect_recipes(persister, url_file)
 
 
 @prod.command("server")
@@ -118,3 +139,4 @@ def register(app):
     app.cli.add_command(dev)
     app.cli.add_command(db)
     app.cli.add_command(prod)
+    app.cli.add_command(recipes)
