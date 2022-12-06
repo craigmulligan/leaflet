@@ -4,11 +4,16 @@
   <ul>
     {% for category, ingredients in leaflet.shopping_list().items() %}
     <li>{{category}}</li>
-    <ul>
-    {% for ingredient in ingredients %}
-    <li>{{ingredient["name"]}}: {{ingredient["quantity"]}} {{ingredient["unit"]}}</li>
-    {% endfor %}
-    </ul>
+    <br/>
+      <ul>
+      {% for ingredient in ingredients %}
+      <div>
+        <input type="checkbox" name='{{ingredient["name"]}}' value='{{ingredient["name"]}}: {{ingredient["quantity"]}} {{ingredient["unit"]}}'/>
+        <label for='{{ingredient["name"]}}'>{{ingredient["name"]}}: {{ingredient["quantity"]}} {{ingredient["unit"]}}</label>
+      </div>
+      {% endfor %}
+      </ul>
+    <br/>
     {% endfor %}
   </ul>
   </br>
@@ -30,5 +35,6 @@
     </li>
     </br>
     {% endfor %}
+    <ul>
   </ul>
 </section>
