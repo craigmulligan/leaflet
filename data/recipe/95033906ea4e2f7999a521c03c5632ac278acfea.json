@@ -12,7 +12,7 @@
             "unit": "g"
         },
         {
-            "category": "",
+            "category": "vegetable",
             "comment": "cut into wedge",
             "input": "3 red onions (320g), cut into wedges",
             "name": "red onion",
@@ -60,6 +60,7 @@
             "unit": "g"
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "\u00bd x 85g bag kale",
             "name": "kale",
@@ -75,6 +76,7 @@
             "unit": "ml"
         },
         {
+            "category": "other",
             "comment": "",
             "input": "2 tbsp tahini",
             "name": "tahini",
@@ -90,6 +92,7 @@
             "unit": "ml"
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "1 garlic clove, finely grated",
             "name": "garlic",
@@ -97,6 +100,7 @@
             "unit": "cloves"
         },
         {
+            "category": "canned",
             "comment": "canned",
             "input": "2 x 400g cans lentils or borlotti beans, very well drained",
             "name": "lentils",
@@ -112,6 +116,7 @@
             "unit": "g"
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "4 generous handfuls of rocket",
             "name": "rocket",

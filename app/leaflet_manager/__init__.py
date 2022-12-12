@@ -41,6 +41,7 @@ class Leaflet:
                 totals.setdefault(
                     ingredient.name, [{"total": 0, "unit": None, "category": None}]
                 )
+
                 q = pint.Quantity(ingredient.quantity, ingredient.unit)
 
                 attempts = 0
@@ -117,7 +118,7 @@ class LeafletManager:
         for recipe_id in self.db.recipe_get_all_by_leaflet_id(leaflet_id):
             recipes.append(self.db.recipe_get(recipe_id))
 
-        dt = datetime.strptime(recipes[0].created_at, database.DATETIME_FORMAT)
+        dt = recipes[0].created_at
         return Leaflet(dt, recipes, user)
 
     def save(self, leaflet):

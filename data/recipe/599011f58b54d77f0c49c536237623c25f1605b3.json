@@ -4,6 +4,7 @@
     "id": "599011f58b54d77f0c49c536237623c25f1605b3",
     "ingredients": [
         {
+            "category": "vegetable",
             "comment": "",
             "input": "2 large peppers , halved, deseeded but stalks left on",
             "name": "pepper",
@@ -27,6 +28,7 @@
             "unit": "ml"
         },
         {
+            "category": "vegetable",
             "comment": "canned",
             "input": "400g can chopped tomatoes",
             "name": "chopped tomatoes",
@@ -42,6 +44,7 @@
             "unit": ""
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "1 garlic clove , finely grated",
             "name": "garlic",
@@ -57,6 +60,7 @@
             "unit": ""
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "1 small aubergine , cut into small cubes",
             "name": "aubergine",
@@ -64,6 +68,7 @@
             "unit": ""
         },
         {
+            "category": "canned",
             "comment": "canned",
             "input": "220g can kidney beans (not drained)",
             "name": "kidney beans",
@@ -71,6 +76,7 @@
             "unit": "g"
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "small bunch of coriander , chopped",
             "name": "coriander",
@@ -78,6 +84,7 @@
             "unit": "bunches"
         },
         {
+            "category": "dairy",
             "comment": "",
             "input": "1 large egg",
             "name": "egg",
@@ -101,6 +108,7 @@
             "unit": "g"
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "2 handfuls rocket",
             "name": "rocket",
@@ -108,6 +116,7 @@
             "unit": "bunches"
         },
         {
+            "category": "vegetable",
             "comment": "",
             "input": "lime wedges, for squeezing over",
             "name": "lime",

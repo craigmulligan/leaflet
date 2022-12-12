@@ -16,6 +16,14 @@ poetry shell
 poetry install
 ```
 
+# Run postgres
+
+```
+docker-compose up -d
+```
+
+Then run any of the commands below.
+
 # Run test suite. 
 ```
 flask dev test 

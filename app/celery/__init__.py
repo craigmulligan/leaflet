@@ -8,10 +8,11 @@ class FlaskCelery(Celery):
         super().__init__()
 
     def register(self, app):
+        url = app.config["DATABASE_URL"].replace("postgres", "postgresql", 1)
         self.conf.update(
             {
-                "broker_url": "sqla+sqlite:///" + app.config["DB_URL"],
-                "result_backend": "db+sqlite:///" + app.config["DB_URL"],
+                "broker_url": "sqla+" + url,
+                "result_backend": "db+" + url,
             }
         )
 

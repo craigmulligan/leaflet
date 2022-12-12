@@ -70,7 +70,7 @@ def test_post_magic_success_prod_mode(
 
     mail_manager_mock.send.assert_called_once_with(
         user.email,
-        "Signin link",
+        f"{app.config['APP_NAME']} Signin link",
         f"<a href='{host_url}/auth/magic?token={token}'>Click here to signin.</a>",
     )
 
