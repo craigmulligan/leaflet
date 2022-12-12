@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
-    - uses: abatilo/actions-poetry@v2.0.0
     - uses: actions/setup-python@v4
       with:
         python-version: '3.10.5'
+    - uses: abatilo/actions-poetry@v2.0.0
     - run: poetry install
-    # - run: poetry run flask dev fmt -- --check
+    - run: sudo apt-get install --reinstall -y python-pkg-resources
     - run: poetry run flask dev mypy
     - run: poetry run flask dev test
