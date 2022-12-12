@@ -2,20 +2,19 @@ import os
 import json
 from typing import Iterable, Optional, Union, Any, List
 
-# from datetime import datetime
-import sqlite3
 from flask import g, current_app
 from datetime import datetime
 from app.models import User, Recipe, Ingredient, DATETIME_FORMAT
+import psycopg2
+import psycopg2.extras
+from psycopg2 import pool as pgpool
+
 
 class Db:
     context_key = "_db_connection"
 
-    def __init__(self, app) -> None:
-        db_url = app.config["DB_URL"]
-        connection = sqlite3.connect(db_url)
-        connection.row_factory = self.make_dicts
-        self.conn = connection
+    def __init__(self, pool) -> None:
+        self.conn = pool.getconn()
 
     @staticmethod
     def tear_down(_):
@@ -27,90 +26,11 @@ class Db:
         if db is not None:
             db.conn.close()
 
-    @staticmethod
-    def make_dicts(cursor, row):
-        return dict(
-            (cursor.description[idx][0], value) for idx, value in enumerate(row)
-        )
-
-    def setup(self):
-
-        """
-        initializes schema
-        """
-        self.conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS user (
-                id INTEGER PRIMARY KEY,
-                email TEXT UNIQUE NOT NULL, 
-                created_at TEXT DEFAULT (datetime('now')) NOT NULL,
-                recipes_per_week INTEGER DEFAULT 1,
-                serving INTEGER DEFAULT 1,
-                send_at TEXT DEFAULT (datetime('now')) 
-            );
-        """
-        )
-
-        self.conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS recipe (
-                id TEXT PRIMARY KEY, 
-                canonical_url TEXT UNIQUE NOT NULL,
-                created_at TEXT DEFAULT (datetime('now')) NOT NULL,
-                instructions TEXT NOT NULL, 
-                title TEXT NOT NULL,
-                total_time INTEGER NOT NULL,
-                yields INTEGER
-            );
-        """
-        )
-
-        self.conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS ingredient (
-                recipe_id TEXT,
-                created_at TEXT DEFAULT (datetime('now')) NOT NULL,
-                unit TEXT,
-                quantity INTEGER NOT NULL,
-                name TEXT NOT NULL,
-                category TEXT,
-                PRIMARY KEY (recipe_id, name),
-                FOREIGN KEY(recipe_id) REFERENCES recipe(id)
-            );
-        """
-        )
-
-        self.conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS leaflet_entry (
-                id INTEGER PRIMARY KEY, 
-                leaflet_id TEXT,
-                created_at TEXT DEFAULT (datetime('now')) NOT NULL,
-                recipe_id TEXT,
-                user_id INTEGER,
-                FOREIGN KEY(recipe_id) REFERENCES recipe(id),
-                FOREIGN KEY(user_id) REFERENCES user(id)
-            );
-        """
-        )
-
-        self.conn.execute(
-            """
-            CREATE INDEX IF NOT EXISTS user_email_idx ON user(email);
-        """
-        )
-
-        self.conn.execute(
-            """
-            CREATE INDEX IF NOT EXISTS user_created_at_idx ON user(created_at);
-        """
-        )
-
     def user_create(self, email) -> User:
         User.validate_email(email)
         user = self.query(
             """
-            INSERT INTO user (email) VALUES (?) RETURNING *
+            INSERT INTO "user" (email) VALUES (%s) RETURNING *
             """,
             [email],
             one=True,
@@ -123,7 +43,7 @@ class Db:
     def user_update(self, user_id: int, recipes_per_week: int, serving: int):
         user = self.query(
             """
-            UPDATE user set recipes_per_week = ?, serving = ? where id = ? RETURNING *;
+            UPDATE "user" set recipes_per_week = %s, serving = %s where id = %s RETURNING *;
             """,
             [recipes_per_week, serving, user_id],
             one=True,
@@ -136,7 +56,7 @@ class Db:
     def user_update_send_at(self, user_id: int, send_at: datetime):
         user = self.query(
             """
-            UPDATE user set send_at = ? where id = ? RETURNING *;
+            UPDATE "user" set send_at = %s where id = %s RETURNING *;
             """,
             [send_at.strftime(DATETIME_FORMAT), user_id],
             one=True,
@@ -149,27 +69,25 @@ class Db:
 
     def user_get_all_by_weekday(self, weekday: int) -> Iterable[User]:
         """
-        return a cursor which allows one. 
-        NB: use fetchone so we don't read everything  
-        into memory.
+        Returns all users who should be emailed this weekday 
         """
-        cur = self.conn.execute("select * from user where strftime('%w', send_at) = ?", str(weekday))
-        for row in cur:
-            yield User(**row)
+        cur = self.query('select * from "user" where extract(dow from send_at::timestamp)  = %s', [weekday])
 
-        cur.close()
-
+        if cur:
+            for row in cur:
+                yield User(**row)
 
     def user_get_by_email(self, email: str):
         user = self.query(
-            "select * from user where email = ? limit 1", [email], one=True
+            'select * from "user" where email = %s limit 1', [email], one=True
         )
+
         if user:
             return User(**user)
 
     def user_get_by_id(self, user_id: int):
         user = self.query(
-            "select * from user where id = ? limit 1", [user_id], one=True
+            'select * from "user" where id = %s limit 1', [user_id], one=True
         )
         if user:
             return User(**user)
@@ -177,7 +95,7 @@ class Db:
     def ingredient_insert(self, recipe_id, name, quantity, unit, category):
         self.query(
             """
-            INSERT OR IGNORE INTO ingredient (recipe_id, name, quantity, unit, category) VALUES (?, ?, ?, ?, ?)
+            INSERT INTO ingredient (recipe_id, name, quantity, unit, category) VALUES (%s, %s, %s, %s, %s) ON CONFLICT DO NOTHING
             """,
             [recipe_id, name, quantity, unit, category],
             one=True,
@@ -188,7 +106,7 @@ class Db:
     def leaflet_entry_insert(self, leaflet_id, recipe_id, user_id):
         self.query(
             """
-            INSERT INTO leaflet_entry (leaflet_id, recipe_id, user_id) VALUES (?, ?, ?)
+            INSERT INTO leaflet_entry (leaflet_id, recipe_id, user_id) VALUES (%s, %s, %s)
             """,
             [leaflet_id, recipe_id, user_id],
         )
@@ -198,7 +116,14 @@ class Db:
     def leaflet_get_all_by_user(self, user_id: int, limit=100):
         res = self.query(
             """
-            select leaflet_id from leaflet_entry where user_id = ? group by leaflet_id order by created_at desc limit ?
+            SELECT * FROM (
+              SELECT DISTINCT ON (leaflet_id) *
+              FROM leaflet_entry 
+              WHERE user_id = %s 
+              ORDER BY leaflet_id, created_at DESC
+            ) t
+            ORDER BY created_at DESC
+            LIMIT %s
             """,
             [user_id, limit],
         )
@@ -211,7 +136,7 @@ class Db:
     def leaflet_count_by_user(self, user_id: int) -> int:
         res = self.query(
             """
-            select count(DISTINCT leaflet_id) as count from leaflet_entry where user_id = ?
+            select count(DISTINCT leaflet_id) as count from leaflet_entry where user_id = %s
             """,
             [user_id],
             one=True
@@ -227,7 +152,7 @@ class Db:
             """
             SELECT recipe_id
             FROM leaflet_entry
-            where leaflet_id = ?
+            where leaflet_id = %s
             """,
             [leaflet_id],
         )
@@ -240,7 +165,7 @@ class Db:
             """
             SELECT *
             FROM recipe 
-            where id = ?
+            where id = %s
             limit 1
             """,
             [recipe_id],
@@ -251,7 +176,7 @@ class Db:
             """
             SELECT *
             FROM ingredient
-            where recipe_id = ?
+            where recipe_id = %s
             order by name
             """,
             [recipe_id],
@@ -273,7 +198,7 @@ class Db:
             """
             with recipe_count as (
                 select recipe_id, count(recipe_id) as c from leaflet_entry
-                where user_id = ?
+                where user_id = %s
                 group by recipe_id
             )
             select id, c from recipe
@@ -297,7 +222,7 @@ class Db:
             """
             SELECT name
             FROM ingredient
-            where recipe_id = ?
+            where recipe_id = %s
             """,
             [recipe_id],
         )
@@ -306,17 +231,17 @@ class Db:
             raise Exception("Recipe not found")
 
         names = [ingredient["name"] for ingredient in ingredients]
-        seq = ",".join(["?"] * len(names))
+        seq = ",".join(["%s"] * len(names))
 
         res = self.query(
             f"""
             select recipe_id, count(recipe_id) as count
             from ingredient
-            where recipe_id is not ?
+            where recipe_id <> %s
             and ingredient.name in ({seq})
             group by recipe_id
             order by count desc
-            limit ?   
+            limit %s   
             """,
             [recipe_id, *names, limit],
         )
@@ -333,7 +258,7 @@ class Db:
     ):
         self.query(
             """
-            INSERT OR IGNORE INTO recipe (id, title, canonical_url, yields, total_time, instructions) VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO recipe (id, title, canonical_url, yields, total_time, instructions) VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING
             """,
             [recipe_id, title, canonical_url, yields, total_time, instructions],
             one=True,
@@ -366,20 +291,32 @@ class Db:
                         )
 
     def query(self, query, query_args=(), one=False) -> Union[Optional[Any], Any]:
-        cur = self.conn.execute(query, query_args)
-        rv = cur.fetchall()
+        cur = self.conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
+        cur.execute(query, query_args)
+
+        if not cur.description:
+            cur.close()
+            return None
+            
+        if one:
+           rv = cur.fetchone()
+        else: 
+           rv = cur.fetchall()
+
         cur.close()
-        return (rv[0] if rv else None) if one else rv
+        return rv
 
 
 def register(app):
+    app.config["DB_POOL"] = pgpool.SimpleConnectionPool(1, 20, dsn=app.config["DATABASE_URL"])
     app.teardown_appcontext(Db.tear_down)
 
 
 def get() -> Db:
     db = getattr(g, Db.context_key, None)
     if db is None:
-        db = Db(current_app)
+        pool = current_app.config["DB_POOL"] 
+        db = Db(pool)
         setattr(g, Db.context_key, db)
 
     return db

@@ -54,7 +54,7 @@ def magic_post():
         flash(magic_link)
     else:
         logging.info("triggering magic link email")
-        email_send.delay(user.email, "Signin link", str(magic_link))
+        email_send.delay(user.email, f"{current_app.config['APP_NAME']} Signin link", str(magic_link))
 
     return render_template("magic.html")
 

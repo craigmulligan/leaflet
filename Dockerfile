@@ -1,14 +1,6 @@
 # Fetch the LiteFS binary using a multi-stage build.
-FROM flyio/litefs:0.3.0-beta3 AS litefs
-
 # Final python app
 FROM python:3.10-alpine
-
-COPY --from=litefs /usr/local/bin/litefs /usr/local/bin/litefs
-
-RUN apk add build-base
-
-RUN apk add bash curl fuse sqlite
 
 EXPOSE 8080
 
@@ -25,8 +17,3 @@ RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev
 
 COPY . .
-
-COPY etc/litefs-worker.yml /etc/
-COPY etc/litefs-web.yml /etc/
-
-RUN mkdir -p /data /mnt/data

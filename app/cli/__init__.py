@@ -4,6 +4,7 @@ import logging
 import shlex
 import click
 from flask.cli import AppGroup
+from flask import current_app
 from app import database
 from app.collector import collect_recipes, collect_urls, Persister
 
@@ -29,17 +30,23 @@ def run_sh(cmd: str, env=None, popen=False):
     ret = subprocess.call(args, env=copied_env)
     exit(ret)
 
-
-def run_init_db():
+def db_init():
     logging.info("Initializing db")
+
+    try:
+        run_sh(f"yoyo apply --database {current_app.config['DATABASE_URL']} --batch", popen=True)
+    except Exception as e:
+        print(e) 
     db = database.get()
-    db.setup()
     db.recipe_load("data/recipe")
 
+@db.command("new")
+def db_migration_new():
+    run_sh("yoyo new --sql ./migrations")
 
 @db.command("init")
-def db_init():
-    run_init_db()
+def run_db_init():
+    db_init()
 
 @recipes.command("collect")
 def recipes_collect():
@@ -63,7 +70,7 @@ def recipes_collect():
 
 @prod.command("server")
 def prod_server():
-    run_init_db()
+    db_init()
     return run_sh(
         "gunicorn 'run_app:app' -b 0.0.0.0:8080",
     )
@@ -71,8 +78,10 @@ def prod_server():
 
 @prod.command("worker")
 def prod_worker():
-    run_init_db()
-    return run_sh("celery --app 'run_app:celery' worker --without-gossip -B -c 1")
+    db_init()
+    # Note we are using the solo pool class
+    # because we only run 2 tasks and need to keep memory usage down. 
+    return run_sh("celery --app 'run_app:celery' worker --without-gossip -B -c 1 --pool solo")
 
 
 @dev.command("test")
@@ -88,7 +97,7 @@ def test(watch: bool, pytest_options):
 
 
 def run_server(popen=False):
-    run_init_db()
+    db_init()
     return run_sh(
         "flask run --host 0.0.0.0 --port 8080",
         env={"FLASK_DEBUG": "1"},
@@ -97,7 +106,7 @@ def run_server(popen=False):
 
 
 def run_worker(popen=False):
-    run_init_db()
+    db_init()
     return run_sh(
         "watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery --app run_app:celery worker --without-gossip -B",
         env={"FLASK_DEBUG": "development"},

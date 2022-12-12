@@ -4,16 +4,13 @@ app = "empty-wind-516"
 kill_signal = "SIGINT"
 kill_timeout = 5
 
-[env]
-  DB_URL = "/data/app.db"
-
 [experimental]
   auto_rollback = true
   enable_consul = true
 
 [processes]
-  web = "litefs -config /etc/litefs-web.yml"
-  worker = "litefs -config /etc/litefs-worker.yml"
+  web = "flask prod server"
+  worker = "flask prod worker"
 
 [[services]]
   http_checks = []

@@ -10,6 +10,9 @@ from app.session import session
 from app import database
 from flask import g
 from celery import Task
+from yoyo import read_migrations
+from yoyo import get_backend
+from time import sleep
 
 class Contains(str):
         def __eq__(self, other):
@@ -19,11 +22,10 @@ class Contains(str):
 def app():
     """Session-wide test `Flask` application."""
     # Establish an application context before running the tests.
-    app = create_app({"DB_URL": ":memory:", "TESTING": True})
+    app = create_app({"TESTING": True})
     ctx = app.app_context()
     ctx.push()
     
-
     yield app
 
     ctx.pop()
@@ -48,13 +50,28 @@ def mail_manager_mock():
     setattr(g, MailManager.context_key, mock)
     return mock
 
+@pytest.fixture(scope="function")
+def mock_recipe_random(monkeypatch, dummy_recipe_id):
+    """
+    This ensures that celery tasks are called locally
+    so you can assert their results within the test
+    without running the worker.
+    """
+    mock = Mock(return_value=dummy_recipe_id)
+    monkeypatch.setattr("app.database.Db.recipe_random", mock)
+
 
 @pytest.fixture(scope="function", autouse=True)
-def db():
-    _db = database.get()
-    _db.setup()
-    return _db
+def db(app):
+    backend = get_backend(app.config["DATABASE_URL"])
 
+    with backend.lock():
+        migrations = read_migrations('migrations')
+        # Apply any outstanding migrations
+        backend.rollback_migrations(backend.to_rollback(migrations))
+        backend.apply_migrations(backend.to_apply(migrations))
+
+    yield database.get()
 
 @pytest.fixture(scope="function")
 def seeded_recipe_ids(db):
@@ -98,7 +115,6 @@ def signin(client):
     """
     util function to create a test case user.
     """
-
     def inner(user: User) -> None:
         with client.session_transaction() as sesh:
             session.flask_session = sesh
@@ -123,12 +139,4 @@ def dummy_recipe_id():
     return "56cd7fb0e5bd654e4eaa0955042163f7ca55f085"
 
 
-@pytest.fixture(scope="function")
-def mock_recipe_random(monkeypatch, dummy_recipe_id):
-    """
-    This ensures that celery tasks are called locally
-    so you can assert their results within the test
-    without running the worker.
-    """
-    mock = Mock(return_value=dummy_recipe_id)
-    monkeypatch.setattr("app.database.Db.recipe_random", mock)
+

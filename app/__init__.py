@@ -12,8 +12,6 @@ def create_app(settings=None):
     if settings:
         app.config.update(settings)
 
-    # All modules have .init_app()
-    # interface.
     database.register(app)
     celery.register(app)
     api.register(app)
