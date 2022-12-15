@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 {% from "field_validation.html" import field_validation %}
 {% block content %}
-<header><h3>hi {{user.email}}</h3></header>
+<header>
+  <h3>hi {{user.email}}</h3>
+  <h4>Total recipes in {{config["APP_NAME"]}}: {{recipe_count}}</h4>
+</header>
+
 <br />
 <form method="post">
   {{ field_validation("recipes_per_week", errors) }}
@@ -25,7 +29,6 @@
 Previous leaflets:
 
 <ul>
-{{leaflet_ids|length}}
 {% for leaflet_id in leaflet_ids %}
 <li><a href="{{ url_for('user.leaflet_get', user_id=user.id, leaflet_id=leaflet_id) }}">{{leaflet_id}}</a></li>
 {% endfor %}
