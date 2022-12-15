@@ -46,11 +46,12 @@ class Recipe:
             ingredient = None
             try:
                 ingredient = parse(i)
-            except Exception as e:
-                print(f"Exception: {e}")
+            except Exception:
+                logging.exception("Error parsing ingredient")
                 ingredient = ask(i)
             finally:
                 assert ingredient
+                ingredient["category"] = get_category(ingredient["name"])
                 corrected = fixup(ingredient)
                 normalized = normalize(corrected)
                 result = yield_factor(normalized, self.yields())

@@ -14,13 +14,18 @@
         "cheese",
         "egg",
         "low-fat feta cheese",
-        "low-fat fromage frais"
+        "low-fat fromage frais",
+        "fat-free Greek yogurt",
+        "eggs",
+        "ricotta",
+        "sherry vinegar"
     ],
     "dressing": [
         "sesame oil",
         "rapeseed oil",
         "cider vinegar",
-        "apple cider vinegar"
+        "apple cider vinegar",
+        "mild curry paste"
     ],
     "dry-good": [
         "pasta",
@@ -28,7 +33,8 @@
         "wholemeal bulghar wheat",
         "wholemeal linguine",
         "toor dhal or red split lentils",
-        "pumpkin seeds"
+        "pumpkin seeds",
+        "brown basmati rice"
     ],
     "essential": [
         "olive oil",
@@ -196,6 +202,12 @@
         "of cauliflower broken into small florets",
         "rocket",
         "diced butternut squash",
-        "of rocket"
+        "of rocket",
+        "butternut squash",
+        "new potatoes",
+        "long-stem broccoli",
+        "green beans",
+        "mixed beans",
+        "basil"
     ]
 }

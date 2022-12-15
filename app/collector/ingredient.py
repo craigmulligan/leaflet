@@ -14,6 +14,7 @@ pint.define("cloves = 1")
 pint.define("bunches = 1")
 pint.define("sprigs = 1")
 pint.define("packs = 1")
+pint.define("pinches = 1")
 
 
 def renamer(name):
@@ -50,7 +51,6 @@ def parse(description) -> Ingredient:
         "unit": d["unit"],
         "input": description,
         "comment": d["comment"],
-        "category": get_category(name),
     }  # type: ignore
 
 
@@ -81,8 +81,8 @@ def get_category(name: str) -> str:
             f.write(data)
 
         return output
-    except Exception as exc_info:
-        print(exc_info)
+    except Exception:
+        logging.exception("Error getting category")
         return ""
 
 
@@ -117,13 +117,18 @@ def normalize(ingredient: Ingredient) -> Ingredient:
 
 
 def ask(description, result=None) -> Ingredient:
-    keys = ["name", "quantity", "unit", "comment"]
+    keys = ["name", "quantity", "unit", "comment", "category"]
+
     if result is None:
         result = {}
 
     for key in keys:
         if key not in result:
-            output = input(f"What is the {key} of: {description}\n")
+            if key == "category":
+                output = get_category(key)
+            else:
+                output = input(f"What is the {key} of: {description}\n")
+
             result[key] = output
 
     result["input"] = description
