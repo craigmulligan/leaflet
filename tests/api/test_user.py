@@ -3,7 +3,7 @@ from html import escape
 from tests.conftest import Contains
 
 
-def test_user_get_authenticated(client, dummy_user, signin):
+def test_user_get_authenticated(client, dummy_user, signin, seeded_recipe_ids, app):
     """
     Asserts user page is correctly rendered.
     """
@@ -12,7 +12,10 @@ def test_user_get_authenticated(client, dummy_user, signin):
 
     response = client.get(f"/user/{user.id}")
     assert response.status_code == 200
-    assert render_template("user.html", user=user) == response.data.decode("utf-8")
+    data = response.data.decode("utf-8")
+    recipe_count = len(seeded_recipe_ids)
+    assert render_template("user.html", user=user, recipe_count=recipe_count) == data 
+    assert str(f"Total recipes in {app.config['APP_NAME']}: {recipe_count}" ) in data 
 
 
 def test_user_update_user_authenticated_no_data(client, dummy_user, signin):

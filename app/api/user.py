@@ -27,8 +27,9 @@ def user_get(user_id):
         abort(403)
 
     leaflet_ids = db.leaflet_get_all_by_user(user_id)
+    recipe_count = db.recipe_count()
 
-    return render_template("user.html", user=user, leaflet_ids=leaflet_ids)
+    return render_template("user.html", user=user, leaflet_ids=leaflet_ids, recipe_count=recipe_count)
 
 
 @blueprint.route("/<int:user_id>", methods=["POST"])

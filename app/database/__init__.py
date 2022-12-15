@@ -290,6 +290,11 @@ class Db:
                             ingredient["category"],
                         )
 
+    def recipe_count(self):
+        row = self.query("select count(*) as count from recipe;", one=True)
+        assert row
+        return row["count"]
+
     def query(self, query, query_args=(), one=False) -> Union[Optional[Any], Any]:
         cur = self.conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
         cur.execute(query, query_args)
