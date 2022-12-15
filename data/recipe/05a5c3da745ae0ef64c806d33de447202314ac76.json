@@ -1,0 +1,131 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/giant-butter-bean-stew",
+    "host": "bbcgoodfood.com",
+    "id": "05a5c3da745ae0ef64c806d33de447202314ac76",
+    "ingredients": [
+        {
+            "category": "canned",
+            "comment": "",
+            "input": "4 x 235g cans butter beans or 500g dried butter beans (cook according to pack instructions)",
+            "name": "butter beans",
+            "quantity": 156.66666666666666,
+            "unit": "g"
+        },
+        {
+            "category": "essential",
+            "comment": "",
+            "input": "100ml Greek extra virgin olive oil",
+            "name": "olive oil",
+            "quantity": 16.666666666666668,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "3 small red onions, finely sliced",
+            "name": "red onion",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "2 large carrots, finely sliced",
+            "name": "carrots",
+            "quantity": 0.3333333333333333,
+            "unit": ""
+        },
+        {
+            "category": "vegetable",
+            "comment": "with leaf, finely chopped",
+            "input": "3 celery stalks with leaves, finely chopped",
+            "name": "celery",
+            "quantity": 0.5,
+            "unit": "stalks"
+        },
+        {
+            "category": "other",
+            "comment": "sliced",
+            "input": "4 sundried tomatoes, sliced",
+            "name": "sundried tomatoes",
+            "quantity": 0.6666666666666666,
+            "unit": ""
+        },
+        {
+            "category": "vegetable",
+            "comment": "skinned, deseeded and finely chopped",
+            "input": "1kg ripe tomatoes, skinned, deseeded and finely chopped",
+            "name": "tomato",
+            "quantity": 166.66666666666666,
+            "unit": "g"
+        },
+        {
+            "category": "vegetable",
+            "comment": "chopped",
+            "input": "4 garlic cloves, chopped",
+            "name": "garlic",
+            "quantity": 0.6666666666666666,
+            "unit": "cloves"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "1 tsp paprika",
+            "name": "paprika",
+            "quantity": 0.8216666666666667,
+            "unit": "ml"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "1 tsp ground cinnamon",
+            "name": "ground cinnamon",
+            "quantity": 0.8216666666666667,
+            "unit": "ml"
+        },
+        {
+            "category": "other",
+            "comment": "",
+            "input": "2 tbsp tomato pur\u00e9e",
+            "name": "tomato pur\u00e9e",
+            "quantity": 4.928333333333334,
+            "unit": "ml"
+        },
+        {
+            "category": "dry-good",
+            "comment": "",
+            "input": "1 tsp sugar",
+            "name": "sugar",
+            "quantity": 0.8216666666666667,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "finely chopped",
+            "input": "small pack flat-leaf parsley, finely chopped",
+            "name": "flat-leaf parsley",
+            "quantity": 0.16666666666666666,
+            "unit": "bunches"
+        },
+        {
+            "category": "vegetable",
+            "comment": "finely chopped",
+            "input": "small pack dill, finely chopped",
+            "name": "dill",
+            "quantity": 0.16666666666666666,
+            "unit": "packs"
+        },
+        {
+            "category": "dairy",
+            "comment": "crumbled",
+            "input": "100g feta (optional), crumbled",
+            "name": "feta",
+            "quantity": 16.666666666666668,
+            "unit": "g"
+        }
+    ],
+    "instructions": "Drain the canned beans, reserving 200ml of the liquid. Heat the oil in a large flameproof lidded casserole dish, and cook the onions, carrots and celery until tender and the onions are soft and transparent, but not coloured. Stir in the remaining ingredients, reserving half of the chopped herbs and feta (if using).\nHeat oven to 180C/160C fan/gas 4. Cook over a gentle heat for a further 5 mins, then pour over the reserved liquid. Cover the dish and bake in the oven for 40 mins. Check occasionally that the beans are not drying out \u2013 add a little more water if needed.\nRemove the lid and bake for 10 mins more. Can be made 2 days ahead and reheated. Stir through the reserved chopped herbs, season to taste, then crumble over the remaining feta just before serving.",
+    "title": "Giant butter bean stew",
+    "total_time": 105,
+    "yields": 6
+}

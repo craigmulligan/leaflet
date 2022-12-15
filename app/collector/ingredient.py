@@ -15,17 +15,29 @@ pint.define("bunches = 1")
 pint.define("sprigs = 1")
 pint.define("packs = 1")
 pint.define("pinches = 1")
-
+pint.define("stalks = 1")
 
 def renamer(name):
-    if name == "tomatoes":
-        return "tomato"
+    map = {
+            "tomatoes": "tomato",
+            "ripe tomatoes": "tomato",
+            "onions": "onion",
+            "red onions": "red onion",
+            "eggs": "egg",
+    }
+    
+    name = map.get(name, name)
 
     if "chillies" in name:
         return name.replace("chillies", "chilli")
 
     return name
 
+def unit_renamer(unit):
+    if unit == "g cans":
+        return "g"
+
+    return unit
 
 def unit_to_str(units):
     return "" if str(units) == "dimensionless" else pint.get_symbol(str(units))
@@ -44,11 +56,12 @@ def parse(description) -> Ingredient:
     nltk.download("averaged_perceptron_tagger")
     d = parse_ingredient(description)
     name = renamer(d["name"])
+    unit = unit_renamer(d["unit"])
 
     return {
         "name": name,
-        "quantity": float(d["quantity"]),
-        "unit": d["unit"],
+        "quantity": float(d["quantity"] or 1),
+        "unit": unit,
         "input": description,
         "comment": d["comment"],
     }  # type: ignore
@@ -125,7 +138,7 @@ def ask(description, result=None) -> Ingredient:
     for key in keys:
         if key not in result:
             if key == "category":
-                output = get_category(key)
+                output = get_category(result["name"])
             else:
                 output = input(f"What is the {key} of: {description}\n")
 

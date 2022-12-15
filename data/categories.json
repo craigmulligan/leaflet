@@ -4,7 +4,9 @@
     ],
     "canned": [
         "chickpeas",
-        "chopped tomatoes"
+        "chopped tomatoes",
+        "category",
+        "butter beans"
     ],
     "dairy": [
         "Greek yogurt",
@@ -18,7 +20,10 @@
         "fat-free Greek yogurt",
         "eggs",
         "ricotta",
-        "sherry vinegar"
+        "sherry vinegar",
+        "parmesan or vegetarian alternative",
+        "pot bio yogurt",
+        "feta (optional)"
     ],
     "dressing": [
         "sesame oil",
@@ -34,7 +39,13 @@
         "wholemeal linguine",
         "toor dhal or red split lentils",
         "pumpkin seeds",
-        "brown basmati rice"
+        "brown basmati rice",
+        "wholewheat giant couscous",
+        "pine nuts",
+        "lasagne sheet",
+        "quinoa",
+        "crunchy peanut butter",
+        "sugar"
     ],
     "essential": [
         "olive oil",
@@ -42,7 +53,8 @@
         "pepper",
         "black pepper",
         "vegetable oil",
-        "sunflower oil"
+        "sunflower oil",
+        "Greek extra virgin olive oil"
     ],
     "fruit": [
         "apple",
@@ -91,7 +103,11 @@
     ],
     "other": [
         "paneer",
-        "carton passata"
+        "carton passata",
+        "green olives",
+        "pouch cooked freekeh",
+        "sundried tomatoes",
+        "tomato pur\u00e9e"
     ],
     "spice": [
         "ground turmeric",
@@ -113,7 +129,12 @@
         "hot chilli powder",
         "dried chilli (I use Kashmiri)",
         "curry leaf",
-        "tikka masala paste"
+        "tikka masala paste",
+        "dried oregano",
+        "vegetable bouillon powder",
+        "English mustard powder",
+        "paprika",
+        "ground cinnamon"
     ],
     "vegetable": [
         "red onion",
@@ -208,6 +229,20 @@
         "long-stem broccoli",
         "green beans",
         "mixed beans",
-        "basil"
+        "basil",
+        "cherry tomatoes",
+        "red onions (320 g)",
+        "green or orange peppers",
+        "flat-leaf parsley",
+        "chestnut mushrooms",
+        "baby button mushrooms",
+        "shallot",
+        "parsley",
+        "onions (320 g)",
+        "black beans",
+        "carrot (150 g)",
+        "chopped coriander",
+        "red onions",
+        "ripe tomatoes"
     ]
 }
