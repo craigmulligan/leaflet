@@ -1,0 +1,147 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/veggie-nuggets-with-summer-slaw",
+    "host": "bbcgoodfood.com",
+    "id": "e1c211c1a55736c4c4a405c81fdfe133cf386f10",
+    "ingredients": [
+        {
+            "category": "dry-good",
+            "comment": "",
+            "input": "100g quinoa",
+            "name": "quinoa",
+            "quantity": 25.0,
+            "unit": "g"
+        },
+        {
+            "category": "vegetable",
+            "comment": "very finely chopped",
+            "input": "2 onions (320g), very finely chopped",
+            "name": "onion",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "essential",
+            "comment": "plus 1 tbsp for cooking the next day",
+            "input": "2 tbsp olive oil , plus 1 tbsp for cooking the next day",
+            "name": "olive oil",
+            "quantity": 7.3925,
+            "unit": "ml"
+        },
+        {
+            "category": "canned",
+            "comment": "",
+            "input": "2 x 400g cans black beans, drained",
+            "name": "black beans",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "2 tsp dried oregano",
+            "name": "dried oregano",
+            "quantity": 2.465,
+            "unit": "ml"
+        },
+        {
+            "category": "canned",
+            "comment": "",
+            "input": "3\u00bd tbsp crunchy peanut butter",
+            "name": "crunchy peanut butter",
+            "quantity": 12.9375,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "chopped",
+            "input": "3 tbsp parsley, chopped",
+            "name": "parsley",
+            "quantity": 11.09,
+            "unit": "ml"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "1 tsp vegetable bouillon powder",
+            "name": "vegetable bouillon powder",
+            "quantity": 1.2325,
+            "unit": "ml"
+        },
+        {
+            "category": "dairy",
+            "comment": "beaten",
+            "input": "2 eggs, beaten",
+            "name": "eggs",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "dairy",
+            "comment": "",
+            "input": "90g pot bio yogurt",
+            "name": "pot bio yogurt",
+            "quantity": 22.5,
+            "unit": "g"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "1 tsp English mustard powder",
+            "name": "English mustard powder",
+            "quantity": 1.2325,
+            "unit": "ml"
+        },
+        {
+            "category": "dressing",
+            "comment": "",
+            "input": "1 tsp apple cider vinegar",
+            "name": "apple cider vinegar",
+            "quantity": 1.2325,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "coarsely grated",
+            "input": "1 carrot (150g), coarsely grated",
+            "name": "carrot",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "vegetable",
+            "comment": "deseeded and finely chopped",
+            "input": "1 red pepper, deseeded and finely chopped",
+            "name": "red pepper",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "canned",
+            "comment": "very small",
+            "input": "1 very small onion, finely chopped",
+            "name": "onion",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "vegetable",
+            "comment": "finely shredded",
+            "input": "320g white cabbage, finely shredded",
+            "name": "white cabbage",
+            "quantity": 80.0,
+            "unit": "g"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "4 tbsp chopped coriander",
+            "name": "coriander",
+            "quantity": 14.7875,
+            "unit": "ml"
+        }
+    ],
+    "instructions": "Boil the quinoa for 20 mins following pack instructions, leave to stand for 5 mins, then drain well. Meanwhile, fry the onions in 1 tbsp oil over a medium-low heat for 5 mins with the lid on the pan, then uncover and fry for 5 mins more until soft and starting to colour. Take off the heat, stir in the black beans, oregano, peanut butter, parsley and bouillon, then mash everything together with a potato masher to crush the beans. Add the quinoa and eggs and mix well.\nHeat the remaining 1 tbsp oil in a large non-stick frying pan then, using a measuring tablespoon, scoop rounded spoonfuls of the mixture and add to the pan, spaced apart. Cook for about 2-3 mins each side until the nuggets are browned. Cook half the mixture and save the remainder for another day. Will keep chilled for up to three days.\nTo make the coleslaw, put the yogurt, mustard powder and vinegar in a bowl, stir together to make a dressing, then add the vegetables and coriander and toss well. Serve half the coleslaw with two portions of the nuggets. The remainder will keep chilled for up to three days.",
+    "title": "Veggie nuggets with summer slaw",
+    "total_time": 75,
+    "yields": 4
+}
