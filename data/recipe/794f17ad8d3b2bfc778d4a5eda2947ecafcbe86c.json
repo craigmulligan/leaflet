@@ -1,0 +1,99 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/ricotta-broccoli-new-potato-frittata",
+    "host": "bbcgoodfood.com",
+    "id": "794f17ad8d3b2bfc778d4a5eda2947ecafcbe86c",
+    "ingredients": [
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "100g new potatoes",
+            "name": "new potatoes",
+            "quantity": 50.0,
+            "unit": "g"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "200g long-stem broccoli",
+            "name": "long-stem broccoli",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "category": "vegetable",
+            "comment": "trimmed and halved",
+            "input": "200g green beans , trimmed and halved",
+            "name": "green beans",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "category": "canned",
+            "comment": "drained",
+            "input": "400g can mixed beans , drained",
+            "name": "mixed beans",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "category": "dressing",
+            "comment": "",
+            "input": "3 tsp rapeseed oil",
+            "name": "rapeseed oil",
+            "quantity": 7.395,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "crushed",
+            "input": "2 garlic cloves , crushed",
+            "name": "garlic",
+            "quantity": 1.0,
+            "unit": "cloves"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "pinch of chilli flakes , cumin seeds or fennel seeds",
+            "name": "chilli flakes",
+            "quantity": 0.0,
+            "unit": "cm"
+        },
+        {
+            "category": "dairy",
+            "comment": "",
+            "input": "4 large eggs",
+            "name": "eggs",
+            "quantity": 2.0,
+            "unit": ""
+        },
+        {
+            "category": "dairy",
+            "comment": "",
+            "input": "50g ricotta",
+            "name": "ricotta",
+            "quantity": 25.0,
+            "unit": "g"
+        },
+        {
+            "category": "dairy",
+            "comment": "",
+            "input": "1 tsp sherry vinegar",
+            "name": "sherry vinegar",
+            "quantity": 2.465,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "\u00bd small bunch of basil , roughly chopped (optional)",
+            "name": "basil",
+            "quantity": 0.25,
+            "unit": "bunches"
+        }
+    ],
+    "instructions": "Boil the potatoes for 10-15 mins until tender. Add the broccoli for the last 2 mins of cooking. Drain and thickly slice the potatoes.\nMeanwhile, put the green beans and mixed beans in a pan and cover with water. Bring to a simmer and cook for 3-4 mins, or until the green beans are tender. Drain and leave to steam-dry in the pan.\nHeat the grill to high. Heat 2 tsp of the oil in a medium non-stick frying pan and fry the garlic for 1 min, then add the chilli flakes or cumin or fennel seeds and cook for 1 min more. Add the potatoes, broccoli and seasoning, and toss to coat in the flavoured oil.\nBeat the eggs in a jug, season and pour over the potato mix. Cook over a medium heat for 2 mins, or until the base is set. Dollop teaspoons of the ricotta on top, then grill for 4-5 mins until cooked through.\nMeanwhile, drizzle another 1 tsp oil over the bean mixture with the vinegar. Stir in the basil, if using, and season. Slice the frittata into four wedges, and serve two with half the bean salad on the side. Chill the remaining wedges and bean salad to use in the lunchboxes below.",
+    "title": "Ricotta, broccoli, & new potato frittata",
+    "total_time": 30,
+    "yields": 2
+}
