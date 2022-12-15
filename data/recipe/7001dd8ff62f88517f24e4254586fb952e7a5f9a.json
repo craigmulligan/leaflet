@@ -1,0 +1,91 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/indian-butternut-squash-curry",
+    "host": "bbcgoodfood.com",
+    "id": "7001dd8ff62f88517f24e4254586fb952e7a5f9a",
+    "ingredients": [
+        {
+            "category": "dry-good",
+            "comment": "",
+            "input": "200g brown basmati rice",
+            "name": "brown basmati rice",
+            "quantity": 50.0,
+            "unit": "g"
+        },
+        {
+            "category": "essential",
+            "comment": "",
+            "input": "1 tbsp olive oil",
+            "name": "olive oil",
+            "quantity": 3.6975,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "diced",
+            "input": "1 butternut squash, diced",
+            "name": "butternut squash",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "vegetable",
+            "comment": "diced",
+            "input": "1 red onion, diced",
+            "name": "red onion",
+            "quantity": 0.25,
+            "unit": ""
+        },
+        {
+            "category": "dressing",
+            "comment": "",
+            "input": "2 tbsp mild curry paste",
+            "name": "mild curry paste",
+            "quantity": 7.3925,
+            "unit": "ml"
+        },
+        {
+            "category": "spice",
+            "comment": "",
+            "input": "300ml vegetable stock",
+            "name": "vegetable stock",
+            "quantity": 75.0,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "4 large tomatoes, roughly chopped",
+            "name": "tomato",
+            "quantity": 1.0,
+            "unit": ""
+        },
+        {
+            "category": "canned",
+            "comment": "",
+            "input": "400g can chickpeas, rinsed and drained",
+            "name": "chickpeas",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "category": "dairy",
+            "comment": "",
+            "input": "3 tbsp fat-free Greek yogurt",
+            "name": "fat-free Greek yogurt",
+            "quantity": 11.09,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "chopped",
+            "input": "small handful coriander, chopped",
+            "name": "coriander",
+            "quantity": 0.25,
+            "unit": "bunches"
+        }
+    ],
+    "instructions": "Cook the rice in boiling salted water, as per pack instructions. Meanwhile, heat the oil in a large frying pan and cook the butternut squash for 2-3 mins until lightly browned. Add the onion and the curry paste and fry for 3-4 mins more.\nPour over the stock, then cover and simmer for 15-20 mins, or until the squash is tender. Add the tomatoes and chickpeas, then gently cook for 3-4 mins, until the tomatoes slightly soften.\nTake off the heat and stir through the yogurt and coriander. Serve with the rice and some wholemeal chapattis if you like.",
+    "title": "Indian butternut squash curry",
+    "total_time": 50,
+    "yields": 4
+}
