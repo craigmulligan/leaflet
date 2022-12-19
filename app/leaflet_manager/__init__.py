@@ -5,7 +5,7 @@ from app.models import User, Recipe
 from app import database
 from dataclasses import dataclass
 from datetime import datetime
-from app.tasks.email import email_send
+from app.tasks import email_send
 
 from pint import DimensionalityError, Quantity
 from app.collector.ingredient import pint, unit_to_str
@@ -129,9 +129,9 @@ class LeafletManager:
         return leaflet_id
 
     def send(self, leaflet):
-        count = self.db.leaflet_count_by_user(leaflet.user.id) 
+        count = self.db.leaflet_count_by_user(leaflet.user.id)
         body = render_template("leaflet-content.html", leaflet=leaflet)
-        email_send(leaflet.user.email, f"Leaflet #{count}",  body)
+        email_send.delay(leaflet.user.email, f"Leaflet #{count}",  body)
 
 
 def get() -> LeafletManager:

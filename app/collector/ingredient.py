@@ -34,10 +34,14 @@ def renamer(name):
     return name
 
 def unit_renamer(unit):
-    if unit == "g cans":
-        return "g"
+    map = {
+            "g cans": "g",
+            "large cloves": "cloves",
+            "small cloves": "cloves",
+            "handfuls": "bunches"
+    }
 
-    return unit
+    return map.get(unit, unit)
 
 def unit_to_str(units):
     return "" if str(units) == "dimensionless" else pint.get_symbol(str(units))

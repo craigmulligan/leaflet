@@ -1,12 +1,15 @@
 {
     "bakery": [
-        "mini tortilla"
+        "mini tortilla",
+        "wholemeal tortillas",
+        "bread"
     ],
     "canned": [
         "chickpeas",
         "chopped tomatoes",
         "category",
-        "butter beans"
+        "butter beans",
+        "mixed beans and/or lentils"
     ],
     "dairy": [
         "Greek yogurt",
@@ -23,14 +26,16 @@
         "sherry vinegar",
         "parmesan or vegetarian alternative",
         "pot bio yogurt",
-        "feta (optional)"
+        "feta (optional)",
+        "finely grated parmesan or vegetarian alternative"
     ],
     "dressing": [
         "sesame oil",
         "rapeseed oil",
         "cider vinegar",
         "apple cider vinegar",
-        "mild curry paste"
+        "mild curry paste",
+        "red wine vinegar"
     ],
     "dry-good": [
         "pasta",
@@ -45,7 +50,9 @@
         "lasagne sheet",
         "quinoa",
         "crunchy peanut butter",
-        "sugar"
+        "sugar",
+        "wholemeal penne",
+        "mixed seeds"
     ],
     "essential": [
         "olive oil",
@@ -54,7 +61,8 @@
         "black pepper",
         "vegetable oil",
         "sunflower oil",
-        "Greek extra virgin olive oil"
+        "Greek extra virgin olive oil",
+        "good quality olive oil"
     ],
     "fruit": [
         "apple",
@@ -99,7 +107,8 @@
         "tomato",
         "pomegranate seeds",
         "preserved lemon",
-        "dried apricot"
+        "dried apricot",
+        "mangetout"
     ],
     "other": [
         "paneer",
@@ -107,7 +116,9 @@
         "green olives",
         "pouch cooked freekeh",
         "sundried tomatoes",
-        "tomato pur\u00e9e"
+        "tomato pur\u00e9e",
+        "orzo",
+        "capers"
     ],
     "spice": [
         "ground turmeric",
@@ -134,7 +145,11 @@
         "vegetable bouillon powder",
         "English mustard powder",
         "paprika",
-        "ground cinnamon"
+        "ground cinnamon",
+        "grating of nutmeg",
+        "low-salt vegetable stock",
+        "chilli powder",
+        "thyme"
     ],
     "vegetable": [
         "red onion",
@@ -243,6 +258,15 @@
         "carrot (150 g)",
         "chopped coriander",
         "red onions",
-        "ripe tomatoes"
+        "ripe tomatoes",
+        "leeks (160 g)",
+        "leeks",
+        "baby spinach leaf",
+        "of rocket leaf",
+        "baby corn",
+        "baby pak choi",
+        "spring onions",
+        "Romano peppers",
+        "few basil leaf"
     ]
 }

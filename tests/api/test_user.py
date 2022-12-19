@@ -53,9 +53,10 @@ def test_user_update_user_authenticated(client, dummy_user, signin, db):
 
     assert updated_user.serving == serving
     assert updated_user.recipes_per_week == recipes_per_week
-    assert render_template("user.html", user=updated_user) == response.data.decode(
-        "utf-8"
-    )
+
+    # Check that we set the value to the current setting.
+    assert f'value={updated_user.serving}' in response.text  
+    assert f'value={updated_user.recipes_per_week}' in response.text  
 
 
 def test_user_get_forbidden(client, dummy_user, signin):

@@ -189,9 +189,8 @@ def test_get_logout(client, dummy_user, signin):
     signin(user)
 
     response = client.get("/", follow_redirects=True)
-    assert render_template("user.html", user=user) == response.data.decode("utf-8")
-    assert session.is_authenticated()
+    assert f"hi {user.email}" in response.text
 
     response = client.get(f"/auth/logout", follow_redirects=True)
-    assert render_template("signin.html") == response.data.decode("utf-8")
+    assert render_template("signin.html") == response.text
     assert not session.is_authenticated()
