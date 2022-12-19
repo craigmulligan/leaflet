@@ -1,0 +1,75 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/charred-cauliflower-lemon-caper-orzo",
+    "host": "bbcgoodfood.com",
+    "id": "4bb9cc6fdc4123d5a072dd7f2d55675465bd2c1f",
+    "ingredients": [
+        {
+            "category": "vegetable",
+            "comment": "broken into florets, stalk chopped into cube",
+            "input": "\u00bd cauliflower , broken into florets, stalk chopped into cubes",
+            "name": "cauliflower",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "essential",
+            "comment": "",
+            "input": "2 tsp olive oil",
+            "name": "olive oil",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "category": "other",
+            "comment": "",
+            "input": "100g orzo",
+            "name": "orzo",
+            "quantity": 100.0,
+            "unit": "g"
+        },
+        {
+            "category": "other",
+            "comment": "drained and rinsed",
+            "input": "2 tsp capers , drained and rinsed",
+            "name": "capers",
+            "quantity": 9.86,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "1 small garlic clove , sliced",
+            "name": "garlic",
+            "quantity": 1.0,
+            "unit": "cloves"
+        },
+        {
+            "category": "fruit",
+            "comment": "zested and juiced",
+            "input": "\u00bd lemon , zested and juiced",
+            "name": "lemon",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "spice",
+            "comment": "(check it s vegan, if required)",
+            "input": "100ml low-salt vegetable stock (check it\u2019s vegan, if required)",
+            "name": "low-salt vegetable stock",
+            "quantity": 100.0,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "handful of rocket leaves , to serve",
+            "name": "rocket",
+            "quantity": 1.0,
+            "unit": "bunches"
+        }
+    ],
+    "instructions": "Heat the grill to high. Toss the cauliflower with half the oil and some seasoning. Tip onto a baking tray and grill for 15-20 mins until golden, charred, and tender all the way through.\nMeanwhile, cook the orzo in a pan of boiling salted water for 8 mins, or until al dente. Drain.\nHeat the remaining oil in a frying pan and sizzle the capers and garlic until golden. Stir in the orzo, cauliflower, lemon zest and juice and the stock. Bubble for 1 min, then spoon half into a bowl and top with the rocket. Leave the leftovers to cool for the lunchbox, see tip below.",
+    "title": "Charred cauliflower, lemon & caper orzo",
+    "total_time": 25,
+    "yields": 1
+}

@@ -43,8 +43,8 @@ def test_get_shopping_list(
 ):
     user = dummy_user(serving=1)
     leaflet = leaflet_manager.generate(user)
+    assert len(leaflet.recipes) == 1
     shopping_list = leaflet.shopping_list()
-
     assert len(shopping_list) == 6
 
     veg = shopping_list["vegetable"]

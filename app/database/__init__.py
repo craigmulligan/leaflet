@@ -95,7 +95,8 @@ class Db:
     def ingredient_insert(self, recipe_id, name, quantity, unit, category):
         self.query(
             """
-            INSERT INTO ingredient (recipe_id, name, quantity, unit, category) VALUES (%s, %s, %s, %s, %s) ON CONFLICT DO NOTHING
+            INSERT INTO ingredient (recipe_id, name, quantity, unit, category) VALUES (%s, %s, %s, %s, %s) ON CONFLICT(recipe_id, name)
+            DO UPDATE SET name = EXCLUDED.name, quantity = EXCLUDED.quantity, unit = EXCLUDED.unit, category = EXCLUDED.category;
             """,
             [recipe_id, name, quantity, unit, category],
             one=True,
@@ -235,21 +236,26 @@ class Db:
 
         res = self.query(
             f"""
-            select recipe_id, count(recipe_id) as count
-            from ingredient
+            with recipe_relevance as (
+                select recipe_id, count(recipe_id) as count
+                from ingredient
+                where ingredient.name in ({seq})
+                group by recipe_id
+            )
+
+            SELECT id FROM recipe
+            LEFT JOIN recipe_relevance on recipe.id = recipe_relevance.recipe_id
             where recipe_id <> %s
-            and ingredient.name in ({seq})
-            group by recipe_id
-            order by count desc
-            limit %s   
+            ORDER BY recipe_relevance.count DESC
+            limit %s;
             """,
-            [recipe_id, *names, limit],
+            [*names, recipe_id, limit],
         )
 
         if res is None:
             raise Exception("Recipe not found")
 
-        recipe_ids = [r["recipe_id"] for r in res]
+        recipe_ids = [r["id"] for r in res]
 
         return recipe_ids
 

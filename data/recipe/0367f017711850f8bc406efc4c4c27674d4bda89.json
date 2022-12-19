@@ -1,0 +1,99 @@
+{
+    "canonical_url": "https://www.bbcgoodfood.com/recipes/roasted-red-pepper-tomato-soup-ricotta",
+    "host": "bbcgoodfood.com",
+    "id": "0367f017711850f8bc406efc4c4c27674d4bda89",
+    "ingredients": [
+        {
+            "category": "fruit",
+            "comment": "halved",
+            "input": "400g tomatoes , halved",
+            "name": "tomato",
+            "quantity": 200.0,
+            "unit": "g"
+        },
+        {
+            "category": "vegetable",
+            "comment": "quartered",
+            "input": "1 red onion , quartered",
+            "name": "red onion",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "vegetable",
+            "comment": "roughly chopped",
+            "input": "2 Romano peppers , roughly chopped",
+            "name": "Romano peppers",
+            "quantity": 1.0,
+            "unit": ""
+        },
+        {
+            "category": "essential",
+            "comment": "",
+            "input": "2 tbsp good quality olive oil",
+            "name": "good quality olive oil",
+            "quantity": 14.785,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "bashed in their skins",
+            "input": "2 garlic cloves , bashed in their skins",
+            "name": "garlic",
+            "quantity": 1.0,
+            "unit": "cloves"
+        },
+        {
+            "category": "spice",
+            "comment": "few",
+            "input": "few thyme sprigs",
+            "name": "thyme",
+            "quantity": 0.5,
+            "unit": "sprigs"
+        },
+        {
+            "category": "dressing",
+            "comment": "",
+            "input": "1 tbsp red wine vinegar",
+            "name": "red wine vinegar",
+            "quantity": 7.395,
+            "unit": "ml"
+        },
+        {
+            "category": "dairy",
+            "comment": "",
+            "input": "2 tbsp ricotta",
+            "name": "ricotta",
+            "quantity": 14.785,
+            "unit": "ml"
+        },
+        {
+            "category": "vegetable",
+            "comment": "",
+            "input": "few basil leaves",
+            "name": "basil",
+            "quantity": 0.5,
+            "unit": ""
+        },
+        {
+            "category": "dry-good",
+            "comment": "toasted",
+            "input": "1 tbsp mixed seeds , toasted",
+            "name": "mixed seeds",
+            "quantity": 7.395,
+            "unit": "ml"
+        },
+        {
+            "category": "bakery",
+            "comment": "to serve",
+            "input": "bread , to serve",
+            "name": "bread",
+            "quantity": 0.5,
+            "unit": ""
+        }
+    ],
+    "instructions": "Heat oven to 200C/180C fan/gas 6. Put the tomatoes, onion and peppers in a roasting tin, toss with the oil and season. Nestle in the garlic and thyme sprigs, then roast for 25-30 mins until all the veg has softened and slightly caramelised. Squeeze the garlic cloves out of their skins into the tin, strip the leaves off the thyme and discard the stalks and garlic skins. Mix the vinegar into the tin then blend everything in a bullet blender or using a stick blender, adding enough water to loosen to your preferred consistency (we used around 150ml).\nReheat the soup if necessary, taste for seasoning, then spoon into two bowls and top each with a spoonful of ricotta, a few basil leaves, the seeds and a drizzle of oil. Serve with bread for dunking.",
+    "title": "Red pepper & tomato soup",
+    "total_time": 40,
+    "yields": 2
+}

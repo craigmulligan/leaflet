@@ -21,10 +21,10 @@ def user_get(user_id):
     user = db.user_get_by_id(user_id)
 
     if not user:
-        abort(404)
+        return abort(404)
 
     if not user.can_view():
-        abort(403)
+        return abort(403)
 
     leaflet_ids = db.leaflet_get_all_by_user(user_id)
     recipe_count = db.recipe_count()
@@ -43,10 +43,10 @@ def user_post(user_id):
     user = db.user_get_by_id(user_id)
 
     if not user:
-        abort(404)
+        return abort(404)
 
     if not user.can_view():
-        abort(403)
+        return abort(403)
 
     recipes_per_week = request.form.get("recipes_per_week")
     serving = request.form.get("serving")
@@ -79,12 +79,13 @@ def leaflet_post(user_id):
     user = db.user_get_by_id(user_id)
 
     if not user:
-        abort(404)
+        return abort(404)
 
     if not user.can_view():
-        abort(403)
+        return abort(403)
 
     leaflet = lm.generate(user)
+    print("total", len(leaflet.recipes))
     leaflet_id = lm.save(leaflet)
     lm.send(leaflet)
     flash("We sent you a new leaflet", "info")
@@ -100,10 +101,10 @@ def leaflet_get(user_id, leaflet_id):
     user = db.user_get_by_id(user_id)
 
     if not user:
-        abort(404)
+        return abort(404)
 
     if not user.can_view():
-        abort(403)
+        return abort(403)
 
     leaflet = lm.get(user, leaflet_id)
 
