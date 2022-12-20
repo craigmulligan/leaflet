@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<header>
+  <h1>Frequently asked questions</h1>
+</header>
+<ul>
+{% for q, a in faqs %}
+<details>
+  <summary><b>{{q}}</b></summary>
+  {{a}}
+</details>
+{% endfor %}
+</ul>
+{% endblock %}
