@@ -13,11 +13,20 @@
     {% if session['user_id'] %}
     <nav>
       <ul>
-        <li><a href="{{url_for('user.user_get', user_id=session['user_id'])}}">Console</a> </li>
+        <li><a {{ 'class=active' if request.path == url_for('user.user_get', user_id=session['user_id']) }} href="{{url_for('user.user_get', user_id=session['user_id'])}}">Console</a> </li>
+        <li><a {{ 'class=active' if request.path == url_for('public.faq_get') }} href="{{url_for('public.faq_get')}}">FAQ</a></li>
         <li><a href="{{url_for('auth.logout_get')}}">Logout</a> </li>
       </ul>
     </nav>
+    {% else %}
+    <nav>
+      <ul>
+        <li><a {{ 'class=active' if request.path == url_for('public.faq_get') }} href="{{url_for('public.faq_get')}}">FAQ</a></li>
+        <li><a {{ 'class=active' if request.path == url_for('auth.signin_get') }} href="{{url_for('auth.signin_get')}}">Signin</a> </li>
+      </ul>
+    </nav>
     {% endif %}
+
     <br>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}

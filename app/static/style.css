@@ -117,6 +117,10 @@ nav ul li  {
   margin-left: var(--theme-margin);
 }
 
+nav ul li .active {
+  font-weight: bold;
+}
+
 .flash ul {
   list-style-type: none;
 }

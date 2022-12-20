@@ -82,4 +82,4 @@ def magic_get():
 def logout_get():
     del session["user_id"]
     flash("You are now logged out.")
-    return redirect(url_for("_"))
+    return redirect(url_for("public.home"))

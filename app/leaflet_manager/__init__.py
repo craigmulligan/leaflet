@@ -130,7 +130,7 @@ class LeafletManager:
 
     def send(self, leaflet):
         count = self.db.leaflet_count_by_user(leaflet.user.id)
-        body = render_template("leaflet-content.html", leaflet=leaflet)
+        body = render_template("leaflet_content.html", leaflet=leaflet)
         email_send.delay(leaflet.user.email, f"Leaflet #{count}",  body)
 
 
