@@ -1,6 +1,7 @@
 import os
 import json
 from typing import Iterable, Optional, Union, Any, List
+import logging
 
 from flask import g, current_app
 from datetime import datetime
@@ -9,6 +10,7 @@ import psycopg2
 import psycopg2.extras
 from psycopg2 import pool as pgpool
 
+pool_key = "db_pool"
 
 class Db:
     context_key = "_db_connection"
@@ -22,9 +24,12 @@ class Db:
         When app context is torn down
         close the db connection.
         """
+        logging.info("closing db connection")
         db = getattr(g, Db.context_key, None)
+        pool = current_app.config[pool_key]
         if db is not None:
             db.conn.close()
+            pool.putconn(db.conn)
 
     def user_create(self, email) -> User:
         User.validate_email(email)
@@ -319,14 +324,14 @@ class Db:
 
 
 def register(app):
-    app.config["DB_POOL"] = pgpool.SimpleConnectionPool(1, 20, dsn=app.config["DATABASE_URL"])
+    app.config[pool_key] = pgpool.SimpleConnectionPool(1, 20, dsn=app.config["DATABASE_URL"])
     app.teardown_appcontext(Db.tear_down)
 
 
 def get() -> Db:
     db = getattr(g, Db.context_key, None)
     if db is None:
-        pool = current_app.config["DB_POOL"] 
+        pool = current_app.config[pool_key] 
         db = Db(pool)
         setattr(g, Db.context_key, db)
 
