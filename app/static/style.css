@@ -57,9 +57,10 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
-/* 
-  Border
-*/
+p {
+  margin: var(--theme-margin) 0;
+}
+
 body {
   font-family: var(--theme-sans-serif-font);
 }
@@ -139,9 +140,22 @@ nav ul li .active {
 .field-validation {
   padding: var(--theme-margin);
   border-radius: var(--theme-border-radius);
-  margin-bottom: var(--theme-margin)
+  margin-bottom: var(--theme-margin);
 }
 
 .field-validation-error {
   background: rgba(var(--theme-color-error), 0.8);
+}
+
+details h1, h2, h3, h4, h5, h6 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+details summary {
+  padding: var(--theme-margin) 0;
+}
+
+hr {
+  border-top:rgba(var(--theme-color-text), 0.3);
 }
