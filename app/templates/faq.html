@@ -7,7 +7,7 @@
 {% for q, a in faqs %}
 <details>
   <summary><h2>{{q}}</h2></summary>
-  <p>{{a}}</p>
+  <p>{{a|safe}}</p>
 </details>
 <hr/>
 {% endfor %}
