@@ -106,7 +106,7 @@ def test_user_leaflet_post(client, dummy_user, signin, db, leaflet_manager, mail
     assert len(db.leaflet_get_all_by_user(user.id)) == 1
 
     leaflet_ids = db.leaflet_get_all_by_user(user.id)
-    leaflet = leaflet_manager.get(user, leaflet_ids[0])
+    leaflet = leaflet_manager.get(user, leaflet_ids[0].leaflet_id)
 
     assert response.status_code == 200
 
