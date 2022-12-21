@@ -3,6 +3,7 @@ import json
 from typing import Iterable, Optional, Union, Any, List
 import logging
 
+from contextlib import contextmanager
 from flask import g, current_app
 from datetime import datetime
 from app.models import User, Recipe, Ingredient, DATETIME_FORMAT
@@ -322,17 +323,37 @@ class Db:
         cur.close()
         return rv
 
+    @contextmanager
+    def lock(self, id: int):
+        acquired = False
+        try:
+            logging.info(f"acquiring lock:{id}")
+            row = self.query("select pg_try_advisory_lock(%s)", [id], one=True)
+            assert row
+            acquired = row["pg_try_advisory_lock"]
+            if acquired:
+                logging.info(f"acquired lock:{id}")
+            else:
+                logging.info(f"could not acquired lock:{id}")
+            yield acquired
+        finally:
+            if acquired:
+               self.query("select pg_advisory_unlock(%s)", [id], one=True)
+               logging.info(f"unlocking lock:{id}")
+
 
 def register(app):
     app.config[pool_key] = pgpool.SimpleConnectionPool(1, 20, dsn=app.config["DATABASE_URL"])
     app.teardown_appcontext(Db.tear_down)
 
+def create():
+    pool = current_app.config[pool_key] 
+    return Db(pool)
 
 def get() -> Db:
     db = getattr(g, Db.context_key, None)
     if db is None:
-        pool = current_app.config[pool_key] 
-        db = Db(pool)
+        db = create()
         setattr(g, Db.context_key, db)
 
     return db
