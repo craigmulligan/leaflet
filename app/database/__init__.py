@@ -76,7 +76,7 @@ class Db:
         """
         Returns all users who should be emailed this weekday 
         """
-        cur = self.query('select * from "user" where extract(dow from send_at::timestamp)  = %s', [weekday])
+        cur = self.query('select * from "user" where extract(isodow from send_at::timestamp)  = %s', [weekday])
 
         if cur:
             for row in cur:
