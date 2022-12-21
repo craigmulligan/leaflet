@@ -4,7 +4,7 @@ from typing import Iterable, Optional, Union, Any, List
 import logging
 
 from contextlib import contextmanager
-from flask import g, current_app
+from flask import g, current_app, has_request_context
 from datetime import datetime
 from app.models import User, Recipe, Ingredient, LeafletEntry, DATETIME_FORMAT
 import psycopg2
@@ -83,6 +83,27 @@ class Db:
             for row in cur:
                 yield User(**row)
 
+
+    def user_get_candidates(self, weekday: int) -> Iterable[User]:
+        """
+        Returns all users who should be emailed this weekday 
+        """
+        cur = self.query('''
+             with non_candidates as (
+                select user_id from leaflet_entry
+                where date(created_at) = date(now())
+                group by user_id
+             )
+             select "user".* from "user" 
+             left join non_candidates on non_candidates.user_id = "user".id
+             where extract(isodow from send_at::timestamp) = %s
+             and non_candidates.user_id is NULL;
+        ''', [weekday])
+
+        if cur:
+            for row in cur:
+                yield User(**row)
+
     def user_get_by_email(self, email: str):
         user = self.query(
             'select * from "user" where email = %s limit 1', [email], one=True
@@ -111,11 +132,16 @@ class Db:
         self.conn.commit()
 
     def leaflet_entry_insert(self, leaflet_id, recipe_id, user_id):
+        created_by = "schedule"
+
+        if has_request_context():
+            created_by = "user"
+
         self.query(
             """
-            INSERT INTO leaflet_entry (leaflet_id, recipe_id, user_id) VALUES (%s, %s, %s)
+            INSERT INTO leaflet_entry (leaflet_id, recipe_id, user_id, created_by) VALUES (%s, %s, %s, %s)
             """,
-            [leaflet_id, recipe_id, user_id],
+            [leaflet_id, recipe_id, user_id, created_by],
         )
 
         self.conn.commit()
