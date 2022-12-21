@@ -2,7 +2,7 @@
   --theme-color-background: 255,255,255;
   --theme-color-info: 137, 196, 244;
   --theme-color-text: 0,0,0;
-  --theme-color-accent: 235,87,87;
+  --theme-color-accent: 37,211,102;
   --theme-color-error: 235,87,87;
   --theme-sans-serif-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
   --theme-serif-font: Lyon-Text, Georgia, serif;
@@ -127,7 +127,6 @@ nav ul li .active {
 }
 
 .flash {
-  background: rgba(var(--theme-color-accent), 0.8);
   padding: var(--theme-margin);
   border-radius: var(--theme-border-radius);
   margin-bottom: var(--theme-margin)
@@ -147,12 +146,12 @@ nav ul li .active {
   background: rgba(var(--theme-color-error), 0.8);
 }
 
-details h1, h2, h3, h4, h5, h6 {
+details > :is(h1, h2, h3, h4, h5, h6) {
   display: inline-block;
   vertical-align: middle;
 }
 
-details summary {
+details > summary {
   padding: var(--theme-margin) 0;
 }
 

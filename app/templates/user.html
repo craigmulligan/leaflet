@@ -2,7 +2,7 @@
 {% from "field_validation.html" import field_validation %}
 {% block content %}
 <header>
-  <h3>hi {{user.email}}</h3>
+  <h3>hi {{user.email}}</h3><br/>
   <h4>Total recipes in {{config["APP_NAME"]}}: {{recipe_count}}</h4>
 </header>
 
@@ -20,17 +20,18 @@
 <hr />
 <br />
 <br />
+
 <form action="{{ url_for('user.leaflet_post', user_id=user.id) }}" method="post">
 <button>Request a new leaflet</button>
 </form>
-
-
-
-Previous leaflets:
-
+<br />
+<br />
+<header>
+<h3>Previous leaflets:</h3>
 <ul>
 {% for leaflet_id in leaflet_ids %}
 <li><a href="{{ url_for('user.leaflet_get', user_id=user.id, leaflet_id=leaflet_id) }}">{{leaflet_id}}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
+</header>

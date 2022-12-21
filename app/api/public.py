@@ -16,7 +16,7 @@ def faq_get():
     ), (
         "Why did you make this?", "I grew up in South Africa, a country like many others, whose cuisine is dominated by meat. As I was transitioning to a plant based diet I didn't have any vegetarian recipes to fallback on. I found learning a totally new set of \"go-to\" recipes daunting. I'm hoping this helps others in a similar spot."
     ), (
-        "Where do the recipes come from?", "Most of them are directly taken or adapted from <a href=\"https://www.bbcgoodfood.com\" target=\"_blank\">BBC goodfood</a>(), but you can send me more that you like leaflet@craigmulligan.com"
+        "Where do the recipes come from?", "Most of them are directly taken or adapted from <a href=\"https://www.bbcgoodfood.com\" target=\"_blank\">BBC goodfood</a>, but you can <a href=\"mailto:leaflet@craigmulligan.com\" target=\"blank\">email me</a> suggestions."
     )]
 
     return render_template("faq.html", faqs=faqs)

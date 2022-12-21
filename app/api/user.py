@@ -85,7 +85,6 @@ def leaflet_post(user_id):
         return abort(403)
 
     leaflet = lm.generate(user)
-    print("total", len(leaflet.recipes))
     leaflet_id = lm.save(leaflet)
     lm.send(leaflet)
     flash("We sent you a new leaflet", "info")
