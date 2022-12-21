@@ -1,4 +1,5 @@
 import uuid
+from app import database
 
 
 def test_recipe_random(db, seeded_recipe_ids, dummy_user, dummy_recipe_id, mock_recipe_random):
@@ -26,3 +27,13 @@ def test_leaflet_get_all_by_user(db, seeded_recipe_ids, dummy_user, mock_recipe_
 
     leaflets = db.leaflet_get_all_by_user(user.id)    
     assert len(leaflets) == 2
+
+
+def test_advisory_lock(db):
+    lock_id = 1
+    other_session = database.create() 
+
+    with db.lock(lock_id) as acquired: 
+        assert acquired
+        with other_session.lock(lock_id) as acquired:
+            assert not acquired
