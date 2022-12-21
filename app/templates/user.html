@@ -29,8 +29,8 @@
 <header>
 <h3>Previous leaflets:</h3>
 <ul>
-{% for leaflet_id in leaflet_ids %}
-<li><a href="{{ url_for('user.leaflet_get', user_id=user.id, leaflet_id=leaflet_id) }}">{{leaflet_id}}</a></li>
+{% for leaflet_entry in leaflets %}
+<li><a href="{{ url_for('user.leaflet_get', user_id=user.id, leaflet_id=leaflet_entry.leaflet_id) }}">{{leaflet_entry.leaflet_id}}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

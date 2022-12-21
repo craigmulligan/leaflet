@@ -6,7 +6,7 @@ import logging
 from contextlib import contextmanager
 from flask import g, current_app
 from datetime import datetime
-from app.models import User, Recipe, Ingredient, DATETIME_FORMAT
+from app.models import User, Recipe, Ingredient, LeafletEntry, DATETIME_FORMAT
 import psycopg2
 import psycopg2.extras
 from psycopg2 import pool as pgpool
@@ -121,7 +121,7 @@ class Db:
         self.conn.commit()
 
     def leaflet_get_all_by_user(self, user_id: int, limit=100):
-        res = self.query(
+        rows = self.query(
             """
             SELECT * FROM (
               SELECT DISTINCT ON (leaflet_id) *
@@ -135,10 +135,10 @@ class Db:
             [user_id, limit],
         )
 
-        if not res:
-            return res
+        if not rows:
+            return [] 
 
-        return [r["leaflet_id"] for r in res]
+        return [LeafletEntry(**r) for r in rows] 
 
     def leaflet_count_by_user(self, user_id: int) -> int:
         res = self.query(
