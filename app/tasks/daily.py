@@ -12,14 +12,14 @@ def daily(*args, **kwargs):
     sent leaflets today. 
     For each it will generate a new leaflet
     """
-    now = datetime.utcnow()
-    weekday = now.isoweekday() 
+ 
     db = database.get()
     lm = leaflet_manager.get()
+    now = datetime.utcnow()
+    weekday = now.isoweekday()
 
     with db.lock(weekday):
-        logging.info(f"sending email for weekday: {weekday}")
-        for user in db.user_get_all_by_weekday(weekday):
+        for user in db.user_get_candidates(weekday):
             leaflet = lm.generate(user)
             leaflet_id = lm.save(leaflet)
             logging.info(f"Sending user {user.id} leaflet: {leaflet_id}")
