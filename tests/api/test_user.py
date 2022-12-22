@@ -1,4 +1,3 @@
-from flask import render_template
 from html import escape
 from tests.conftest import Contains
 

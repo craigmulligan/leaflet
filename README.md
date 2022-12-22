@@ -59,3 +59,8 @@ flask dev fmt
 ```
 flask dev mypy
 ```
+
+TODO:
+
+* cleanup session use.
+* cleanup auth tests. 

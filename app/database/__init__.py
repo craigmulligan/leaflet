@@ -25,7 +25,6 @@ class Db:
         When app context is torn down
         close the db connection.
         """
-        logging.info("closing db connection")
         db = getattr(g, Db.context_key, None)
         pool = current_app.config[pool_key]
         if db is not None:
