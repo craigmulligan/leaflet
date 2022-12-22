@@ -6,7 +6,7 @@ from app import create_app
 from app.models import User
 from app.mail import MailManager
 from app.leaflet_manager import LeafletManager, get as get_leaflet_manager
-from app.session import session
+from app.session import session as session_wrapper
 from app import database
 from flask import g
 from celery import Task
@@ -138,3 +138,6 @@ def monkey_patch_celery_async(monkeypatch):
 @pytest.fixture(scope="function")
 def dummy_recipe_id():
     return "56cd7fb0e5bd654e4eaa0955042163f7ca55f085"
+
+def with_session():
+    pass
