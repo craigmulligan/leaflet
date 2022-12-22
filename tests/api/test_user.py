@@ -12,10 +12,9 @@ def test_user_get_authenticated(client, dummy_user, signin, seeded_recipe_ids, a
 
     response = client.get(f"/user/{user.id}")
     assert response.status_code == 200
-    data = response.data.decode("utf-8")
     recipe_count = len(seeded_recipe_ids)
-    assert render_template("user.html", user=user, recipe_count=recipe_count) == data 
-    assert str(f"Total recipes in {app.config['APP_NAME']}: {recipe_count}" ) in data 
+    assert f"hi {user.email}" in response.text 
+    assert str(f"Total recipes in {app.config['APP_NAME']}: {recipe_count}" ) in response.text 
 
 
 def test_user_update_user_authenticated_no_data(client, dummy_user, signin):

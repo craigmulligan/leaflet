@@ -12,13 +12,12 @@ from flask import g
 from celery import Task
 from yoyo import read_migrations
 from yoyo import get_backend
-from time import sleep
 
 class Contains(str):
         def __eq__(self, other):
             return self in other
 
-@pytest.fixture(scope="function", autouse=True)
+@pytest.fixture(scope="function")
 def app():
     """Session-wide test `Flask` application."""
     # Establish an application context before running the tests.
@@ -29,6 +28,10 @@ def app():
     yield app
 
     ctx.pop()
+
+@pytest.fixture()
+def client(app):
+    return app.test_client()
 
 @pytest.fixture()
 def leaflet_manager_mock():
@@ -116,10 +119,8 @@ def signin(client):
     util function to create a test case user.
     """
     def inner(user: User) -> None:
-        with client.session_transaction() as sesh:
-            session.flask_session = sesh
-            session.signin(user)
-            session.flask_session = None
+        with client.session_transaction() as session:
+            session["user_id"] = user.id
 
     return inner
 
@@ -137,6 +138,3 @@ def monkey_patch_celery_async(monkeypatch):
 @pytest.fixture(scope="function")
 def dummy_recipe_id():
     return "56cd7fb0e5bd654e4eaa0955042163f7ca55f085"
-
-
-

@@ -12,7 +12,6 @@ def daily(*args, **kwargs):
     sent leaflets today. 
     For each it will generate a new leaflet
     """
- 
     db = database.get()
     lm = leaflet_manager.get()
     now = datetime.utcnow()

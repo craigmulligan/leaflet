@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, session as flask_session
 from freezegun import freeze_time
 from datetime import datetime, timedelta
 from app.session import session
@@ -19,12 +19,14 @@ def test_post_magic_success_create_user(client, db):
     assert new_user.email == email
 
 
-def test_get_sigin_page(client):
+def test_get_signin_page(client, app):
     """
     Asserts signin page is correctly rendered.
     """
-    response = client.get(f"/auth/signin")
-    assert render_template("signin.html") == response.data.decode("utf-8")
+    url = f"/auth/signin"
+    response = client.get(url)
+    with app.test_request_context(url):
+        assert render_template("signin.html") == response.data.decode("utf-8")
 
 
 def test_post_magic_success_in_dev_mode(
@@ -49,8 +51,8 @@ def test_post_magic_success_in_dev_mode(
 
         # in dev mode we send the token to the client.
         # check we don't accidently do that here.
-        assert token in response.data.decode("utf-8")
-        assert render_template("magic.html") == response.data.decode("utf-8")
+        assert token in response.text
+        assert "Magic Link" in response.text
 
 
 def test_post_magic_success_prod_mode(
@@ -77,7 +79,7 @@ def test_post_magic_success_prod_mode(
     # in dev mode we send the token to the client.
     # check we don't accidently do that here.
     assert token not in response.data.decode("utf-8")
-    assert render_template("magic.html") == response.data.decode("utf-8")
+    assert "Magic Link" in response.text
 
 
 def test_post_magic_bad_email(client, app, mail_manager_mock):
@@ -112,85 +114,93 @@ def test_post_magic_no_email(client, app, mail_manager_mock):
     mail_manager_mock.send.assert_not_called()
 
 
-def test_get_magic_success(client, dummy_user):
+def test_get_magic_success(client, dummy_user, app):
     """
     Asserts user can signin by passing signin token as a query string.
     """
-    user = dummy_user()
-    token = user.get_signin_token()
-    # Check no user is signed in.
-    assert not session.is_authenticated()
+    with app.test_request_context():
+        with client:
+            user = dummy_user()
+            token = user.get_signin_token()
+            # Check no user is signed in.
+            assert not flask_session.get("user_id") 
 
-    response = client.get(
-        f"/auth/magic", query_string=dict(token=token), follow_redirects=True
-    )
-    # in dev mode we send the token to the client.
-    # check we don't accidently do that here.
-    assert response.status_code == 200
-    assert "You are now signed in." in response.data.decode("utf-8")
-    # check the session holds the user_id
-    assert session.get_authenticated_user_id() == user.id
+            response = client.get(
+                f"/auth/magic", query_string=dict(token=token), follow_redirects=True
+            )
+            # in dev mode we send the token to the client.
+            # check we don't accidently do that here.
+            assert response.status_code == 200
+            assert "You are now signed in." in response.text
+            # check the session holds the user_id
+            assert flask_session["user_id"]
 
 
-def test_get_magic_timeout(client, dummy_user):
+def test_get_magic_timeout(client, dummy_user, app):
     """
     Asserts user can signin by passing signin token as a query string.
     """
-    user = dummy_user()
-    token = user.get_signin_token()
-    now = datetime.now()
-    hour_later = now + timedelta(hours=1)
-    # Check no user is signed in.
-    assert not session.is_authenticated()
+    with app.test_request_context():
+        user = dummy_user()
+        token = user.get_signin_token()
+        now = datetime.now()
+        hour_later = now + timedelta(hours=1)
+        # Check no user is signed in.
+        assert not session.is_authenticated()
 
-    # TODO assert email.send called with token link.
-    with freeze_time(hour_later):
-        response = client.get(
-            f"/auth/magic", query_string=dict(token=token), follow_redirects=True
-        )
-        # Check that we don't allow this.
+        # TODO assert email.send called with token link.
+        with freeze_time(hour_later):
+            response = client.get(
+                f"/auth/magic", query_string=dict(token=token), follow_redirects=True
+            )
+            # Check that we don't allow this.
+            assert response.status_code == 403
+            assert "Your link has expired" in response.data.decode("utf-8")
+            assert not session.is_authenticated()
+
+
+def test_get_magic_fail(client, dummy_user, app):
+    """
+    Asserts user can't use a bad token to signin.
+    """
+    user = dummy_user()
+    with app.test_request_context():
+        bad_token = user.get_signin_token() + "xyz"
+        assert not session.is_authenticated()
+        response = client.get(f"/auth/magic", query_string=dict(token=bad_token))
+
+        # in dev mode we send the token to the client.
+        # check we don't accidently do that here.
         assert response.status_code == 403
-        assert "Your link has expired" in response.data.decode("utf-8")
         assert not session.is_authenticated()
 
 
-def test_get_magic_fail(client, dummy_user):
+def test_get_magic_no_token(client, dummy_user, app):
     """
     Asserts user can't use a bad token to signin.
     """
-    user = dummy_user()
-    bad_token = user.get_signin_token() + "xyz"
-    assert not session.is_authenticated()
-    response = client.get(f"/auth/magic", query_string=dict(token=bad_token))
+    with app.test_request_context():
+        dummy_user()
+        assert not session.is_authenticated()
+        response = client.get(f"/auth/magic", query_string=dict(token=None))
 
-    # in dev mode we send the token to the client.
-    # check we don't accidently do that here.
-    assert response.status_code == 403
-    assert not session.is_authenticated()
+        assert response.status_code == 400
+        assert not session.is_authenticated()
 
 
-def test_get_magic_no_token(client, dummy_user):
-    """
-    Asserts user can't use a bad token to signin.
-    """
-    user = dummy_user()
-    assert not session.is_authenticated()
-    response = client.get(f"/auth/magic", query_string=dict(token=None))
-
-    assert response.status_code == 400
-    assert not session.is_authenticated()
-
-
-def test_get_logout(client, dummy_user, signin):
+def test_get_logout(client, dummy_user, signin, app):
     """
     Asserts the logout link works correctly
     """
-    user = dummy_user()
-    signin(user)
+    with app.test_request_context():
+        with client:
+            user = dummy_user()
+            signin(user)
 
-    response = client.get("/", follow_redirects=True)
-    assert f"hi {user.email}" in response.text
+            response = client.get("/", follow_redirects=True)
+            assert f"hi {user.email}" in response.text
+            assert flask_session.get("user_id") == user.id 
 
-    response = client.get(f"/auth/logout", follow_redirects=True)
-    assert render_template("signin.html") == response.text
-    assert not session.is_authenticated()
+            response = client.get(f"/auth/logout", follow_redirects=True)
+            assert "signin" in response.text
+            assert flask_session.get("user_id") is None
