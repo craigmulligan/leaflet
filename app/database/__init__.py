@@ -92,9 +92,10 @@ class Db:
              with non_candidates as (
                 select user_id from leaflet_entry
                 where date(created_at) = date(now())
+                and created_by = 'schedule' 
                 group by user_id
              )
-             select "user".* from "user" 
+             select "user".* from "user"
              left join non_candidates on non_candidates.user_id = "user".id
              where extract(isodow from send_at::timestamp) = %s
              and non_candidates.user_id is NULL;

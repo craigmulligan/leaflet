@@ -33,4 +33,4 @@ def setup_periodic_tasks(sender, **kwargs):
     """
     # Executes every Day at 8 a.m.
     logging.info("setting up periodic task.")
-    sender.add_periodic_task(crontab(hour="3"), daily.s(), name='daily', options={"expires": 10.0})
+    sender.add_periodic_task(crontab(hour="3", minute="0"), daily.s(), name='daily')
