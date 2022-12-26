@@ -9,10 +9,16 @@ class FlaskCelery(Celery):
 
     def register(self, app):
         url = app.config["DATABASE_URL"].replace("postgres", "postgresql", 1)
+        # Note we use json serializer
+        # for safety reasons.
+        # https://stackoverflow.com/questions/37376684/how-to-run-celery-workers-by-superuser#37376769
         self.conf.update(
             {
                 "broker_url": "sqla+" + url,
                 "result_backend": "db+" + url,
+                "accept_content": ['json'],
+                 "task_serializer": 'json',
+                 "result_serializer":'json'
             }
         )
 

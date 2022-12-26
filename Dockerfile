@@ -4,9 +4,6 @@ FROM python:3.10-alpine
 
 EXPOSE 8080
 
-# RUN useradd -rm -d /home/user -s /bin/bash -g root -G sudo -u 1001 user 
-# USER user
-
 WORKDIR /home/user/app
 
 RUN pip install --quiet --progress-bar off poetry
