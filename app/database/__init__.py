@@ -236,7 +236,7 @@ class Db:
             )
             select id, c from recipe
             LEFT JOIN recipe_count on recipe_id = id
-            ORDER BY c, random() LIMIT 1
+            ORDER BY c desc, random() LIMIT 1
             """,
             [user_id],
             one=True,

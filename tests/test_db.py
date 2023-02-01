@@ -2,7 +2,7 @@ import uuid
 from app import database
 
 
-def test_recipe_random(db, seeded_recipe_ids, dummy_user, dummy_recipe_id, mock_recipe_random):
+def test_recipe_random(db, seeded_recipe_ids, dummy_user, dummy_recipe_id):
     user = dummy_user()
     leaflet_id = str(uuid.uuid4())
 

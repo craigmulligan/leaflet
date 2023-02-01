@@ -70,3 +70,21 @@ def test_get_shopping_list(
     assert len(shopping_list) == 8
     veg = shopping_list["vegetable"]
     assert len(veg) == 11
+
+
+def test_random_leaflet(
+    dummy_user,
+    leaflet_manager,
+    db,
+    dummy_recipe_id,
+):
+    user = dummy_user()
+    leaflet = leaflet_manager.generate(user)
+    recipe_ids = [recipe.id for recipe in leaflet.recipes]
+    leaflet_manager.save(leaflet)
+
+    new_leaflet = leaflet_manager.generate(user)
+    new_recipe_ids = [recipe.id for recipe in new_leaflet.recipes]
+
+    assert recipe_ids != new_recipe_ids 
+
