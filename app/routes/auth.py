@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Request, Depends, UploadFile, File, HTTPException, Query 
+from fastapi import APIRouter, Request, Depends, Form, HTTPException, Query 
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from itsdangerous import BadSignature, SignatureExpired
+from typing import Annotated
 
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
@@ -14,15 +15,12 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
 @router.post("/magic")
-def magic(request: Request, email: UploadFile = File(...), db: Session = Depends(get_db)):
-    email_content = email.file.read()
-    email_str = email_content.decode()
-
-    user = db.query(models.User).filter(models.User.email == email_str).one_or_none()
+def magic(request: Request, email: Annotated[str, Form()], db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.email == email).one_or_none()
     
     if user is None:
         try:
-            user = models.User(email=email_str)
+            user = models.User(email=email)
             db.add(user)
             db.commit()
             db.refresh(user)
@@ -66,4 +64,4 @@ async def signin_get(request: Request):
     """
     signin form
     """
-    return "hi" 
+    return templates.TemplateResponse(request, "signin.html")
