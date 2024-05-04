@@ -14,7 +14,7 @@ from app.config import IS_DEV
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
-@router.post("/magic")
+@router.post("/auth/magic")
 def magic(request: Request, email: Annotated[str, Form()], db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.email == email).one_or_none()
     
@@ -36,10 +36,10 @@ def magic(request: Request, email: Annotated[str, Form()], db: Session = Depends
         pass
         # (user.email, "Signin link", f"{HOST_URL}/{magic_path}")
 
-    return templates.TemplateResponse(request, "dashboard.html", {"email": user.email, "magic_url": magic_url if IS_DEV else None })
+    return templates.TemplateResponse(request, "magic.html", {"email": user.email, "magic_url": magic_url if IS_DEV else None })
 
 
-@router.get("/magic")
+@router.get("/auth/magic")
 async def magic_get(request: Request, token: str = Query(...)):
     """
     Handler for the GET /magic endpoint with a 'token' query parameter.
@@ -65,3 +65,11 @@ async def signin_get(request: Request):
     signin form
     """
     return templates.TemplateResponse(request, "signin.html")
+
+
+@router.get("/")
+async def home(request: Request):
+    """
+    signin form
+    """
+    return RedirectResponse("/signin")

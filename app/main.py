@@ -7,5 +7,8 @@ from app.routes import dashboard
 
 BaseModel.metadata.create_all(bind=engine)
 app = FastAPI()
-app.include_router(auth.router, prefix="/auth")
+# unauthenticated routes
+app.include_router(auth.router)
+
+# authenticated routes
 app.include_router(dashboard.router, prefix="/dashboard")
