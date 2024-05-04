@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Poetry
+.venv/
+.env/
+.poetry/
+
+# Dependency directories
+venv/
+env/
+env-*/
+*.env
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# IDEs
+.idea/
+.vscode/
+
+# sqlite 
+*.db

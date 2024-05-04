@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "leaflet"
+version = "0.1.0"
+description = "Recipes cooked by llms"
+authors = ["Craig Mulligan <git@craigmulligan.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.0"
+SQLAlchemy = "^2.0.29"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+httpx = "^0.27.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
