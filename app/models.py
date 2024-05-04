@@ -48,3 +48,39 @@ class Leaflet(BaseModel):
     __tablename__ = "leaflet"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
+
+class UserSettings(BaseModel):
+    __tablename__ = "user_account_setting"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
+    prompt: Mapped[str]
+
+class Recipe(BaseModel):
+    __tablename__ = "recipe"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    leaflet_id: Mapped[int] = mapped_column(ForeignKey("leaflet.id"))
+    title: Mapped[str]
+    servings: Mapped[int]
+    description: Mapped[str]
+    estimated_time: Mapped[int] # time in mins 
+    image: Mapped[str]
+
+class RecipeItem(BaseModel):
+    __tablename__ = "recipe_item"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
+    description: Mapped[str]
+    step: Mapped[int]
+
+class ShoppingList(BaseModel):
+    __tablename__ = "shopping_list"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
+
+class ShoppingListItem(BaseModel):
+    __tablename__ = "shopping_list_item"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    shopping_list_id: Mapped[int] = mapped_column(ForeignKey("shopping_list.id"))
+    description: Mapped[str]
+    unit: Mapped[str]
+    amount: Mapped[int]
