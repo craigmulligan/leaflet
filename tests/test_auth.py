@@ -12,7 +12,7 @@ def test_auth_flow(client: TestClient, db: Session):
     test_email = f"user-{uuid4()}@x.com"
 
     # Make a request to create a user
-    response = client.post("/magic/", files={"email": test_email})
+    response = client.post("/auth/magic/", files={"email": test_email})
     assert response.status_code == 200
 
     # Check if user was created in the database
@@ -27,7 +27,7 @@ def test_auth_flow(client: TestClient, db: Session):
     response = client.get(magic_url)
 
     # Check we are on the dashboard
-    assert response.url.path == "/dashboard"
+    assert response.url.path == "/dashboard/"
     assert test_email in response.text
 
 

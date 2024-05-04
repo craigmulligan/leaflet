@@ -7,11 +7,10 @@ from sqlalchemy.orm import Session
 from app import models
 from app.depends import get_db
 
-
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
-@router.get("/dashboard")
+@router.get("/")
 async def dashboard_get(request: Request, db: Session = Depends(get_db)):
     """
     Handler for the GET /magic endpoint with a 'token' query parameter.

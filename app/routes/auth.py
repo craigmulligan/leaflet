@@ -13,7 +13,7 @@ from app.config import IS_DEV
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
-@router.post("/magic/")
+@router.post("/magic")
 def magic(request: Request, email: UploadFile = File(...), db: Session = Depends(get_db)):
     email_content = email.file.read()
     email_str = email_content.decode()
@@ -31,7 +31,7 @@ def magic(request: Request, email: UploadFile = File(...), db: Session = Depends
 
     # User is now created or present
     token = user.get_signin_token()
-    magic_url = f"/magic?token={token}"
+    magic_url = f"/auth/magic?token={token}"
 
     if not IS_DEV:
         ## TODO send email
