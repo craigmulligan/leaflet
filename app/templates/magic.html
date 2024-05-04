@@ -1,0 +1,5 @@
+{% extends "layout.html" %}{% block content %}
+<h1>Check your email</h1>
+{% if magic_url %}
+<div><a href="{{magic_url}}">Click to signin</a></div>
+{% endif %} {% endblock %}
