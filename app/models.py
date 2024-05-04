@@ -1,11 +1,12 @@
 import re
 from typing import Optional
+from sqlalchemy import ForeignKey, DateTime, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, validates
 from itsdangerous import URLSafeTimedSerializer
 from .config  import SECRET_KEY
 
 class BaseModel(DeclarativeBase):
-    pass
+    created_at: Mapped[str] = mapped_column(DateTime, default=func.now(), nullable=False)
 
 class User(BaseModel):
     __tablename__ = "user_account"
@@ -14,9 +15,6 @@ class User(BaseModel):
     is_email_confirmed: Mapped[Optional[bool]]
     email_regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
     salt_signin = "signin"
-
-    def __repr__(self) -> str:
-        return f"User(id={self.id!r}, email={self.email!r}, is_email_confirmed={self.is_email_confirmed!r})"
 
     def __init__(self, email):
         self.email = email 
@@ -44,3 +42,9 @@ class User(BaseModel):
             raise ValueError("Invalid Email")
 
         return address
+
+
+class Leaflet(BaseModel):
+    __tablename__ = "leaflet"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))

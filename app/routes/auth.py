@@ -8,7 +8,7 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from app import models
 from app.depends import get_db
-from app.config import IS_DEV
+from app.utils import is_dev
 
 
 router = APIRouter()
@@ -31,16 +31,16 @@ def magic(request: Request, email: Annotated[str, Form()], db: Session = Depends
     token = user.get_signin_token()
     magic_url = f"/auth/magic?token={token}"
 
-    if not IS_DEV:
+    if not is_dev():
         ## TODO send email
         pass
         # (user.email, "Signin link", f"{HOST_URL}/{magic_path}")
 
-    return templates.TemplateResponse(request, "magic.html", {"email": user.email, "magic_url": magic_url if IS_DEV else None })
+    return templates.TemplateResponse(request, "magic.html", {"email": user.email, "magic_url": magic_url if is_dev() else None })
 
 
 @router.get("/auth/magic")
-async def magic_get(request: Request, token: str = Query(...)):
+async def magic_get(request: Request, token: str = Query(...), db: Session = Depends(get_db)):
     """
     Handler for the GET /magic endpoint with a 'token' query parameter.
     """
@@ -49,6 +49,9 @@ async def magic_get(request: Request, token: str = Query(...)):
 
     try:
         user_id = models.User.verify_signin_token(token)
+        user = db.query(models.User).filter(models.User.id == user_id).one()
+        user.is_email_confirmed = True  # Set it to whatever value you need
+        db.commit()
     except SignatureExpired:
         raise HTTPException(status_code=403, detail="Your link has expired")
     except BadSignature:
