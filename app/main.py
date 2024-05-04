@@ -30,4 +30,4 @@ async def user_create(request: Request, email: UploadFile = File(...), db: Sessi
     db.commit()
     db.refresh(new_user)
 
-    return templates.TemplateResponse("dashboard.html", {"request": request, "email": new_user.email})
+    return templates.TemplateResponse(request, "dashboard.html", {"email": new_user.email})
