@@ -13,3 +13,10 @@ def db_up(ctx):
     Apply Alembic migrations to the database.
     """
     ctx.run("alembic upgrade head")
+
+@task
+def server_dev(ctx):
+    """
+    Start the FastAPI server in development mode on port 8080.
+    """
+    ctx.run("uvicorn app.main:app --reload --port 8080")

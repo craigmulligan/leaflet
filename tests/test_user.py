@@ -10,7 +10,7 @@ def test_create_user(client: TestClient, db: Session):
     test_email = f"user-{uuid4()}@x.com"
 
     # Make a request to create a user
-    response = client.post("/user/", files={"email": ("test.txt", test_email)})
+    response = client.post("/magic/", files={"email": ("test.txt", test_email)})
     assert response.status_code == 200
 
     # Check if user was created in the database
