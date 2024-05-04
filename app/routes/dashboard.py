@@ -24,3 +24,8 @@ async def dashboard_get(request: Request, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id==user_id).one()
 
     return templates.TemplateResponse(request, "dashboard.html", {"email": user.email })
+
+@router.get("/logout")
+async def dashboard_logout(request: Request):
+    request.cookies.pop("user_id")
+    return RedirectResponse("/")

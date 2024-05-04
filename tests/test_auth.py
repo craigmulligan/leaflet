@@ -11,7 +11,7 @@ def test_auth_flow(client: TestClient, db: Session):
 
 
     # assert we are redirected to /signin
-    response = client.get("/auth/signin")
+    response = client.get("/signin")
     assert "Signin" in response.text
 
     test_email = "test@example.com"
@@ -35,3 +35,7 @@ def test_auth_flow(client: TestClient, db: Session):
     # Check we are on the dashboard
     assert response.url.path == "/dashboard/"
     assert test_email in response.text
+
+
+    response = client.get("/dashboard/logout")
+    assert response.url.path == "/signin"
