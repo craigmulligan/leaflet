@@ -15,7 +15,7 @@ def db_up(ctx):
     ctx.run("alembic upgrade head")
 
 @task
-def dev(ctx):
+def server(ctx):
     """
     Start the FastAPI server in development mode on port 8080.
     """

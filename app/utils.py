@@ -7,10 +7,3 @@ def is_dev():
 
 def send_email(email: str):
     pass
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
