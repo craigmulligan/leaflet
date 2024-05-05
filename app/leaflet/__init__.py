@@ -15,10 +15,11 @@ class LeafletManager():
     def get_user_candidates(self, chunk_size=20):
         """
         returns an iter() that returns a chunk of List<User>
-        who have got NO Leaflet where created_at is < 
+        who have got NO Leaflet where created_at is > 
         1 week old.
         """
         one_week_ago = datetime.now() - timedelta(days=7)
+        print("one_week_ago", one_week_ago)
 
         last_id = None
 
@@ -27,10 +28,7 @@ class LeafletManager():
             query = self.db.query(models.User).outerjoin(models.Leaflet).filter(
                 or_(
                     models.Leaflet.id == None,
-                    and_(
-                        models.User.id == models.Leaflet.user_id,
-                        models.Leaflet.created_at < one_week_ago
-                    )
+                    models.Leaflet.created_at < one_week_ago
                 )
             )
 

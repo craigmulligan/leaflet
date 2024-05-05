@@ -1,3 +1,4 @@
+from datetime import datetime
 import re
 from typing import Optional, List
 from sqlalchemy import ForeignKey, DateTime, func
@@ -6,7 +7,7 @@ from itsdangerous import URLSafeTimedSerializer
 from .config  import SECRET_KEY
 
 class BaseModel(DeclarativeBase):
-    created_at: Mapped[str] = mapped_column(DateTime, default=func.now(), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=func.now(), nullable=False)
 
 class User(BaseModel):
     __tablename__ = "user_account"

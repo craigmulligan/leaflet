@@ -3,7 +3,7 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 from app.main import app
-from app.db import SessionLocal
+from app.db import SessionLocal, engine
 from app import models 
 from tests.llm_mock import LLMMock
 
@@ -37,3 +37,14 @@ def db():
 @pytest.fixture(autouse=True)
 def monkeypatch_llm(monkeypatch):
     monkeypatch.setattr("app.llm.LLM.generate", LLMMock.generate)
+
+
+@pytest.fixture(autouse=True)
+def clear_db():
+    """
+    Clear the db between tests
+    """
+    models.BaseModel.metadata.drop_all(engine)
+    models.BaseModel.metadata.create_all(engine)
+    yield
+    models.BaseModel.metadata.drop_all(engine)
