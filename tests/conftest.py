@@ -19,4 +19,4 @@ def db():
 
 @pytest.fixture(autouse=True)
 def monkeypatch_llm(monkeypatch):
-    monkeypatch.setattr("app.llm.LLM", LLMMock)
+    monkeypatch.setattr("app.llm.LLM.generate", LLMMock.generate)

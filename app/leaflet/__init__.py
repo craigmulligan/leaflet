@@ -2,7 +2,6 @@ import logging
 from sqlalchemy.orm import Session
 from app import models
 from app.llm import LLM
-from tests.llm_mock import LLMMock
 
 
 class LeafletManager():
@@ -10,20 +9,14 @@ class LeafletManager():
         self.db = db
         pass
         
-    def generate(self):
+    def generate(self, user: models.User):
         """
         Given a users settings
 
         Generate 3 recipes + a shopping list
         and return to caller.
         """
-        user = self.db.query(models.User).first()
-
-        if user is None:
-            raise Exception("no user")
-
-
-        llm = LLMMock()
+        llm = LLM()
         try:
             content = llm.generate()
 
@@ -39,6 +32,8 @@ class LeafletManager():
                 recipe.description = recipe_generated.description
                 recipe.estimated_time = recipe_generated.estimated_time
                 recipe.servings = recipe_generated.servings
+
+                # TODO add a real placeholder.
                 recipe.image = "https://placeholder"
 
                 self.db.add(recipe)
