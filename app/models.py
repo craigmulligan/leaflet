@@ -1,7 +1,7 @@
 import re
 from typing import Optional
 from sqlalchemy import ForeignKey, DateTime, func
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, validates
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, validates
 from itsdangerous import URLSafeTimedSerializer
 from .config  import SECRET_KEY
 
@@ -48,12 +48,14 @@ class Leaflet(BaseModel):
     __tablename__ = "leaflet"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
+    user = relationship(User)
 
 class UserSettings(BaseModel):
     __tablename__ = "user_account_setting"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
     prompt: Mapped[str]
+    user = relationship(User)
 
 class Recipe(BaseModel):
     __tablename__ = "recipe"
@@ -63,24 +65,35 @@ class Recipe(BaseModel):
     servings: Mapped[int]
     description: Mapped[str]
     estimated_time: Mapped[int] # time in mins 
-    image: Mapped[str]
+    image: Mapped[Optional[str]]
 
-class RecipeItem(BaseModel):
-    __tablename__ = "recipe_item"
+    leaflet = relationship(Leaflet)
+
+class RecipeStep(BaseModel):
+    __tablename__ = "recipe_step"
     id: Mapped[int] = mapped_column(primary_key=True)
     recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
     description: Mapped[str]
-    step: Mapped[int]
+    index: Mapped[int]
 
-class ShoppingList(BaseModel):
-    __tablename__ = "shopping_list"
+    recipe = relationship(Recipe)
+
+class RecipeIngredient(BaseModel):
+    __tablename__ = "recipe_ingredient"
     id: Mapped[int] = mapped_column(primary_key=True)
     recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
+    description: Mapped[str]
+    unit: Mapped[str]
+    amount: Mapped[float]
+
+    recipe = relationship(Recipe)
 
 class ShoppingListItem(BaseModel):
     __tablename__ = "shopping_list_item"
     id: Mapped[int] = mapped_column(primary_key=True)
-    shopping_list_id: Mapped[int] = mapped_column(ForeignKey("shopping_list.id"))
+    shopping_list_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
     description: Mapped[str]
     unit: Mapped[str]
-    amount: Mapped[int]
+    amount: Mapped[float]
+
+    recipe = relationship(Recipe)
