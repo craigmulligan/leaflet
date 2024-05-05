@@ -1,7 +1,9 @@
+from datetime import datetime, timedelta
 import logging
+from sqlalchemy import and_, or_
 from sqlalchemy.orm import Session
 from app import models
-from app.llm import LLM
+#from app.llm import LLM
 from tests.llm_mock import LLMMock
 
 
@@ -9,6 +11,46 @@ class LeafletManager():
     def __init__(self, db: Session) -> None:
         self.db = db
         pass
+
+    def get_user_candidates(self, chunk_size=20):
+        """
+        returns an iter() that returns a chunk of List<User>
+        who have got NO Leaflet where created_at is < 
+        1 week old.
+        """
+        one_week_ago = datetime.now() - timedelta(days=7)
+
+        last_id = None
+
+        while True:
+            # Query for users who have no leaflets created within the last week
+            query = self.db.query(models.User).outerjoin(models.Leaflet).filter(
+                or_(
+                    models.Leaflet.id == None,
+                    and_(
+                        models.User.id == models.Leaflet.user_id,
+                        models.Leaflet.created_at < one_week_ago
+                    )
+                )
+            )
+
+            # If last_id is not None, filter users with id greater than last_id
+            if last_id is not None:
+                query = query.filter(models.User.id > last_id)
+
+            # Fetch the next chunk of users
+            users_chunk = query.order_by(models.User.id).limit(chunk_size).all()
+
+            # If no more users, break the loop
+            if not users_chunk:
+                break
+
+            # Yield the chunk of users
+            yield users_chunk
+
+            # Update last_id to the id of the last user in the chunk
+            last_id = users_chunk[-1].id
+
         
     def generate(self, user: models.User):
         """
@@ -33,8 +75,6 @@ class LeafletManager():
                 recipe.description = recipe_generated.description
                 recipe.estimated_time = recipe_generated.estimated_time
                 recipe.servings = recipe_generated.servings
-
-                # TODO add a real placeholder.
                 recipe.image = llm.generate_image(content) 
 
                 self.db.add(recipe)

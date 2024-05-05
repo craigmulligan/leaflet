@@ -1,14 +1,9 @@
-from uuid import uuid4
-
 from sqlalchemy.orm import Session
 from app.leaflet import LeafletManager
 from app import models 
 
-def test_auth_flow(db: Session):
-    test_email = f"user-{uuid4()}@x.com"
-    user = models.User(email=test_email)
-    db.add(user)
-    db.flush()
+def test_auth_flow(db: Session, create_user):
+    user = create_user() 
 
     manager = LeafletManager(db)
 
