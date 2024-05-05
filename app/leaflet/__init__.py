@@ -19,8 +19,6 @@ class LeafletManager():
         1 week old.
         """
         one_week_ago = datetime.now() - timedelta(days=7)
-        print("one_week_ago", one_week_ago)
-
         last_id = None
 
         while True:

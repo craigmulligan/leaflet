@@ -1,7 +1,11 @@
-<div>
-  <img src="{{recipe.image}}" />
-  <div>{{recipe.title}}</div>
-  <div>{{recipe.description}}</div>
-  <div>Servings: {{recipe.servings}}</div>
-  <div>Estimated time: {{recipe.estimated_time}}</div>
+<div class="my-10">
+  <img
+    class="w-full h-96 object-cover rounded-xl"
+    alt="recipe cover image"
+    src="{{recipe.image}}"
+  />
+  <div class="text-xl my-7">{{recipe.title}}</div>
+  <div class="text-md slate-500 mb-5">{{recipe.description}}</div>
+  <div class="text-sm">Servings: {{recipe.servings}}</div>
+  <div class="text-sm">Estimated time: {{recipe.estimated_time}}</div>
 </div>

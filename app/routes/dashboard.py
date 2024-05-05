@@ -10,7 +10,7 @@ from app.db import get_db
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
-async def current_user_id(request: Request):
+def current_user_id(request: Request):
     user_id: str | None = request.cookies.get("user_id")
     return user_id 
 
@@ -22,8 +22,6 @@ def dashboard_get(request: Request, db: Session = Depends(get_db), current_user_
         return RedirectResponse("/signin")
 
     user = db.query(models.User).filter(models.User.id==current_user_id).one()
-
-    print(user.leaflets)
 
     return templates.TemplateResponse(request, "dashboard.html", {"user": user })
 

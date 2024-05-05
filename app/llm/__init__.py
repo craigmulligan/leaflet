@@ -63,7 +63,6 @@ class LLM:
                 raise Exception("No content")
 
             logging.info(f"llm response {content}")
-            print(content)
             return Response.model_validate_json(content)
 
     def generate_image(self, response: Response):
