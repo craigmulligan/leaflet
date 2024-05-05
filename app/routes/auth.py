@@ -1,21 +1,21 @@
-from fastapi import APIRouter, Request, Depends, Form, HTTPException, Query 
+from fastapi import APIRouter, Request, Depends, Form, HTTPException, Query, BackgroundTasks 
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from itsdangerous import BadSignature, SignatureExpired
 from typing import Annotated
-
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
+
 from app import models
-from app.depends import get_db
-from app.utils import is_dev
+from app.db import get_db
+from app import utils
 
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
 @router.post("/auth/magic")
-def magic(request: Request, email: Annotated[str, Form()], db: Session = Depends(get_db)):
+def magic(request: Request, email: Annotated[str, Form()], background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.email == email).one_or_none()
     
     if user is None:
@@ -31,12 +31,9 @@ def magic(request: Request, email: Annotated[str, Form()], db: Session = Depends
     token = user.get_signin_token()
     magic_url = f"/auth/magic?token={token}"
 
-    if not is_dev():
-        ## TODO send email
-        pass
-        # (user.email, "Signin link", f"{HOST_URL}/{magic_path}")
+    background_tasks.add_task(utils.send_email, email)
 
-    return templates.TemplateResponse(request, "magic.html", {"email": user.email, "magic_url": magic_url if is_dev() else None })
+    return templates.TemplateResponse(request, "magic.html", {"email": user.email, "magic_url": magic_url if utils.is_dev() else None })
 
 
 @router.get("/auth/magic")
