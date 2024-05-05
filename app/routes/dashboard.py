@@ -11,10 +11,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/")
-async def dashboard_get(request: Request, db: Session = Depends(get_db)):
-    """
-    Handler for the GET /magic endpoint with a 'token' query parameter.
-    """
+def dashboard_get(request: Request, db: Session = Depends(get_db)):
     user_id: str | None = request.cookies.get("user_id")
 
     if not user_id:
@@ -23,9 +20,38 @@ async def dashboard_get(request: Request, db: Session = Depends(get_db)):
 
     user = db.query(models.User).filter(models.User.id==user_id).one()
 
-    return templates.TemplateResponse(request, "dashboard.html", {"email": user.email })
+    print(user.leaflets)
+
+    return templates.TemplateResponse(request, "dashboard.html", {"user": user })
+
+@router.get("/leaflet/{leaflet_id}")
+def dashboard_leaflet_get(leaflet_id: int, request: Request, db: Session = Depends(get_db)):
+    user_id: str | None = request.cookies.get("user_id")
+
+    if not user_id:
+        # Not logged in.
+        return RedirectResponse("/signin")
+
+    user = db.query(models.User).filter(models.User.id==user_id).one()
+    leaflet = db.query(models.Leaflet).filter_by(id=leaflet_id).one()
+
+    return templates.TemplateResponse(request, "leaflet.html", {"user": user, "leaflet": leaflet })
+
+@router.get("/recipe/{recipe_id}")
+def dashboard_recipe_get(recipe_id: int, request: Request, db: Session = Depends(get_db)):
+    user_id: str | None = request.cookies.get("user_id")
+
+    if not user_id:
+        # Not logged in.
+        return RedirectResponse("/signin")
+
+    user = db.query(models.User).filter(models.User.id==user_id).one()
+    recipe = db.query(models.Recipe).filter_by(id=recipe_id).one()
+
+    return templates.TemplateResponse(request, "recipe.html", {"user": user, "recipe": recipe })
+
 
 @router.get("/logout")
-async def dashboard_logout(request: Request):
+def dashboard_logout(request: Request):
     request.cookies.pop("user_id")
     return RedirectResponse("/")

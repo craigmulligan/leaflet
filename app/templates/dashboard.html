@@ -2,5 +2,10 @@
 content %}
 <h1>User Created</h1>
 <a href="/logout">Log out</a>
-<p>Email: {{ email }}</p>
+<p>Email: {{ user.email }}</p>
+<ul>
+   {% for leaflet in user.leaflets %}
+      <li><a href="{{ url_for("dashboard_leaflet_get", leaflet_id=leaflet.id) }}">{{ leaflet.created_at }}</a></li>
+   {% endfor %}
+</ul>
 {% endblock %}

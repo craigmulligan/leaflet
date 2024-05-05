@@ -2,6 +2,7 @@ import logging
 from sqlalchemy.orm import Session
 from app import models
 from app.llm import LLM
+from tests.llm_mock import LLMMock
 
 
 class LeafletManager():
@@ -16,7 +17,7 @@ class LeafletManager():
         Generate 3 recipes + a shopping list
         and return to caller.
         """
-        llm = LLM()
+        llm = LLMMock()
         try:
             content = llm.generate()
 

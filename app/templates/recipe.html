@@ -1,0 +1,16 @@
+{% extends "layout.html" %} {% block title %}{{ recipe.title }}{% endblock %} {%
+block content %}
+<section>{% include "partials/recipe_summary.html" %}</section>
+<section>
+  <h2>Ingredients</h2>
+  {% for ingredient in recipe.ingredients %}
+  <div>{{ingredient.description}}</div>
+  {% endfor %}
+</section>
+<section>
+  <h2>Steps</h2>
+  {% for step in recipe.steps %}
+  <div>{{step.index}} - {{step.description}}</div>
+  {% endfor %}
+</section>
+{% endblock %}

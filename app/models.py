@@ -1,5 +1,5 @@
 import re
-from typing import Optional
+from typing import Optional, List
 from sqlalchemy import ForeignKey, DateTime, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, validates
 from itsdangerous import URLSafeTimedSerializer
@@ -15,6 +15,10 @@ class User(BaseModel):
     is_email_confirmed: Mapped[Optional[bool]]
     email_regex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
     salt_signin = "signin"
+
+    leaflets: Mapped[List["Leaflet"]] = relationship(
+         back_populates="user", cascade="all, delete-orphan"
+    )
 
     def __init__(self, email):
         self.email = email 
@@ -48,7 +52,11 @@ class Leaflet(BaseModel):
     __tablename__ = "leaflet"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
-    user = relationship(User)
+    user = relationship(User, back_populates="leaflets")
+
+    recipes: Mapped[List["Recipe"]] = relationship(
+         back_populates="leaflet", cascade="all, delete-orphan"
+    )
 
 class UserSettings(BaseModel):
     __tablename__ = "user_account_setting"
@@ -68,6 +76,16 @@ class Recipe(BaseModel):
     image: Mapped[Optional[str]]
 
     leaflet = relationship(Leaflet)
+
+    ingredients: Mapped[List["RecipeIngredient"]] = relationship(
+         back_populates="recipe", cascade="all, delete-orphan"
+    )
+    steps: Mapped[List["RecipeStep"]] = relationship(
+         back_populates="recipe", cascade="all, delete-orphan"
+    )
+    shopping_list_items: Mapped[List["ShoppingListItem"]] = relationship(
+         back_populates="recipe", cascade="all, delete-orphan"
+    )
 
 class RecipeStep(BaseModel):
     __tablename__ = "recipe_step"
