@@ -52,6 +52,8 @@ def dashboard_recipe_get(recipe_id: int, request: Request, db: Session = Depends
 
 
 @router.get("/logout")
-def dashboard_logout(request: Request):
-    request.cookies.pop("user_id")
-    return RedirectResponse("/")
+def dashboard_logout():
+    response  = RedirectResponse("/")
+    response.delete_cookie("user_id")
+
+    return response

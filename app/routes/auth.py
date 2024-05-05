@@ -36,7 +36,7 @@ def magic(request: Request, email: Annotated[str, Form()], background_tasks: Bac
 
 
 @router.get("/auth/magic")
-async def magic_get(request: Request, token: str = Query(...), db: Session = Depends(get_db)):
+async def magic_get(token: str = Query(...), db: Session = Depends(get_db)):
     """
     Handler for the GET /magic endpoint with a 'token' query parameter.
     """
@@ -71,4 +71,12 @@ async def home(request: Request):
     """
     signin form
     """
-    return RedirectResponse("/signin")
+    user_id: str | None = request.cookies.get("user_id")
+    print("home", request.cookies.items())
+
+    if not user_id:
+        # Not logged in.
+        return RedirectResponse("/signin")
+
+
+    return RedirectResponse("/dashboard")
