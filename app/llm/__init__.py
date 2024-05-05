@@ -46,14 +46,14 @@ class LLM:
                 messages=[
                     {
                         'role': 'system',
-                        "content": system_prompt.render({ "recipe_count": 2 }),
+                        "content": system_prompt.render({ "recipe_count": 3 }),
                     },
                     {
                         'role': 'user',
                         "content": "I usually cook for 2 people, I'd like my recipes in the metric system. I'm allergic to ginger.",
                     }
                 ],
-                model='llama3',
+                model='gpt-3.5-turbo-0125',
                 response_format={"type": "json_object"},
             )
 
@@ -65,5 +65,17 @@ class LLM:
             logging.info(f"llm response {content}")
             return Response.model_validate_json(content)
 
-    def generate_image(self, response: Response):
-        return "/static/placeholder.webp" 
+    def generate_image(self, recipe: Recipe):
+        with open(os.path.join(script_dir, 'image_user_prompt.jinja')) as file:
+            user_prompt = Template(file.read())
+            images = self.client.images.generate(
+              model="dall-e-2",
+              size="512x512",
+              prompt=user_prompt.render({ "recipe": recipe }),
+              response_format="b64_json"
+            )
+
+            return images.data[0].b64_json
+
+    def get_embeddings(self):
+        pass

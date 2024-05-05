@@ -1,5 +1,6 @@
 import os
 
+
 SECRET_KEY="so-secret"
 HOST_URL="http://localhost:8080"
 LLM_KEY=os.environ.get("LLM_KEY", "ollama")

@@ -1,4 +1,7 @@
+from dotenv import load_dotenv
 from invoke.tasks import task 
+
+load_dotenv()
 
 @task
 def db_rev(ctx, message):

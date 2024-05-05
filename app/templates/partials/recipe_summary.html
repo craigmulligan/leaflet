@@ -1,11 +1,17 @@
-<div class="my-10">
+<div class="my-10 flex sm:flex-col md:flex-row md:gap-8">
   <img
-    class="w-full h-96 object-cover rounded-xl"
+    class="sm:w-full md:w-1/2 h-96 object-cover rounded-xl"
     alt="recipe cover image"
-    src="{{recipe.image}}"
+    src="data:image/jpeg;base64,{{recipe.image}}"
   />
-  <div class="text-xl my-7">{{recipe.title}}</div>
-  <div class="text-md slate-500 mb-5">{{recipe.description}}</div>
-  <div class="text-sm">Servings: {{recipe.servings}}</div>
-  <div class="text-sm">Estimated time: {{recipe.estimated_time}}</div>
+  <div class="flex flex-col sm:w-full md:w-1/2 justify-between sm:mt-8 md:mt-0">
+    <div>
+      <div class="text-xl mb-7">{{recipe.title}}</div>
+      <div class="text-md slate-500 mb-5">{{recipe.description}}</div>
+    </div>
+    <div>
+      <div class="text-sm">Servings: {{recipe.servings}}</div>
+      <div class="text-sm">Estimated time: {{recipe.estimated_time}}</div>
+    </div>
+  </div>
 </div>

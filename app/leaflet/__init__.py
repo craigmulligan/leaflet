@@ -3,7 +3,7 @@ import logging
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 from app import models
-#from app.llm import LLM
+from app.llm import LLM
 from tests.llm_mock import LLMMock
 
 
@@ -55,7 +55,9 @@ class LeafletManager():
         Generate 3 recipes + a shopping list
         and return to caller.
         """
-        llm = LLMMock()
+        llm_mock = LLMMock()
+        llm = LLM()
+
         try:
             content = llm.generate()
 
@@ -71,7 +73,7 @@ class LeafletManager():
                 recipe.description = recipe_generated.description
                 recipe.estimated_time = recipe_generated.estimated_time
                 recipe.servings = recipe_generated.servings
-                recipe.image = llm.generate_image(content) 
+                recipe.image = llm.generate_image(recipe_generated) 
 
                 self.db.add(recipe)
 
