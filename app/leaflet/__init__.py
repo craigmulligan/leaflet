@@ -35,7 +35,7 @@ class LeafletManager():
                 recipe.servings = recipe_generated.servings
 
                 # TODO add a real placeholder.
-                recipe.image = "https://placeholder"
+                recipe.image = llm.generate_image(content) 
 
                 self.db.add(recipe)
 

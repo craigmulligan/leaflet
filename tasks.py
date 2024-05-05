@@ -22,8 +22,8 @@ def dev(ctx):
     ctx.run("uvicorn app.main:app --reload --port 8080")
 
 @task
-def dev_worker(ctx):
+def worker(ctx):
     """
-    Start the FastAPI server in development mode on port 8080.
+    Run the worker
     """
     ctx.run("python3 worker.py")

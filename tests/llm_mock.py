@@ -7,3 +7,6 @@ class LLMMock():
     def generate(self):
         with open(os.path.join(script_dir, "data/llm_response.json")) as file:
             return Response.model_validate_json(file.read())
+
+    def generate_image(self, response: Response):
+        return "/static/placeholder.webp" 
