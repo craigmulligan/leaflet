@@ -2,3 +2,4 @@
 - proper tailwind integration.
 - form validation + prevent xxs.
 - a away to list leaflets? Use images?
+- recipe page

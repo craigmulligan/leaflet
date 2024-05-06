@@ -5,16 +5,18 @@
     </a>
   </div>
   {% if request.cookies.get('user_id') %}
-  <button
+  <a
+    href="{{ url_for("dashboard_logout_get") }}"
     class="text-white bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-800"
   >
     Logout
-  </button>
+  </a>
   {% else %}
-  <button
+  <a
+    href="{{ url_for("signin_get") }}"
     class="text-white bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-800"
   >
     Signin
-  </button>
+  </a>
   {% endif %}
 </nav>

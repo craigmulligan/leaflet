@@ -1,6 +1,5 @@
 {% extends "layout.html" %} {% block title %}Leaflets{% endblock %} {% block
 content %}
-<h1>Leaflets</h1>
 <div>
   {% for recipe in leaflet.recipes %}
    <a href={{ url_for("dashboard_recipe_get", recipe_id=recipe.id)}}>
