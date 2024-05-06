@@ -1,0 +1,4 @@
+- Add embedding for each recipe so you can search over them.
+- proper tailwind integration.
+- form validation + prevent xxs.
+- a away to list leaflets? Use images?
