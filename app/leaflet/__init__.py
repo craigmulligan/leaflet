@@ -7,7 +7,7 @@ from app.llm import LLM
 from tests.llm_mock import LLMMock
 
 
-class LeafletManager():
+class LeafletManager:
     def __init__(self, db: Session) -> None:
         self.db = db
         pass
@@ -15,7 +15,7 @@ class LeafletManager():
     def get_user_candidates(self, chunk_size=20):
         """
         returns an iter() that returns a chunk of List<User>
-        who have got NO Leaflet where created_at is > 
+        who have got NO Leaflet where created_at is >
         1 week old.
         """
         one_week_ago = datetime.now() - timedelta(days=7)
@@ -23,10 +23,14 @@ class LeafletManager():
 
         while True:
             # Query for users who have no leaflets created within the last week
-            query = self.db.query(models.User).outerjoin(models.Leaflet).filter(
-                or_(
-                    models.Leaflet.id == None,
-                    models.Leaflet.created_at < one_week_ago
+            query = (
+                self.db.query(models.User)
+                .outerjoin(models.Leaflet)
+                .filter(
+                    or_(
+                        models.Leaflet.id == None,  # noqa
+                        models.Leaflet.created_at < one_week_ago,
+                    )
                 )
             )
 
@@ -47,7 +51,6 @@ class LeafletManager():
             # Update last_id to the id of the last user in the chunk
             last_id = users_chunk[-1].id
 
-        
     def generate(self, user: models.User):
         """
         Given a users settings
@@ -55,7 +58,7 @@ class LeafletManager():
         Generate 3 recipes + a shopping list
         and return to caller.
         """
-        llm_mock = LLMMock()
+        llm_mock = LLMMock()  # noqa
         llm = LLM()
 
         try:
@@ -73,7 +76,7 @@ class LeafletManager():
                 recipe.description = recipe_generated.description
                 recipe.estimated_time = recipe_generated.estimated_time
                 recipe.servings = recipe_generated.servings
-                recipe.image = llm.generate_image(recipe_generated) 
+                recipe.image = llm.generate_image(recipe_generated)
 
                 self.db.add(recipe)
 
@@ -82,13 +85,15 @@ class LeafletManager():
                     self.db.add(recipe_step)
                     recipe_step.recipe = recipe
                     recipe_step.index = i
-                    recipe_step.description = generated_recipe_step.description 
-                    
+                    recipe_step.description = generated_recipe_step.description
+
                 for generated_recipe_ingredient in recipe_generated.ingredients:
                     recipe_ingredient = models.RecipeIngredient()
                     self.db.add(recipe_ingredient)
                     recipe_ingredient.recipe = recipe
-                    recipe_ingredient.description = generated_recipe_ingredient.description 
+                    recipe_ingredient.description = (
+                        generated_recipe_ingredient.description
+                    )
                     recipe_ingredient.amount = generated_recipe_ingredient.amount
                     recipe_ingredient.unit = generated_recipe_ingredient.unit
 
@@ -96,7 +101,9 @@ class LeafletManager():
                     shopping_list_item = models.ShoppingListItem()
                     self.db.add(shopping_list_item)
                     shopping_list_item.recipe = recipe
-                    shopping_list_item.description = generated_shopping_list_item.description
+                    shopping_list_item.description = (
+                        generated_shopping_list_item.description
+                    )
                     shopping_list_item.amount = generated_shopping_list_item.amount
                     shopping_list_item.unit = generated_shopping_list_item.unit
 

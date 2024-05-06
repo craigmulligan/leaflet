@@ -1,4 +1,3 @@
-from .db import SessionLocal
 import os
 
 def is_dev():

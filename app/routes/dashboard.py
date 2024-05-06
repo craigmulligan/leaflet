@@ -2,7 +2,6 @@ from fastapi import APIRouter, Request, Depends
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
-from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from app import models
 from app.db import get_db

@@ -3,7 +3,6 @@ from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from itsdangerous import BadSignature, SignatureExpired
 from typing import Annotated
-from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 
 from app import models

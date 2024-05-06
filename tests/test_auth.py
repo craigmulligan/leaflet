@@ -1,6 +1,4 @@
-from _pytest import monkeypatch
 from fastapi.testclient import TestClient
-import pytest
 from sqlalchemy.orm import Session
 from app.models import User
 from uuid import uuid4
