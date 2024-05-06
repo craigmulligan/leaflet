@@ -1,20 +1,35 @@
+{% import 'macros/navbar.html' as navbar with context %}
 <nav class="py-2 flex justify-between items-center">
   <div class="flex items-center">
     <a href="/">
       <span class="text-lg font-bold">Leaflet</span>
     </a>
   </div>
+
+  <div class="border border-b border-gray-50">
+    <ul class="flex flex-wrap -mb-px">
+        <li class="me-2">
+            {{ navbar.link('Leaflets', 'dashboard_get') }}
+        </li>
+        <li class="me-2">
+            {{ navbar.link('Recipes', 'dashboard_recipes_get') }}
+        </li>
+        <li class="me-2">
+            {{ navbar.link('Profile', 'dashboard_settings_get') }}
+        </li>
+    </ul>
+  </div>
   {% if request.cookies.get('user_id') %}
   <a
     href="{{ url_for("dashboard_logout_get") }}"
-    class="text-white bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-800"
+    class="text-white font-bold bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-700"
   >
     Logout
   </a>
   {% else %}
   <a
     href="{{ url_for("signin_get") }}"
-    class="text-white bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-800"
+    class="text-white font-bold bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-700"
   >
     Signin
   </a>

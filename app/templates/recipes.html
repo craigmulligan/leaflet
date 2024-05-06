@@ -1,7 +1,7 @@
-{% extends "layout.html" %} {% block title %}Leaflet Recipes{% endblock %} {% block
+{% extends "layout.html" %} {% block title %}Recipes{% endblock %} {% block
 content %}
 <div>
-  {% for recipe in leaflet.recipes %}
+  {% for recipe in recipes %}
    <a href={{ url_for("dashboard_recipe_get", recipe_id=recipe.id)}}>
       {% include "partials/recipe_summary.html" %}
    </a>

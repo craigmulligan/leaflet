@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Request, Depends
+from fastapi import APIRouter, Request, Depends, Form
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
+from typing import Annotated
 
 from sqlalchemy.orm import Session
 from app import models
@@ -22,7 +23,6 @@ def dashboard_get(
     current_user_id: str | None = Depends(current_user_id),
 ):
     if not current_user_id:
-        # Not logged in.
         return RedirectResponse("/signin")
 
     user = db.query(models.User).filter(models.User.id == current_user_id).one()
@@ -38,7 +38,6 @@ def dashboard_leaflet_get(
     current_user_id: str | None = Depends(current_user_id),
 ):
     if not current_user_id:
-        # Not logged in.
         return RedirectResponse("/signin")
 
     user = db.query(models.User).filter(models.User.id == current_user_id).one()
@@ -46,6 +45,25 @@ def dashboard_leaflet_get(
 
     return templates.TemplateResponse(
         request, "leaflet.html", {"user": user, "leaflet": leaflet}
+    )
+
+
+@router.get("/recipe")
+def dashboard_recipes_get(
+    request: Request,
+    db: Session = Depends(get_db),
+    current_user_id: str | None = Depends(current_user_id),
+):
+    if not current_user_id:
+        return RedirectResponse("/signin")
+
+    user = db.query(models.User).filter(models.User.id == current_user_id).one()
+
+    # TODO paginate
+    recipes = db.query(models.Recipe).filter(models.User.id == current_user_id).all()
+
+    return templates.TemplateResponse(
+        request, "recipes.html", {"user": user, "recipes": recipes}
     )
 
 
@@ -57,7 +75,6 @@ def dashboard_recipe_get(
     current_user_id: str | None = Depends(current_user_id),
 ):
     if not current_user_id:
-        # Not logged in.
         return RedirectResponse("/signin")
 
     user = db.query(models.User).filter(models.User.id == current_user_id).one()
@@ -66,6 +83,38 @@ def dashboard_recipe_get(
     return templates.TemplateResponse(
         request, "recipe.html", {"user": user, "recipe": recipe}
     )
+
+
+@router.get("/settings")
+def dashboard_settings_get(
+    request: Request,
+    db: Session = Depends(get_db),
+    current_user_id: str | None = Depends(current_user_id),
+):
+    if not current_user_id:
+        return RedirectResponse("/signin")
+
+    user = db.query(models.User).filter(models.User.id == current_user_id).one()
+
+    return templates.TemplateResponse(request, "settings.html", {"user": user})
+
+
+@router.post("/settings")
+def dashboard_settings_post(
+    request: Request,
+    prompt: Annotated[str, Form()],
+    db: Session = Depends(get_db),
+    current_user_id: str | None = Depends(current_user_id),
+):
+    if not current_user_id:
+        return RedirectResponse("/signin")
+
+    user = db.query(models.User).filter(models.User.id == current_user_id).one()
+    user.prompt = prompt
+    db.add(user)
+    db.commit()
+
+    return templates.TemplateResponse(request, "settings.html", {"user": user})
 
 
 @router.get("/logout")

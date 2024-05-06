@@ -1,0 +1,7 @@
+{% macro link(name, endpoint) -%}
+<a
+  href="{{ url_for(endpoint)}}"
+  class="inline-block p-2 border-b-2 rounded-t-lg {{ 'text-emerald-900 border-b-2 border-emerald-900' if request.url == url_for(endpoint) else 'hover:text-gray-600 hover:border-gray-300 border-transparent' }}"
+  >{{ name }}</a
+>
+{%- endmacro %}
