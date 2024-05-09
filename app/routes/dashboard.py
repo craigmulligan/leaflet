@@ -1,3 +1,4 @@
+import time
 from fastapi import APIRouter, Request, Depends, Form
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -60,7 +61,13 @@ def dashboard_recipes_get(
     user = db.query(models.User).filter(models.User.id == current_user_id).one()
 
     # TODO paginate
-    recipes = db.query(models.Recipe).filter(models.User.id == current_user_id).all()
+    recipes = (
+        db.query(models.Recipe)
+        .join(models.Leaflet)
+        .join(models.User)
+        .filter(models.User.id == current_user_id)
+        .all()
+    )
 
     return templates.TemplateResponse(
         request, "recipes.html", {"user": user, "recipes": recipes}
@@ -108,6 +115,8 @@ def dashboard_settings_post(
 ):
     if not current_user_id:
         return RedirectResponse("/signin")
+
+    time.sleep(2)
 
     user = db.query(models.User).filter(models.User.id == current_user_id).one()
     user.prompt = prompt

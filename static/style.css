@@ -1,0 +1,11 @@
+.settings-form-indicator .indicator {
+  display: none;
+}
+
+.settings-form-indicator.htmx-request .indicator {
+  display: block;
+}
+
+.settings-form-indicator.htmx-request .indicator-text {
+  display: none;
+}
