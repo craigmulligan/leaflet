@@ -18,9 +18,7 @@ content %}
       rows="4"
       class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
       placeholder="I usually cook for 2 people, I'd like my recipes in the metric system. I'm allergic to ginger."
-    >
-{{ user.prompt }}</textarea
-    >
+    >{% if user.prompt %}{{ user.prompt }}{% endif %}</textarea>
   </div>
   <div class="text-center">
     <button
@@ -41,6 +39,5 @@ content %}
     </button>
   </div>
 </form>
-<!-- Loading indicator -->
 
 {% endblock %}

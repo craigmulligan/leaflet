@@ -22,7 +22,7 @@ templates = Jinja2Templates(directory="app/templates")
 
 
 @router.post("/auth/magic")
-def magic(
+def magic_post(
     request: Request,
     email: Annotated[str, Form()],
     background_tasks: BackgroundTasks,

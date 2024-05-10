@@ -6,6 +6,7 @@
     </a>
   </div>
 
+  {% if request.cookies.get('user_id') %}
   <div class="border border-b border-gray-50">
     <ul class="flex flex-wrap -mb-px">
         <li class="me-2">
@@ -19,7 +20,6 @@
         </li>
     </ul>
   </div>
-  {% if request.cookies.get('user_id') %}
   <a
     href="{{ url_for("dashboard_logout_get") }}"
     class="text-white font-bold bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-700"
