@@ -44,7 +44,7 @@ class LLM:
             base_url=config.LLM_HOST,
         )
 
-    def generate(self):
+    def generate(self, user_prompt: str):
         with open(os.path.join(script_dir, "system_prompt.jinja")) as file:
             system_prompt = Template(file.read())
             chat_completion = self.client.chat.completions.create(
@@ -55,7 +55,7 @@ class LLM:
                     },
                     {
                         "role": "user",
-                        "content": "I usually cook for 2 people, I'd like my recipes in the metric system. I'm allergic to ginger.",
+                        "content": user_prompt or "",
                     },
                 ],
                 model="gpt-3.5-turbo-0125",

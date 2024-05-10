@@ -3,9 +3,11 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 from app.main import app
+from unittest.mock import MagicMock
 from app.db import SessionLocal, engine
 from app import models
 from app.leaflet import LeafletManager
+from app.llm import LLM
 from tests.llm_mock import LLMMock
 
 
@@ -50,6 +52,11 @@ def clear_db():
 
 
 @pytest.fixture()
-def leaflet_manager(db: Session):
+def llm():
     llm = LLMMock()
+    return MagicMock(wraps=llm)
+
+
+@pytest.fixture()
+def leaflet_manager(db: Session, llm: LLM):
     return LeafletManager(db, llm)

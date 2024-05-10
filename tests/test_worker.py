@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import random
+from unittest.mock import MagicMock
 from sqlalchemy.orm import Session
 from typing import List
 
@@ -13,6 +14,19 @@ def test_generate(db: Session, leaflet_manager: LeafletManager, create_user):
 
     leaflet = db.query(models.Leaflet).filter_by(user_id=user.id).first()
     assert leaflet
+
+
+def test_user_prompt_is_used(
+    db: Session, leaflet_manager: LeafletManager, llm: MagicMock, create_user
+):
+    user = create_user()
+    leaflet_manager.generate(user)
+    llm.generate.assert_called_with(leaflet_manager.default_user_prompt)
+
+    user.prompt = "I like cats"
+    db.commit()
+    leaflet_manager.generate(user)
+    llm.generate.assert_called_with(user.prompt)
 
 
 def test_get_candidates(db: Session, leaflet_manager: LeafletManager, create_user):

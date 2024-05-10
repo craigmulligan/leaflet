@@ -7,9 +7,10 @@ from app.llm import LLM
 
 
 class LeafletManager:
-    def __init__(self, db: Session, llm) -> None:
+    def __init__(self, db: Session, llm: LLM) -> None:
         self.db = db
         self.llm = llm
+        self.default_user_prompt = "I usually cook for 2 people, I'd like my recipes in the metric system. I'm allergic to ginger."
 
     def get_user_candidates(self, chunk_size=20):
         """
@@ -57,8 +58,9 @@ class LeafletManager:
         Generate 3 recipes + a shopping list
         and return to caller.
         """
+        prompt = user.prompt or self.default_user_prompt
         try:
-            content = self.llm.generate()
+            content = self.llm.generate(prompt)
 
             # create a leaflet
             leaflet = models.Leaflet()
