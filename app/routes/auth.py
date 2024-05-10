@@ -1,4 +1,12 @@
-from fastapi import APIRouter, Request, Depends, Form, HTTPException, Query, BackgroundTasks 
+from fastapi import (
+    APIRouter,
+    Request,
+    Depends,
+    Form,
+    HTTPException,
+    Query,
+    BackgroundTasks,
+)
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from itsdangerous import BadSignature, SignatureExpired
@@ -12,10 +20,16 @@ from app import utils
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
+
 @router.post("/auth/magic")
-def magic(request: Request, email: Annotated[str, Form()], background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+def magic(
+    request: Request,
+    email: Annotated[str, Form()],
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+):
     user = db.query(models.User).filter(models.User.email == email).one_or_none()
-    
+
     if user is None:
         try:
             user = models.User(email=email)
@@ -31,7 +45,11 @@ def magic(request: Request, email: Annotated[str, Form()], background_tasks: Bac
 
     background_tasks.add_task(utils.send_email, email)
 
-    return templates.TemplateResponse(request, "magic.html", {"email": user.email, "magic_url": magic_url if utils.is_dev() else None })
+    return templates.TemplateResponse(
+        request,
+        "magic.html",
+        {"email": user.email, "magic_url": magic_url if utils.is_dev() else None},
+    )
 
 
 @router.get("/auth/magic")
@@ -53,8 +71,10 @@ def magic_get(token: str = Query(...), db: Session = Depends(get_db)):
         raise HTTPException(status_code=403)
 
     response = RedirectResponse("/dashboard")
-    response.set_cookie(key="user_id", value=user_id, httponly=True)  # Store user_id in HTTP cookie
-    return response 
+    response.set_cookie(
+        key="user_id", value=user_id, httponly=True
+    )  # Store user_id in HTTP cookie
+    return response
 
 
 @router.get("/signin")
@@ -74,6 +94,5 @@ def home(request: Request):
     if not user_id:
         # Not logged in.
         return RedirectResponse("/signin")
-
 
     return RedirectResponse("/dashboard")

@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.models import User
 from uuid import uuid4
 
+
 def test_auth_flow(client: TestClient, db: Session):
     # It should generate a magic link.
     # In test or dev mode it should return the magic link
@@ -25,7 +26,7 @@ def test_auth_flow(client: TestClient, db: Session):
     assert created_user.email == test_email
 
     # Now follow the magic link
-    magic_url = response.context["magic_url"] # type: ignore
+    magic_url = response.context["magic_url"]  # type: ignore
     assert magic_url
 
     response = client.get(magic_url)
@@ -33,7 +34,6 @@ def test_auth_flow(client: TestClient, db: Session):
     # Check we are on the dashboard
     assert response.url.path == "/dashboard/"
     assert test_email in response.text
-
 
     response = client.get("/dashboard/logout")
     assert response.url.path == "/signin"
@@ -47,5 +47,4 @@ def test_prod_auth_flow(client: TestClient, monkeypatch):
     # Make a request to create a user
     response = client.post("/auth/magic/", data={"email": test_email})
     assert response.status_code == 200
-    assert not response.context["magic_url"] # type: ignore
-
+    assert not response.context["magic_url"]  # type: ignore
