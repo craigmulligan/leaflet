@@ -4,13 +4,12 @@ from sqlalchemy import or_
 from sqlalchemy.orm import Session
 from app import models
 from app.llm import LLM
-from tests.llm_mock import LLMMock
 
 
 class LeafletManager:
-    def __init__(self, db: Session) -> None:
+    def __init__(self, db: Session, llm) -> None:
         self.db = db
-        pass
+        self.llm = llm
 
     def get_user_candidates(self, chunk_size=20):
         """
@@ -58,11 +57,8 @@ class LeafletManager:
         Generate 3 recipes + a shopping list
         and return to caller.
         """
-        llm_mock = LLMMock()  # noqa
-        llm = LLM()
-
         try:
-            content = llm.generate()
+            content = self.llm.generate()
 
             # create a leaflet
             leaflet = models.Leaflet()
@@ -76,7 +72,7 @@ class LeafletManager:
                 recipe.description = recipe_generated.description
                 recipe.estimated_time = recipe_generated.estimated_time
                 recipe.servings = recipe_generated.servings
-                recipe.image = llm.generate_image(recipe_generated)
+                recipe.image = self.llm.generate_image(recipe_generated)
 
                 self.db.add(recipe)
 

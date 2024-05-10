@@ -4,13 +4,16 @@ from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 from app.main import app
 from app.db import SessionLocal, engine
-from app import models 
+from app import models
+from app.leaflet import LeafletManager
 from tests.llm_mock import LLMMock
+
 
 @pytest.fixture()
 def client():
     client = TestClient(app)
     return client
+
 
 @pytest.fixture()
 def create_user(db: Session):
@@ -23,7 +26,7 @@ def create_user(db: Session):
         db.flush()
         return user
 
-    return inner 
+    return inner
 
 
 @pytest.fixture()
@@ -33,10 +36,6 @@ def db():
         yield db
     finally:
         db.close()
-
-@pytest.fixture(autouse=True)
-def monkeypatch_llm(monkeypatch):
-    monkeypatch.setattr("app.llm.LLM.generate", LLMMock.generate)
 
 
 @pytest.fixture(autouse=True)
@@ -48,3 +47,9 @@ def clear_db():
     models.BaseModel.metadata.create_all(engine)
     yield
     models.BaseModel.metadata.drop_all(engine)
+
+
+@pytest.fixture()
+def leaflet_manager(db: Session):
+    llm = LLMMock()
+    return LeafletManager(db, llm)

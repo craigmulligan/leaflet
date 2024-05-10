@@ -1,3 +1,4 @@
+from datetime import datetime
 import re
 from typing import Optional, List
 from sqlalchemy import ForeignKey, DateTime, func
@@ -13,7 +14,7 @@ from .config import SECRET_KEY
 
 
 class BaseModel(DeclarativeBase):
-    created_at: Mapped[DateTime] = mapped_column(
+    created_at: Mapped[datetime] = mapped_column(
         DateTime, default=func.now(), nullable=False
     )
 
