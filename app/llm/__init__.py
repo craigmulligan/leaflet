@@ -87,6 +87,7 @@ class LLM:
         embeddings = self.client.embeddings.create(
             input=text, model="text-embedding-3-small"
         )
+
         return embeddings.data[0].embedding
 
 

@@ -21,6 +21,14 @@ def db_up(ctx):
 
 
 @task
+def db_down(ctx):
+    """
+    Apply Alembic migrations to the database.
+    """
+    ctx.run("alembic downgrade cb0dd456e4cc")
+
+
+@task
 def server(ctx):
     """
     Start the FastAPI server in development mode on port 8080.

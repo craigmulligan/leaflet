@@ -76,7 +76,7 @@ def dashboard_recipes_get(
         print(f"search query: {search}")
         embeddings = llm.generate_embeddings(search)
         query = query.order_by(
-            desc(models.RecipeEmbedding.embedding.cosine_distance(embeddings))
+            models.RecipeEmbedding.embedding.cosine_distance(embeddings)
         )
 
     recipes = query.limit(10)

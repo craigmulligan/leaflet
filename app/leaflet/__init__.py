@@ -1,7 +1,6 @@
 import time
 from datetime import datetime, timedelta
 import logging
-from openai.types import embedding
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 from app import models
