@@ -9,6 +9,7 @@ from sqlalchemy.orm import (
     relationship,
     validates,
 )
+from pgvector.sqlalchemy import Vector
 from itsdangerous import URLSafeTimedSerializer
 from .config import SECRET_KEY
 
@@ -124,4 +125,12 @@ class ShoppingListItem(BaseModel):
     unit: Mapped[str]
     amount: Mapped[float]
 
+    recipe = relationship(Recipe)
+
+
+class RecipeEmbedding(BaseModel):
+    __tablename__ = "recipe_embedding"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    embedding: Mapped[List[float]] = mapped_column(Vector())
+    recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
     recipe = relationship(Recipe)
