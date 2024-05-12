@@ -1,5 +1,7 @@
+import time
 from datetime import datetime, timedelta
 import logging
+from openai.types import embedding
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 from app import models
@@ -58,6 +60,8 @@ class LeafletManager:
         Generate 3 recipes + a shopping list
         and return to caller.
         """
+
+        start_time = time.time()
         prompt = user.prompt or self.default_user_prompt
         try:
             content = self.llm.generate(prompt)
@@ -105,8 +109,17 @@ class LeafletManager:
                     shopping_list_item.amount = generated_shopping_list_item.amount
                     shopping_list_item.unit = generated_shopping_list_item.unit
 
+                embeddings = self.llm.generate_embeddings(str(recipe))
+                recipe_embedding = models.RecipeEmbedding()
+                self.db.add(recipe_embedding)
+                recipe_embedding.recipe = recipe
+                recipe_embedding.embedding = embeddings
+
             # save to db.
             self.db.commit()
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"Execution time: {elapsed_time} seconds")
             logging.info(f"successfull saved {leaflet}")
         except Exception as e:
             raise e

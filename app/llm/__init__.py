@@ -3,6 +3,7 @@ import logging
 
 from openai import OpenAI
 from jinja2 import Template
+from openai.types import Embedding
 from pydantic import BaseModel
 from typing import List
 
@@ -44,7 +45,7 @@ class LLM:
             base_url=config.LLM_HOST,
         )
 
-    def generate(self, user_prompt: str):
+    def generate(self, user_prompt: str) -> Response:
         with open(os.path.join(script_dir, "system_prompt.jinja")) as file:
             system_prompt = Template(file.read())
             chat_completion = self.client.chat.completions.create(
@@ -70,7 +71,7 @@ class LLM:
             logging.info(f"llm response {content}")
             return Response.model_validate_json(content)
 
-    def generate_image(self, recipe: Recipe):
+    def generate_image(self, recipe: Recipe) -> str | None:
         with open(os.path.join(script_dir, "image_user_prompt.jinja")) as file:
             user_prompt = Template(file.read())
             images = self.client.images.generate(
@@ -82,5 +83,13 @@ class LLM:
 
             return images.data[0].b64_json
 
-    def generate_embeddings(self):
-        pass
+    def generate_embeddings(self, text: str) -> List[float]:
+        embeddings = self.client.embeddings.create(
+            input=text, model="text-embedding-3-small"
+        )
+        return embeddings.data[0].embedding
+
+
+def get_llm():
+    llm = LLM()
+    yield llm

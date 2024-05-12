@@ -1,10 +1,10 @@
-{% extends "layout.html" %}{% block content %}
-{% if magic_url %}
-<div><a href="{{magic_url}}">Click to signin</a></div>
-{% endif %} {% endblock %}
-<header>
-<div class="flex justify-center">
-  <h3>Magic Link</h3>
-  <p>Check your email</p>
-</div>
-</header>
+{% extends "layout.html" %}
+{% block content %}
+  {% if magic_url %}
+  <div><a class="text-emerald-900" href="{{magic_url}}">Click to signin</a></div>
+  {% endif %} 
+  <div class="flex justify-center flex-col text-center">
+    <p class="my-4">We have sent you a signin link</p>
+    <img alt="An image tell you to check you email" class="max-h-64 object-contain" src="{{ url_for('static', path='/check-your-email.webp') }}" />
+  </div>
+{% endblock %}

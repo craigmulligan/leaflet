@@ -95,6 +95,9 @@ class Recipe(BaseModel):
         back_populates="recipe", cascade="all, delete-orphan"
     )
 
+    def ___str__(self):
+        return f"""{self.title}-{self.description}"""
+
 
 class RecipeStep(BaseModel):
     __tablename__ = "recipe_step"
@@ -133,4 +136,5 @@ class RecipeEmbedding(BaseModel):
     id: Mapped[int] = mapped_column(primary_key=True)
     embedding: Mapped[List[float]] = mapped_column(Vector())
     recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
+
     recipe = relationship(Recipe)

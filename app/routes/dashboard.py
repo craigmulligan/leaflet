@@ -1,11 +1,13 @@
-from fastapi import APIRouter, Request, Depends, Form
+from fastapi import APIRouter, Query, Request, Depends, Form
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
-from typing import Annotated
+from typing import Annotated, Optional
 
+from sqlalchemy import desc
 from sqlalchemy.orm import Session
 from app import models
 from app.db import get_db
+from app.llm import LLM, get_llm
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -52,6 +54,8 @@ def dashboard_leaflet_get(
 def dashboard_recipes_get(
     request: Request,
     db: Session = Depends(get_db),
+    llm: LLM = Depends(get_llm),
+    search: Optional[str] = Query(default=None),
     current_user_id: str | None = Depends(current_user_id),
 ):
     if not current_user_id:
@@ -59,14 +63,23 @@ def dashboard_recipes_get(
 
     user = db.query(models.User).filter(models.User.id == current_user_id).one()
 
-    # TODO paginate
-    recipes = (
+    query = (
         db.query(models.Recipe)
         .join(models.Leaflet)
         .join(models.User)
+        .join(models.RecipeEmbedding)
         .filter(models.User.id == current_user_id)
-        .all()
+        .order_by(models.Recipe.created_at)
     )
+
+    if search:
+        print(f"search query: {search}")
+        embeddings = llm.generate_embeddings(search)
+        query = query.order_by(
+            desc(models.RecipeEmbedding.embedding.cosine_distance(embeddings))
+        )
+
+    recipes = query.limit(10)
 
     return templates.TemplateResponse(
         request, "recipes.html", {"user": user, "recipes": recipes}

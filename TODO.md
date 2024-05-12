@@ -4,3 +4,4 @@
 - x a away to list leaflets? Use images?
 - x recipe page
 - Use user prompt when generating.
+- Shopping list section.
