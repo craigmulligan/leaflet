@@ -1,7 +1,7 @@
 import time
 from datetime import datetime, timedelta
 import logging
-from sqlalchemy import or_
+from sqlalchemy import desc, or_
 from sqlalchemy.orm import Session
 from app import models
 from app.llm import LLM
@@ -11,7 +11,9 @@ class LeafletManager:
     def __init__(self, db: Session, llm: LLM) -> None:
         self.db = db
         self.llm = llm
-        self.default_user_prompt = "I usually cook for 2 people, I'd like my recipes in the metric system. I'm allergic to ginger."
+        self.default_user_prompt = (
+            "I usually cook for 2 people, I'd like my recipes in the metric system."
+        )
 
     def get_user_candidates(self, chunk_size=20):
         """
@@ -62,9 +64,21 @@ class LeafletManager:
 
         start_time = time.time()
         prompt = user.prompt or self.default_user_prompt
-        try:
-            content = self.llm.generate(prompt)
+        previous_recipes = (
+            self.db.query(models.Recipe)
+            .join(models.Leaflet)
+            .filter(models.Leaflet.user_id == user.id)
+            .order_by(desc(models.Recipe.created_at))
+            .limit(10)
+            .all()
+        )
 
+        try:
+            content = self.llm.generate(
+                prompt, [recipe.title for recipe in previous_recipes]
+            )
+
+            print("previous_recipes", previous_recipes)
             # create a leaflet
             leaflet = models.Leaflet()
             leaflet.user = user

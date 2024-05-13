@@ -44,14 +44,19 @@ class LLM:
             base_url=config.LLM_HOST,
         )
 
-    def generate(self, user_prompt: str) -> Response:
+    def generate(self, user_prompt: str, previous_recipe_titles: List[str]) -> Response:
         with open(os.path.join(script_dir, "system_prompt.jinja")) as file:
             system_prompt = Template(file.read())
             chat_completion = self.client.chat.completions.create(
                 messages=[
                     {
                         "role": "system",
-                        "content": system_prompt.render({"recipe_count": 3}),
+                        "content": system_prompt.render(
+                            {
+                                "recipe_count": 3,
+                                "previous_recipe_titles": previous_recipe_titles,
+                            }
+                        ),
                     },
                     {
                         "role": "user",

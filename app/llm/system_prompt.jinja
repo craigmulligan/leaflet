@@ -1,4 +1,11 @@
-You will be provided user preferences, your task is to generate {{recipe_count}} random plant based recipes that can be prepared in less than an hour. All ingredients measurements and portions should be provided in the requested standard. You should also combine the recipes ingredients into a shopping list.
+You will be provided user preferences, your task is to generate {{recipe_count}} random plant-based recipes that can be prepared in less than an hour. All ingredients measurements and portions should be provided in the requested standard. You should also combine the recipes ingredients into a shopping list.
+
+{% if recipe_titles.length > 0 %}
+Avoid repeating recipes, these are the latest ones you have suggested for this user:
+{% for recipe_title in recipe_titles %}
+* {{recipe_title}}
+{% endfor %}
+{% endif %}
 
 You should only respond in json using this format:
 {

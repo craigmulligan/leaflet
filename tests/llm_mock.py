@@ -1,4 +1,5 @@
 import os
+from typing import List
 from app.llm import Recipe, Response
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -8,10 +9,7 @@ class LLMMock:
     def __init__(self):
         super()
 
-    def generate(
-        self,
-        user_prompt: str,
-    ):
+    def generate(self, user_prompt: str, previous_recipes: List[str]):
         with open(os.path.join(script_dir, "data/llm_response.json")) as file:
             return Response.model_validate_json(file.read())
 
