@@ -2,9 +2,8 @@ from fastapi import APIRouter, Query, Request, Depends, Form
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from typing import Annotated, Optional
-
-from sqlalchemy import desc
 from sqlalchemy.orm import Session
+
 from app import models
 from app.db import get_db
 from app.llm import LLM, get_llm
@@ -75,7 +74,7 @@ def dashboard_recipes_get(
         print(f"search query: {search}")
         embeddings = llm.generate_embeddings(search)
         query = query.order_by(
-            desc(models.RecipeEmbedding.embedding.cosine_distance(embeddings))
+            models.RecipeEmbedding.embedding.cosine_distance(embeddings)
         )
 
     print(query)
