@@ -3,7 +3,6 @@ import logging
 
 from openai import OpenAI
 from jinja2 import Template
-from openai.types import Embedding
 from pydantic import BaseModel
 from typing import List
 
@@ -61,6 +60,7 @@ class LLM:
                 ],
                 model="gpt-3.5-turbo-0125",
                 response_format={"type": "json_object"},
+                temperature=1,
             )
 
             content = chat_completion.choices[0].message.content
@@ -84,8 +84,9 @@ class LLM:
             return images.data[0].b64_json
 
     def generate_embeddings(self, text: str) -> List[float]:
+        print("embedding..", text)
         embeddings = self.client.embeddings.create(
-            input=text, model="text-embedding-3-small"
+            input=[text], model="text-embedding-3-small"
         )
 
         return embeddings.data[0].embedding

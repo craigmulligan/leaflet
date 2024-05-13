@@ -96,12 +96,7 @@ class Recipe(BaseModel):
     )
 
     def ___str__(self):
-        return f"""
-            title: {self.title}
-            description: {self.description}
-            servings: {self.servings}
-            ingredients: {",".join(ingredient.description for ingredient in self.ingredients)}
-        """
+        return f"""{self.title}: {self.description}"""
 
 
 class RecipeStep(BaseModel):
@@ -139,6 +134,8 @@ class ShoppingListItem(BaseModel):
 class RecipeEmbedding(BaseModel):
     __tablename__ = "recipe_embedding"
     id: Mapped[int] = mapped_column(primary_key=True)
+    # By default, the length of the embedding vector
+    # will be 1536 for text-embedding-3-small
     embedding: Mapped[List[float]] = mapped_column(Vector(1536))
     recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
     recipe = relationship(Recipe)

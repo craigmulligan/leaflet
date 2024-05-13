@@ -69,15 +69,16 @@ def dashboard_recipes_get(
         .join(models.User)
         .join(models.RecipeEmbedding)
         .filter(models.User.id == current_user_id)
-        .order_by(models.Recipe.created_at)
     )
 
     if search:
         print(f"search query: {search}")
         embeddings = llm.generate_embeddings(search)
         query = query.order_by(
-            models.RecipeEmbedding.embedding.cosine_distance(embeddings)
+            desc(models.RecipeEmbedding.embedding.cosine_distance(embeddings))
         )
+
+    print(query)
 
     recipes = query.limit(10)
 
