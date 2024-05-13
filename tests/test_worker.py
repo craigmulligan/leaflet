@@ -27,6 +27,9 @@ def test_user_prompt_is_used(
     db.commit()
     leaflet_manager.generate(user)
     llm.generate.assert_called_with(user.prompt)
+    llm.generate_embeddings.assert_called_with(
+        "Vegan Lentil and Spinach Curry: A quick and easy vegan curry recipe featuring lentils and spinach."
+    )
 
 
 def test_get_candidates(db: Session, leaflet_manager: LeafletManager, create_user):

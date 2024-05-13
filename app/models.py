@@ -95,7 +95,7 @@ class Recipe(BaseModel):
         back_populates="recipe", cascade="all, delete-orphan"
     )
 
-    def ___str__(self):
+    def __repr__(self):
         return f"""{self.title}: {self.description}"""
 
 
