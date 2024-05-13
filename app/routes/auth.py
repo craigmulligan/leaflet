@@ -53,7 +53,7 @@ def magic_post(
 
 
 @router.get("/auth/magic")
-def magic_get(token: str = Query(...), db: Session = Depends(get_db)):
+def magic_get(request: Request, token: str = Query(...), db: Session = Depends(get_db)):
     """
     Handler for the GET /magic endpoint with a 'token' query parameter.
     """
@@ -70,7 +70,11 @@ def magic_get(token: str = Query(...), db: Session = Depends(get_db)):
     except BadSignature:
         raise HTTPException(status_code=403)
 
+    # get the timezone by way of IP.
+    timezone = utils.get_timezone_by_ip(request.client.host)
+
     response = RedirectResponse("/dashboard")
+    response.set_cookie(key="timezone", value=timezone, httponly=True)
     response.set_cookie(
         key="user_id", value=user_id, httponly=True
     )  # Store user_id in HTTP cookie
