@@ -43,7 +43,7 @@ def db():
 @pytest.fixture(autouse=True)
 def clear_db():
     """
-    Clear the db between tests
+    Clear the db between + after tests
     """
     models.BaseModel.metadata.drop_all(engine)
     models.BaseModel.metadata.create_all(engine)

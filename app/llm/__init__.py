@@ -1,5 +1,6 @@
+import re
 import os
-import logging
+import json
 
 from openai import OpenAI
 from jinja2 import Template
@@ -46,6 +47,7 @@ class LLM:
 
     def generate(self, user_prompt: str, previous_recipe_titles: List[str]) -> Response:
         with open(os.path.join(script_dir, "system_prompt.jinja")) as file:
+            self.log(self.make_filename_safe(user_prompt), json.dumps("{}"))
             system_prompt = Template(file.read())
             chat_completion = self.client.chat.completions.create(
                 messages=[
@@ -65,7 +67,6 @@ class LLM:
                 ],
                 model="gpt-3.5-turbo-0125",
                 response_format={"type": "json_object"},
-                temperature=1,
             )
 
             content = chat_completion.choices[0].message.content
@@ -73,7 +74,9 @@ class LLM:
             if content is None:
                 raise Exception("No content")
 
-            logging.info(f"llm response {content}")
+            # Log to test dir for mocking.
+            self.log(self.make_filename_safe(user_prompt), content)
+
             return Response.model_validate_json(content)
 
     def generate_image(self, recipe: Recipe) -> str | None:
@@ -86,15 +89,39 @@ class LLM:
                 response_format="b64_json",
             )
 
-            return images.data[0].b64_json
+            base64_image = images.data[0].b64_json
+
+            if base64_image:
+                self.log(
+                    self.make_filename_safe(recipe.title),
+                    json.dumps({"image": base64_image}),
+                )
+
+            return base64_image
 
     def generate_embeddings(self, text: str) -> List[float]:
-        print("embedding..", text)
-        embeddings = self.client.embeddings.create(
-            input=[text], model="text-embedding-3-small"
+        embeddings = (
+            self.client.embeddings.create(input=[text], model="text-embedding-3-small")
+            .data[0]
+            .embedding
         )
 
-        return embeddings.data[0].embedding
+        self.log(self.make_filename_safe(text), json.dumps(embeddings))
+
+        return embeddings
+
+    def make_filename_safe(self, input_string: str):
+        # Convert to lowercase
+        safe_string = input_string.lower()
+        # Replace spaces with underscores
+        safe_string = safe_string.replace(" ", "_")
+        # Remove any characters that are not alphanumeric, underscores, or hyphens
+        safe_string = re.sub(r"[^a-z0-9_\-]", "", safe_string)
+        return safe_string + ".json"
+
+    def log(self, filename: str, contents: str):
+        with open(os.path.join("./tests/data", filename), "w") as file:
+            file.write(contents)
 
 
 def get_llm():
