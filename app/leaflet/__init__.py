@@ -5,12 +5,14 @@ from sqlalchemy import desc, or_
 from sqlalchemy.orm import Session
 from app import models
 from app.llm import LLM
+from app.mailer import MailManager
 
 
 class LeafletManager:
-    def __init__(self, db: Session, llm: LLM) -> None:
+    def __init__(self, db: Session, llm: LLM, mailer: MailManager) -> None:
         self.db = db
         self.llm = llm
+        self.mailer = mailer
         self.default_user_prompt = (
             "I usually cook for 2 people, I'd like my recipes in the metric system."
         )
@@ -73,67 +75,71 @@ class LeafletManager:
             .all()
         )
 
-        try:
-            content = self.llm.generate(
-                prompt, [recipe.title for recipe in previous_recipes]
-            )
+        content = self.llm.generate(
+            prompt, [recipe.title for recipe in previous_recipes]
+        )
 
-            print("previous_recipes", previous_recipes)
-            # create a leaflet
-            leaflet = models.Leaflet()
-            leaflet.user = user
-            self.db.add(leaflet)
+        # create a leaflet
+        leaflet = models.Leaflet()
+        leaflet.user = user
+        self.db.add(leaflet)
 
-            for recipe_generated in content.recipes:
-                recipe = models.Recipe()
-                recipe.leaflet = leaflet
-                recipe.title = recipe_generated.title
-                recipe.description = recipe_generated.description
-                recipe.estimated_time = recipe_generated.estimated_time
-                recipe.servings = recipe_generated.servings
-                recipe.image = self.llm.generate_image(recipe_generated)
+        for recipe_generated in content.recipes:
+            recipe = models.Recipe()
+            recipe.leaflet = leaflet
+            recipe.title = recipe_generated.title
+            recipe.description = recipe_generated.description
+            recipe.estimated_time = recipe_generated.estimated_time
+            recipe.servings = recipe_generated.servings
+            recipe.image = self.llm.generate_image(recipe_generated)
 
-                self.db.add(recipe)
+            self.db.add(recipe)
 
-                for i, generated_recipe_step in enumerate(recipe_generated.steps):
-                    recipe_step = models.RecipeStep()
-                    self.db.add(recipe_step)
-                    recipe_step.recipe = recipe
-                    recipe_step.index = i
-                    recipe_step.description = generated_recipe_step.description
+            for i, generated_recipe_step in enumerate(recipe_generated.steps):
+                recipe_step = models.RecipeStep()
+                self.db.add(recipe_step)
+                recipe_step.recipe = recipe
+                recipe_step.index = i
+                recipe_step.description = generated_recipe_step.description
 
-                for generated_recipe_ingredient in recipe_generated.ingredients:
-                    recipe_ingredient = models.RecipeIngredient()
-                    self.db.add(recipe_ingredient)
-                    recipe_ingredient.recipe = recipe
-                    recipe_ingredient.description = (
-                        generated_recipe_ingredient.description
-                    )
-                    recipe_ingredient.amount = generated_recipe_ingredient.amount
-                    recipe_ingredient.unit = generated_recipe_ingredient.unit
+            for generated_recipe_ingredient in recipe_generated.ingredients:
+                recipe_ingredient = models.RecipeIngredient()
+                self.db.add(recipe_ingredient)
+                recipe_ingredient.recipe = recipe
+                recipe_ingredient.description = generated_recipe_ingredient.description
+                recipe_ingredient.amount = generated_recipe_ingredient.amount
+                recipe_ingredient.unit = generated_recipe_ingredient.unit
 
-                for generated_shopping_list_item in recipe_generated.ingredients:
-                    shopping_list_item = models.ShoppingListItem()
-                    self.db.add(shopping_list_item)
-                    shopping_list_item.recipe = recipe
-                    shopping_list_item.description = (
-                        generated_shopping_list_item.description
-                    )
-                    shopping_list_item.amount = generated_shopping_list_item.amount
-                    shopping_list_item.unit = generated_shopping_list_item.unit
+            for generated_shopping_list_item in recipe_generated.ingredients:
+                shopping_list_item = models.ShoppingListItem()
+                self.db.add(shopping_list_item)
+                shopping_list_item.recipe = recipe
+                shopping_list_item.description = (
+                    generated_shopping_list_item.description
+                )
+                shopping_list_item.amount = generated_shopping_list_item.amount
+                shopping_list_item.unit = generated_shopping_list_item.unit
 
-                embeddings = self.llm.generate_embeddings(str(recipe))
-                recipe_embedding = models.RecipeEmbedding()
-                self.db.add(recipe_embedding)
-                recipe_embedding.recipe = recipe
-                recipe_embedding.embedding = embeddings
+            embeddings = self.llm.generate_embeddings(str(recipe))
+            recipe_embedding = models.RecipeEmbedding()
+            self.db.add(recipe_embedding)
+            recipe_embedding.recipe = recipe
+            recipe_embedding.embedding = embeddings
 
-            # save to db.
-            self.db.commit()
-            end_time = time.time()
-            elapsed_time = end_time - start_time
-            print(f"Execution time: {elapsed_time} seconds")
-            logging.info(f"successfull saved {leaflet}")
-        except Exception as e:
-            raise e
-        return
+        # save to db.
+        self.db.commit()
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        logging.info(f"Execution time: {elapsed_time} seconds")
+        logging.info(f"successfull saved {leaflet}")
+        return leaflet
+
+    def generate_all(self):
+        for users in self.get_user_candidates():
+            for user in users:
+                leaflet = self.generate(user)
+                leaflet_count = (
+                    self.db.query(models.Leaflet).filter_by(user_id=user.id).count()
+                )
+                body = "howdy" + str(leaflet)
+                self.mailer.send(user.email, f"Leaflet #{leaflet_count}", body)

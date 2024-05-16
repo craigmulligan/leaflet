@@ -2,13 +2,15 @@ from app.db import SessionLocal
 from app import models
 from app.llm import LLM
 from app.leaflet import LeafletManager
+from app.mailer import MailManager
 
 if __name__ == "__main__":
     db = SessionLocal()
     email = "x@x.com"
     try:
         llm = LLM()
-        manager = LeafletManager(db, llm)
+        mailer = MailManager()
+        manager = LeafletManager(db, llm, mailer)
         user = db.query(models.User).filter_by(email=email).first()
 
         if user is None:
