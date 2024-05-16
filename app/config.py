@@ -1,5 +1,7 @@
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 SECRET_KEY = "so-secret"
 HOST_URL = "http://localhost:8080"

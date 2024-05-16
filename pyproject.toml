@@ -19,6 +19,7 @@ ruff = "^0.4.3"
 black = "^24.4.2"
 pgvector = "^0.2.5"
 psycopg2 = "^2.9.9"
+pytest-vcr = "^1.0.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.0"

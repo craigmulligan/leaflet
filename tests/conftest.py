@@ -1,4 +1,5 @@
 from uuid import uuid4
+from typing import Dict, Any
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
@@ -8,7 +9,6 @@ from app.db import SessionLocal, engine
 from app import models
 from app.leaflet import LeafletManager
 from app.llm import LLM
-from tests.llm_mock import LLMMock
 
 
 @pytest.fixture()
@@ -53,10 +53,19 @@ def clear_db():
 
 @pytest.fixture()
 def llm():
-    llm = LLMMock()
+    llm = LLM()
     return MagicMock(wraps=llm)
 
 
 @pytest.fixture()
 def leaflet_manager(db: Session, llm: LLM):
     return LeafletManager(db, llm)
+
+
+@pytest.fixture(scope="module")
+def vcr_config() -> Dict[str, Any]:
+    return {
+        "filter_headers": ["authorization", "host"],
+        "ignore_localhost": True,
+        "record_mode": "once",
+    }
