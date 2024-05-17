@@ -9,7 +9,7 @@ Avoid repeating recipes, these are the latest ones you have suggested for this u
 
 You should only respond in json using this format:
 {
-  "recipes": {
+  "recipes": [{
      "title": "The title of the recipe",
      "servings": "number of servings",
      "estimated_time": "number of minutes to prepare",
@@ -22,10 +22,5 @@ You should only respond in json using this format:
 	"unit": "Unit based on the users preferences",
 	"amount": "float|int"
      }]
-  },
-  "shopping_list": [{
-    "description": "Name of the ingredient",
-    "unit": "Unit based on the users preferences",
-    "amount": "float|int"
   }]
 }

@@ -91,9 +91,6 @@ class Recipe(BaseModel):
     steps: Mapped[List["RecipeStep"]] = relationship(
         back_populates="recipe", cascade="all, delete-orphan"
     )
-    shopping_list_items: Mapped[List["ShoppingListItem"]] = relationship(
-        back_populates="recipe", cascade="all, delete-orphan"
-    )
 
     def __repr__(self):
         return f"""{self.title}: {self.description}"""
@@ -113,17 +110,6 @@ class RecipeIngredient(BaseModel):
     __tablename__ = "recipe_ingredient"
     id: Mapped[int] = mapped_column(primary_key=True)
     recipe_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
-    description: Mapped[str]
-    unit: Mapped[str]
-    amount: Mapped[float]
-
-    recipe = relationship(Recipe)
-
-
-class ShoppingListItem(BaseModel):
-    __tablename__ = "shopping_list_item"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    shopping_list_id: Mapped[int] = mapped_column(ForeignKey("recipe.id"))
     description: Mapped[str]
     unit: Mapped[str]
     amount: Mapped[float]

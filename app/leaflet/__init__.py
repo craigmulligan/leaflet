@@ -110,17 +110,6 @@ class LeafletManager:
                 recipe_ingredient.amount = generated_recipe_ingredient.amount
                 recipe_ingredient.unit = generated_recipe_ingredient.unit
 
-            for generated_shopping_list_item in recipe_generated.ingredients:
-                # TODO fix shopping list items
-                shopping_list_item = models.ShoppingListItem()
-                self.db.add(shopping_list_item)
-                shopping_list_item.recipe = recipe
-                shopping_list_item.description = (
-                    generated_shopping_list_item.description
-                )
-                shopping_list_item.amount = generated_shopping_list_item.amount
-                shopping_list_item.unit = generated_shopping_list_item.unit
-
             embeddings = self.llm.generate_embeddings(str(recipe))
             recipe_embedding = models.RecipeEmbedding()
             self.db.add(recipe_embedding)
