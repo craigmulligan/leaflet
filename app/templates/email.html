@@ -1,0 +1,6 @@
+<h1><a href={{ url_for("dashboard_leaflet_get", leaflet_id=leaflet.id) }}>Your weekly leaflet</a></h1>
+{% for recipe in leaflet.recipes %}
+<a href={{ url_for("dashboard_recipe_get", recipe_id=recipe.id)}}>
+   {% include "partials/recipe_summary.html" %}
+</a>
+{% endfor %}
