@@ -7,11 +7,15 @@ from typing import List
 
 from app.leaflet import LeafletManager
 from app import models
+from tests.conftest import CreateUser
 
 
 @pytest.mark.vcr
 def test_user_prompt_is_used(
-    db: Session, leaflet_manager: LeafletManager, llm: MagicMock, create_user
+    db: Session,
+    leaflet_manager: LeafletManager,
+    llm: MagicMock,
+    create_user: CreateUser,
 ):
     user = create_user()
     leaflet_manager.generate(user)
@@ -32,7 +36,9 @@ def test_user_prompt_is_used(
     )
 
 
-def test_get_candidates(db: Session, leaflet_manager: LeafletManager, create_user):
+def test_get_candidates(
+    db: Session, leaflet_manager: LeafletManager, create_user: CreateUser
+):
     """
     Create 15 users
     users 1-5: have never received a leaflet.
