@@ -25,7 +25,7 @@ class MailManager:
                 "Ensure you have configured all the required MAIL_* environment variables."
             )
 
-        logging.info(f"Sending email via {self.host} - {self.username}")
+        logging.info(f"Sending email via {self.host} - {self.username} to {to}")
 
         message = Message()
         message.add_header("from", self._from)
@@ -39,3 +39,7 @@ class MailManager:
         with smtplib.SMTP_SSL(self.host, self.port, context=context) as server:
             server.login(self.username, self.password)
             server.sendmail(self._from, to, message.as_string().encode("utf-8"))
+            logging.info(f"sent email too: {to}")
+
+
+mail_manager = MailManager()

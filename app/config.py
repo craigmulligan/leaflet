@@ -1,7 +1,10 @@
+import logging
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
+logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler()])
 
 SECRET_KEY = "so-secret"
 HOST_URL = "http://localhost:8080"

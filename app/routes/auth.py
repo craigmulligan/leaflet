@@ -13,7 +13,7 @@ from itsdangerous import BadSignature, SignatureExpired
 from typing import Annotated
 from sqlalchemy.orm import Session
 
-from app import models
+from app import mailer, models
 from app.db import get_db
 from app import utils
 
@@ -43,7 +43,11 @@ def magic_post(
     token = user.get_signin_token()
     magic_url = f"/auth/magic?token={token}"
 
-    background_tasks.add_task(utils.send_email, email)
+    if not utils.is_dev():
+        # Send email in production.
+        subject = "Hi from leaflet"
+        body = "<div>this is a test</div>"
+        background_tasks.add_task(mailer.mail_manager.send, email, subject, body)
 
     return templates.TemplateResponse(
         request,
@@ -53,7 +57,7 @@ def magic_post(
 
 
 @router.get("/auth/magic")
-def magic_get(request: Request, token: str = Query(...), db: Session = Depends(get_db)):
+def magic_get(token: str = Query(...), db: Session = Depends(get_db)):
     """
     Handler for the GET /magic endpoint with a 'token' query parameter.
     """
@@ -70,11 +74,7 @@ def magic_get(request: Request, token: str = Query(...), db: Session = Depends(g
     except BadSignature:
         raise HTTPException(status_code=403)
 
-    # get the timezone by way of IP.
-    timezone = utils.get_timezone_by_ip(request.client.host)
-
     response = RedirectResponse("/dashboard")
-    response.set_cookie(key="timezone", value=timezone, httponly=True)
     response.set_cookie(
         key="user_id", value=user_id, httponly=True
     )  # Store user_id in HTTP cookie
