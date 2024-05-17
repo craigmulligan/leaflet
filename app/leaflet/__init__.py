@@ -111,6 +111,7 @@ class LeafletManager:
                 recipe_ingredient.unit = generated_recipe_ingredient.unit
 
             for generated_shopping_list_item in recipe_generated.ingredients:
+                # TODO fix shopping list items
                 shopping_list_item = models.ShoppingListItem()
                 self.db.add(shopping_list_item)
                 shopping_list_item.recipe = recipe

@@ -30,3 +30,20 @@ def test_views(
     response = client.get("/dashboard")
 
     assert f"/leaflet/{leaflet.id}" in response.text
+
+    response = client.get(f"/dashboard/leaflet/{leaflet.id}")
+
+    for recipe in leaflet.recipes:
+        assert f"/recipe/{recipe.id}" in response.text
+
+    recipe = leaflet.recipes[0]
+
+    response = client.get(f"/dashboard/recipe/{leaflet.id}")
+
+    assert recipe.title in response.text
+
+    for step in recipe.steps:
+        assert step.description in response.text
+
+    for ingredient in recipe.ingredients:
+        assert ingredient.description in response.text

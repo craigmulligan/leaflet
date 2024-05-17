@@ -1,7 +1,7 @@
 <section class="my-4">
   <h2 class="font-bold text-xl mb-4">Shopping List</h2>
   <ul class="list-disc">
-    {% for ingredient in leaflet.ingredients %}
+    {% for ingredient in leaflet.shopping_list %}
     <li>
       {{ingredient.description}}: {{ingredient.amount}} {{ingredient.unit}}
     </li>

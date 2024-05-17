@@ -1,3 +1,4 @@
+import logging
 import pytest
 from uuid import uuid4
 from typing import Dict, Any, Callable
@@ -66,11 +67,19 @@ def leaflet_manager(db: Session, llm: LLM):
     return LeafletManager(db, llm, MagicMock())
 
 
+def before_record_request(request):
+    logging.info(f"Recording request: {request.uri}")
+    if request.host in ["localhost", "127.0.0.1", "0.0.0.0"]:
+        logging.info(f"Ignoring request to localhost: {request.uri}")
+        return None
+    return request
+
+
 @pytest.fixture(scope="module")
 def vcr_config() -> Dict[str, Any]:
     return {
         "filter_headers": ["authorization", "host"],
-        "ignore_localhost": True,
+        "ignore_hosts": ["testserver"],
         "record_mode": "once",
     }
 
