@@ -25,7 +25,8 @@ def create_user(db: Session):
 
         user = models.User(email=email)
         db.add(user)
-        db.flush()
+        db.commit()
+        db.refresh(user)
         return user
 
     return inner
@@ -59,7 +60,7 @@ def llm():
 
 @pytest.fixture()
 def leaflet_manager(db: Session, llm: LLM):
-    return LeafletManager(db, llm)
+    return LeafletManager(db, llm, MagicMock())
 
 
 @pytest.fixture(scope="module")
@@ -69,3 +70,11 @@ def vcr_config() -> Dict[str, Any]:
         "ignore_localhost": True,
         "record_mode": "once",
     }
+
+
+@pytest.fixture
+def signin(client):
+    def sign_user_in(user: models.User):
+        client.cookies.set("user_id", str(user.id))
+
+    return sign_user_in
