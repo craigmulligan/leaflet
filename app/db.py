@@ -1,11 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-
-SQLALCHEMY_DATABASE_URL = "postgresql://user:password@localhost:5432/mydatabase"
+from app import config
 
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
+    config.SQLALCHEMY_DATABASE_URL,
     pool_size=10,  # Maximum number of connections in the pool
     max_overflow=20,  # Maximum number of connections to overflow beyond pool_size
     pool_timeout=30,  # Time in seconds to wait before giving up on getting a connection from the pool
