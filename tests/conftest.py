@@ -12,6 +12,9 @@ from app import models
 from app.leaflet import LeafletManager
 from app.llm import LLM
 
+logger = logging.getLogger("vcr")  # Get the logger for VCR
+logger.setLevel(logging.WARNING)  # Set the logging level for VCR
+
 
 @pytest.fixture()
 def client():
@@ -63,16 +66,13 @@ def llm():
 
 
 @pytest.fixture()
-def leaflet_manager(db: Session, llm: LLM):
-    return LeafletManager(db, llm, MagicMock())
+def mailer():
+    return MagicMock()
 
 
-def before_record_request(request):
-    logging.info(f"Recording request: {request.uri}")
-    if request.host in ["localhost", "127.0.0.1", "0.0.0.0"]:
-        logging.info(f"Ignoring request to localhost: {request.uri}")
-        return None
-    return request
+@pytest.fixture()
+def leaflet_manager(db: Session, llm: LLM, mailer):
+    return LeafletManager(app, db, llm, mailer)
 
 
 @pytest.fixture(scope="module")

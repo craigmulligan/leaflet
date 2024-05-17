@@ -7,6 +7,7 @@ from typing import List
 
 from app.leaflet import LeafletManager
 from app import models
+from app import config
 from tests.conftest import CreateUser
 
 
@@ -34,6 +35,32 @@ def test_user_prompt_is_used(
     llm.generate.assert_called_with(
         user.prompt, [recipe.title for recipe in leaflet.recipes]
     )
+
+
+@pytest.mark.vcr
+def test_worker_generate_all(
+    db: Session,
+    leaflet_manager: LeafletManager,
+    llm: MagicMock,
+    create_user: CreateUser,
+    mailer: MagicMock,
+):
+    user = create_user()
+    leaflet_manager.generate_all()
+    leaflet = db.query(models.Leaflet).filter_by(user_id=user.id).one()
+    llm.generate.assert_called_with(leaflet_manager.default_user_prompt, [])
+
+    llm.generate_embeddings.assert_has_calls(
+        [call(str(recipe)) for recipe in leaflet.recipes]
+    )
+
+    args, _ = mailer.send.call_args
+    assert args[0] == user.email
+    assert args[1] == "Leaflet #1"
+    assert f"{config.HOST_URL}/dashboard/leaflet/{leaflet.id}" in args[2]
+
+    for recipe in leaflet.recipes:
+        assert f"{config.HOST_URL}/dashboard/recipe/{recipe.id}" in args[2]
 
 
 def test_get_candidates(

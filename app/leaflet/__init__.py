@@ -1,15 +1,25 @@
 import time
 from datetime import datetime, timedelta
 import logging
+from urllib.parse import urljoin
+
+from fastapi import FastAPI
+from fastapi.templating import Jinja2Templates
 from sqlalchemy import desc, or_
 from sqlalchemy.orm import Session
 from app import models
 from app.llm import LLM
 from app.mailer import MailManager
+from app import config
+
+templates = Jinja2Templates(directory="app/templates")
 
 
 class LeafletManager:
-    def __init__(self, db: Session, llm: LLM, mailer: MailManager) -> None:
+    def __init__(
+        self, app: FastAPI, db: Session, llm: LLM, mailer: MailManager
+    ) -> None:
+        self.app = app
         self.db = db
         self.llm = llm
         self.mailer = mailer
@@ -124,6 +134,12 @@ class LeafletManager:
         logging.info(f"successfull saved {leaflet}")
         return leaflet
 
+    def absolute_url_for(self, name: str, **params) -> str:
+        # Create a dummy request object with the base URL to generate absolute URLs
+        url = config.HOST_URL
+
+        return urljoin(url, self.app.url_path_for(name, **params))
+
     def generate_all(self):
         for users in self.get_user_candidates():
             for user in users:
@@ -131,5 +147,7 @@ class LeafletManager:
                 leaflet_count = (
                     self.db.query(models.Leaflet).filter_by(user_id=user.id).count()
                 )
-                body = "howdy" + str(leaflet)
+                body = templates.get_template("email.html").render(
+                    {"url_for": self.absolute_url_for, "leaflet": leaflet}
+                )
                 self.mailer.send(user.email, f"Leaflet #{leaflet_count}", body)
