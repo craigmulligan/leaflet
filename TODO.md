@@ -1,9 +1,3 @@
-- x Add embedding for each recipe so you can search over them.
 - proper tailwind integration.
 - form validation + prevent xxs.
-- x a away to list leaflets? Use images?
-- x recipe page
-- x Use user prompt when generating.
 - pagination on recipes + leaflet page.
-- Shopping list section.
-- Have test use a different DB.
