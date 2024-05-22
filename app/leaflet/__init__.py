@@ -130,8 +130,10 @@ class LeafletManager:
         self.db.commit()
         end_time = time.time()
         elapsed_time = end_time - start_time
-        logging.info(f"Execution time: {elapsed_time} seconds")
-        logging.info(f"successfull saved {leaflet}")
+        logging.info(
+            f"Leaflet generation time for user: {user.id} time: {elapsed_time} seconds"
+        )
+        logging.info(f"successfull saved {leaflet.id}")
         return leaflet
 
     def absolute_url_for(self, name: str, **params) -> str:
@@ -141,7 +143,8 @@ class LeafletManager:
         return urljoin(url, self.app.url_path_for(name, **params))
 
     def generate_all(self):
-        logging.info("generating leaflets")
+        start_time = time.time()
+        logging.info("Generating leaflets")
         for users in self.get_user_candidates():
             for user in users:
                 try:
@@ -156,3 +159,5 @@ class LeafletManager:
                     self.mailer.send(user.email, f"Leaflet #{leaflet_count}", body)
                 except Exception:
                     logging.exception(f"Failed to generate leafet for user {user.id}")
+        elapsed_time = time.time() - start_time
+        logging.info(f"Generating leaflets execution time: {elapsed_time} seconds")

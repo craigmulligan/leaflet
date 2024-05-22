@@ -6,6 +6,9 @@ from app.mailer import mail_manager
 from app.main import app
 
 if __name__ == "__main__":
+    # TODO we should switch to using
+    # fly.ios scheduler instead of a always running
+    # worker.
     while True:
         db = SessionLocal()
         try:
