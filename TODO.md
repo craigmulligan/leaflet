@@ -1,3 +1,4 @@
 - proper tailwind integration.
 - form validation + prevent xxs.
 - pagination on recipes + leaflet page.
+- switch from base64 images to file storage.
