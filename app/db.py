@@ -3,12 +3,10 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from app import config
 
 
+# Note pgbouncer will handle connection pooling
+# so it's not necesscary here.
 engine = create_engine(
     config.SQLALCHEMY_DATABASE_URL,
-    pool_size=10,  # Maximum number of connections in the pool
-    max_overflow=20,  # Maximum number of connections to overflow beyond pool_size
-    pool_timeout=30,  # Time in seconds to wait before giving up on getting a connection from the pool
-    pool_recycle=1800,  # Time in seconds after which connections are recycled
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from invoke.tasks import task
 
-load_dotenv()
+load_dotenv(".env.production")
 
 
 @task
@@ -37,11 +37,27 @@ def server(ctx):
 
 
 @task
-def worker(ctx):
+def server_prod(ctx):
+    """
+    Start the FastAPI server in on port 8080.
+    """
+    ctx.run("uvicorn app.main:app --port 8080")
+
+
+@task
+def worker_prod(ctx):
     """
     Run the worker
     """
     ctx.run("python3 worker.py")
+
+
+@task
+def worker(ctx):
+    """
+    Run the worker
+    """
+    ctx.run("python3 worker_dev.py")
 
 
 @task

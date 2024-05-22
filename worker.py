@@ -1,24 +1,14 @@
 from app.db import SessionLocal
-from app import models
 from app.llm import LLM
 from app.leaflet import LeafletManager
-from app.mailer import MailManager
+from app.mailer import mail_manager
+from app.main import app
 
 if __name__ == "__main__":
     db = SessionLocal()
-    email = "x@x.com"
     try:
         llm = LLM()
-        mailer = MailManager()
-        manager = LeafletManager(db, llm, mailer)
-        user = db.query(models.User).filter_by(email=email).first()
-
-        if user is None:
-            user = models.User(email=email)
-            db.add(user)
-            db.commit()
-            db.refresh(user)
-
-        manager.generate(user)
+        manager = LeafletManager(app, db, llm, mail_manager)
+        manager.generate_all()
     finally:
         db.close()

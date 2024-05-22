@@ -39,7 +39,7 @@ class MailManager:
         with smtplib.SMTP_SSL(self.host, self.port, context=context) as server:
             server.login(self.username, self.password)
             server.sendmail(self._from, to, message.as_string().encode("utf-8"))
-            logging.info(f"sent email too: {to}")
+            logging.info(f"sent email to: {to}")
 
 
 mail_manager = MailManager()
