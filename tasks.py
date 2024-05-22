@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from invoke.tasks import task
 
-load_dotenv(".env.production")
+load_dotenv()
 
 
 @task
@@ -41,7 +41,7 @@ def server_prod(ctx):
     """
     Start the FastAPI server in on port 8080.
     """
-    ctx.run("uvicorn app.main:app --port 8080")
+    ctx.run("uvicorn app.main:app --host 0.0.0.0 --port 8080")
 
 
 @task
