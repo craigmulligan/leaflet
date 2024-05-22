@@ -41,7 +41,7 @@ def server_prod(ctx):
     """
     Start the FastAPI server in on port 8080.
     """
-    ctx.run("uvicorn app.main:app --host 0.0.0.0 --port 8080")
+    ctx.run("uvicorn app.main:app --host 0.0.0.0 --port 8080 --forwarded-allow-ips=*")
 
 
 @task

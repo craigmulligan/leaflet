@@ -6,6 +6,9 @@
 app = 'leafletv2'
 primary_region = 'ewr'
 
+[env]
+  ENV = 'production'
+
 [build]
   builder = 'paketobuildpacks/builder:base'
 
