@@ -141,13 +141,18 @@ class LeafletManager:
         return urljoin(url, self.app.url_path_for(name, **params))
 
     def generate_all(self):
+        logging.info("generating leaflets")
         for users in self.get_user_candidates():
             for user in users:
-                leaflet = self.generate(user)
-                leaflet_count = (
-                    self.db.query(models.Leaflet).filter_by(user_id=user.id).count()
-                )
-                body = templates.get_template("email.html").render(
-                    {"url_for": self.absolute_url_for, "leaflet": leaflet}
-                )
-                self.mailer.send(user.email, f"Leaflet #{leaflet_count}", body)
+                try:
+                    logging.info(f"generating leaflet for {user.id}")
+                    leaflet = self.generate(user)
+                    leaflet_count = (
+                        self.db.query(models.Leaflet).filter_by(user_id=user.id).count()
+                    )
+                    body = templates.get_template("email.html").render(
+                        {"url_for": self.absolute_url_for, "leaflet": leaflet}
+                    )
+                    self.mailer.send(user.email, f"Leaflet #{leaflet_count}", body)
+                except Exception:
+                    logging.exception(f"Failed to generate leafet for user {user.id}")

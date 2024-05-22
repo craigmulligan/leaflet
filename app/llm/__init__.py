@@ -31,7 +31,6 @@ class Recipe(BaseModel):
 
 class Response(BaseModel):
     recipes: List[Recipe]
-    shopping_list: List[Ingredient]
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
