@@ -1,3 +1,4 @@
+import json
 import logging
 import httpx
 import tempfile
@@ -29,6 +30,20 @@ def upload_image(url: str) -> str | None:
     if not client.bucket_exists(bucket_name):
         client.make_bucket(bucket_name)
 
+    bucket_policy = {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {"AWS": ["*"]},
+                "Action": ["s3:GetObject"],
+                "Resource": [f"arn:aws:s3:::{bucket_name}/*"],
+            }
+        ],
+    }
+
+    client.set_bucket_policy(bucket_name, json.dumps(bucket_policy))
+
     with httpx.stream("GET", url) as response:
         response.raise_for_status()
         with tempfile.NamedTemporaryFile() as tmp_file:
@@ -39,9 +54,7 @@ def upload_image(url: str) -> str | None:
                 client.fput_object(bucket_name, filename, tmp_file.name)
 
                 scheme = "https" if is_minio_secure else "http"
-                final_url = (
-                    f"{scheme}://{config.STORAGE_HOST}/{bucket_name}/{tmp_file.name}"
-                )
+                final_url = f"{scheme}://{config.STORAGE_HOST}/{bucket_name}/{filename}"
 
                 logging.info(
                     f"File from '{url}' is successfully uploaded as '{filename}' to bucket '{bucket_name}' with location: {final_url}"
