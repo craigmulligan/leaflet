@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Recipes cooked by llms"
 authors = ["Craig Mulligan <git@craigmulligan.com>"]
 readme = "README.md"
-package-mode = false 
 
 [tool.poetry.dependencies]
 python = "^3.11"
