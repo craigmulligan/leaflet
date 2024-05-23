@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Recipes cooked by llms"
 authors = ["Craig Mulligan <git@craigmulligan.com>"]
 readme = "README.md"
+package-mode = false 
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -20,6 +21,7 @@ black = "^24.4.2"
 pgvector = "^0.2.5"
 pytest-vcr = "^1.0.2"
 psycopg2-binary = "^2.9.9"
+minio = "^7.2.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.0"
@@ -29,3 +31,4 @@ types-mock = "^5.1.0.20240425"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+

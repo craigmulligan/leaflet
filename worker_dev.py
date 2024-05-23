@@ -12,7 +12,7 @@ if __name__ == "__main__":
     try:
         llm = LLM()
         manager = LeafletManager(app, db, llm, mail_manager)
-        user = db.query(models.User).filter_by(email="x@x.com").one()
+        user = db.query(models.User).filter_by(email="x@x.com").first()
 
         if user is None:
             user = models.User(email=email)

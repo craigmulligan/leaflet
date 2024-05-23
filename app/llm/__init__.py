@@ -1,7 +1,5 @@
 import re
 import os
-import json
-
 from openai import OpenAI
 from jinja2 import Template
 from pydantic import BaseModel
@@ -63,7 +61,7 @@ class LLM:
                         "content": user_prompt or "",
                     },
                 ],
-                model="gpt-3.5-turbo-0125",
+                model="gpt-4o",
                 response_format={"type": "json_object"},
             )
 
@@ -81,12 +79,9 @@ class LLM:
                 model="dall-e-2",
                 size="512x512",
                 prompt=user_prompt.render({"recipe": recipe}),
-                response_format="b64_json",
             )
 
-            base64_image = images.data[0].b64_json
-
-            return base64_image
+            return images.data[0].url
 
     def generate_embeddings(self, text: str) -> List[float]:
         embeddings = (
@@ -96,15 +91,6 @@ class LLM:
         )
 
         return embeddings
-
-    def make_filename_safe(self, input_string: str):
-        # Convert to lowercase
-        safe_string = input_string.lower()
-        # Replace spaces with underscores
-        safe_string = safe_string.replace(" ", "_")
-        # Remove any characters that are not alphanumeric, underscores, or hyphens
-        safe_string = re.sub(r"[^a-z0-9_\-]", "", safe_string)
-        return safe_string + ".json"
 
 
 def get_llm():

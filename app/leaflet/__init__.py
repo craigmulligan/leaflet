@@ -11,6 +11,7 @@ from app import models
 from app.llm import LLM
 from app.mailer import MailManager
 from app import config
+from app.storage import upload_image
 
 templates = Jinja2Templates(directory="app/templates")
 
@@ -101,7 +102,11 @@ class LeafletManager:
             recipe.description = recipe_generated.description
             recipe.estimated_time = recipe_generated.estimated_time
             recipe.servings = recipe_generated.servings
-            recipe.image = self.llm.generate_image(recipe_generated)
+
+            image_url = self.llm.generate_image(recipe_generated)
+
+            if image_url:
+                recipe.image = upload_image(image_url)
 
             self.db.add(recipe)
 
