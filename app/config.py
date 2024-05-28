@@ -22,6 +22,6 @@ POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
 POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "localhost")
 SQLALCHEMY_DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:5432/{POSTGRES_DB}"
 
-STORAGE_ACCESS_KEY = os.environ.get("STORAGE_ACCESS_KEY", "")
-STORAGE_SECRET_KEY = os.environ.get("STORAGE_SECRET_KEY", "")
-STORAGE_HOST = os.environ.get("STORAGE_HOST", "http://localhost:9000")
+STORAGE_ACCESS_KEY = os.environ.get("STORAGE_ACCESS_KEY", "test")
+STORAGE_SECRET_KEY = os.environ.get("STORAGE_SECRET_KEY", "test")
+STORAGE_HOST = os.environ.get("STORAGE_HOST", "http://localhost:4566")

@@ -14,42 +14,19 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
-  # xinference:
-  #   image: xprobe/xinference:latest
-  #   ports:
-  #     - "9997:9997"
-  #   volumes:
-  #     # If models are downloaded from modelscope, replace <huggingface_cache_dir> with
-  #     # your modelscope cache path, default is <home_path>/.cache/modelscope
-  #     - xinference-data:/root/.cache/modelscope
-  #   environment:
-  #     # add envs here. Here's an example, if you want to download model from modelscope
-  #     - XINFERENCE_MODEL_SRC=modelscope
-  #   command: xinference-local --host 0.0.0.0 --port 9997
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #           - capabilities: [gpu]
-  #             driver: nvidia
-  #             count: all
-
-  minio:
-    image: minio/minio
-    container_name: minio
-    environment:
-      MINIO_ROOT_USER: ${STORAGE_ACCESS_KEY}
-      MINIO_ROOT_PASSWORD: ${STORAGE_SECRET_KEY}
-    volumes:
-      - minio-data:/data
-      - minio-config:/root/.minio
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    restart: unless-stopped
     ports:
-      - "9000:9000"
-      - "9001:9001"
-    command: server /data --console-address ":9001"
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+    volumes:
+      - localstack-data:/var/lib/localstack
 
 volumes:
   postgres-data:
-  xinference-data:
-  minio-data:
-  minio-config:
+  localstack-data:
