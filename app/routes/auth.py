@@ -43,10 +43,12 @@ def magic_post(
     token = user.get_signin_token()
     magic_url = f"/auth/magic?token={token}"
 
-    if not utils.is_dev():
+    if utils.is_dev():
         # Send email in production.
-        subject = "Hi from leaflet"
-        body = "<div>this is a test</div>"
+        subject = "Leaflet Signin Link"
+        body = templates.get_template("email_magic_link.html").render(
+            token=token, request=request
+        )
         background_tasks.add_task(mailer.mail_manager.send, email, subject, body)
 
     return templates.TemplateResponse(
