@@ -86,12 +86,6 @@ class LeafletManager:
             .all()
         )
 
-        upload_image(
-            "https://cdn.mos.cms.futurecdn.net/3n8tRry6fYg7sNyhFDPQwR-1200-80.jpg"
-        )
-
-        exit(0)
-
         content = self.llm.generate(
             prompt, [recipe.title for recipe in previous_recipes]
         )
