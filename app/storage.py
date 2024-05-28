@@ -39,7 +39,7 @@ s3_client = boto3.client(
 def upload_image(url: str) -> str | None:
     # Given an file_url it'll download it then upload it to the bucket + filename.
     filename = f"{uuid4()}.webp"
-    bucket_name = "imagesv3"
+    bucket_name = "images"
     logging.info(
         f"File from '{url}' is uploading as '{filename}' to bucket '{bucket_name}'"
     )
