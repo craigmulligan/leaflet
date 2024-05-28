@@ -79,7 +79,7 @@ def leaflet_manager(db: Session, llm: LLM, mailer):
 def vcr_config() -> Dict[str, Any]:
     return {
         "filter_headers": ["authorization", "host"],
-        "ignore_hosts": ["testserver"],
+        "ignore_hosts": ["testserver", "localhost"],
         "record_mode": "once",
     }
 
