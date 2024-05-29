@@ -104,7 +104,7 @@ def test_get_candidates(
     assert len(expected_candidates) == 10
 
     candidates = []
-    for c in leaflet_manager.get_user_candidates(chunk_size=2):
+    for c in leaflet_manager.get_user_candidates(chunk_size=2, days=7):
         candidates.extend(c)
 
     assert len(candidates) == len(expected_candidates)

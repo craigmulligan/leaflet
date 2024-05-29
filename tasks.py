@@ -1,9 +1,23 @@
+import sys
 import os
 from dotenv import load_dotenv
 from invoke.tasks import task
 
 # do ENV=production command to run with production envars.
-load_dotenv(".production.env" if os.getenv("ENV") == "production" else None)
+env_file = ".production.env" if os.getenv("ENV") == "production" else ".env"
+
+load_dotenv(env_file)
+
+
+@task()
+def test(ctx, test_name=None):
+    """
+    Run pytest with optional arguments.
+    """
+    # Build the pytest command
+    command = "pytest " + (test_name or "")
+    # Run the command
+    ctx.run(command, pty=True)
 
 
 @task

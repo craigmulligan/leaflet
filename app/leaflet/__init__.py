@@ -28,13 +28,13 @@ class LeafletManager:
             "I usually cook for 2 people, I'd like my recipes in the metric system."
         )
 
-    def get_user_candidates(self, chunk_size=20):
+    def get_user_candidates(self, chunk_size=20, **kwargs):
         """
         returns an iter() that returns a chunk of List<User>
         who have got NO Leaflet where created_at is >
         1 week old.
         """
-        one_week_ago = datetime.now() - timedelta(days=7)
+        one_week_ago = datetime.now() - timedelta(**kwargs)
         last_id = None
 
         while True:
@@ -150,7 +150,7 @@ class LeafletManager:
     def generate_all(self):
         start_time = time.time()
         logging.info("Generating leaflets")
-        for users in self.get_user_candidates():
+        for users in self.get_user_candidates(hours=1):
             for user in users:
                 try:
                     logging.info(f"generating leaflet for {user.id}")

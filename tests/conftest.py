@@ -5,6 +5,7 @@ from typing import Dict, Any, Callable
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 from unittest.mock import MagicMock
+from dotenv import load_dotenv
 
 from app.main import app
 from app.db import SessionLocal, engine
@@ -14,6 +15,8 @@ from app.llm import LLM
 
 logger = logging.getLogger("vcr")  # Get the logger for VCR
 logger.setLevel(logging.WARNING)  # Set the logging level for VCR
+
+load_dotenv()
 
 
 @pytest.fixture()
