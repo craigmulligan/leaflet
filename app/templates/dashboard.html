@@ -1,23 +1,24 @@
 {% extends "layout.html" %} {% block title %}Dashboard{% endblock %} {% block
 content %}
 <div class="max-w-96 m-auto"> 
-<div class="mt-32">
-   <p class="stroke-slate-500 mb-14 text-xl font-bold">Hey {{ user.email }}!</p>
+   <div class="mt-32">
+      <p class="stroke-slate-500 mb-14 text-xl font-bold">Hey {{ user.email }}!</p>
+   </div>
 </div>
 
-{%if not leaflets %}
-<div>
+{%if user.leaflets|length == 0 %}
+<div class="max-w-96 m-auto"> 
    <p class="stroke-slate-500 mb-14 text-md italic"><span class="font-semibold">Nothing to see here yet.</span>Your leaflets will appear here once they are generated.</p>
    {% include "partials/logo.html" %}
 </div>
 {% endif %}
-<div class="w-full grid grid-cols-4 gap-4">
+<div class="w-full grid md:grid-cols-4 md:gap-4">
    {% for leaflet in user.leaflets %}
       <div class="w-auto h-64 relative overflow-hidden">
          <a href="{{ url_for("dashboard_leaflet_get", leaflet_id=leaflet.id) }}">
            {% for recipe in leaflet.recipes %}
               {% if loop.index == 1 %}
-              <img src="{{recipe.image}}" src="image1.jpg" class="absolute inset-0 object-cover" alt="Image 1"/>
+              <img src="{{recipe.image}}" class="absolute inset-0 object-cover w-full" alt="Image 1">
               {% endif %}
               {% if loop.index == 2 %}
                <img src="{{recipe.image}}" class="absolute inset-0 w-1/2 h-1/2 object-cover" alt="Image 2">

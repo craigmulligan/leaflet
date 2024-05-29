@@ -3,9 +3,7 @@
 {% block content %}
 <div>
   {% for recipe in leaflet.recipes %}
-   <a href="{{ url_for('dashboard_recipe_get', recipe_id=recipe.id) }}">
-      {% include "partials/recipe_summary.html" %}
-   </a>
+    {% include "partials/recipe_summary.html" %}
   {% endfor %}
 </div>
 {% endblock %}

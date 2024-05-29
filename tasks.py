@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from invoke.tasks import task
 
-load_dotenv()
+load_dotenv(".production.env")
 
 
 @task

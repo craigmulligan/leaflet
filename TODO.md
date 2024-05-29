@@ -1,4 +1,4 @@
 - proper tailwind integration.
-- form validation + prevent xxs.
+- form validation + prevent XXS.
 - pagination on recipes + leaflet page.
-- switch from base64 images to file storage.
+- split system prompt into separate messages.

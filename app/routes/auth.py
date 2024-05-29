@@ -16,6 +16,7 @@ from sqlalchemy.orm import Session
 from app import mailer, models
 from app.db import get_db
 from app import utils
+from app.faqs import faqs
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -88,7 +89,7 @@ def signin_get(request: Request):
     """
     signin form
     """
-    return templates.TemplateResponse(request, "signin.html", {"faqs": []})
+    return templates.TemplateResponse(request, "signin.html", {"faqs": faqs})
 
 
 @router.get("/")
