@@ -1,7 +1,11 @@
 {% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<div class="mt-32">
-  <p class="stroke-slate-500 mb-14 max-w-96 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum, sapien sed lobortis semper, ante lorem vulputate tortor, eget interdum lacus sem a est. Nullam lobortis iaculis ipsum. Aenean in purus nisi. Proin sit amet risus eget turpis suscipit commodo et eleifend lectus. Nullam vestibulum eros vitae eros lobortis, quis bibendum felis varius. Etiam ut orci vel sem euismod malesuada.</p>
+<div class="max-w-96 m-auto">
+<section class="my-32">
+  <div class="mb-5">
+  {% include "partials/logo.html" %}
+  </div>
+  <p class="stroke-slate-500 mb-14">This will be a quick explanation of what leaflet is.</p>
   <form 
     class="flex justify-center" 
     action="{{ url_for('magic_post') }}"
@@ -12,7 +16,7 @@
   >
     <input 
       class="px-3 py-2 border rounded-l-md focus:outline-none focus:border-emerald-700"
-      type="email" id="email" name="email" placeholder="email" required />
+      type="email" id="email" name="email" placeholder="email" required autofocus />
     <button
         type="submit"
         class="min-w-20 min-h-10 bg-emerald-900 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded-r-xl"
@@ -30,5 +34,21 @@
         </div>
       </button>
   </form>
+</section>
+
+<section id="faqs">
+<header>
+  <h2 class="stroke-slate-500 mb-14 text-xl text-center">Frequently asked questions</h2>
+</header>
+<section>
+{% for q, a in faqs %}
+<details>
+  <summary><h2>{{q}}</h2></summary>
+  <p>{{a|safe}}</p>
+</details>
+<hr/>
+{% endfor %}
+</section>
+</section>
 </div>
 {% endblock %}

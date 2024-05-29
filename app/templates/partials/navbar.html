@@ -27,11 +27,16 @@
     Logout
   </a>
   {% else %}
+  <div class="flex gap-2">
+  <a class="p-2" href="/#faqs">
+    FAQs
+  </a>
   <a
     href="{{ url_for("signin_get") }}"
     class="text-white font-bold bg-emerald-900 px-4 py-2 rounded-md hover:bg-emerald-700"
   >
     Signin
   </a>
+  </div>
   {% endif %}
 </nav>

@@ -43,7 +43,7 @@ def magic_post(
     token = user.get_signin_token()
     magic_url = f"/auth/magic?token={token}"
 
-    if utils.is_dev():
+    if not utils.is_dev():
         # Send email in production.
         subject = "Leaflet Signin Link"
         body = templates.get_template("email_magic_link.html").render(
@@ -88,7 +88,7 @@ def signin_get(request: Request):
     """
     signin form
     """
-    return templates.TemplateResponse(request, "signin.html")
+    return templates.TemplateResponse(request, "signin.html", {"faqs": []})
 
 
 @router.get("/")

@@ -1,6 +1,16 @@
 {% extends "layout.html" %} {% block title %}Dashboard{% endblock %} {% block
 content %}
-<p>Email: {{ user.email }}</p>
+<div class="max-w-96 m-auto"> 
+<div class="mt-32">
+   <p class="stroke-slate-500 mb-14 text-xl font-bold">Hey {{ user.email }}!</p>
+</div>
+
+{%if not leaflets %}
+<div>
+   <p class="stroke-slate-500 mb-14 text-md italic"><span class="font-semibold">Nothing to see here yet.</span>Your leaflets will appear here once they are generated.</p>
+   {% include "partials/logo.html" %}
+</div>
+{% endif %}
 <div class="w-full grid grid-cols-4 gap-4">
    {% for leaflet in user.leaflets %}
       <div class="w-auto h-64 relative overflow-hidden">
@@ -20,5 +30,6 @@ content %}
            </a>
       </div>
    {% endfor %}
+</div>
 </div>
 {% endblock %}
