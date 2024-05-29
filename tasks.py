@@ -10,12 +10,14 @@ load_dotenv(env_file)
 
 
 @task()
-def test(ctx, test_name=None):
+def test(ctx, k=None):
     """
     Run pytest with optional arguments.
     """
+
+    flags = f"-k {k}" if k else ""
     # Build the pytest command
-    command = "pytest " + (test_name or "")
+    command = "pytest " + flags
     # Run the command
     ctx.run(command, pty=True)
 
