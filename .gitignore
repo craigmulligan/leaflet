@@ -25,3 +25,5 @@ dist/
 # sqlite 
 *.db
 .DS_Store
+
+tailwindcss

@@ -1,4 +1,3 @@
-import sys
 import os
 from dotenv import load_dotenv
 from invoke.tasks import task
@@ -7,6 +6,26 @@ from invoke.tasks import task
 env_file = ".production.env" if os.getenv("ENV") == "production" else ".env"
 
 load_dotenv(env_file)
+
+
+@task()
+def tailwind_init(ctx):
+    if not os.path.exists("tailwindcss"):
+        ctx.run(
+            "curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-arm64"
+        )
+        ctx.run("chmod +x tailwindcss-macos-arm64")
+        ctx.run("mv tailwindcss-macos-arm64 tailwindcss")
+
+
+@task(tailwind_init)
+def tailwind_watch(ctx):
+    print("running tailwind_watch!!!")
+    ctx.run(
+        "./tailwindcss -i ./static/input.css -o ./static/output.css --watch",
+        pty=True,
+        disown=True,
+    )
 
 
 @task()
@@ -46,7 +65,7 @@ def db_down(ctx):
     ctx.run("alembic downgrade cb0dd456e4cc")
 
 
-@task
+@task(tailwind_watch)
 def server(ctx):
     """
     Start the FastAPI server in development mode on port 8080.
