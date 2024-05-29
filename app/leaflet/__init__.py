@@ -150,7 +150,7 @@ class LeafletManager:
     def generate_all(self):
         start_time = time.time()
         logging.info("Generating leaflets")
-        for users in self.get_user_candidates(hours=1):
+        for users in self.get_user_candidates(minutes=30):
             for user in users:
                 try:
                     logging.info(f"generating leaflet for {user.id}")
