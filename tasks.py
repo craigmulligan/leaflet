@@ -1,7 +1,9 @@
+import os
 from dotenv import load_dotenv
 from invoke.tasks import task
 
-load_dotenv(".production.env")
+# do ENV=production command to run with production envars.
+load_dotenv(".production.env" if os.getenv("ENV") == "production" else None)
 
 
 @task
