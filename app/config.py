@@ -4,7 +4,7 @@ import os
 logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler()])
 
 SECRET_KEY = "so-secret"
-HOST_URL = "http://localhost:8080"
+HOST_URL = os.environ.get("HOST_URL", "http://localhost:8080")
 LLM_KEY = os.environ.get("LLM_KEY", "ollama")
 LLM_HOST = os.environ.get("LLM_HOST", "http://localhost:11434/v1/")
 
