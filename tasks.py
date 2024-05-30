@@ -9,6 +9,16 @@ load_dotenv(env_file)
 
 
 @task()
+def deploy(ctx):
+    # Right now, fly.io's deployer will wait for the scheduled machine
+    # to start, but it only runs on a schedule and so it won't start.
+    # This is a way to get around this using the machines API but it
+    # adds a bunch of complexity.
+    # to avoid this we just ignore start checks for now.
+    ctx.run("fly deploy --strategy immediate")
+
+
+@task()
 def tailwind_init(ctx):
     if not os.path.exists("tailwindcss"):
         ctx.run(
