@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
 from sqlalchemy import desc, or_
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, aliased
 from app import models
 from app.llm import LLM
 from app.mailer import MailManager
@@ -36,20 +36,28 @@ class LeafletManager:
         """
         one_week_ago = datetime.now() - timedelta(**kwargs)
         last_id = None
+        recent_leaflets = aliased(models.Leaflet)
 
-        while True:
-            # Query for users who have no leaflets created within the last week
-            query = (
-                self.db.query(models.User)
-                .outerjoin(models.Leaflet)
-                .filter(
-                    or_(
-                        models.Leaflet.id == None,  # noqa
-                        models.Leaflet.created_at < one_week_ago,
-                    )
+        # Query for users who have no leaflets created within the last week
+        subquery = (
+            self.db.query(models.User.id)
+            .join(recent_leaflets)
+            .filter(recent_leaflets.created_at >= one_week_ago)
+            .subquery()
+        )
+
+        query = (
+            self.db.query(models.User)
+            .outerjoin(models.Leaflet)
+            .filter(
+                or_(
+                    models.Leaflet.id == None,  # noqa
+                    models.User.id.notin_(subquery),
                 )
             )
+        )
 
+        while True:
             # If last_id is not None, filter users with id greater than last_id
             if last_id is not None:
                 query = query.filter(models.User.id > last_id)
@@ -149,7 +157,9 @@ class LeafletManager:
 
     def generate_all(self):
         start_time = time.time()
-        logging.info("Generating leaflets")
+        logging.info(
+            "Generating leaflets for users without a leaflet in the last 7 days"
+        )
         for users in self.get_user_candidates(days=7):
             for user in users:
                 try:
