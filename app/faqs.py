@@ -1,7 +1,7 @@
 faqs = [
     (
         "What is this?",
-        'Leaflet is a simple tool to help you eat more plant based meals week on week. You give it a simple prompt to customize it to your needs and it will then send you a weekly "leaflet" of randomly selected simple plant-based recipes.',
+        'Leaflet is a tool to help you eat more plant based meals week on week. You give it a prompt to customize it to your needs and it will then send you a weekly "leaflet" of 3 randomly generated plant-based recipes.',
     ),
     (
         "Why did you make this?",
