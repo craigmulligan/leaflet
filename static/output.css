@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -741,6 +741,10 @@ video {
   animation: spin 1s linear infinite;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .list-decimal {
   list-style-type: decimal;
 }
@@ -893,6 +897,10 @@ video {
 
 .text-center {
   text-align: center;
+}
+
+.font-serif {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .text-2xl {
